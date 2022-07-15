@@ -27,16 +27,19 @@ services:
       networks:
           - web-ui
     #Mysl Service:
-    db:
-      image: mysql:8
-      restart: unless-stopped
+    mysql:
+      image: mysql:5.7
+      ports:
+          - 3306:3306
+      volumes:
+          - /var/lib/mysql
+      restart: always
       environment:
-        MYSQL_DATABASE: web_shop
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_PASSWORD: root
-        MYSQL_USER: nologo
-      networks:
-        - web-ui
+          MYSQL_ROOT_PASSWORD: nologo
+          MYSQL_USER: nologo
+          MYSQL_PASSWORD: nologo
+          MYSQL_DATABASE: nologo_web
+
 
 networks:
   web-ui:
