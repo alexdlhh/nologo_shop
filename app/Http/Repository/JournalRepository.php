@@ -20,11 +20,11 @@ class JournalRepository
         $journalMapper = new JournalMapper();
     
         if(!empty($filter)) {
-            $journals = DB::table('journals')
+            $journals = DB::table('journal')
                 ->where($filter)
                 ->get();
         } else {
-            $journals = DB::table('journals')
+            $journals = DB::table('journal')
                 ->get();
         }
         
@@ -38,7 +38,7 @@ class JournalRepository
      */
     public function getOne($filter = []){
         $journalMapper = new JournalMapper();
-        $journal = DB::table('journals')
+        $journal = DB::table('journal')
             ->where($filter)
             ->first();
         $journal = $journalMapper->map($journal);

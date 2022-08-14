@@ -2,37 +2,83 @@
 <html>
     <head>
         <title>@yield('title')</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <link ref="stylesheet" href="/css/app.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         @yield('css')
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="#">Laravel</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Register</a>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+    <body>        
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
+                    </li>
+                @endguest
+                </ul>
+            </div>
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    @foreach($headers as $header)
+                        <li class="tab"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
+                    @endforeach
+                </ul>
             </div>
         </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+        @guest
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Registrate</a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
+            </li>
+        @endguest
+        </ul>
+
         @yield('content')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         @yield('scripts')
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">RFEG</h5>
+                    <p class="grey-text text-lighten-4">Real Federación Española de Gimnasia - C. Ferraz 16 7ª Dcho, 28008 Madrid</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Apartado Legal</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Poltíca de Privacidad</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Plítica de Cookies</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                © 2022 Copyright Nologo
+                <a class="grey-text text-lighten-4 right" href="nologo.es">Nologo.es</a>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

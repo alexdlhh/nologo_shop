@@ -20,11 +20,11 @@ class CourseRepository
         $courseMapper = new CourseMapper();
 
         if(!empty($filter)) {
-            $courses = DB::table('courses')
+            $courses = DB::table('course')
                 ->where($filter)
                 ->get();
         } else {
-            $courses = DB::table('courses')
+            $courses = DB::table('course')
                 ->get();
         }
         
@@ -38,7 +38,7 @@ class CourseRepository
      */
     public function getOne($filter = []){
         $courseMapper = new CourseMapper();
-        $course = DB::table('courses')
+        $course = DB::table('course')
             ->where($filter)
             ->first();
         $course = $courseMapper->map($course);
@@ -72,7 +72,7 @@ class CourseRepository
      * @return bool
      */
     public function delete(Request $request){
-        $course = DB::table('courses')
+        $course = DB::table('course')
             ->where('id', $request->id)
             ->delete();
         return true;

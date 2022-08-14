@@ -1,0 +1,48 @@
+#admin_page{
+    width:100%;
+    height:100%;
+    min-height: max-content;
+}
+#sidebar_admin{
+    background-color: rgb(35, 25, 71);
+    color: white;
+    height: 100%;
+    position:absolute;
+}
+#sidebar_admin ul .collapsible-header{
+    color: #352571;
+}
+#panel_stuff{
+    padding: 0px;
+}
+#panel_stuff nav{
+    background-color: rgb(55, 39, 111);
+    color: white;
+}
+.container_admin{
+    width: 94%;
+    margin:0 auto
+}
+.left15{
+    margin-left: 15px;
+}
+li a{
+    color: #352571;
+}
+#sidebar_admin > ul > li.active > div.collapsible-body{
+    padding:0px;
+    padding-left:5px;
+}
+.right{
+    text-align: right;
+}
+.rightf{
+    float: right;
+    bottom: 30px;
+    right: 30px;
+    position: fixed;
+}
+#filtros{
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}

@@ -2,7 +2,7 @@
 
 namespace App\Http\Mapper;
 
-use App\Http\Entities\PagesEntity;
+use App\Http\Entity\PagesEntity;
 
 class PagesMapper{
     public function map($data){

@@ -20,11 +20,11 @@ class SchoolRepository
         $schoolMapper = new SchoolMapper();
     
         if(!empty($filter)) {
-            $schools = DB::table('schools')
+            $schools = DB::table('school')
                 ->where($filter)
                 ->get();
         } else {
-            $schools = DB::table('schools')
+            $schools = DB::table('school')
                 ->get();
         }
         

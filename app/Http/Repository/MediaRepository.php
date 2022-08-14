@@ -2,13 +2,13 @@
 
 namespace App\Http\Repository;
 
-use App\Http\Entity\JournalEntity;
-use App\Http\Mapper\JournalMapper;
+use App\Http\Entity\MediaEntity;
+use App\Http\Mapper\MediaMapper;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class JournalRepository
+class MediaRepository
 {
 
     /**
@@ -17,32 +17,32 @@ class JournalRepository
      */
     public function getAll($filter = [])
     {
-        $journalMapper = new JournalMapper();
+        $mediaMapper = new MediaMapper();
     
         if(!empty($filter)) {
-            $journals = DB::table('journals')
+            $media = DB::table('media')
                 ->where($filter)
                 ->get();
         } else {
-            $journals = DB::table('journals')
+            $media = DB::table('media')
                 ->get();
         }
         
-        $journalList = $journalMapper->mapCollection($journals);
-        return $journalList;
+        $mediaList = $mediaMapper->mapCollection($media);
+        return $mediaList;
     }
     
     /**
      * @param array $filter
-     * @return JournalEntity
+     * @return MediaEntity
      */
     public function getOne($filter = []){
-        $journalMapper = new JournalMapper();
-        $journal = DB::table('journals')
+        $mediaMapper = new MediaMapper();
+        $media = DB::table('media')
             ->where($filter)
             ->first();
-        $journal = $journalMapper->map($journal);
-        return $journal;
+        $media = $mediaMapper->map($media);
+        return $media;
     }
     
     /**
@@ -50,9 +50,9 @@ class JournalRepository
      * @return bool
      */
     public function create(Request $request){
-        $journalMapper = new JournalMapper();
-        $journal = $journalMapper->map($request->all());
-        $journal->save();
+        $mediaMapper = new MediaMapper();
+        $media = $mediaMapper->map($request->all());
+        $media->save();
         return true;
     }
     
@@ -60,20 +60,20 @@ class JournalRepository
      * @param array $data
      */
     public function update(Request $request, $filter = []){
-        $journalMapper = new JournalMapper();
-        $journal = $journalMapper->map($request->all());
-        DB::table('journals')
+        $mediaMapper = new MediaMapper();
+        $media = $mediaMapper->map($request->all());
+        DB::table('media')
             ->where($filter)
-            ->update($journal->toArray());
+            ->update($media->toArray());
     }
 
     /**
      * @param array $data
      */
     public function delete(Request $request, $filter = []){
-        $journalMapper = new JournalMapper();
-        $journal = $journalMapper->map($request->all());
-        DB::table('journals')
+        $mediaMapper = new MediaMapper();
+        $media = $mediaMapper->map($request->all());
+        DB::table('media')
             ->where($filter)
             ->delete();
     }

@@ -18,17 +18,20 @@ class NewsRepository
     public function getAll($filter = [])
     {
         $newsMapper = new NewsMapper();
-    
+        $newsList = [];
+
         if(!empty($filter)) {
-            $news = DB::table('news')
+            $news = DB::table('new')
                 ->where($filter)
                 ->get();
         } else {
-            $news = DB::table('news')
+            $news = DB::table('new')
                 ->get();
         }
+        if(!empty($news->toArray())) {
+            $news = $newsMapper->mapCollection($news->toArray());
+        }
         
-        $newsList = $newsMapper->mapCollection($news);
         return $newsList;
     }
     
@@ -38,7 +41,7 @@ class NewsRepository
      */
     public function getOne($filter = []){
         $newsMapper = new NewsMapper();
-        $news = DB::table('news')
+        $news = DB::table('new')
             ->where($filter)
             ->first();
         $news = $newsMapper->map($news);
@@ -47,13 +50,29 @@ class NewsRepository
     
     /**
      * @param array $data
-     * @return bool
+     * @return int
      */
-    public function create(Request $request){
+    public function create(Request $request, String $image_url){
         $newsMapper = new NewsMapper();
-        $news = $newsMapper->map($request->all());
+        $data = $request->all();
+        $data['feature_image'] = $image_url;
+        $news = $newsMapper->map($data);
         $news->save();
-        return true;
+        //obtenemos la ultima id creada
+        $id = $news->id;
+        //creamos las relaciones de la noticia con la categorias en new_cat_rel
+        foreach($data['categories'] as $category) {
+            DB::table('new_cat_rel')->insert(
+                ['new_id' => $id, 'cat_id' => $category]
+            );
+        }
+        //creamos las relaciones de la noticia con los tags en new_tag_rel
+        foreach($data['tags'] as $tag) {
+            DB::table('new_tag_rel')->insert(
+                ['new_id' => $id, 'tag_id' => $tag]
+            );
+        }
+        return $id;
     }
     
     /**

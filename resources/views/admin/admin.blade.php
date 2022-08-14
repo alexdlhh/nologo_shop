@@ -1,21 +1,23 @@
-@extends('layout')
+@extends('admin')
 @section('title')
     Panel de Control
 @endsection
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    You are Admin
+<div class="container_admin">
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-content">
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        Eres Admin
+                        @dump(Auth::user())
+                    </div>
                 </div>
             </div>
         </div>

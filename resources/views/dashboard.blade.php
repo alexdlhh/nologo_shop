@@ -15,7 +15,8 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    You are Logged In
+                    Has Iniciado Sesión!
+                    @dump(Auth::user())
                 </div>
             </div>
         </div>

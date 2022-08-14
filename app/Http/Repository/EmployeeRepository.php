@@ -20,11 +20,11 @@ class EmployeeRepository
         $employeeMapper = new EmployeeMapper();
     
         if(!empty($filter)) {
-            $employees = DB::table('employees')
+            $employees = DB::table('employee')
                 ->where($filter)
                 ->get();
         } else {
-            $employees = DB::table('employees')
+            $employees = DB::table('employee')
                 ->get();
         }
         
@@ -38,7 +38,7 @@ class EmployeeRepository
      */
     public function getOne($filter = []){
         $employeeMapper = new EmployeeMapper();
-        $employee = DB::table('employees')
+        $employee = DB::table('employee')
             ->where($filter)
             ->first();
         $employee = $employeeMapper->map($employee);

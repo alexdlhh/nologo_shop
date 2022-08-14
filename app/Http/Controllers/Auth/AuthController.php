@@ -8,6 +8,8 @@ use Session;
 use App\Models\User;
 use Hash;
 
+use App\Http\Repository\PagesRepository;
+
 class AuthController extends Controller
 {
     /**
@@ -17,8 +19,9 @@ class AuthController extends Controller
      */
 
     public function index(){
-
-        return view('auth.login');
+        $pageRepository = new PagesRepository();
+        $headers = $pageRepository->getAll('section','=','1');
+        return view('auth.login')->with('headers',$headers);
 
     }  
 
@@ -31,8 +34,9 @@ class AuthController extends Controller
      */
 
     public function registration(){
-
-        return view('auth.registration');
+        $pageRepository = new PagesRepository();
+        $headers = $pageRepository->getAll('section','=','1');
+        return view('auth.registration')->with('headers',$headers);
 
     }
 
@@ -53,11 +57,11 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')->withSuccess('You have Successfully loggedin');
+        if (Auth::attempt($credentials)) {            
+            return redirect()->intended('dashboard');
         }
 
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("login")->withSuccess('Oppes! Parece que tu contraseña o usuario son incorrectos');
 
     }
 
@@ -80,7 +84,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("dashboard");
 
     }
 
@@ -93,9 +97,11 @@ class AuthController extends Controller
      */
 
     public function dashboard(){
-
+        $pageRepository = new PagesRepository();
+        $headers = $pageRepository->getAll('section','=','1');
+        $admin = ['title' => 'Dashboard'];
         if(Auth::check()){
-            return Auth::user()->role==1 ?  view('admin/admin') :  view('dashboard');
+            return Auth::user()->role==1 ?  view('admin/admin')->with('admin',$admin) :  view('dashboard')->with('headers',$headers);
         }
 
         return redirect("login")->withSuccess('Opps! You do not have access');

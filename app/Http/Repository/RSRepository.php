@@ -20,11 +20,11 @@ class RSRepository
         $rsMapper = new RSMapper();
     
         if(!empty($filter)) {
-            $rs = DB::table('rs')
+            $rs = DB::table('social')
                 ->where($filter)
                 ->get();
         } else {
-            $rs = DB::table('rs')
+            $rs = DB::table('social')
                 ->get();
         }
         
@@ -38,7 +38,7 @@ class RSRepository
      */
     public function getOne($filter = []){
         $rsMapper = new RSMapper();
-        $rs = DB::table('rs')
+        $rs = DB::table('social')
             ->where($filter)
             ->first();
         $rs = $rsMapper->map($rs);

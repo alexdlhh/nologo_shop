@@ -7,7 +7,7 @@ body{
     line-height: 1.6;
     color: #212529;
     text-align: left;
-    background-color: #f5f8fa;
+    background-color: #ededed;
 }
 .navbar-laravel{
     box-shadow: 0 2px 4px rgba(0,0,0,.04);
@@ -30,4 +30,27 @@ body{
 .login-form .row{
     margin-left: 0;
     margin-right: 0;
+}
+nav{
+    border-bottom: 1px inherit #c3c2c2;
+}
+nav.nav-extended .nav-wrapper {
+    min-height: 64px;
+    max-width: 80%;
+    margin-left: 10%;
+}
+nav.nav-extended .nav-content {
+    position: relative;
+    line-height: normal;
+    max-width: 80%;
+    margin-left: 10%;
+}
+.container {
+    width: 80%;
+}
+
+
+/*FOOTER*/
+.page-footer{
+    margin-top: 100px;
 }

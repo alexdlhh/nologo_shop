@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Middleware\EnsureRoleIsCorrect;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategoryNewController;
+use App\Http\Controllers\TagNewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +31,13 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 /**
  * HOME
  */
+Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
+    Route::get('admin/news', [NewsController::class,'news_list'])->name('admin.news.list');
+    Route::get('admin/news/create', [NewsController::class,'create'])->name('admin.news.create');
+    Route::post('admin/news/create', [NewsController::class,'postCreate'])->name('admin.news.store');
+    Route::get('admin/news/edit', [NewsController::class,'edit'])->name('admin.news.edit');
+
+    Route::get('admin/categoriesNew',[CategoryNewController::class,'index'])->name('admin.categoriesNew.list');
+
+    Route::get('admin/tagsNew',[TagNewController::class,'index'])->name('admin.tagsNew.list');
+});

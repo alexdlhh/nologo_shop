@@ -12,16 +12,18 @@ class PagesRepository
 {
 
     /**
-     * @param array $data
+     * @param string $colum
+     * @param string $condition
+     * @param string $value
      * @return array
      */
-    public function getAll($filter = [])
+    public function getAll($colum,$condition,$value)
     {
         $pagesMapper = new PagesMapper();
     
-        if(!empty($filter)) {
+        if(!empty($colum) && !empty($condition) && !empty($value)) {
             $pages = DB::table('pages')
-                ->where($filter)
+                ->where($colum,$condition,$value)
                 ->get();
         } else {
             $pages = DB::table('pages')

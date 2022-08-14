@@ -20,11 +20,11 @@ class SponsorRepository
         $sponsorMapper = new SponsorMapper();
     
         if(!empty($filter)) {
-            $sponsors = DB::table('sponsors')
+            $sponsors = DB::table('sponsor')
                 ->where($filter)
                 ->get();
         } else {
-            $sponsors = DB::table('sponsors')
+            $sponsors = DB::table('sponsor')
                 ->get();
         }
         
@@ -38,7 +38,7 @@ class SponsorRepository
      */
     public function getOne($filter = []){
         $sponsorMapper = new SponsorMapper();
-        $sponsor = DB::table('sponsors')
+        $sponsor = DB::table('sponsor')
             ->where($filter)
             ->first();
         $sponsor = $sponsorMapper->map($sponsor);
