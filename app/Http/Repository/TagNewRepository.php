@@ -28,7 +28,7 @@ class TagNewRepository
                 ->get();
         }
         if(!empty($tagNew->toArray())) {
-            $tagNew = $tagNewMapper->mapCollection($tagNew->toArray());
+            $tagNewList = $tagNewMapper->mapCollection($tagNew->toArray());
         }
         return $tagNewList;
     }
@@ -54,7 +54,43 @@ class TagNewRepository
         $tagNewMapper = new TagNewMapper();
         $data = $request->all();
         $tagNew = $tagNewMapper->map($data);
-        $tagNew->save();
+        //save to database
+        $id = DB::table('tag_new')
+            ->insertGetId([
+                'name' => $tagNew->getName(),
+            ]);
+        return $id;
+    }
+
+    /**
+     * @param array $data
+     * @return int
+     */
+    public function update(Request $request){
+        $tagNewMapper = new TagNewMapper();
+        $data = $request->all();
+        $tagNew = $tagNewMapper->map($data);
+        //actualizar en la base de datos
+        $id = DB::table('tag_new')
+            ->where('id', $tagNew->getId())
+            ->update([
+                'name' => $tagNew->getName(),
+            ]);
+        return $tagNew->id;
+    }
+
+    /**
+     * @param array $data
+     * @return int
+     */
+    public function delete(Request $request){
+        $tagNewMapper = new TagNewMapper();
+        $data = $request->all();
+        $tagNew = $tagNewMapper->map($data);
+        //eliminar en la base de datos
+        $id = DB::table('tag_new')
+            ->where('id', $tagNew->getId())
+            ->delete();
         return $tagNew->id;
     }
 }

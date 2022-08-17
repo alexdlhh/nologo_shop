@@ -57,10 +57,10 @@
                                     <tr>
                                         <td><img src="{{ asset('storage/'.$new->feature_image) }}" alt=""></td>
                                         <td>{{ $new->title }}</td>
-                                        <td>{{ $new->status }}</td>
+                                        <td><input type="checkbox" data-id="{{$new->id}}" checked="{{ $new->status }}" class="status"></td>
                                         <td>
                                             <a href="{{ route('admin.news.edit', $new->id) }}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                            <a href="{{ route('admin.news.delete', $new->id) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                            <a href="javascript:void(0);" data-id="{{$new->id}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -76,4 +76,41 @@
         <a href="/admin/news/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.status').change(function(){
+            var id = $(this).data('id');
+            var status = $(this).is(':checked');
+            $.ajax({
+                url: '/admin/news/status',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    status: status,
+                    id: id
+                },
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        });
+        $('.del').click(function(){
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: 'admin/news/delete',
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'id': id
+                },
+                success: function(result){
+                    window.location.href = '/admin/news';
+                }
+            });
+        })
+    });
+</script>
 @endsection

@@ -59,6 +59,20 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.del').click(function(){
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: 'admin/categoriesNew/delete',
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'id': id
+                },
+                success: function(result){
+                    window.location.href = '/admin/news';
+                }
+            });
+        })
     });
 </script>
 @endsection

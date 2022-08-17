@@ -8,9 +8,9 @@ class TagNewMapper
 {
     public function map(array $data)
     {
-        $tagNew = new TagNewEntity();
-        $tagNew->setId($data['id']);
-        $tagNew->setName($data['name']);
+        $tagNew = new TagNewEntity(0,'');
+        !empty($data['id'])?$tagNew->setId($data['id']):'';
+        !empty($data['name'])?$tagNew->setName($data['name']):'';
         return $tagNew;
     }
     
@@ -18,8 +18,11 @@ class TagNewMapper
     {
         $tagNewList = [];
         foreach ($data as $item) {
-            $tagNew = $this->map($item);
-            $tagNewList[] = $tagNew;
+            if(is_array($item)){
+                $tagNewList[] = $this->map($item);
+            }else{
+                $tagNewList[] = $this->map(get_object_vars($item));
+            }
         }
         return $tagNewList;
     }

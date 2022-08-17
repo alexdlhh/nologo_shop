@@ -31,7 +31,21 @@ class TagNewController extends Controller
     public function postCreate(Request $request)
     {
         $tagNewRepository = new TagNewRepository();
-        $id = $tagNewRepository->create($request->all());
+        if($request['id'] != 0) {
+            $id = $tagNewRepository->update($request);
+        }else{
+            $id = $tagNewRepository->create($request);
+        }
         return $id;
+    }
+
+    /**
+     * Delete a newly created resource in storage.
+     */
+    public function postDelete(Request $request)
+    {
+        $tagNewRepository = new TagNewRepository();
+        $tagNewRepository->delete($request);
+        return true;
     }
 }

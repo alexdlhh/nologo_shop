@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Entities;
+namespace App\Http\Entity;
 
 class CourseEntity
 {

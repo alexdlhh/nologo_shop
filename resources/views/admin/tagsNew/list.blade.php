@@ -24,8 +24,8 @@
                                         <td>{{$tag->id}}</td>
                                         <td>{{$tag->name}}</td>
                                         <td>
-                                            <a href="{{route('admin.tag.edit',$tag->id)}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                            <a href="{{route('admin.tag.delete',$tag->id)}}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                            <a href="javascript:void(0)" data-name="{{$tag->name}}" data-id="{{$tag->id}}" class="edit btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
+                                            <a href="javascript:void(0)" data-id="{{$tag->id}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
                                         </td>
                                     @endforeach
                                 </tbody>
@@ -45,7 +45,7 @@
                                 <label for="name">Tag</label>
                             </div>
                             <div class="col s12 input-field">
-                                <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
+                                <a href="javascript:void(0);" data-id="0" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
                             </div>
                         </div>
                     </div>
@@ -53,16 +53,54 @@
             </div>
         </div>
     </div>
-    <div class="rightf">
-        <a href="javascript:void(0);" id="del" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
-        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
-    </div>
 </div>
 @endsection
 
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.del').click(function(){
+            spiner()
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: '/admin/tagsNew/delete',
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'id': id
+                },
+                success: function(result){
+                    removeSpiner();
+                    window.location.href = '/admin/tagsNew';
+                }
+            });
+        })
+        $('.edit').click(function(){
+            spiner();
+            var id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            $('#name').val(name);
+            $('#save').attr('data-id',id);
+            removeSpiner();
+        })
+        $('#save').click(function(){
+            spiner();
+            var name = $('#name').val();
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: '/admin/tagsNew/save',
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'id': id,
+                    'name': name
+                },
+                success: function(result){
+                    removeSpiner();
+                    window.location.href = '/admin/tagsNew';
+                }
+            });
+        })
     });
 </script>
 @endsection

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Entities;
+namespace App\Http\Entity;
 
 class TagNewEntity{
     public $id;
     public $name;
     
-    public function __construct($id, $name)
+    public function __construct($id=0, $name='')
     {
         $this->id = $id;
         $this->name = $name;
@@ -28,6 +28,14 @@ class TagNewEntity{
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
     }
     
 }
