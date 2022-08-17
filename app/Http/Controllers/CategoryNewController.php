@@ -16,7 +16,7 @@ class CategoryNewController extends Controller
     public function index()
     {
         $categoryNewRepository = new CategoryNewRepository();
-        $categoryNewRepository->getAll();
+        $categoryNew=$categoryNewRepository->getAll();
         return view('admin.categoriesNew.list')->with('admin',[
             'title' => 'Listado de Categorias',
             'categories' => $categoryNew,
@@ -32,7 +32,22 @@ class CategoryNewController extends Controller
     public function postCreate(Request $request)
     {
         $categoryNewRepository = new CategoryNewRepository();
-        $id = $categoryNewRepository->create($request->all());
+        if($request->id == 0){
+            $id = $categoryNewRepository->create($request);
+        } else {
+            $id = $categoryNewRepository->update($request);
+        }
+        
         return $id;
+    }
+
+    /**
+     * Delete a newly created resource in storage.
+     */
+    public function postDelete(Request $request)
+    {
+        $categoryNewRepository = new CategoryNewRepository();
+        $categoryNewRepository->delete($request);
+        return true;
     }
 }

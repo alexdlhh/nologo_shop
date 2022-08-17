@@ -3,11 +3,12 @@
 namespace App\Http\Repository;
 
 use App\Http\Entity\CategoryNewEntity;
+use App\Http\Mapper\CategoryNewMapper;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class CateroryNewRepository
+class CategoryNewRepository
 {
     /**
      * @param array $data
@@ -26,7 +27,7 @@ class CateroryNewRepository
                 ->get();
         }
         if(!empty($categoryNew->toArray())) {
-            $categoryNew = $categoryNewMapper->mapCollection($categoryNew->toArray());
+            $categoryNewList = $categoryNewMapper->mapCollection($categoryNew->toArray());
         }
         return $categoryNewList;
     }
@@ -52,7 +53,36 @@ class CateroryNewRepository
         $categoryNewMapper = new CategoryNewMapper();
         $data = $request->all();
         $categoryNew = $categoryNewMapper->map($data);
-        $categoryNew->save();
+        $id = DB::table('category_new')
+            ->insertGetId($categoryNew->toArray());
+        return $categoryNew->id;
+    }
+
+    /**
+     * @param array $data
+     * @return int
+     */
+    public function update(Request $request){
+        $categoryNewMapper = new CategoryNewMapper();
+        $data = $request->all();
+        $categoryNew = $categoryNewMapper->map($data);
+        $id = DB::table('category_new')
+            ->where('id', $categoryNew->id)
+            ->update($categoryNew->toArray());
+        return $categoryNew->id;
+    }
+
+    /**
+     * @param array $data
+     * @return int
+     */
+    public function delete(Request $request){
+        $categoryNewMapper = new CategoryNewMapper();
+        $data = $request->all();
+        $categoryNew = $categoryNewMapper->map($data);
+        $id = DB::table('category_new')
+            ->where('id', $categoryNew->id)
+            ->delete();
         return $categoryNew->id;
     }
 }

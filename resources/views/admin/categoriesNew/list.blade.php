@@ -24,8 +24,8 @@
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>
-                                            <a href="{{route('admin.category.edit',$category->id)}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                            <a href="{{route('admin.category.delete',$category->id)}}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                            <a href="javascript:void(0)" data-name="{{$category->name}}" data-id="{{$category->id}}" class="edit btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
+                                            <a href="javascript:void(0)" data-id="{{$category->id}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
                                         </td>
                                     @endforeach
                                 </tbody>
@@ -45,7 +45,7 @@
                                 <label for="name">Categories</label>
                             </div>
                             <div class="col s12 input-field right">
-                                <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
+                                <a href="javascript:void(0);" data-id="0" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
                             </div>
                         </div>
                     </div>
@@ -60,16 +60,44 @@
 <script>
     $(document).ready(function(){
         $('.del').click(function(){
+            spiner()
             var id = $(this).attr('data-id');
             $.ajax({
-                url: 'admin/categoriesNew/delete',
+                url: '/admin/categoriesNew/delete',
                 type: 'POST',
                 data: {
                     '_token': '{{ csrf_token() }}',
                     'id': id
                 },
                 success: function(result){
-                    window.location.href = '/admin/news';
+                    removeSpiner();
+                    window.location.href = '/admin/categoriesNew';
+                }
+            });
+        })
+        $('.edit').click(function(){
+            spiner();
+            var id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            $('#name').val(name);
+            $('#save').attr('data-id',id);
+            removeSpiner();
+        })
+        $('#save').click(function(){
+            spiner();
+            var name = $('#name').val();
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: '/admin/categoriesNew/save',
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'id': id,
+                    'name': name
+                },
+                success: function(result){
+                    removeSpiner();
+                    window.location.href = '/admin/categoriesNew';
                 }
             });
         })

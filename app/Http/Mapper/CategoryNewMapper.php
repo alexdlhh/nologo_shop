@@ -8,8 +8,8 @@ class CategoryNewMapper
     public function map(array $data)
     {
         $categoryNew = new CategoryNewEntity();
-        $categoryNew->setId($data['id']);
-        $categoryNew->setName($data['name']);
+        !empty($data['id'])?$categoryNew->setId($data['id']):'';
+        !empty($data['name'])?$categoryNew->setName($data['name']):'';
         return $categoryNew;
     }
 
@@ -17,8 +17,11 @@ class CategoryNewMapper
     {
         $categoryNewList = [];
         foreach ($data as $item) {
-            $categoryNew = $this->map($item);
-            $categoryNewList[] = $categoryNew;
+            if(is_array($item)){
+                $categoryNewList[] = $this->map($item);
+            }else{
+                $categoryNewList[] = $this->map(get_object_vars($item));
+            }
         }
         return $categoryNewList;
     }
