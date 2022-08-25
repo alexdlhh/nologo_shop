@@ -17,6 +17,10 @@
                                 <input id="title" type="text" class="validate">
                                 <label for="title">Titulo</label>
                             </div>
+                            <div class="col s12 input-field">
+                                <input id="alias" type="text" class="validate">
+                                <label for="alias">PermantLink</label>
+                            </div>
                             <div class="col s12">
                                 <textarea id="content_text"></textarea>
                                 <label for="content_text">Contenido</label>
@@ -24,7 +28,7 @@
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <div class="col s6"><input id="feature_image" type="file" class="validate"></div>
-                                    <div class="col s6"><img src="" alt="preview"></div>
+                                    <div class="col s6"><img id="peview" width="100px" src="" alt="preview"></div>
                                 </div>
                             </div>                            
                             <div class="col s6 input-field">
@@ -42,13 +46,19 @@
                             <div style="clear:both;"></div>
                             <div class="input-field col s6">
                                 <select multiple id="category">
-                                    <option value="" disabled selected>Sin Categoría</option>
+                                    <option value="">Sin Categoría</option>
+                                    @foreach($admin['categoryNew'] as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
                                 </select>
                                 <label for="category">Categorías</label>
                             </div>
                             <div class="input-field col s6">
                                 <select multiple id="tags">
-                                    <option value="" disabled selected>Sin Tag</option>
+                                    <option value="">Sin Tag</option>
+                                    @foreach($admin['tagNew'] as $tag)
+                                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                    @endforeach
                                 </select>
                                 <label for="tags">Tags</label>
                             </div>
@@ -71,23 +81,35 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
-
+        $('#feature_image').change(function(){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#peview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
         $('#save').click(function(){
+            spiner();
             var title = $('#title').val();
-            var content = $('#content_text').val();
+            var content = $('.nicEdit-main').html();
             var date = $('#date').val();
             var publicado = $('#publicado').is(':checked');
             var category = $('#category').val();
             var tags = $('#tags').val();
-            var feature_image = $('#feature_image').val();
+            var feature_image = $('#feature_image').prop('files');
+            console.log(feature_image); 
+            var alias = $('#alias').val();
             var formData = new FormData();
             formData.append('title', title);
             formData.append('content', content);
-            formData.append('date', date);
-            formData.append('publicado', publicado);
+            formData.append('permantlink', alias);
+            formData.append('created_at', date);
+            formData.append('status', publicado);
             formData.append('category', category);
             formData.append('tags', tags);
-            formData.append('feature_image', feature_image);
+            formData.append('feature_image', feature_image[0]);
+            formData.append('_token', '{{csrf_token()}}');
+            formData.append('enctype', 'multipart/form-data');
             $.ajax({
                 url: '{{ route('admin.news.store') }}',
                 type: 'POST',
@@ -95,10 +117,18 @@
                 processData: false,
                 contentType: false,
                 success: function(data){
-                    console.log(data);
-                    console.log('{{ route('admin.news.edit') }}/'+data.id);
+                    removeSpiner();
+                    window.location.href='/admin/news/edit/'+data;
                 }
             });
+        });
+        $('#title').change(function(){
+            var title = $(this).val();
+            var alias = title.replace(/ /g, '-').toLowerCase();
+            alias = alias.replace(/[^a-z0-9\-]/g, '');
+            alias = alias.replace(/\-{2,}/g, '-');
+            alias = alias.replace(/^\-+|\-+$/g, '');
+            $('#alias').val(alias);
         });
     });
 </script>

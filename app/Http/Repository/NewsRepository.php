@@ -20,19 +20,91 @@ class NewsRepository
         $newsMapper = new NewsMapper();
         $newsList = [];
 
-        if(!empty($filter)) {
-            $news = DB::table('new')
-                ->where($filter)
-                ->get();
+        if(!empty($filter)) {            
+            if(!empty($filter['searchCriteria'])){
+                if(!empty($filter['fecha_search'])){
+                    $filter['fecha_search'] = date('Y-m-d', strtotime(str_replace('/','-',$filter['fecha_search'])));
+                    $news = DB::table('new')
+                    ->where('status', $filter['status'])
+                    ->where('title', 'like', '%'.$filter['searchCriteria'].'%')
+                    ->where('created_at', 'like', '%'.$filter['fecha_search'].'%')
+                    ->orderBy('id', 'desc')
+                    ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->get();
+                }else{
+                    $news = DB::table('new')
+                    ->where('status', $filter['status'])
+                    ->where('title', 'like', '%'.$filter['searchCriteria'].'%')
+                    ->orderBy('id', 'desc')
+                    ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->get();
+                }
+            }elseif(!empty($filter['fecha_search'])){
+                $filter['fecha_search'] = date('Y-m-d', strtotime(str_replace('/','-',$filter['fecha_search'])));
+                $news = DB::table('new')
+                ->where('status', $filter['status'])
+                ->where('created_at', 'like', '%'.$filter['fecha_search'].'%')
+                ->orderBy('id', 'desc')
+                ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->get();
+            }else{
+                $news = DB::table('new')
+                ->where('status', $filter['status'])
+                ->orderBy('id', 'desc')
+                ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->get();
+            }   
         } else {
             $news = DB::table('new')
                 ->get();
         }
         if(!empty($news->toArray())) {
-            $news = $newsMapper->mapCollection($news->toArray());
+            $newsList = $newsMapper->mapCollection($news->toArray());
         }
         
         return $newsList;
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    function getTotalNews($filter = [])
+    {
+        $newsMapper = new NewsMapper();
+        $newsList = [];
+        
+        if(!empty($filter)) {
+            if(!empty($filter['searchCriteria'])){
+                if(!empty($filter['fecha_search'])){
+                    $filter['fecha_search'] = date('Y-m-d', strtotime(str_replace('/','-',$filter['fecha_search'])));
+                    $news = DB::table('new')
+                    ->where('status', $filter['status'])
+                    ->where('title', 'like', '%'.$filter['searchCriteria'].'%')
+                    ->where('created_at', 'like', '%'.$filter['fecha_search'].'%')
+                    ->orderBy('id', 'desc')
+                    ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->count();
+                }else{
+                    $news = DB::table('new')
+                    ->where('status', $filter['status'])
+                    ->where('title', 'like', '%'.$filter['searchCriteria'].'%')
+                    ->orderBy('id', 'desc')
+                    ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->count();
+                }
+            }elseif(!empty($filter['fecha_search'])){
+                $filter['fecha_search'] = date('Y-m-d', strtotime(str_replace('/','-',$filter['fecha_search'])));
+                $news = DB::table('new')
+                ->where('status', $filter['status'])
+                ->where('created_at', 'like', '%'.$filter['fecha_search'].'%')
+                ->orderBy('id', 'desc')
+                ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->count();
+            }else{
+                $news = DB::table('new')
+                ->where('status', $filter['status'])
+                ->orderBy('id', 'desc')
+                ->skip($filter['page']==1?0:$filter['page']*10)->take(10)->count();
+            }            
+        } else {
+            $news = DB::table('new')
+                ->count();
+        }
+        return $news;
     }
     
     /**
@@ -47,6 +119,21 @@ class NewsRepository
         $news = $newsMapper->map($news);
         return $news;
     }
+
+    /**
+     * @param array $data
+     * @return NewsEntity
+     */
+    public function getById($id)
+    {
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->where('id', $id)
+            ->first();
+        //hacemos $new array para que no se devuelva un objeto
+        $news = $newsMapper->map(get_object_vars($news));
+        return $news;
+    }
     
     /**
      * @param array $data
@@ -57,19 +144,30 @@ class NewsRepository
         $data = $request->all();
         $data['feature_image'] = $image_url;
         $news = $newsMapper->map($data);
-        $news->save();
+        //guardamos la noticia en la base de datos
+        $id = DB::table('new')
+            ->insertGetId([
+                'title' => $news->getTitle(),
+                'content' => $news->getContent(),
+                'created_at' => $news->getCreatedAt(),
+                'updated_at' => $news->getUpdatedAt(),
+                'feature_image' => $news->getFeatureImage(),
+                'status' => $news->getStatus(),
+                'alias' => $news->getPermantlink()
+            ]);
         //obtenemos la ultima id creada
-        $id = $news->id;
         //creamos las relaciones de la noticia con la categorias en new_cat_rel
-        foreach($data['categories'] as $category) {
-            DB::table('new_cat_rel')->insert(
-                ['new_id' => $id, 'cat_id' => $category]
+        $data['category'] = explode(',', $data['category']);
+        foreach($data['category'] as $category) {
+            DB::table('cat_new_rel')->insert(
+                ['id_new' => $id, 'id_cat' => $category]
             );
         }
         //creamos las relaciones de la noticia con los tags en new_tag_rel
+        $data['tags'] =  explode(',', $data['tags']);
         foreach($data['tags'] as $tag) {
-            DB::table('new_tag_rel')->insert(
-                ['new_id' => $id, 'tag_id' => $tag]
+            DB::table('tag_new_rel')->insert(
+                ['id_new' => $id, 'id_tag' => $tag]
             );
         }
         return $id;
@@ -79,19 +177,69 @@ class NewsRepository
      * @param array $data
      * @return bool
      */
-    public function update(Request $request){
+    public function update(Request $request,int $id){
         $newsMapper = new NewsMapper();
-        $news = $newsMapper->map($request->all());
-        $news->save();
+        $data = $request->all();
+        $id = DB::table('new')
+            ->where('id', $id)
+            ->update([
+                'title' => $data['title'],
+                'content' => $data['content'],
+                'updated_at' => $data['updated_at'],
+                'status' => $data['status'],
+                'alias' => $data['permantlink'],
+                'feature_image' => $data['feature_image'],
+            ]);
+        //borramos las relaciones de la noticia con las categorias en new_cat_rel
+        DB::table('cat_new_rel')->where('id_new', $id)->delete();
+        //creamos las relaciones de la noticia con las categorias en new_cat_rel
+        $data['category'] = explode(',', $data['category']);
+        foreach($data['category'] as $category) {
+            DB::table('cat_new_rel')->insert(
+                ['id_new' => $id, 'id_cat' => $category]
+            );
+        }
+        //borramos las relaciones de la noticia con los tags en new_tag_rel
+        DB::table('tag_new_rel')->where('id_new', $id)->delete();
+        //creamos las relaciones de la noticia con los tags en new_tag_rel
+        $data['tags'] =  explode(',', $data['tags']);
+        foreach($data['tags'] as $tag) {
+            DB::table('tag_new_rel')->insert(
+                ['id_new' => $id, 'id_tag' => $tag]
+            );
+        }
+        return $id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function delete($id){
+        //obtenemos la noticia a eliminar para saber que imagen debemos borrar
+        $news = $this->getById($id);
+        unlink($news->getFeatureImage());
+        //borramos la noticia
+        DB::table('new')
+            ->where('id', $id)
+            ->delete();
+        DB::table('cat_new_rel')
+            ->where('id_new', $id)
+            ->delete();
+        DB::table('tag_new_rel')
+            ->where('id_new', $id)
+            ->delete();
         return true;
     }
 
     /**
-     * @param array $data
+     * @param int $status
      */
-    public function delete(Request $request){
+    public function changeState(Request $request){
         $newsMapper = new NewsMapper();
         $news = $newsMapper->map($request->all());
-        $news->delete();
+        $query = DB::table('new')
+            ->where('id', $news->id)
+            ->update(['status' => $news->status]);
+        return $query;
     }
 }

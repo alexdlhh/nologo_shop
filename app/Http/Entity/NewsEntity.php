@@ -10,9 +10,9 @@ class NewsEntity{
     public $updated_at;
     public $feature_image;
     public $status;
+    public $alias;
     
-    public function __construct($id, $title, $content, $created_at, $updated_at, $feature_image, $status)
-    {
+    public function __construct($id=0, $title='', $content='', $created_at='', $updated_at='', $feature_image='', $status='', $alias='') {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
@@ -20,6 +20,7 @@ class NewsEntity{
         $this->updated_at = $updated_at;
         $this->feature_image = $feature_image;
         $this->status = $status;
+        $this->alias = $alias;
     }
 
     public function getId()
@@ -50,6 +51,10 @@ class NewsEntity{
     {
         return $this->status;
     }
+    public function getPermantlink()
+    {
+        return $this->alias;
+    }
 
     public function setId($id)
     {
@@ -78,6 +83,10 @@ class NewsEntity{
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+    public function setPermantlink($alias)
+    {
+        $this->alias = $alias;
     }
     
 }

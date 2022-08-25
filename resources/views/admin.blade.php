@@ -10,7 +10,7 @@
     </head>
     <body>        
         <div class="row" id="admin_page">
-            <div class="col s12 m3" id="sidebar_admin">
+            <div class="col s12 m2" id="sidebar_admin">
                 <h4 href="/dashboard">
                     Panel de Control
                 </h4>
@@ -98,7 +98,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col s12 m9 offset-m3" id="panel_stuff">
+            <div class="col s12 m10 offset-m2" id="panel_stuff">
                 <nav>
                     <div class="nav-wrapper">
                     <a href="#" class="brand-logo left15">{{$admin['title']}}</a>

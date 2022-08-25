@@ -93,4 +93,18 @@ class TagNewRepository
             ->delete();
         return $tagNew->id;
     }
+
+    /**
+     * @param int $news_id
+     * @return array
+     */
+    public function getByNews(int $news_id){
+        $tagNewMapper = new TagNewMapper();
+        $tagNewList = [];
+        $tagNew = DB::table('tag_new_rel')
+            ->where('id_new', $news_id)
+            ->get();
+        
+        return $tagNew->toArray();
+    }
 }

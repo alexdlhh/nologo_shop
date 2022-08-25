@@ -14,17 +14,17 @@
                                 <h6 class="header">Filtros</h6>
                             </div>                         
                             <div class="col s3 input-field">
-                                <input id="first_name" type="date">
+                                <input id="fecha_search" type="date" value="{{ $admin['filter']['fecha_search'] ?? '' }}">
                                 <label for="date">Fecha</label>
                             </div>
                             <div class="col s6 input-field">
-                                <input type="text" id="searchCriteria">
+                                <input type="text" id="searchCriteria" value="{{$admin['filter']['searchCriteria'] ?? ''}}">
                                 <label for="searchCriteria">Buscar</label>
                             </div>
                             <div class="col s2 input-field">
                             <p>
                                 <label>
-                                    <input type="checkbox" id="publish"/>
+                                    <input type="checkbox" id="state" checked="{{$admin['filter']['status']==1?true:false}}"/>
                                     <span>Publicado</span>
                                 </label>
                             </p>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="card-action right">
-                        <a href="#">Buscar</a>
+                        <a href="#" id="searchBtn">Buscar</a>
                     </div>
                 </div>
             </div>
@@ -55,17 +55,31 @@
                                 <tbody>
                                 @foreach($admin['news'] as $new)
                                     <tr>
-                                        <td><img src="{{ asset('storage/'.$new->feature_image) }}" alt=""></td>
+                                        <td><img src="{{ $new->feature_image }}" width="80px" alt=""></td>
                                         <td>{{ $new->title }}</td>
-                                        <td><input type="checkbox" data-id="{{$new->id}}" checked="{{ $new->status }}" class="status"></td>
                                         <td>
-                                            <a href="{{ route('admin.news.edit', $new->id) }}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
+                                            <p>
+                                            <label>
+                                                <input type="checkbox" data-id="{{$new->id}}" checked="{{ $new->status }}" class="status">
+                                                <span></span>
+                                            </label>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <a href="/admin/news/edit/{{$new->id}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
                                             <a href="javascript:void(0);" data-id="{{$new->id}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="row">
+                            <ul class="pagination">
+                                @for($i = 1; $i <= $admin['total_pages']; $i++)
+                                    <li class="{{$admin['filter']['page']==$i?'active':'waves-effect'}}"><a href="javascript:void(0);" class="page" data-page="{{$i}}">{{ $i }}</a></li>
+                                @endfor
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -99,18 +113,30 @@
         });
         $('.del').click(function(){
             var id = $(this).attr('data-id');
-            $.ajax({
-                url: 'admin/news/delete',
-                type: 'POST',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    'id': id
-                },
-                success: function(result){
-                    window.location.href = '/admin/news';
-                }
-            });
+            if(confirm('¿Estás seguro de eliminar esta noticia?')){
+                $.ajax({
+                    url: '/admin/news/delete/'+id,
+                    type: 'GET',
+                    success: function(result){
+                        window.location.href = '/admin/news/filters/{{$admin["filter"]["page"] ?? 1}}/'+$('#state').is(':checked')+'/'+$('#fecha_search').val()+'/'+$('#searchCriteria').val();
+                    }
+                });
+            }
         })
+        $('#searchBtn').click(function(){
+            var fecha = $('#fecha_search').val();
+            var search = $('#searchCriteria').val();
+            var state = $('#state').is(':checked');
+            var page = <?=$admin['filter']['page']?>;
+            window.location.href = '/admin/news/filters/'+page+'/'+state+'/'+fecha+'/'+search;
+        });
+        $('.page').click(function(){
+            var page = $(this).attr('data-page');
+            var fecha = $('#fecha_search').val();
+            var search = $('#searchCriteria').val();
+            var state = $('#state').is(':checked');
+            window.location.href = '/admin/news/filters/'+page+'/'+state+'/'+fecha+'/'+search;
+        });
     });
 </script>
 @endsection

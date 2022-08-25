@@ -85,4 +85,17 @@ class CategoryNewRepository
             ->delete();
         return $categoryNew->id;
     }
+
+    /**
+     * @param id $news_id
+     * @return array
+     */
+    public function getByNews($news_id){
+        $categoryNewMapper = new CategoryNewMapper();
+        $categoryNewList = [];
+        $categoryNew = DB::table('cat_new_rel')
+            ->where('id_new', $news_id)
+            ->get();
+        return $categoryNew->toArray();
+    }
 }
