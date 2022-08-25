@@ -21,7 +21,7 @@ CREATE TABLE `category_new` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `category_product` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -106,8 +106,9 @@ CREATE TABLE `new` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `alias` varchar(5000) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pages` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -185,7 +186,7 @@ CREATE TABLE `tag_new` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `tag_new_rel` (
   `id_tag` int(11) DEFAULT NULL,
@@ -217,10 +218,19 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `cat_new_rel` (`id_new`, `id_cat`) VALUES
+(9, 2);
+INSERT INTO `cat_new_rel` (`id_new`, `id_cat`) VALUES
+(10, 2);
+INSERT INTO `cat_new_rel` (`id_new`, `id_cat`) VALUES
+(11, 2);
+INSERT INTO `cat_new_rel` (`id_new`, `id_cat`) VALUES
+(12, 2);
 
 
 
-
+INSERT INTO `category_new` (`id`, `name`) VALUES
+(2, 'test');
 
 
 
@@ -246,7 +256,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 
-
+INSERT INTO `new` (`id`, `title`, `feature_image`, `content`, `created_at`, `updated_at`, `status`, `alias`) VALUES
+(9, 'Mi loro es un asqueroso', '/images/1661440872Miloroesunasqueroso.png', '<br>', '2022-08-26 00:00:00', '2022-08-25 15:21:12', 1, '');
+INSERT INTO `new` (`id`, `title`, `feature_image`, `content`, `created_at`, `updated_at`, `status`, `alias`) VALUES
+(10, 'la patata', '/images/1661453495lapatata.jpg', 'La patata no se puede poseer la patata es un producto de la madre naturaleza...<div><img src=\"https://i.pinimg.com/474x/9a/92/e9/9a92e92412021bb8574fd5fafbe722c6--simpsons-cartoon-los-simpsons.jpg\" alt=\"\" align=\"none\"><br></div>', '2022-08-26 00:00:00', '2022-08-25 18:51:35', 1, '');
+INSERT INTO `new` (`id`, `title`, `feature_image`, `content`, `created_at`, `updated_at`, `status`, `alias`) VALUES
+(11, 'las wanda de 10\'\'', '/images/1661453680laswandade10.jpg', 'wrjlfn aerl faekr fwlajr flwea flesk d', '2022-08-26 00:00:00', '2022-08-25 18:54:41', 1, '');
+INSERT INTO `new` (`id`, `title`, `feature_image`, `content`, `created_at`, `updated_at`, `status`, `alias`) VALUES
+(12, 'me encanta cuando los panes salen bien', '/images/1661453982meencantacuandolospanessalenbien.webp', 'los panes', '2022-08-26 00:00:00', '2022-08-25 18:59:42', 1, 'me-encanta-cuando-los-panes-salen-bien');
 
 INSERT INTO `pages` (`id`, `title`, `url`, `section`, `order`, `id_dad`) VALUES
 (1, 'RFEG', '/rfeg', 1, 1, NULL);
@@ -271,9 +288,26 @@ INSERT INTO `pages` (`id`, `title`, `url`, `section`, `order`, `id_dad`) VALUES
 
 
 
+INSERT INTO `tag_new` (`id`, `name`) VALUES
+(3, 'Probando2');
+INSERT INTO `tag_new` (`id`, `name`) VALUES
+(4, 'Las Categorías');
+INSERT INTO `tag_new` (`id`, `name`) VALUES
+(6, 'test');
 
-
-
+INSERT INTO `tag_new_rel` (`id_tag`, `id_new`) VALUES
+(3, 9);
+INSERT INTO `tag_new_rel` (`id_tag`, `id_new`) VALUES
+(4, 9);
+INSERT INTO `tag_new_rel` (`id_tag`, `id_new`) VALUES
+(6, 9);
+INSERT INTO `tag_new_rel` (`id_tag`, `id_new`) VALUES
+(4, 10),
+(6, 10),
+(3, 11),
+(4, 11),
+(3, 12),
+(6, 12);
 
 
 
