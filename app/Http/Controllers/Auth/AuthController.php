@@ -88,6 +88,23 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function postAdminRegistration(Request $request){  
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'role' => 'required',
+        ]);
+        $data = $request->all();
+        $check = $this->create($data);
+        return $check;
+    }
+
     
 
     /**
@@ -122,7 +139,7 @@ class AuthController extends Controller
         'name' => $data['name'],
         'email' => $data['email'],
         'password' => Hash::make($data['password']),
-        'role' => '2',
+        'role' => !empty($data['role']) ? $data['role'] : 2,
       ]);
 
     }
@@ -143,4 +160,67 @@ class AuthController extends Controller
         return Redirect('login');
 
     }
+
+    /**
+     * List all users
+     * @return view
+     */
+    public function users(){
+        $pageRepository = new PagesRepository($role=0,$search='');
+        $headers = $pageRepository->getAll('section','=','1');
+        $filters = ['role'=>$role,'search'=>$search];
+        $users = User::all();
+        return view('admin/users/list')->with('users',$users)->with('admin',['title' => 'Users', 'users' => $users]);
+    }
+
+    /**
+     * Create new user
+     * @return view
+     */
+    public function createUser(){
+        $pageRepository = new PagesRepository($role=0,$search='');
+        $headers = $pageRepository->getAll('section','=','1');
+        return view('admin/users/create')->with('admin',['title' => 'Create User', 'users' => []]);
+    }
+
+    /**
+     * Edit user
+     * @return view
+     */
+    public function editUser($id){
+        $pageRepository = new PagesRepository($role=0,$search='');
+        $headers = $pageRepository->getAll('section','=','1');
+        $user = User::find($id);
+        return view('admin/users/edit')->with('admin',['title' => 'Edit User', 'users' => $user]);
+    }
+
+    /**
+     * Update user
+     * @param  Request $request
+     * @return int status
+     */
+    public function updateUser(Request $request){
+        //actualizar usuario
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        !empty($request->password)?$user->password = Hash::make($request->password):'';
+        $user->role = $request->role;
+        $user->save();
+        return 1;
+    }
+
+    /**
+     * Delete user
+     * @param  int $id
+     * @return int status
+     */
+    public function deleteUser(int $id){
+        //eliminar usuario
+        $user = User::find($id);
+        $user->delete();
+        return 1;
+    }
+
+    
 }

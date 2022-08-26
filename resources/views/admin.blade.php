@@ -83,7 +83,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><div class="collapsible-header"><a href="/admin/users">Listar Usuarios</a></div></li>
-                                <li><div class="collapsible-header"><a href="/admin/user/create">Añadir Usuario</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/users/create">Añadir Usuario</a></div></li>
                             </ul>
                         </div>
                     </li>

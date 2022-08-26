@@ -51,10 +51,12 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/tagsNew/delete',[TagNewController::class,'postDelete'])->name('admin.tagsNew.delete');
     /**ADMIN USER */
     Route::get('admin/users',[AuthController::class,'users'])->name('admin.users.list');
-    Route::post('admin/users/save',[AuthController::class,'postCreate'])->name('admin.users.store');
-    Route::post('admin/users/delete',[AuthController::class,'postDelete'])->name('admin.users.delete');
-    Route::post('admin/users/status',[AuthController::class,'postStatus'])->name('admin.users.status');
-    Route::post('admin/users/role',[AuthController::class,'postRole'])->name('admin.users.role');
+    Route::get('admin/users/filters/{role?}/{search?}',[AuthController::class,'users'])->name('admin.users.list');
+    Route::post('admin/users/save',[AuthController::class,'postAdminRegistration'])->name('admin.users.store');
+    Route::get('admin/users/delete/{id}',[AuthController::class,'deleteUser'])->name('admin.users.delete');
+    Route::get('admin/users/edit/{id}',[AuthController::class,'editUser'])->name('admin.users.edit');
+    Route::post('admin/users/edit',[AuthController::class,'updateUser'])->name('admin.users.update');
+    Route::get('admin/users/create',[AuthController::class,'createUser'])->name('admin.users.create');
     /**ADMIN SCHOOL */
     Route::get('admin/schools',[AuthController::class,'schools'])->name('admin.schools.list');
     Route::post('admin/schools/save',[AuthController::class,'postCreate'])->name('admin.schools.store');
