@@ -110,8 +110,9 @@ class NewsController extends Controller
      * @param int $id
      * @return bool
      */
-    function postEdit($id){
+    function postEdit(Request $request){
         $newsRepository = new NewsRepository();
+        $image_url='empty';
         if($request->input('default_image')=='none'){
             //upload image
             $image = $request->file('feature_image');
@@ -123,11 +124,13 @@ class NewsController extends Controller
             $image->move($destinationPath, $imageName);
             //change $request feature_image content to current location of image
             $image_url = '/images/'.$imageName;
+            $request->input('feature_image', $image_url);
         }else{
+            $image_url = $request->input('default_image');
             $request->input('feature_image', $request->input('default_image'));
         }
         //create news
-        $id = $newsRepository->update($request, $image_url);
+        $id = $newsRepository->update($request,$image_url);
 
         return $id;
     }
@@ -138,11 +141,8 @@ class NewsController extends Controller
      * @return bool
      */
     function delete($id){
-        echo 'llega';
         $newsRepository = new NewsRepository();
         $state = $newsRepository->delete($id);
-        echo $state;
-        die;
         return $state;
     }
 

@@ -13,9 +13,9 @@ class SchoolEntity{
     public $description;
     public $created_at;
     public $updated_at; 
+    public $status;
 
-    public function __construct($id, $name, $address, $phone, $email, $website, $logo, $description, $created_at, $updated_at)
-    {
+    public function __construct($id=0, $name='', $address='', $phone='', $email='', $website='', $logo='', $description='', $created_at='', $updated_at='', $status=0){
         $this->id = $id;
         $this->name = $name;
         $this->address = $address;
@@ -26,6 +26,7 @@ class SchoolEntity{
         $this->description = $description;
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
+        $this->status = $status;
     }
 
     /**

@@ -177,18 +177,18 @@ class NewsRepository
      * @param array $data
      * @return bool
      */
-    public function update(Request $request,int $id){
+    public function update(Request $request, String $image_url){
         $newsMapper = new NewsMapper();
         $data = $request->all();
         $id = DB::table('new')
-            ->where('id', $id)
+            ->where('id', $data['id'])
             ->update([
                 'title' => $data['title'],
                 'content' => $data['content'],
-                'updated_at' => $data['updated_at'],
-                'status' => $data['status'],
+                'updated_at' => date('Y-m-d H:i:s'),
+                'status' => $data['status']?1:0,
                 'alias' => $data['permantlink'],
-                'feature_image' => $data['feature_image'],
+                'feature_image' => $image_url,
             ]);
         //borramos las relaciones de la noticia con las categorias en new_cat_rel
         DB::table('cat_new_rel')->where('id_new', $id)->delete();

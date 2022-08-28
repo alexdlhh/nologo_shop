@@ -33,7 +33,7 @@
                                 </div>
                             </div>                            
                             <div class="col s6 input-field">
-                                <input id="date" type="date" class="validate" value="{{ $admin['news']->getCreatedAt() }}">
+                                <input id="date" type="date" class="validate" value="{{ substr($admin['news']->getCreatedAt(),0,10) }}">
                                 <label for="date">Fecha</label>
                             </div>
                             <div class="col s6 input-field">
@@ -88,6 +88,7 @@
                 $('#peview').attr('src', e.target.result);
             }
             reader.readAsDataURL(this.files[0]);
+            $('#default_image').val('none');
         });
         $('#save').click(function(){
             spiner();
@@ -109,6 +110,7 @@
             formData.append('status', publicado);
             formData.append('category', category);
             formData.append('tags', tags);
+            formData.append('id',<?=$admin['news']->getId()?>);
             formData.append('feature_image', feature_image[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
@@ -120,7 +122,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/news/edit/'+data;
+                    window.location.reload();
                 }
             });
         });

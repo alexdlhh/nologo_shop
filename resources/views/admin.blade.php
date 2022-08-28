@@ -19,7 +19,7 @@
                         <div class="collapsible-header"><i class="material-icons">public</i>Actualidad</div>
                         <div class="collapsible-body">
                             <ul>
-                                <li><div class="collapsible-header"><a href="/admin/news">Ver Noticia</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/news">Ver Noticias</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/news/create">Añadir Noticia</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/categoriesNew">Categorias</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/tagsNew">Tags</a></div></li>

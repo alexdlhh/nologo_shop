@@ -15,14 +15,14 @@ class SchoolRepository
      * @param array $data
      * @return array
      */
-    public function getAll($filter = [])
+    public function getAll($page=1,$search='')
     {
         $schoolMapper = new SchoolMapper();
-    
-        if(!empty($filter)) {
+        $init = $page==1?0:($page-1)*10;
+        if(!empty($search)) {
             $schools = DB::table('school')
-                ->where($filter)
-                ->get();
+                ->where('name', 'like', '%'.$search.'%')
+                ->skip($init)->take(10)->get();
         } else {
             $schools = DB::table('school')
                 ->get();
@@ -36,10 +36,10 @@ class SchoolRepository
      * @param array $filter
      * @return SchoolEntity
      */
-    public function getOne($filter = []){
+    public function getOne($id){
         $schoolMapper = new SchoolMapper();
         $school = DB::table('schools')
-            ->where($filter)
+            ->where('id', $id)
             ->first();
         $school = $schoolMapper->map($school);
         return $school;
@@ -76,6 +76,27 @@ class SchoolRepository
         $school = $schoolMapper->map($request->all());
         $school->delete();
         return true;
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function updateStatus(Request $request){
+        $schoolMapper = new SchoolMapper();
+        $school = $schoolMapper->map($request->all());
+        $school->save();
+        return true;
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function getTotalSchools(){
+        $schools = DB::table('school')
+            ->count();
+        return $schools;
     }
 
 }

@@ -59,6 +59,9 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/users/create',[AuthController::class,'createUser'])->name('admin.users.create');
     /**ADMIN SCHOOL */
     Route::get('admin/schools',[AuthController::class,'schools'])->name('admin.schools.list');
+    Route::get('admin/schools/filters/{search?}',[AuthController::class,'schools'])->name('admin.schools.list');
+    Route::get('admin/schools/create',[AuthController::class,'createSchool'])->name('admin.schools.create');
+    Route::get('admin/schools/edit/{id}',[AuthController::class,'editSchool'])->name('admin.schools.edit');
     Route::post('admin/schools/save',[AuthController::class,'postCreate'])->name('admin.schools.store');
     Route::post('admin/schools/delete',[AuthController::class,'postDelete'])->name('admin.schools.delete');
     Route::post('admin/schools/status',[AuthController::class,'postStatus'])->name('admin.schools.status');
