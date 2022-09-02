@@ -15,17 +15,17 @@ class EmployeeRepository
      * @param array $data
      * @return array
      */
-    public function getAll($filter = [])
+    public function getAll($page=1, $search='')
     {
         $employeeMapper = new EmployeeMapper();
-    
-        if(!empty($filter)) {
+        $page = ($page-1)*10;
+        if(!empty($search)) {
             $employees = DB::table('employee')
-                ->where($filter)
-                ->get();
+                ->where('search', 'like', '%'.$search.'%')
+                ->skip($page)->take(10)->get();
         } else {
             $employees = DB::table('employee')
-                ->get();
+                ->skip($page)->take(10)->get();
         }
         
         $employeeList = $employeeMapper->mapCollection($employees);
@@ -41,30 +41,50 @@ class EmployeeRepository
         $employee = DB::table('employee')
             ->where($filter)
             ->first();
-        $employee = $employeeMapper->map($employee);
+        $employee = $employeeMapper->map(get_object_vars($employee));
         return $employee;
     }
     
     /**
      * @param array $data
-     * @return bool
+     * @return int $id
      */
-    public function create(Request $request){
+    public function create(Request $request, string $image){
         $employeeMapper = new EmployeeMapper();
         $employee = $employeeMapper->map($request->all());
-        $employee->save();
-        return true;
+        $id = DB::table('employee')->insertGetId(
+            [
+                'name' => $employee->getName(),
+                'email' => $employee->getEmail(),
+                'phone' => $employee->getPhone(),
+                'charge' => $employee->getCharge(),
+                'twitter' => $employee->getTwitter(),
+                'featuredImage' => $image
+            ]
+        );
+        return $id;
     }
     
     /**
      * @param array $data
-     * @return bool
+     * @return int $id
      */
-    public function update(Request $request){
+    public function update(Request $request, string $image){
         $employeeMapper = new EmployeeMapper();
         $employee = $employeeMapper->map($request->all());
-        $employee->save();
-        return true;
+        $id = DB::table('employee')
+            ->where('id', $employee->getId())
+            ->update(
+                [
+                    'name' => $employee->getName(),
+                    'email' => $employee->getEmail(),
+                    'phone' => $employee->getPhone(),
+                    'charge' => $employee->getCharge(),
+                    'twitter' => $employee->getTwitter(),
+                    'featuredImage' => $image
+                ]
+            );
+        return $id;
     }
     
     /**
@@ -76,5 +96,21 @@ class EmployeeRepository
         $employee = $employeeMapper->map($request->all());
         $employee->delete();
         return true;
+    }
+
+    /**
+     * Count total of employees
+     */
+    public function getTotal($search)
+    {
+        if(!empty($search)) {
+            $total = DB::table('employee')
+                ->where('name', 'like', '%'.$search.'%')
+                ->count();
+        } else {
+            $total = DB::table('employee')
+                ->count();
+        }
+        return $total;
     }
 }

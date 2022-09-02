@@ -10,9 +10,9 @@ class MediaEntity{
     public $created_at;
     public $updated_at;
     public $url;
+    public $coleccion;
 
-    public function __construct($id, $title, $description, $type, $created_at, $updated_at, $url)
-    {
+    public function __construct($id=0, $title='', $description='', $type='', $created_at='', $updated_at='', $url='', $coleccion=0){
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
@@ -20,6 +20,7 @@ class MediaEntity{
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
         $this->url = $url;
+        $this->coleccion = $coleccion;
     }
 
     /**
@@ -79,6 +80,14 @@ class MediaEntity{
     }
 
     /**
+     * @return int $coleccion
+     */
+    public function getColeccion()
+    {
+        return $this->coleccion;
+    }
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -132,5 +141,30 @@ class MediaEntity{
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @param int $coleccion
+     */
+    public function setColeccion($coleccion)
+    {
+        $this->coleccion = $coleccion;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'type' => $this->type,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'url' => $this->url,
+            'coleccion' => $this->coleccion,
+        ];
     }
 }

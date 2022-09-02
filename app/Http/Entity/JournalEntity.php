@@ -10,9 +10,9 @@ class JournalEntity{
     public $created_at;
     public $updated_at;
     public $url;
+    public $album;
 
-    public function __construct($id, $title, $description, $image, $created_at, $updated_at, $url)
-    {
+    public function __construct($id=0, $title='', $description='', $image='', $created_at='', $updated_at='', $url='', $album = 0){
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
@@ -20,6 +20,7 @@ class JournalEntity{
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
         $this->url = $url;
+        $this->album = $album;
     }
 
     /**
@@ -79,6 +80,14 @@ class JournalEntity{
     }
 
     /**
+     * @return int $album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -132,5 +141,29 @@ class JournalEntity{
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @param int $album
+     */
+    public function setAlbum($album)
+    {
+        $this->album = $album;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'image' => $this->image,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'url' => $this->url,
+        ];
     }
 }

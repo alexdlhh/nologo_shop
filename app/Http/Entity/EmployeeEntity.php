@@ -11,7 +11,7 @@ class EmployeeEntity{
     public $twitter;
     public $featuredImage;
 
-    public function __construct($id, $name, $email, $phone, $charge, $twitter, $featuredImage)
+    public function __construct($id = 0, $name = '', $email = '', $phone = '', $charge = '', $twitter = '', $featuredImage = '')
     {
         $this->id = $id;
         $this->name = $name;
@@ -132,6 +132,22 @@ class EmployeeEntity{
     public function setFeaturedImage($featuredImage)
     {
         $this->featuredImage = $featuredImage;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'charge' => $this->charge,
+            'twitter' => $this->twitter,
+            'featured_image' => $this->featuredImage,
+        ];
     }
 
 }

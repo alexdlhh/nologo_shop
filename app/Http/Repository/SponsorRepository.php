@@ -15,18 +15,12 @@ class SponsorRepository
      * @param array $data
      * @return array
      */
-    public function getAll($filter = [])
+    public function getAll()
     {
         $sponsorMapper = new SponsorMapper();
     
-        if(!empty($filter)) {
-            $sponsors = DB::table('sponsor')
-                ->where($filter)
+        $sponsors = DB::table('sponsor')
                 ->get();
-        } else {
-            $sponsors = DB::table('sponsor')
-                ->get();
-        }
         
         $sponsorList = $sponsorMapper->mapCollection($sponsors);
         return $sponsorList;
@@ -36,10 +30,10 @@ class SponsorRepository
      * @param array $filter
      * @return SponsorEntity
      */
-    public function getOne($filter = []){
+    public function getOne($id){
         $sponsorMapper = new SponsorMapper();
         $sponsor = DB::table('sponsor')
-            ->where($filter)
+            ->where('id', $id)
             ->first();
         $sponsor = $sponsorMapper->map($sponsor);
         return $sponsor;
@@ -47,13 +41,22 @@ class SponsorRepository
     
     /**
      * @param array $data
-     * @return bool
+     * @return int $id
      */
-    public function create(Request $request){
+    public function create(Request $request, string $image, string $image_white){
         $sponsorMapper = new SponsorMapper();
         $sponsor = $sponsorMapper->map($request->all());
-        $sponsor->save();
-        return true;
+        $id = DB::table('sponsor')
+            ->insertGetId([
+                'name' => $sponsor->getName(),
+                'description' => $sponsor->getDescription(),
+                'image' => $image,
+                'white' => $image_white,
+                'url' => $sponsor->getUrl(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        return $id;
     }
     
     /**
@@ -61,11 +64,20 @@ class SponsorRepository
      * 
      * @return bool
      */
-    public function update(Request $request, $filter = []){
+    public function update(Request $request,int $id, string $image){
         $sponsorMapper = new SponsorMapper();
         $sponsor = $sponsorMapper->map($request->all());
-        $sponsor->save();
-        return true;
+        $id = DB::table('sponsor')
+            ->where('id', $id)
+            ->update([
+                'name' => $sponsor->getName(),
+                'description' => $sponsor->getDescription(),
+                'image' => $image,
+                'white' => $image_white,
+                'url' => $sponsor->getUrl(),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        return $id;
     }
 
     /**

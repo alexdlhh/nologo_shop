@@ -14,7 +14,7 @@
                                 <h6 class="header">Filtros</h6>
                             </div>
                             <div class="col s12 input-field">
-                                <input type="text" id="searchCriteria" value="{{$admin['filter']['searchCriteria'] ?? ''}}">
+                                <input type="text" id="searchCriteria" value="{{$admin['searchCriteria'] ?? ''}}">
                                 <label for="searchCriteria">Buscar</label>
                             </div>
                         </div>
@@ -41,21 +41,21 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($admin['news'] as $new)
+                                @foreach($admin['schools'] as $school)
                                     <tr>
-                                        <td><img src="{{ $new->feature_image }}" width="80px" alt=""></td>
-                                        <td>{{ $new->title }}</td>
+                                        <td><img src="{{ $school->getLogo() }}" width="80px" alt=""></td>
+                                        <td>{{ $school->getName() }}</td>
                                         <td>
                                             <p>
                                             <label>
-                                                <input type="checkbox" data-id="{{$new->id}}" checked="{{ $new->status }}" class="status">
+                                                <input type="checkbox" data-id="{{$school->getId()}}" checked="{{ $school->getStatus() }}" class="status">
                                                 <span></span>
                                             </label>
                                             </p>
                                         </td>
                                         <td>
-                                            <a href="/admin/news/edit/{{$new->id}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                            <a href="javascript:void(0);" data-id="{{$new->id}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                            <a href="/admin/school/edit/{{$school->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
+                                            <a href="javascript:void(0);" data-id="{{$school->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -65,7 +65,7 @@
                         <div class="row">
                             <ul class="pagination">
                                 @for($i = 1; $i <= $admin['total_pages']; $i++)
-                                    <li class="{{$admin['filter']['page']==$i?'active':'waves-effect'}}"><a href="javascript:void(0);" class="page" data-page="{{$i}}">{{ $i }}</a></li>
+                                    <li class="{{$admin['page']==$i?'active':'waves-effect'}}"><a href="javascript:void(0);" class="page" data-page="{{$i}}">{{ $i }}</a></li>
                                 @endfor
                             </ul>
                         </div>
@@ -75,7 +75,7 @@
         </div>
     </div>
     <div class="rightf">
-        <a href="/admin/news/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a href="/admin/school/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
 </div>
 @endsection
@@ -87,7 +87,7 @@
             var id = $(this).data('id');
             var status = $(this).is(':checked');
             $.ajax({
-                url: '/admin/news/status',
+                url: '/admin/school/status',
                 type: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
@@ -101,29 +101,25 @@
         });
         $('.del').click(function(){
             var id = $(this).attr('data-id');
-            if(confirm('¿Estás seguro de eliminar esta noticia?')){
+            if(confirm('¿Estás seguro de eliminar esta escuela?')){
                 $.ajax({
-                    url: '/admin/news/delete/'+id,
+                    url: '/admin/school/delete/'+id,
                     type: 'GET',
                     success: function(result){
-                        window.location.href = '/admin/news/filters/{{$admin["filter"]["page"] ?? 1}}/'+$('#state').is(':checked')+'/'+$('#fecha_search').val()+'/'+$('#searchCriteria').val();
+                        window.location.reload();
                     }
                 });
             }
         })
         $('#searchBtn').click(function(){
-            var fecha = $('#fecha_search').val();
             var search = $('#searchCriteria').val();
-            var state = $('#state').is(':checked');
-            var page = <?=$admin['filter']['page']?>;
-            window.location.href = '/admin/news/filters/'+page+'/'+state+'/'+fecha+'/'+search;
+            var page = <?=$admin['page']?>;
+            window.location.href = '/admin/schools/'+page+'/'+search;
         });
         $('.page').click(function(){
             var page = $(this).attr('data-page');
-            var fecha = $('#fecha_search').val();
             var search = $('#searchCriteria').val();
-            var state = $('#state').is(':checked');
-            window.location.href = '/admin/news/filters/'+page+'/'+state+'/'+fecha+'/'+search;
+            window.location.href = '/admin/schools/'+page+'/'+search;
         });
     });
 </script>

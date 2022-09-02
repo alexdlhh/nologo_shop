@@ -13,13 +13,14 @@ class JournalMapper
     public function map(array $data): JournalEntity
     {
         $journal = new JournalEntity();
-        $journal->setId($data['id']);
-        $journal->setTitle($data['title']);
-        $journal->setDescription($data['description']);
-        $journal->setImage($data['image']);
-        $journal->setCreatedAt($data['created_at']);
-        $journal->setUpdatedAt($data['updated_at']);
-        $journal->setUrl($data['url']);
+        !empty($data['id']) ? $journal->setId($data['id']) : null;
+        !empty($data['title']) ? $journal->setTitle($data['title']) : null;
+        !empty($data['description']) ? $journal->setDescription($data['description']) : null;
+        !empty($data['image']) ? $journal->setImage($data['image']) : null;
+        !empty($data['created_at']) ? $journal->setCreatedAt($data['created_at']) : null;
+        !empty($data['updated_at']) ? $journal->setUpdatedAt($data['updated_at']) : null;
+        !empty($data['url']) ? $journal->setUrl($data['url']) : null;
+        !empty($data['album']) ? $journal->setAlbum($data['album']) : null;
         return $journal;
     }
     
@@ -27,11 +28,15 @@ class JournalMapper
      * @param Array $data
      * @return array
      */
-    public function mapCollection(array $data): array
+    public function mapCollection($data): array
     {
         $journals = [];
         foreach ($data as $item) {
-            $journals[] = $this->map($item);
+            if(is_array($item)) {
+                $journals[] = $this->map($item);
+            }else{
+                $journals[] = $this->map(get_object_vars($item));
+            }
         }
         return $journals;
     }

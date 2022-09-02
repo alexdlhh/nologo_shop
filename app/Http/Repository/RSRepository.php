@@ -15,18 +15,13 @@ class RSRepository
      * @param array $data
      * @return array
      */
-    public function getAll($filter = [])
+    public function getAll()
     {
         $rsMapper = new RSMapper();
     
-        if(!empty($filter)) {
-            $rs = DB::table('social')
-                ->where($filter)
+        $rs = DB::table('social')
                 ->get();
-        } else {
-            $rs = DB::table('social')
-                ->get();
-        }
+        
         
         $rsList = $rsMapper->mapCollection($rs);
         return $rsList;
@@ -36,10 +31,10 @@ class RSRepository
      * @param array $filter
      * @return RSEntity
      */
-    public function getOne($filter = []){
+    public function getOne($id){
         $rsMapper = new RSMapper();
         $rs = DB::table('social')
-            ->where($filter)
+            ->where('id', $id)
             ->first();
         $rs = $rsMapper->map($rs);
         return $rs;
@@ -52,8 +47,16 @@ class RSRepository
     public function create(Request $request){
         $rsMapper = new RSMapper();
         $rs = $rsMapper->map($request->all());
-        $rs->save();
-        return true;
+        $id = DB::table('social')
+            ->insertGetId([
+                'name' => $rs->getName(),
+                'description' => $rs->getDescription(),
+                'icon' => $rs->getIcon(),
+                'url' => $rs->getUrl(),
+                'created_at' => $rs->getCreatedAt(),
+                'updated_at' => $rs->getUpdatedAt(),
+            ]);
+        return $id;
     }
     
     /**
@@ -63,8 +66,17 @@ class RSRepository
     public function update(Request $request){
         $rsMapper = new RSMapper();
         $rs = $rsMapper->map($request->all());
-        $rs->save();
-        return true;
+        $id = DB::table('social')
+            ->where('id', $rs->getId())
+            ->update([
+                'name' => $rs->getName(),
+                'description' => $rs->getDescription(),
+                'icon' => $rs->getIcon(),
+                'url' => $rs->getUrl(),
+                'created_at' => $rs->getCreatedAt(),
+                'updated_at' => $rs->getUpdatedAt(),
+            ]);
+        return $id;
     }
 
     /**
@@ -73,7 +85,9 @@ class RSRepository
     public function delete(Request $request){
         $rsMapper = new RSMapper();
         $rs = $rsMapper->map($request->all());
-        $rs->delete();
+        DB::table('social')
+            ->where('id', $rs->getId())
+            ->delete();
     }
 
 }

@@ -6,6 +6,13 @@ use App\Http\Middleware\EnsureRoleIsCorrect;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryNewController;
 use App\Http\Controllers\TagNewController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\CourseController; 
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\ColectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,33 +65,49 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/users/edit',[AuthController::class,'updateUser'])->name('admin.users.update');
     Route::get('admin/users/create',[AuthController::class,'createUser'])->name('admin.users.create');
     /**ADMIN SCHOOL */
-    Route::get('admin/schools',[AuthController::class,'schools'])->name('admin.schools.list');
-    Route::get('admin/schools/filters/{search?}',[AuthController::class,'schools'])->name('admin.schools.list');
-    Route::get('admin/schools/create',[AuthController::class,'createSchool'])->name('admin.schools.create');
-    Route::get('admin/schools/edit/{id}',[AuthController::class,'editSchool'])->name('admin.schools.edit');
-    Route::post('admin/schools/save',[AuthController::class,'postCreate'])->name('admin.schools.store');
-    Route::post('admin/schools/delete',[AuthController::class,'postDelete'])->name('admin.schools.delete');
-    Route::post('admin/schools/status',[AuthController::class,'postStatus'])->name('admin.schools.status');
+    Route::get('admin/schools',[SchoolController::class,'schools'])->name('admin.schools.list');
+    Route::get('admin/schools/{page?}/{search?}',[SchoolController::class,'schools'])->name('admin.schools.list');
+    Route::get('admin/school/create',[SchoolController::class,'createSchool'])->name('admin.schools.create');
+    Route::get('admin/school/edit/{id}',[SchoolController::class,'editSchool'])->name('admin.schools.edit');
+    Route::post('admin/school/save',[SchoolController::class,'postCreate'])->name('admin.schools.store');
+    Route::get('admin/school/delete/{id}',[SchoolController::class,'postDelete'])->name('admin.schools.delete');
+    Route::post('admin/school/status',[SchoolController::class,'postStatus'])->name('admin.schools.status');
     /**ADMIN COURSES */
-    Route::get('admin/courses',[AuthController::class,'courses'])->name('admin.courses.list');
-    Route::post('admin/courses/save',[AuthController::class,'postCreate'])->name('admin.courses.store');
-    Route::post('admin/courses/delete',[AuthController::class,'postDelete'])->name('admin.courses.delete');
-    Route::post('admin/courses/status',[AuthController::class,'postStatus'])->name('admin.courses.status');
+    Route::get('admin/courses/{school_id?}/{page?}/{search?}',[CourseController::class,'courses'])->name('admin.courses.list');
+    Route::post('admin/course/save',[CourseController::class,'postCreate'])->name('admin.courses.store');
+    Route::get('admin/course/delete/{id}',[CourseController::class,'postDelete'])->name('admin.courses.delete');
+    Route::get('admin/course/edit/{id}',[CourseController::class,'edit'])->name('admin.courses.edit');
+    Route::get('admin/course/create',[CourseController::class,'createCourse'])->name('admin.courses.create');
     /**ADMIN EMPLOYEE */
-    Route::get('admin/employees',[AuthController::class,'employees'])->name('admin.employees.list');
-    Route::post('admin/employees/save',[AuthController::class,'postCreate'])->name('admin.employees.store');
-    Route::post('admin/employees/delete',[AuthController::class,'postDelete'])->name('admin.employees.delete');
-    Route::post('admin/employees/status',[AuthController::class,'postStatus'])->name('admin.employees.status');
+    Route::get('admin/employees/{page?}/{search?}',[EmployeeController::class,'employees'])->name('admin.employees.list');
+    Route::get('admin/employee/create',[EmployeeController::class,'CreateEmployee'])->name('admin.employees.create');
+    Route::get('admin/employee/edit/{id}',[EmployeeController::class,'EditEmployee'])->name('admin.employees.edit');
+    Route::post('admin/employees/save',[EmployeeController::class,'postCreate'])->name('admin.employees.store');
+    Route::get('admin/employees/delete/{id}',[EmployeeController::class,'postDelete'])->name('admin.employees.delete');
     /**ADMIN JOURNAL */
-    Route::get('admin/journals',[AuthController::class,'journals'])->name('admin.journals.list');
+    Route::get('admin/journals/{album?}/{page?}/{search?}',[AuthController::class,'journals'])->name('admin.journals.list');
+    Route::get('admin/journal/create',[AuthController::class,'CreateJournal'])->name('admin.journals.create');
+    Route::get('admin/journal/edit/{id}',[AuthController::class,'EditJournal'])->name('admin.journals.edit');
     Route::post('admin/journals/save',[AuthController::class,'postCreate'])->name('admin.journals.store');
-    Route::post('admin/journals/delete',[AuthController::class,'postDelete'])->name('admin.journals.delete');
-    Route::post('admin/journals/status',[AuthController::class,'postStatus'])->name('admin.journals.status');
+    Route::get('admin/journal/delete/{id}',[AuthController::class,'postDelete'])->name('admin.journals.delete');
+    /**ADMIN ALBUM */
+    Route::get('admin/albums/{search?}',[AlbumController::class,'albums'])->name('admin.albums.list');
+    Route::get('admin/album/create',[AlbumController::class,'CreateAlbum'])->name('admin.albums.create');
+    Route::get('admin/album/edit/{id}',[AlbumController::class,'EditAlbum'])->name('admin.albums.edit');
+    Route::post('admin/albums/save',[AlbumController::class,'postCreate'])->name('admin.albums.store');
+    Route::get('admin/album/delete/{id}',[AlbumController::class,'postDelete'])->name('admin.albums.delete');
     /**ADMIN MEDIA */
-    Route::get('admin/media',[AuthController::class,'media'])->name('admin.media.list');
-    Route::post('admin/media/save',[AuthController::class,'postCreate'])->name('admin.media.store');
-    Route::post('admin/media/delete',[AuthController::class,'postDelete'])->name('admin.media.delete');
-    Route::post('admin/media/status',[AuthController::class,'postStatus'])->name('admin.media.status');
+    Route::get('admin/media_list/{coleccion?}/{search?}',[MediaController::class,'media'])->name('admin.media.list');
+    Route::get('admin/media/create',[MediaController::class,'CreateMedia'])->name('admin.media.create');
+    Route::get('admin/media/edit/{id}',[MediaController::class,'EditMedia'])->name('admin.media.edit');
+    Route::post('admin/media/save',[MediaController::class,'postCreate'])->name('admin.media.store');
+    Route::get('admin/media/delete/{id}',[MediaController::class,'postDelete'])->name('admin.media.delete');
+    /**ADMIN COLECCION */
+    Route::get('admin/colecciones/{search?}',[ColeccionController::class,'colecciones'])->name('admin.colecciones.list');
+    Route::get('admin/colecciones/create',[ColeccionController::class,'CreateColeccion'])->name('admin.colecciones.create');
+    Route::get('admin/colecciones/edit/{id}',[ColeccionController::class,'EditColeccion'])->name('admin.colecciones.edit');
+    Route::post('admin/colecciones/save',[ColeccionController::class,'postCreate'])->name('admin.colecciones.store');
+    Route::get('admin/colecciones/delete/{id}',[ColeccionController::class,'postDelete'])->name('admin.colecciones.delete');
     /**ADMIN PAGES */
     Route::get('admin/pages',[AuthController::class,'pages'])->name('admin.pages.list');
     Route::post('admin/pages/save',[AuthController::class,'postCreate'])->name('admin.pages.store');

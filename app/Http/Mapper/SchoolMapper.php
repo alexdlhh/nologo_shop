@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Mappers;
+namespace App\Http\Mapper;
 
-use App\Http\Entities\SchoolEntity;
+use App\Http\Entity\SchoolEntity;
 
 class SchoolMapper
 {
@@ -23,7 +23,7 @@ class SchoolMapper
         $school->setDescription(!empty($data['description'])?$data['description']:'');
         $school->setCreatedAt(!empty($data['created_at'])?$data['created_at']:date('Y-m-d H:i:s'));
         $school->setUpdatedAt(!empty($data['updated_at'])?$data['updated_at']:date('Y-m-d H:i:s'));
-        $school->setUrl(!empty($data['url'])?$data['url']:'');
+        $school->setWebsite(!empty($data['website'])?$data['website']:'');
         $school->setStatus(!empty($data['status'])?$data['status']:0);
         return $school;
     }

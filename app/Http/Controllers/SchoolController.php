@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Repository\SchoolRepository;
+use App\Http\Repository\CourseRepository;
 use App\Http\Repository\PagesRepository;
 
-class CategoryNewController extends Controller
+class SchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,10 @@ class CategoryNewController extends Controller
     public function schools(int $page=1, string $search='')
     {
         $schoolRepository = new SchoolRepository();
-        $schools = $schoolRepository->getAll($search);
+        $schools = $schoolRepository->getAll($page,$search);
         $total_schools = $schoolRepository->getTotalSchools($page,$search);
         $total_pages = ceil($total_schools/10);
-        $pagesRepository = new PagesRepository();
-        $pages = $pagesRepository->getAll();
-        return view('admin.school.list')->with(['admin'=>['schools'=>$schools, 'pages'=>$pages, 'title'=>'Escuelas', 'search'=>$search, 'total_schools'=>$total_schools, 'total_pages'=>$total_pages, 'page'=>$page]]);
+        return view('admin.schools.list')->with(['admin'=>['schools'=>$schools, 'title'=>'Escuelas', 'search'=>$search, 'total_schools'=>$total_schools, 'total_pages'=>$total_pages, 'page'=>$page]]);
     }
 
     /**
@@ -30,9 +29,7 @@ class CategoryNewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createSchool(){
-        $pagesRepository = new PagesRepository();
-        $pages = $pagesRepository->getAll();
-        return view('admin.schools.create')->with(['admin'=>['pages'=>$pages, 'title'=>'Crear Escuela']]);
+        return view('admin.schools.create')->with(['admin'=>['title'=>'Crear Escuela']]);
     }
 
     /**
@@ -44,7 +41,26 @@ class CategoryNewController extends Controller
     public function postCreate(Request $request)
     {
         $schoolRepository = new SchoolRepository();
-        return $schoolRepository->create($request);
+        $image_url='';
+        //upload image
+        if(!empty($request->file('logo'))){
+            $image = $request->file('logo');
+            //prepare image name with title without special characters and spaces
+            $image_name = str_replace(' ', '', $request->input('name'));
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/school/');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/school/'.$imageName;
+            $request->input('logo', $image_url);
+        }
+        if($request->input('id')==0){
+            $id = $schoolRepository->create($request,$image_url);
+        } else {
+            $id = $schoolRepository->update($request,$image_url);
+        }
+        return $id;
     }
 
     /**
@@ -56,9 +72,8 @@ class CategoryNewController extends Controller
     public function editSchool($id){
         $schoolRepository = new SchoolRepository();
         $school = $schoolRepository->getOne(['id'=>$id]);
-        $pagesRepository = new PagesRepository();
-        $pages = $pagesRepository->getAll();
-        return view('admin.schools.edit')->with(['admin'=>['school'=>$school, 'pages'=>$pages, 'title'=>'Editar Escuela']]);
+        $courses = new CourseRepository();
+        return view('admin.schools.edit')->with(['admin'=>['school'=>$school, 'title'=>'Editar Escuela']]);
     }
 
     /**

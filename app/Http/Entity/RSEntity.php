@@ -11,8 +11,7 @@ class RSEntity{
     public $updated_at;
     public $url;
 
-    public function __construct($id, $name, $description, $icon, $created_at, $updated_at, $url)
-    {
+    public function __construct($id=0, $name='', $description='', $icon='', $created_at='', $updated_at='', $url=''){
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
@@ -132,6 +131,22 @@ class RSEntity{
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'icon' => $this->icon,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'url' => $this->url,
+        ];
     }
 
 }

@@ -14,43 +14,43 @@
                                 <h6 class="header">Nueva Escuela</h6>
                             </div>
                             <div class="col s6 input-field">
-                                <input id="name" type="text" class="validate" value="{{$admin['schools']->getName()}}">
+                                <input id="name" type="text" class="validate" value="{{$admin['school']->getName()}}">
                                 <label for="name">Nombre</label>
                             </div>
                             <div class="col s6 input-field">
-                                <input id="email" type="text" class="validate" value="{{$admin['schools']->getEmail()}}">
+                                <input id="email" type="text" class="validate" value="{{$admin['school']->getEmail()}}">
                                 <label for="email">Email</label>
                             </div>
                             <div class="col s6 input-field">
-                                <input id="address" type="text" class="validate" value="{{$admin['schools']->getAddress()}}">
+                                <input id="address" type="text" class="validate" value="{{$admin['school']->getAddress()}}">
                                 <label for="address">Dirección</label>
                             </div>
                             <div class="col s6 input-field">
-                                <input id="phone" type="text" class="validate" value="{{$admin['schools']->getPhone()}}">
+                                <input id="phone" type="text" class="validate" value="{{$admin['school']->getPhone()}}">
                                 <label for="phone">Teléfono</label>
                             </div>
                             <div class="col s12 input-field">
-                                <input id="website" type="text" class="validate" value="{{$admin['schools']->getWebsite()}}">
+                                <input id="website" type="text" class="validate" value="{{$admin['school']->getWebsite()}}">
                                 <label for="website">Web</label>
                             </div>
                             <div class="col s12 input-field">
-                                <textarea id="description">{{$admin['schools']->getDescription()}}"</textarea>
+                                <textarea id="description">{{$admin['school']->getDescription()}}"</textarea>
                                 <label for="description">Descriptión</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <div class="col s6"><input id="icon" type="file" class="validate"></div>
-                                    <div class="col s6"><img id="preview" width="100px" src="" alt="preview"></div>
+                                    <div class="col s6"><img id="preview" width="100px" src="{{$admin['school']->getLogo()}}" alt="preview"></div>
                                 </div>
                             </div>                            
                             <div class="col s6 input-field">
-                                <input id="created_at" type="date" class="validate">
+                                <input id="created_at" type="date" value="{{substr($admin['school']->getCreatedAt(),0,10)}}" class="validate">
                                 <label for="date">Fecha</label>
                             </div>
                             <div class="col s6 input-field">
                                 <p>
                                 <label>
-                                    <input type="checkbox" id="status"/>
+                                    <input type="checkbox" id="status" checked="{{$admin['school']->getStatus()==1?true:false}}"/>
                                     <span>Publicado</span>
                                 </label>
                                 </p>
@@ -101,7 +101,8 @@
             formData.append('website', website);
             formData.append('address', address);
             formData.append('phone', phone);
-            formData.append('icon', icon[0]);
+            formData.append('id', <?=$admin['school']->getId()?>);
+            formData.append('logo', icon[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
             $.ajax({
@@ -112,7 +113,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/schools/edit/'+data;
+                    window.location.reload();
                 }
             });
         });

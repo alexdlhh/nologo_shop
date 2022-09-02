@@ -30,6 +30,8 @@
                         <div class="collapsible-header"><i class="material-icons">account_balance</i>RFEG</div>
                         <div class="collapsible-body">
                             <ul>
+                                <li><div class="collapsible-header"><a href="/admin/employees">Listar Empleados</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/employee/create">Añadir Empleado</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/rfeg">Administrar</a></div></li>
                             </ul>
                         </div>
@@ -46,7 +48,7 @@
                         <div class="collapsible-header"><i class="material-icons">collections</i>Media</div>
                         <div class="collapsible-body">
                             <ul>
-                                <li><div class="collapsible-header"><a href="/admin/media">Listar Media</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/colecciones">Listar Colecciones</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/media/create">Añadir Media</a></div></li>
                             </ul>
                         </div>
@@ -64,6 +66,8 @@
                         <div class="collapsible-header"><i class="material-icons">local_library</i>Revistas</div>
                         <div class="collapsible-body">
                             <ul>
+                                <li><div class="collapsible-header"><a href="/admin/albums">Listar Album</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/album/create">Crear Album</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/journals">Listar Revitas</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/journal/create">Añadir Revita</a></div></li>
                             </ul>
@@ -75,6 +79,8 @@
                             <ul>
                                 <li><div class="collapsible-header"><a href="/admin/schools">Listar Escuelas</a></div></li>
                                 <li><div class="collapsible-header"><a href="/admin/school/create">Añadir Escuela</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/courses">Listar Cursos</a></div></li>
+                                <li><div class="collapsible-header"><a href="/admin/course/create">Crear Curso</a></div></li>
                             </ul>
                         </div>
                     </li>

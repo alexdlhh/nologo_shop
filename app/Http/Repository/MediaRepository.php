@@ -15,19 +15,17 @@ class MediaRepository
      * @param array $data
      * @return array
      */
-    public function getAll($filter = [])
+    public function getAll($coleccion=0)
     {
         $mediaMapper = new MediaMapper();
     
-        if(!empty($filter)) {
+        if(!empty($coleccion)){
             $media = DB::table('media')
-                ->where($filter)
+                ->where('coleccion', $coleccion)
                 ->get();
         } else {
-            $media = DB::table('media')
-                ->get();
+            $media = DB::table('media')->get();
         }
-        
         $mediaList = $mediaMapper->mapCollection($media);
         return $mediaList;
     }

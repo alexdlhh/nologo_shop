@@ -13,13 +13,14 @@ class EmployeeMapper
     public function map(array $data): EmployeeEntity
     {
         $employee = new EmployeeEntity();
-        $employee->setId($data['id']);
-        $employee->setName($data['name']);
-        $employee->setEmail($data['email']);
-        $employee->setPhone($data['phone']);
-        $employee->setCharge($data['charge']);
-        $employee->setTwitter($data['twitter']);
-        $employee->setFeaturedImage($data['featured_image']);
+        !empty($data['id']) ? $employee->setId($data['id']) : null;
+        !empty($data['name']) ? $employee->setName($data['name']) : null;
+        !empty($data['email']) ? $employee->setEmail($data['email']) : null;
+        !empty($data['phone']) ? $employee->setPhone($data['phone']) : null;
+        !empty($data['charge']) ? $employee->setCharge($data['charge']) : null;
+        !empty($data['twitter']) ? $employee->setTwitter($data['twitter']) : null;
+        !empty($data['featuredImage']) ? $employee->setFeaturedImage($data['featuredImage']) : null;
+
         return $employee;
     }
     
@@ -27,11 +28,15 @@ class EmployeeMapper
      * @param Array $data
      * @return array
      */
-    public function mapCollection(array $data): array
+    public function mapCollection($data): array
     {
         $employees = [];
         foreach ($data as $item) {
-            $employees[] = $this->map($item);
+            if(is_array($item)) {
+                $employees[] = $this->map($item);
+            }else{
+                $employees[] = $this->map(get_object_vars($item));
+            }
         }
         return $employees;
     }

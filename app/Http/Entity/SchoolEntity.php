@@ -110,6 +110,14 @@ class SchoolEntity{
     }
 
     /**
+     * @return int $status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -187,6 +195,34 @@ class SchoolEntity{
     public function setUpdatedAt($updated_at)
     {
         $this->updated_at = $updated_at;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function toArray(){
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'address' => $this->address,
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'website' => $this->website,
+            'logo' => $this->logo,
+            'description' => $this->description,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'status' => $this->status,
+        ];
     }
     
 }

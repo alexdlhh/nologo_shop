@@ -101,28 +101,21 @@
             formData.append('website', website);
             formData.append('address', address);
             formData.append('phone', phone);
-            formData.append('icon', icon[0]);
+            formData.append('id', 0);
+            formData.append('logo', icon[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
             $.ajax({
-                url: '{{ route('admin.news.store') }}',
+                url: '{{ route('admin.schools.store') }}',
                 type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/news/edit/'+data;
+                    window.location.href='/admin/school/edit/'+data;
                 }
             });
-        });
-        $('#title').change(function(){
-            var title = $(this).val();
-            var alias = title.replace(/ /g, '-').toLowerCase();
-            alias = alias.replace(/[^a-z0-9\-]/g, '');
-            alias = alias.replace(/\-{2,}/g, '-');
-            alias = alias.replace(/^\-+|\-+$/g, '');
-            $('#alias').val(alias);
         });
     });
 </script>
