@@ -58,11 +58,11 @@ class AlbumRepository
         $data = $request->all();
         $album = $albumMapper->map($data);
         $id = DB::table('album')
-            ->insertGetId(
+            ->insertGetId([
                 'name' => $album->getName(),
                 'created_at' => $album->getCreatedAt(),
                 'updated_at' => $album->getUpdatedAt()
-            );
+        ]);
         return $album->id;
     }
 
@@ -76,11 +76,11 @@ class AlbumRepository
         $album = $albumMapper->map($data);
         $id = DB::table('album')
             ->where('id', $id)
-            ->update(
+            ->update([
                 'name' => $album->getName(),
                 'created_at' => $album->getCreatedAt(),
                 'updated_at' => $album->getUpdatedAt()
-            );
+            ]);
         return $album->id;
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Repository\JournalRepository;
 use App\Http\Repository\PagesRepository;
+use App\Http\Repository\AlbumRepository;
 
 class JournalController extends Controller
 {
@@ -11,14 +12,16 @@ class JournalController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function journals(int $page=1, string $search='')
+    public function journals(int $album=0,int $page=1, string $search='')
     {
         $journalRepository = new JournalRepository();
-        $journals = $journalRepository->getAll($page, $search);
-        $total = $journalRepository->getTotal($search);
+        $albumRepository = new AlbumRepository();
+        $journals = $journalRepository->getAll($album,$page, $search);
+        $total = $journalRepository->getTotal($album,$search);
+        $albums = $albumRepository->getAll(0,'');
         $pages = ceil($total/10);
 
-        return view('admin.journal.list', ['admin'=>['title'=>'Revistas','journals'=>$journals, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages]]);
+        return view('admin.journal.list', ['admin'=>['title'=>'Revistas','albums'=>$albums,'journals'=>$journals, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages]]);
     }
     
     /**
@@ -27,7 +30,9 @@ class JournalController extends Controller
      */
     public function CreateJournal()
     {
-        return view('admin.journal.create', ['admin'=>['title'=>'Crear Revista']]);
+        $albumRepository = new AlbumRepository();
+        $albums = $albumRepository->getAll(0,'');
+        return view('admin.journal.create', ['admin'=>['title'=>'Crear Revista','albums'=>$albums]]);
     }
 
     /**
@@ -38,7 +43,9 @@ class JournalController extends Controller
     {
         $journalRepository = new JournalRepository();
         $journal = $journalRepository->getById($id);
-        return view('admin.journal.edit', ['admin'=>['title'=>'Editar Revista', 'journal'=>$journal]]);
+        $albumRepository = new AlbumRepository();
+        $albums = $albumRepository->getAll(0,'');
+        return view('admin.journal.edit', ['admin'=>['title'=>'Editar Revista', 'journal'=>$journal,'albums'=>$albums]]);
     }
 
     /**
@@ -86,7 +93,7 @@ class JournalController extends Controller
         }else{
             $id = $journalRepository->update($request->all(), $image, $url);
         }
-        return $id
+        return $id;
     }
 
     /**

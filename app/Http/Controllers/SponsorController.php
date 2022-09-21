@@ -17,9 +17,9 @@ class SponsorController extends Controller
     {
         $sponsorRepository = new SponsorRepository();
         $sponsors = $sponsorRepository->getAll();
-        return view('admin.sponsors.list')->with('admin',[
+        return view('admin.sponsor.list')->with('admin',[
             'title' => 'Listado de Sponsors',
-            'sponsors' => $sponsors,
+            'sponsor' => $sponsors,
         ]);
     }
     
@@ -67,7 +67,7 @@ class SponsorController extends Controller
     {
         $pagesRepository = new PagesRepository();
         $pages = $pagesRepository->getAll();
-        return view('admin.sponsors.create')->with('admin',[
+        return view('admin.sponsor.create')->with('admin',[
             'title' => 'Crear Sponsor',
             'pages' => $pages,
         ]);
@@ -85,7 +85,7 @@ class SponsorController extends Controller
         $sponsor = $sponsorRepository->getOne($id);
         $pagesRepository = new PagesRepository();
         $pages = $pagesRepository->getAll();
-        return view('admin.sponsors.edit')->with('admin',[
+        return view('admin.sponsor.edit')->with('admin',[
             'title' => 'Editar Sponsor',
             'sponsor' => $sponsor,
             'pages' => $pages,

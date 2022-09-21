@@ -26,7 +26,7 @@ class RSMapper{
      * @param Array $data
      * @return array
      */
-    public function mapCollection(array $data): array
+    public function mapCollection($data): array
     {
         $rs = [];
         foreach ($data as $item) {

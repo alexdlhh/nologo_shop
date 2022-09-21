@@ -21,43 +21,43 @@ class JournalRepository
         $page = ($page - 1)*10;
         if(!empty($album)){
             if(!empty($search)){
-                $journals = DB::table('journals')
-                    ->where('journals.album', $album)
-                    ->where('journals.title', 'like', '%'.$search.'%')
-                    ->orWhere('journals.description', 'like', '%'.$search.'%')
-                    ->orWhere('journals.url', 'like', '%'.$search.'%')
-                    ->orderBy('journals.id', 'desc')
+                $journal = DB::table('journal')
+                    ->where('journal.album', $album)
+                    ->where('journal.title', 'like', '%'.$search.'%')
+                    ->orWhere('journal.description', 'like', '%'.$search.'%')
+                    ->orWhere('journal.url', 'like', '%'.$search.'%')
+                    ->orderBy('journal.id', 'desc')
                     ->skip($page)
                     ->take(10)
                     ->get();
             }else{
-                $journals = DB::table('journals')
-                    ->where('journals.album', $album)
-                    ->orderBy('journals.id', 'desc')
+                $journal = DB::table('journal')
+                    ->where('journal.album', $album)
+                    ->orderBy('journal.id', 'desc')
                     ->skip($page)
                     ->take(10)
                     ->get();
             }
         }else{
             if(!empty($search)){
-                $journals = DB::table('journals')
-                    ->where('journals.title', 'like', '%'.$search.'%')
-                    ->orWhere('journals.description', 'like', '%'.$search.'%')
-                    ->orWhere('journals.url', 'like', '%'.$search.'%')
-                    ->orderBy('journals.id', 'desc')
+                $journal = DB::table('journal')
+                    ->where('journal.title', 'like', '%'.$search.'%')
+                    ->orWhere('journal.description', 'like', '%'.$search.'%')
+                    ->orWhere('journal.url', 'like', '%'.$search.'%')
+                    ->orderBy('journal.id', 'desc')
                     ->skip($page)
                     ->take(10)
                     ->get();
             }else{
-                $journals = DB::table('journals')
-                    ->orderBy('journals.id', 'desc')
+                $journal = DB::table('journal')
+                    ->orderBy('journal.id', 'desc')
                     ->skip($page)
                     ->take(10)
                     ->get();
             }
         }
         
-        $journalList = $journalMapper->mapCollection($journals);
+        $journalList = $journalMapper->mapCollection($journal);
         return $journalList;
     }
     
@@ -150,6 +150,6 @@ class JournalRepository
                     ->count();
             }
         }
-        return $count;
+        return $total;
     }
 }

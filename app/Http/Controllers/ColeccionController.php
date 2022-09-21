@@ -14,19 +14,19 @@ class ColeccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function colecciones($search='')
+    public function colecciones($page=1,$search='')
     {
         $coleccionRepository = new ColeccionRepository();
-        $coleccion=$coleccionRepository->getAll($search);
+        $coleccion=$coleccionRepository->getAll($page,$search);
         $mediaRepository = new MediaRepository();
         $media=$mediaRepository->getAll();
         $media_var = [];
         foreach ($coleccion as $key => $value) {
             $media_var[$value->id]=$mediaRepository->getByColection($value->id);
         }
-        return view('admin.colecciones.list')->with('admin',[
+        return view('admin.coleccion.list')->with('admin',[
             'title' => 'Listado de Colecciones',
-            'coleccion' => $coleccion,
+            'colecciones' => $coleccion,
             'media_var' => $media_var,
         ]);
     }
@@ -65,7 +65,7 @@ class ColeccionController extends Controller
     public function create(){
         $coleccionRepository = new ColeccionRepository();
         $coleccion=$coleccionRepository->getAll();
-        return view('admin.colecciones.create')->with('admin',[
+        return view('admin.coleccion.create')->with('admin',[
             'title' => 'Crear Coleccion',
             'coleccion' => $coleccion,
         ]);
@@ -77,7 +77,7 @@ class ColeccionController extends Controller
     public function edit($id){
         $coleccionRepository = new ColeccionRepository();
         $coleccion=$coleccionRepository->getById($id);
-        return view('admin.colecciones.edit')->with('admin',[
+        return view('admin.coleccion.edit')->with('admin',[
             'title' => 'Editar Coleccion',
             'coleccion' => $coleccion,
         ]);
