@@ -9,8 +9,9 @@ class EspecialidadesEntity{
     public $current_season;
     public $pos;
     public $description;
+    public $olimpica;
 
-    public function __construct($id = 0, $name = '', $alias = '', $icon = '', $current_season = '', $pos = '', $description = '')
+    public function __construct($id = 0, $name = '', $alias = '', $icon = '', $current_season = '', $pos = '', $description = '', $olimpica = '')
     {
         $this->id = $id;
         $this->name = $name;
@@ -19,6 +20,7 @@ class EspecialidadesEntity{
         $this->current_season = $current_season;
         $this->pos = $pos;
         $this->description = $description;
+        $this->olimpica = $olimpica;
     }
 
     /**
@@ -78,6 +80,14 @@ class EspecialidadesEntity{
     }
 
     /**
+     * @return int $olimpica
+     */
+    public function getOlimpica()
+    {
+        return $this->olimpica;
+    }
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -131,6 +141,14 @@ class EspecialidadesEntity{
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @param int $olimpica
+     */
+    public function setOlimpica($olimpica)
+    {
+        $this->olimpica = $olimpica;
     }
 
     /**
