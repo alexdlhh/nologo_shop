@@ -12,7 +12,7 @@
         <div class="row" id="admin_page">
             <div class="col s12 m2" id="sidebar_admin">
                 <h4 href="/dashboard">
-                    Panel de Control
+                    RFEG
                 </h4>
                 <ul class="collapsible">
                     <li>
@@ -105,27 +105,33 @@
                 </ul>
             </div>
             <div class="col s12 m10 offset-m2" id="panel_stuff">
-                <nav>
-                    <div class="nav-wrapper">
-                    <a href="#" class="brand-logo left15">{{$admin['title']}}</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
-                                </li>
-                            @endguest
-                    </ul>
+                <div class="row headAdmin">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" class="validate" placeholder="Buscar">
+                        <label for="search"></label>
                     </div>
-                </nav>
-                
-
+                    <div class="col s6">
+                        <nav>
+                            <div class="nav-wrapper">
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                    @guest
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
+                                        </li>
+                                    @endguest
+                            </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
                 @yield('content')
             </div>
         </div>        
