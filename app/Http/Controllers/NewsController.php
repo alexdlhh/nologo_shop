@@ -25,7 +25,9 @@ class NewsController extends Controller
             'news' => $news,
             'total_news' => $total_news,
             'total_pages' => $total_pages,
-            'filter' => $filter
+            'filter' => $filter,
+            'section' => 'news',
+            'subsection' => 'list'
         ]);
     }
 
@@ -42,6 +44,7 @@ class NewsController extends Controller
             'title' => 'Crear Noticia',
             'categoryNew' => $categoryNew,
             'tagNew' => $tagNew,
+            'section' => 'news'
         ]);
     }
 
@@ -102,6 +105,7 @@ class NewsController extends Controller
             'tags' => $tagNew,
             'array_category' => $array_categories,
             'array_tag' => $array_tags,
+            'section' => 'news'
         ]);
     }
 

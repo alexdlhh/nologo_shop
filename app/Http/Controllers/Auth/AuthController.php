@@ -116,7 +116,7 @@ class AuthController extends Controller
     public function dashboard(){
         $pageRepository = new PagesRepository();
         $headers = $pageRepository->getAll('section','=','1');
-        $admin = ['title' => 'Dashboard'];
+        $admin = ['title' => 'Dashboard','section'=>''];
         if(Auth::check()){
             return Auth::user()->role==1 ?  view('admin/admin')->with('admin',$admin) :  view('dashboard')->with('headers',$headers);
         }

@@ -4,49 +4,107 @@
     min-height: max-content;
 }
 body{
-    background: linear-gradient(to bottom, #e6e8eb 0%,#c1c3c5 50%,#78797b 100%);
+    background: linear-gradient(to bottom, #f4faff 0%,#bdc1c4 50%,#f4faff 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+.material-icons.prefix {
+    margin-left: 1.1em;
+}
+.input-field.col label {
+    left: 3.75rem !important;
+}
+.input-field.col .prefix ~ label, .input-field.col .prefix ~ .validate ~ label {
+    width: calc(88% - 3rem - 1.5rem) !important;
+}  
 #admin_page{ /*transicion de gris mas claro a gris mas oscuro*/    
     padding: 20px;
 }
 #panel_stuff{
-    background-color: #f1f4f7;
+    background-color: #F0F5F9;
     min-height: 900px;
 }
 .headAdmin{
-    background-color: #f1f4f7;
+    background-color: #F0F5F9;
     padding:0px !important;
     margin:0px !important;
 }
 #sidebar_admin{
-    background-color: #f1f4f7;
-    color: rgb(0, 0, 0) !important;
+    background-color: #F0F5F9;
+    color: #445668 !important;
     height: 99%;
     max-height: 900px;
     position:fixed;
 }
+#adminlogo {
+    padding-left: 1.2rem;
+}
+.active {
+    color: #515DE1 !important;
+}
+label.active {
+    top: 9px !important;
+}
 #sidebar_admin ul .collapsible-header{
-    color: #000000;
+    color: #445668;
+}
+.collapsible-header {
+    background-color: transparent !important;
+    border-bottom: 0px solid #ddd !important;
+}
+.collapsible {
+    border-top: 0px solid #ddd !important;
+    border-right: 0px solid #ddd !important;
+    border-left: 0px solid #ddd !important;
+    margin: .5rem 0 1rem 0;
 }
 #panel_stuff{
     padding: 0px;
 }
 #panel_stuff nav{
-    background-color: #f1f4f7;
-    color: rgb(0, 0, 0);
+    background-color: #F0F5F9;
+    color: #445668;
 }
 .container_admin{
     width: 94%;
-    margin:0 auto
+    margin:0 auto;    
+}
+.card-stacked{
+    box-shadow: 1px 1px 7px 1px #c5d0d8 !important;
+}
+ul:not(.browser-default) {
+    padding-left: 0;
+    list-style-type: none;
+    padding-right: 0.4rem;
 }
 .left15{
     margin-left: 15px;
 }
+.child-selector{
+    color: #445668 !important;
+}
+.child-selector {
+    float: right;
+}
 li a{
-    color: #000000 !important;
+    color: #445668 !important;    
+}
+li a span{
+    color: #445668 !important; 
+    font-weight: bold;
+}
+li a p{
+    color: #445668 !important;
+    margin:0px;
+    font-size: 0.7em;
+}
+.collapsible-body {
+    padding: 0rem !important;
+}
+.list-child li{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 #sidebar_admin > ul > li.active > div.collapsible-body{
     padding:0px;
@@ -65,14 +123,32 @@ li a{
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
-
+.list-child {
+    padding-left: 1.7rem !important;
+}
+.collapsible-body {
+    border-bottom: 0px solid #ddd !important;
+}
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
-    border: 1px solid #9e9e9e !important;
-    box-shadow: 0 1px 0 0 #9e9e9e;
+    border: 0px solid #F0F5F9 !important;
+    box-shadow: 1px 1px 7px 1px #c5d0d8 !important;
     border-radius: 5px !important;
     height: 3rem;
     font-size: 1rem;
-    padding-left:5px !important;
+    padding-left: 3.1rem !important;
+}
+.input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(95% - 3rem);
+}
+.input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
+    margin-left: 1.6rem !important;
+    width: 92%;
+    width: calc(100% - 3rem);
+}
+input:not([type]), input[type="text"]:not(.browser-default), input[type="password"]:not(.browser-default), input[type="email"]:not(.browser-default), input[type="url"]:not(.browser-default), input[type="time"]:not(.browser-default), input[type="date"]:not(.browser-default), input[type="datetime"]:not(.browser-default), input[type="datetime-local"]:not(.browser-default), input[type="tel"]:not(.browser-default), input[type="number"]:not(.browser-default), input[type="search"]:not(.browser-default), textarea.materialize-textarea{
+    background-color: white !important;
 }
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav{
