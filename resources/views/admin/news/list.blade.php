@@ -10,16 +10,15 @@
                 <div class="card-stacked">
                     <div class="card-content">
                         <div class="row" id="filtros">   
-                            <div class="s12">
+                            <div class="col s12">
                                 <h6 class="header">Filtros</h6>
                             </div>                         
                             <div class="col s3 input-field">
                                 <input id="fecha_search" type="date" value="{{ $admin['filter']['fecha_search'] ?? '' }}">
-                                <label for="date">Fecha</label>
                             </div>
                             <div class="col s6 input-field">
                                 <input type="text" id="searchCriteria" value="{{$admin['filter']['searchCriteria'] ?? ''}}">
-                                <label for="searchCriteria">Buscar</label>
+                                <label for="searchCriteria">Buscar por título</label>
                             </div>
                             <div class="col s2 input-field">
                             <p>

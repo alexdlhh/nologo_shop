@@ -30,7 +30,7 @@ class EspecialidadesController extends Controller
         $page = $request->get('page');
         $search = $request->get('search');
         $especialidades = $this->especialidadesRepository->getAll();
-        return view('admin.especialidades.list', ['admin'=>['title'=>'Albums','especialidades'=>$especialidades]]);
+        return view('admin.especialidades.list', ['admin'=>['title'=>'Albums','especialidades'=>$especialidades,'section' => 'rfeg','subsection' => 'listespecialidades']]);
     }
 
     /**

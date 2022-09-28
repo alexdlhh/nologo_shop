@@ -20,6 +20,8 @@ class SponsorController extends Controller
         return view('admin.sponsor.list')->with('admin',[
             'title' => 'Listado de Sponsors',
             'sponsor' => $sponsors,
+            'section' => 'sponsor',
+            'subsection' => 'listsponsor'
         ]);
     }
     
@@ -70,6 +72,8 @@ class SponsorController extends Controller
         return view('admin.sponsor.create')->with('admin',[
             'title' => 'Crear Sponsor',
             'pages' => $pages,
+            'section' => 'sponsor',
+            'subsection' => 'savesponsor'
         ]);
     }
 
@@ -89,6 +93,8 @@ class SponsorController extends Controller
             'title' => 'Editar Sponsor',
             'sponsor' => $sponsor,
             'pages' => $pages,
+            'section' => 'sponsor',
+            'subsection' => 'savesponsor'
         ]);
     }
 }

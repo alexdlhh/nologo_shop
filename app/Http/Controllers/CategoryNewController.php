@@ -20,6 +20,8 @@ class CategoryNewController extends Controller
         return view('admin.categoriesNew.list')->with('admin',[
             'title' => 'Listado de Categorias',
             'categories' => $categoryNew,
+            'section' => 'news',
+            'subsection' => 'cat'
         ]);
     }
     

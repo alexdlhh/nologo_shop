@@ -19,7 +19,7 @@ class EmployeeController extends Controller
         $total = $employeeRepository->getTotal($search);
         $pages = ceil($total/10);
 
-        return view('admin.employee.list', ['admin'=>['title'=>'Empleados','employees'=>$employees, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages]]);
+        return view('admin.employee.list', ['admin'=>['title'=>'Empleados','employees'=>$employees, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'rfeg','subsection' => 'employees']]);
     }
 
     /**
@@ -27,7 +27,7 @@ class EmployeeController extends Controller
      */
     public function CreateEmployee()
     {
-        return view('admin.employee.create', ['admin'=>['title'=>'Crear Empleado']]);
+        return view('admin.employee.create', ['admin'=>['title'=>'Crear Empleado','section' => 'rfeg','subsection' => 'saveemployees']]);
     }
 
     /**
@@ -38,7 +38,7 @@ class EmployeeController extends Controller
     {
         $employeeRepository = new EmployeeRepository();
         $employee = $employeeRepository->getOne(['id'=>$id]);
-        return view('admin.employee.edit', ['admin'=>['title'=>'Empleado','employee'=>$employee]]);
+        return view('admin.employee.edit', ['admin'=>['title'=>'Empleado','employee'=>$employee,'section' => 'rfeg','subsection' => 'saveemployees']]);
     }
 
     /**

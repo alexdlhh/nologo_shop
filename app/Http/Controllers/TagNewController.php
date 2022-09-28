@@ -20,6 +20,8 @@ class TagNewController extends Controller
         return view('admin.tagsNew.list')->with('admin',[
             'title' => 'Listado de Tags',
             'tags' => $tagNew,
+            'section' => 'news',
+            'subsection' => 'tag'
         ]);
     }
     /**

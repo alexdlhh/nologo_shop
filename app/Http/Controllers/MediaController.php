@@ -25,6 +25,8 @@ class MediaController extends Controller
             'media' => $media,
             'colecciones' => $colecciones,
             'coleccion' => $coleccion,
+            'section' => 'media',
+            'subsection' => 'listmedia'
         ]);
     }
     
@@ -84,6 +86,8 @@ class MediaController extends Controller
             'title' => 'Subir Media',
             'colecciones' => $colecciones,
             'coleccion' => $coleccion,
+            'section' => 'media',
+            'subsection' => 'savemedia'
         ]);
     }
 
@@ -100,6 +104,8 @@ class MediaController extends Controller
             'title' => 'Editar Media',
             'media' => $media,
             'colecciones' => $colecciones,
+            'section' => 'media',
+            'subsection' => 'savemedia'
         ]);
     }
 }

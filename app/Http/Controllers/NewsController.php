@@ -44,7 +44,8 @@ class NewsController extends Controller
             'title' => 'Crear Noticia',
             'categoryNew' => $categoryNew,
             'tagNew' => $tagNew,
-            'section' => 'news'
+            'section' => 'news',
+            'subsection' => 'save'
         ]);
     }
 
@@ -105,7 +106,8 @@ class NewsController extends Controller
             'tags' => $tagNew,
             'array_category' => $array_categories,
             'array_tag' => $array_tags,
-            'section' => 'news'
+            'section' => 'news',
+            'subsection' => 'save'
         ]);
     }
 

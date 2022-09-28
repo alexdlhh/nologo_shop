@@ -170,7 +170,7 @@ class AuthController extends Controller
         $headers = $pageRepository->getAll('section','=','1');
         $filters = ['role'=>$role,'search'=>$search];
         $users = User::all();
-        return view('admin/users/list')->with('users',$users)->with('admin',['title' => 'Users', 'users' => $users]);
+        return view('admin/users/list')->with('users',$users)->with('admin',['title' => 'Users', 'users' => $users,'section'=>'','subsection'=>'']);
     }
 
     /**
@@ -180,7 +180,7 @@ class AuthController extends Controller
     public function createUser(){
         $pageRepository = new PagesRepository($role=0,$search='');
         $headers = $pageRepository->getAll('section','=','1');
-        return view('admin/users/create')->with('admin',['title' => 'Create User', 'users' => []]);
+        return view('admin/users/create')->with('admin',['title' => 'Create User', 'users' => [],'section'=>'','subsection'=>'']);
     }
 
     /**
@@ -191,7 +191,7 @@ class AuthController extends Controller
         $pageRepository = new PagesRepository($role=0,$search='');
         $headers = $pageRepository->getAll('section','=','1');
         $user = User::find($id);
-        return view('admin/users/edit')->with('admin',['title' => 'Edit User', 'users' => $user]);
+        return view('admin/users/edit')->with('admin',['title' => 'Edit User', 'users' => $user, 'section'=>'','subsection'=>'']);
     }
 
     /**

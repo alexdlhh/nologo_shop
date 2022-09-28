@@ -20,7 +20,7 @@ class SchoolController extends Controller
         $schools = $schoolRepository->getAll($page,$search);
         $total_schools = $schoolRepository->getTotalSchools($page,$search);
         $total_pages = ceil($total_schools/10);
-        return view('admin.schools.list')->with(['admin'=>['schools'=>$schools, 'title'=>'Escuelas', 'search'=>$search, 'total_schools'=>$total_schools, 'total_pages'=>$total_pages, 'page'=>$page]]);
+        return view('admin.schools.list')->with(['admin'=>['schools'=>$schools, 'title'=>'Escuelas', 'search'=>$search, 'total_schools'=>$total_schools, 'total_pages'=>$total_pages, 'page'=>$page,'section' => 'school','subsection' => 'listschool']]);
     }
 
     /**
@@ -29,7 +29,7 @@ class SchoolController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createSchool(){
-        return view('admin.schools.create')->with(['admin'=>['title'=>'Crear Escuela']]);
+        return view('admin.schools.create')->with(['admin'=>['title'=>'Crear Escuela','section' => 'school','subsection' => 'saveschool']]);
     }
 
     /**
@@ -73,7 +73,7 @@ class SchoolController extends Controller
         $schoolRepository = new SchoolRepository();
         $school = $schoolRepository->getOne(['id'=>$id]);
         $courses = new CourseRepository();
-        return view('admin.schools.edit')->with(['admin'=>['school'=>$school, 'title'=>'Editar Escuela']]);
+        return view('admin.schools.edit')->with(['admin'=>['school'=>$school, 'title'=>'Editar Escuela','section' => 'school','subsection' => 'saveschool']]);
     }
 
     /**

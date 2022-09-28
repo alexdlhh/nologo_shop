@@ -25,7 +25,7 @@ class CourseController extends Controller
         foreach($school as $s){
             $school_name[$s->id] = $s->name;
         }
-        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'search'=>$search, 'total_courses'=>$total_courses, 'total_pages'=>$total_pages, 'page'=>$page, 'school_id'=>$school_id, 'school_name'=>$school_name, 'schools'=>$school]]);
+        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'search'=>$search, 'total_courses'=>$total_courses, 'total_pages'=>$total_pages, 'page'=>$page, 'school_id'=>$school_id, 'school_name'=>$school_name, 'schools'=>$school,'section' => 'school','subsection' => 'listcourse']]);
     }
     
     /**
@@ -36,7 +36,7 @@ class CourseController extends Controller
     public function createCourse(){
         $schoolRepository = new SchoolRepository();
         $schools = $schoolRepository->getAll();
-        return view('admin.courses.create')->with(['admin'=>['title'=>'Crear Curso', 'schools'=>$schools]]);
+        return view('admin.courses.create')->with(['admin'=>['title'=>'Crear Curso', 'schools'=>$schools,'section' => 'school',   'subsection' => 'savecourse']]);
     }
     
     /**
@@ -102,7 +102,8 @@ class CourseController extends Controller
         $course = $courseRepository->getOne($id);
         $schoolRepository = new SchoolRepository();
         $schools = $schoolRepository->getAll();
-        return view('admin.courses.edit')->with(['admin'=>['title'=>'Editar Curso', 'course'=>$course, 'schools'=>$schools]]);
+        return view('admin.courses.edit')->with(['admin'=>['title'=>'Editar Curso', 'course'=>$course, 'schools'=>$schools,'section' => 'school',
+        'subsection' => 'savecourse']]);
     }
     
     /**

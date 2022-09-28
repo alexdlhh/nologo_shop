@@ -13,14 +13,14 @@ class RSController extends Controller
     public function rs(){
         $rsRepository = new RSRepository();
         $rs = $rsRepository->getAll();
-        return view('admin.rs.list')->with(['admin'=>['title'=>'Redes Sociales','rs'=>$rs]]);
+        return view('admin.rs.list')->with(['admin'=>['title'=>'Redes Sociales','rs'=>$rs,'section' => 'rs','subsection' => 'listrs']]);
     }
 
     /**
      * display form to create new social media
      */
     public function create(){
-        return view('admin.rs.create');
+        return view('admin.rs.create')->with(['admin'=>['title'=>'Redes Sociales','section' => 'rs','subsection' => 'savers']]);
     }
 
     /**
@@ -38,7 +38,7 @@ class RSController extends Controller
     public function edit($id){
         $rsRepository = new RSRepository();
         $rs = $rsRepository->getById($id);
-        return view('admin.rs.edit')->with(['admin'=>['title'=>'Redes Sociales','rs'=>$rs]]);
+        return view('admin.rs.edit')->with(['admin'=>['title'=>'Redes Sociales','rs'=>$rs,'section' => 'rs','subsection' => 'savers']]);
     }
 
     /**

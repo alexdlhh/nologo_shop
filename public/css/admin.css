@@ -12,8 +12,11 @@ body{
 .material-icons.prefix {
     margin-left: 1.1em;
 }
-.input-field.col label {
+.input-field.col #searchlabel {
     left: 3.75rem !important;
+}
+.input-field.col label {
+    left: 1.75rem !important;
 }
 .input-field.col .prefix ~ label, .input-field.col .prefix ~ .validate ~ label {
     width: calc(88% - 3rem - 1.5rem) !important;
@@ -38,13 +41,16 @@ body{
     position:fixed;
 }
 #adminlogo {
-    padding-left: 1.2rem;
+    text-align: center;
+}
+#adminlogo img{
+    height: 80px;
 }
 .active {
     color: #515DE1 !important;
 }
 label.active {
-    top: 9px !important;
+    top: 12px !important;
 }
 #sidebar_admin ul .collapsible-header{
     color: #445668;
@@ -72,6 +78,7 @@ label.active {
 }
 .card-stacked{
     box-shadow: 1px 1px 7px 1px #c5d0d8 !important;
+    border-radius: 5px;
 }
 ul:not(.browser-default) {
     padding-left: 0;
@@ -129,7 +136,7 @@ li a p{
 .collapsible-body {
     border-bottom: 0px solid #ddd !important;
 }
-input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
+input[type=search]:not(.browser-default){
     border: 0px solid #F0F5F9 !important;
     box-shadow: 1px 1px 7px 1px #c5d0d8 !important;
     border-radius: 5px !important;
@@ -137,10 +144,42 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     font-size: 1rem;
     padding-left: 3.1rem !important;
 }
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), textarea.materialize-textarea{
+    border: 1px solid #445668 !important;
+    box-shadow: 0px 0px 0px 0px #c5d0d8 !important;
+    border-radius: 5px !important;
+    height: 3rem;
+    font-size: 1rem;
+    width: 98.5% !important;
+    padding-left: 1.3% !important;
+}
+input#fecha_search {
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 96%;
+}
 .input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
     margin-left: 3rem;
     width: 92%;
     width: calc(95% - 3rem);
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #515DE1 !important;
+}
+.pagination li.active {
+    background-color: #515DE1 !important;
+}
+.pagination li a {
+    color: white !important;
+}
+ul.pagination {
+    text-align: center;
+}
+.list-child li a p:hover{
+    color: #515DE1 !important;
+}
+.list-child li a span:hover{
+    color: #515DE1 !important;
 }
 .input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
     margin-left: 1.6rem !important;

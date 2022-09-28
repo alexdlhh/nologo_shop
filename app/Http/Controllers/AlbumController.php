@@ -16,14 +16,14 @@ class AlbumController extends Controller
         $albums = $albumRepository->getAll($page, $search);
         $total = $albumRepository->getTotal($search);
         $pages = ceil($total/10);
-        return view('admin.album.list', ['admin'=>['title'=>'Albums','albums'=>$albums, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages]]);
+        return view('admin.album.list', ['admin'=>['title'=>'Albums','albums'=>$albums, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'news', 'subsection' => 'list','section' => 'journal','subsection' => 'listalbum']]);
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function CreateAlbum(){
-        return view('admin.album.create', ['admin'=>['title'=>'Crear Album']]);
+        return view('admin.album.create', ['admin'=>['title'=>'Crear Album','section' => 'journal','subsection' => 'savealbum']]);
     }
 
     /**
@@ -33,7 +33,7 @@ class AlbumController extends Controller
     public function EditAlbum(int $id){
         $albumRepository = new AlbumRepository();
         $album = $albumRepository->getById($id);
-        return view('admin.album.edit', ['admin'=>['title'=>'Editar Album', 'album'=>$album]]);
+        return view('admin.album.edit', ['admin'=>['title'=>'Editar Album', 'album'=>$album,'section' => 'journal','subsection' => 'savealbum']]);
     }
 
     /**

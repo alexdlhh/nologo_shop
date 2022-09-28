@@ -30,7 +30,7 @@ class PagesController extends Controller
         $page = $request->get('page');
         $search = $request->get('search');
         $pages = $this->pagesRepository->getAll();
-        return view('admin.pages.list', ['admin'=>['title'=>'Albums','pages'=>$pages]]);
+        return view('admin.pages.list', ['admin'=>['title'=>'Albums','pages'=>$pages,'section' => 'page','subsection' => 'listpage']]);
     }
 
     /**
@@ -39,14 +39,14 @@ class PagesController extends Controller
     public function edit(Request $request){
         $id = $request->get('id');
         $pages = $this->pagesRepository->getOne(['id' => $id]);
-        return view('admin.pages.edit', ['admin'=>['title'=>'Albums','pages'=>$pages]]);
+        return view('admin.pages.edit', ['admin'=>['title'=>'Albums','pages'=>$pages,'section' => 'page','subsection' => 'listpage']]);
     }
     /**
      * @return View
      */
     public function create(Request $request){
         $pages = $this->pagesRepository->create($request);
-        return view('admin.pages.create', ['admin'=>['title'=>'Albums','pages'=>$pages]]);
+        return view('admin.pages.create', ['admin'=>['title'=>'Albums','pages'=>$pages,'section' => 'page','subsection' => 'savepage']]);
     }
 
     /**

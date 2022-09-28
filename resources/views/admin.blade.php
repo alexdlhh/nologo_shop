@@ -12,9 +12,7 @@
         <div class="row" id="admin_page">
             <div class="col s12 m2" id="sidebar_admin">
                 <div id="adminlogo">
-                    <h4 href="/dashboard">
-                        RFEG
-                    </h4>
+                    <img src="/logon.png" alt="">
                 </div>
                 <ul class="collapsible">
                     <li>
@@ -49,78 +47,178 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">account_balance</i>RFEG</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'rfef' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'rfef' ? 'active' : ''}}">account_balance</i>RFEG</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'rfef' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/employees">Listar Empleados</a></li>
-                                <li><a href="/admin/employee/create">Añadir Empleado</a></li>
-                                <li><a href="/admin/rfeg">Administrar</a></li>
+                                <li>
+                                    <a href="/admin/employees" class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">Listar Empleados</span><span class="child-selector {{$admin['subsection'] == 'employees' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">Lista de empleados de RFEF</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/employees" class="{{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">Añadir Empleado</span><span class="child-selector {{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">Añadir empleado a RFEF</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">Administrar</span><span class="child-selector {{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">Administrar contenido RFEF</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">directions_run</i>Especialidades</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'especialidades' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'especialidades' ? 'active' : ''}}">directions_run</i>Especialidades</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'especialidades' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/especialidades">Administrar</a></li>
+                                <li>
+                                    <a href="/admin/especialidades" class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">Administrar</span><span class="child-selector {{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">Administrar caracteristicas generales de especialidades RFEF</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">collections</i>Media</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'media' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'media' ? 'active' : ''}}">collections</i>Media</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'media' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/colecciones">Listar Colecciones</a></li>
-                                <li><a href="/admin/media/create">Añadir Media</a></li>
+                                <li>
+                                    <a href="/admin/colecciones" class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">Listar Colecciones</span><span class="child-selector {{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">Administrar conjunto de fotos y videos</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/media/create" class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">Añadir Media</span><span class="child-selector {{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">Añadir nuevo recurso gráfico</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_atm</i>Patrocinadores</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'sponsor' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'sponsor' ? 'active' : ''}}">local_atm</i>Patrocinadores</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'sponsor' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/sponsors">Listar Patrocinadores</a></li>
-                                <li><a href="/admin/sponsor/create">Añadir Patrocinador</a></li>
+                                <li>
+                                    <a href="/admin/sponsors" class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">Listar Patrocinadores</span><span class="child-selector {{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">Listado de Patrocinadores y posiciones</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">Añadir Patrocinador</span><span class="child-selector {{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">Añadir Patrocinador a la web</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">local_library</i>Revistas</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'journal' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'journal' ? 'active' : ''}}">local_library</i>Revistas</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'journal' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/albums">Listar Album</a></li>
-                                <li><a href="/admin/album/create">Crear Album</a></li>
-                                <li><a href="/admin/journals">Listar Revitas</a></li>
-                                <li><a href="/admin/journal/create">Añadir Revita</a></li>
+                                <li>
+                                    <a href="/admin/albums" class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Listar Album</span><span class="child-selector {{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Administrar conjunto de revistas</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/album/create" class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">Crear Album</span><span class="child-selector {{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">Crear nuevo conjunto de revistas</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/journals" class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">Listar Revistas</span><span class="child-selector {{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">Listado de Revistas</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/journal/create" class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">Añadir Revista</span><span class="child-selector {{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">Añadir nueva revista</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">school</i>Escuelas</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'school' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'school' ? 'active' : ''}}">school</i>Escuelas</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'school' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/schools">Listar Escuelas</a></li>
-                                <li><a href="/admin/school/create">Añadir Escuela</a></li>
-                                <li><a href="/admin/courses">Listar Cursos</a></li>
-                                <li><a href="/admin/course/create">Crear Curso</a></li>
+                                <li>
+                                    <a href="/admin/journal/create" class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}">Listar Escuelas</span><span class="child-selector {{$admin['subsection'] == 'listschool' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}">Listado de escuelas RFEG</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/school/create" class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">Añadir Escuela</span><span class="child-selector {{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">Añadir nueva escuela</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/school/create" class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">Listar Cursos</span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">Listado de cursos RFEG</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/course/create" class="{{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">Crear Curso</span><span class="child-selector {{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">Añadir nuevo curso a RFEG</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">contacts</i>Usuarios</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'users' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'users' ? 'active' : ''}}">contacts</i>Usuarios</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'users' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/users">Listar Usuarios</a></li>
-                                <li><a href="/admin/users/create">Añadir Usuario</a></li>
+                                <li>
+                                    <a href="/admin/users" class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">Listar Usuarios</span><span class="child-selector {{$admin['subsection'] == 'listusers' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">Listado de usuarios registrados</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/users/create" class="{{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">Añadir Usuario</span><span class="child-selector {{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">Añadir nuevo usuario</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">rss_feed</i>Redes Sociales</div>
-                        <div class="collapsible-body">
+                        <div class="collapsible-header {{$admin['section'] == 'rs' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'rs' ? 'active' : ''}}">rss_feed</i>Redes Sociales</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'rs' ? 'display: block;' : ''}}">
                             <ul class="list-child">
-                                <li><a href="/admin/social">Listar Redes Sociales</a></li>
-                                <li><a href="/admin/social/create">Añadir Red Social</a></li>
+                                <li>
+                                    <a href="/admin/social" class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Listar Redes Sociales</span><span class="child-selector {{$admin['subsection'] == 'listrs' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Listado de redes sociales de RFEG</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/social" class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Añadir Red Social</span><span class="child-selector {{$admin['subsection'] == 'listrs' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Añadir nueva Red Social</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -130,8 +228,8 @@
                 <div class="row headAdmin">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">search</i>
-                        <input id="search" type="text" class="validate">
-                        <label for="search">Buscar</label>
+                        <input id="search" type="search" class="validate">
+                        <label id="searchlabel" for="search">Buscar</label>
                     </div>
                     <div class="col s6">
                         <nav>
@@ -149,7 +247,7 @@
                                             <a class="nav-link" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i></a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="/admin"><i class="material-icons">person</i></a>
+                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons">person</i></a>
                                         </li>
                                         <li>
                                             <a class="nav-link" href="/admin/eventos"><i class="material-icons">notifications</i></a>

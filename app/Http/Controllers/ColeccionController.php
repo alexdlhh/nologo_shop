@@ -28,6 +28,8 @@ class ColeccionController extends Controller
             'title' => 'Listado de Colecciones',
             'colecciones' => $coleccion,
             'media_var' => $media_var,
+            'section' => 'media',
+            'subsection' => 'listcolection'
         ]);
     }
     
@@ -68,6 +70,8 @@ class ColeccionController extends Controller
         return view('admin.coleccion.create')->with('admin',[
             'title' => 'Crear Coleccion',
             'coleccion' => $coleccion,
+            'section' => 'media',
+            'subsection' => 'savecolection'
         ]);
     }
 
@@ -80,6 +84,8 @@ class ColeccionController extends Controller
         return view('admin.coleccion.edit')->with('admin',[
             'title' => 'Editar Coleccion',
             'coleccion' => $coleccion,
+            'section' => 'media',
+            'subsection' => 'savecolection'
         ]);
     }
 }
