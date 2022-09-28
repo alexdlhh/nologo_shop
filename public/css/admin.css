@@ -41,7 +41,7 @@ body{
     position:fixed;
 }
 #adminlogo {
-    text-align: center;
+    padding-left: 1rem;
 }
 #adminlogo img{
     height: 80px;
