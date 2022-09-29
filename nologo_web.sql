@@ -77,6 +77,18 @@ CREATE TABLE `employee` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+CREATE TABLE `especialidades` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(2550) DEFAULT NULL,
+  `alias` varchar(2550) DEFAULT NULL,
+  `icon` varchar(2550) DEFAULT NULL,
+  `current_season` int(11) DEFAULT NULL,
+  `pos` int(11) DEFAULT NULL,
+  `description` text,
+  `olimpico` int(11) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
 CREATE TABLE `eventos` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
@@ -294,6 +306,19 @@ INSERT INTO `course` (`id`, `name`, `description`, `price`, `created_at`, `updat
 INSERT INTO `employee` (`id`, `name`, `email`, `phone`, `charge`, `twitter`, `featuredImage`) VALUES
 (1, 'cisk', 'iakej@drv.es', '650605506', 'odlf', 'osif', '/images/employee/1661982716cisk.jpg');
 
+
+INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
+(1, 'Artística Masculina', 'artistica-masculina', NULL, 2022, 1, NULL, 1);
+INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
+(2, 'Artística Femenina', 'artistica-femenina', NULL, 2022, 2, NULL, 1);
+INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
+(3, 'Rítmica', 'ritmica', NULL, 2022, 3, NULL, 1);
+INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
+(4, 'Trampolin', 'trampolin', NULL, 2022, 4, NULL, 1),
+(5, 'Aeróbica', 'aerobica', NULL, 2022, 1, NULL, 0),
+(6, 'Acrobática', 'acrobatica', NULL, 2022, 2, NULL, 0),
+(7, 'Para Todos', 'para-todos', NULL, 2022, 3, NULL, 0),
+(8, 'Parkour', 'parkour', NULL, 2022, 4, NULL, 0);
 
 
 
