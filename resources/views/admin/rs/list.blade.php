@@ -22,7 +22,7 @@
                                 <tbody>
                                 @foreach($admin['rs'] as $rs)
                                     <tr>
-                                        <td><img src="{{ $rs->getImage() }}" width="80px" alt=""></td>
+                                        <td><img src="{{ $rs->getImage() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $rs->getName() }}</td>
                                         <td>
                                             <a href="/admin/rs/edit/{{$rs->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
@@ -48,6 +48,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
             if(confirm('¿Estás seguro de eliminar esta red social?')){

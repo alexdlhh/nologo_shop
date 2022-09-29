@@ -34,7 +34,7 @@
                                 <div class="col s12 m4">
                                     <div class="card">
                                         <div class="card-image">
-                                            <img src="{{ $media->getUrl() }}" alt="$media->getDescription()">
+                                            <img src="{{ $media->getUrl() }}" class="materialboxed" alt="$media->getDescription()">
                                         </div>
                                         <div class="card-content">
                                             <span class="card-title">{{$media->getTitle()}}</span>
@@ -62,6 +62,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
             if(confirm('¿Estás seguro de eliminar esta colección?')){

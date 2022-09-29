@@ -54,7 +54,7 @@
                                 <tbody>
                                 @foreach($admin['news'] as $new)
                                     <tr>
-                                        <td><img src="{{ $new->feature_image }}" width="80px" alt=""></td>
+                                        <td><img src="{{ $new->feature_image }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $new->title }}</td>
                                         <td>
                                             <p>
@@ -94,6 +94,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.materialboxed').materialbox();
         $('.status').change(function(){
             var id = $(this).data('id');
             var status = $(this).is(':checked');

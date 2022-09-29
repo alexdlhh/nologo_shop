@@ -17,7 +17,7 @@ class PagesRepository
      * @param string $value
      * @return array
      */
-    public function getAll($colum,$condition,$value)
+    public function getAll($colum='',$condition='',$value='')
     {
         $pagesMapper = new PagesMapper();
     

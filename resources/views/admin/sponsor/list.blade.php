@@ -22,7 +22,7 @@
                                 <tbody>
                                 @foreach($admin['sponsor'] as $sponsor)
                                     <tr>
-                                        <td><img src="{{ $sponsor->getImage() }}" width="80px" alt=""></td>
+                                        <td><img src="{{ $sponsor->getImage() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $sponsor->getName() }}</td>
                                         <td>
                                             <a href="/admin/sponsor/edit/{{$sponsor->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
@@ -47,6 +47,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
             if(confirm('¿Estás seguro de eliminar este empleado?')){

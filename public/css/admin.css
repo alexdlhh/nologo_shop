@@ -212,6 +212,38 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     box-shadow: none !important;
 }
 
+/* .what-is-included .group .list li .popover {
+    position: absolute;
+    left: -16px;
+    right: -10px;
+    top: 0;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,.025);
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,.025);
+    -webkit-transition-property: opacity,-webkit-transform;
+    transition-property: opacity,-webkit-transform;
+    transition-property: transform,opacity;
+    transition-property: transform,opacity,-webkit-transform;
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    pointer-events: none;
+    opacity: 1;
+    -webkit-transform: translateY(-100%) scale(.75);
+    transform: translateY(-100%) scale(.75);
+    -webkit-transform: translateY(calc(-100% + 10px)) scale(.75);
+    transform: translateY(calc(-100% + 10px)) scale(.75);
+    -webkit-transform-origin: 20px calc(100% + 12px);
+    transform-origin: 20px calc(100% + 12px);
+    color: #32325d;
+    padding: 15px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5em;
+} */
+
 @keyframes rotation{
     from{
         transform: rotate(0deg);

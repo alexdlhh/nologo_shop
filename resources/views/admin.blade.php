@@ -247,7 +247,10 @@
                                             <a class="nav-link" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i></a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons">person</i></a>
+                                            @php
+                                                $current_url = explode('/',$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+                                            @endphp
+                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons {{$current_url[2]=='users'&&$current_url[4]==Auth::user()->id ? 'active' : ''}}">person</i></a>
                                         </li>
                                         <li>
                                             <a class="nav-link" href="/admin/eventos"><i class="material-icons">notifications</i></a>
@@ -260,6 +263,7 @@
                 </div>
                 @yield('content')
             </div>
+            <!-- <div class="popover">Añade un atractivo formulario de compra con una línea de JavaScript.</div> -->
         </div>        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

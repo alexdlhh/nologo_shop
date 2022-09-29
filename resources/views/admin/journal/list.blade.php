@@ -51,7 +51,7 @@
                                 <tbody>
                                 @foreach($admin['journals'] as $journal)
                                     <tr>
-                                        <td><img src="{{ $course->getImage() }}" width="80px" alt=""></td>
+                                        <td><img src="{{ $course->getImage() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $journal->getName() }}</td>
                                         <td>
                                             <p>
@@ -89,6 +89,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
             if(confirm('¿Estás seguro de eliminar esta revista?')){

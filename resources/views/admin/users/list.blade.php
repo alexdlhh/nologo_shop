@@ -78,6 +78,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.materialboxed').materialbox();
         $('select').formSelect();
         $('.del').click(function(){
             var id = $(this).attr('data-id');

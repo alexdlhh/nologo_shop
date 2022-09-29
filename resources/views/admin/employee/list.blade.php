@@ -43,7 +43,7 @@
                                 <tbody>
                                 @foreach($admin['employees'] as $employee)
                                     <tr>
-                                        <td><img src="{{ $employee->getFeaturedImage() }}" width="80px" alt=""></td>
+                                        <td><img src="{{ $employee->getFeaturedImage() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $employee->getName() }}</td>
                                         <td>
                                             {{ $employee->getEmail() }}
@@ -79,6 +79,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
             if(confirm('¿Estás seguro de eliminar este empleado?')){

@@ -43,7 +43,7 @@
                                 <tbody>
                                 @foreach($admin['schools'] as $school)
                                     <tr>
-                                        <td><img src="{{ $school->getLogo() }}" width="80px" alt=""></td>
+                                        <td><img src="{{ $school->getLogo() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $school->getName() }}</td>
                                         <td>
                                             <p>
@@ -83,6 +83,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.materialboxed').materialbox();
         $('.status').change(function(){
             var id = $(this).data('id');
             var status = $(this).is(':checked');

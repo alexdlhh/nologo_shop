@@ -59,6 +59,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             spiner()
             var id = $(this).attr('data-id');

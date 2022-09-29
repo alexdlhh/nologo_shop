@@ -73,6 +73,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
             if(confirm('¿Estás seguro de eliminar este album?')){
