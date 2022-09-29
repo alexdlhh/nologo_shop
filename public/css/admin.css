@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Manrope'; 
+    src: local('Manrope'),url('/fonts/Manrope-VariableFont_wght.ttf')
+}
+@font-face {
+    font-family: 'ManropeBold';
+    src: local('ManropeBold'),url('/fonts/static/Manrope-Bold.ttf');
+}
+html,body,p,span,a,li,td,h1,h2,h3,h4,h5,h6,label {
+    font-family: "Manrope","Helvetica Neue",sans-serif !important;
+    font-weight: normal !important;
+}
+b{
+    font-family: "ManropeBold","Helvetica Neue",sans-serif !important;
+}
 #admin_page{
     width:100%;
     height:100%;
@@ -16,7 +31,10 @@ body{
     left: 3.75rem !important;
 }
 .input-field.col label {
-    left: 1.75rem !important;
+    left: 1.4rem !important;
+}
+.input-field.col .labeldesk{
+    margin-top: -17px;
 }
 .input-field.col .prefix ~ label, .input-field.col .prefix ~ .validate ~ label {
     width: calc(88% - 3rem - 1.5rem) !important;
@@ -151,7 +169,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     height: 3rem;
     font-size: 1rem;
     width: 98.5% !important;
-    padding-left: 1.3% !important;
+    padding-left: 0.6rem !important;
 }
 input#fecha_search {
     padding-left: 2%;

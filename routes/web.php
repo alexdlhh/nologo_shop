@@ -121,6 +121,8 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/sponsors/status',[SponsorController::class,'postStatus'])->name('admin.sponsors.status');
     /**ADMIN RS */
     Route::get('admin/social',[RSController::class,'rs'])->name('admin.rs.list');
+    Route::get('admin/rs/create',[RSController::class,'Create'])->name('admin.rs.create');
+    Route::get('admin/rs/edit/{id}',[RSController::class,'edit'])->name('admin.rs.edit');
     Route::post('admin/rs/save',[RSController::class,'postCreate'])->name('admin.rs.store');
     Route::post('admin/rs/delete',[RSController::class,'postDelete'])->name('admin.rs.delete');
     Route::post('admin/rs/status',[RSController::class,'postStatus'])->name('admin.rs.status');

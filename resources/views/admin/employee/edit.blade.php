@@ -35,7 +35,7 @@
                                         <label for="featuredImage">Imagen de empleado</label><br><input id="featuredImage" type="file" class="validate">
                                         <input type="text" id="old_image" value="{{ $admin['employee']->getFeaturedImage() }}" hidden>
                                     </div>
-                                    <div class="col s6"><img id="preview" width="100px" src="{{ $admin['employee']->getFeaturedImage() }}" alt="preview"></div>
+                                    <div class="col s6"><img id="preview" class="materialboxed" width="100px" src="{{ $admin['employee']->getFeaturedImage() }}" alt="preview"></div>
                                 </div>
                             </div>                        
                             <div class="col s6 input-field">
@@ -60,6 +60,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#featuredImage').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {

@@ -24,7 +24,7 @@
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <div class="col s6"><label for="image">Icono</label><br><input id="image" type="file" class="validate"></div>
-                                    <div class="col s6"><img id="preview" width="100px" src="{{$admin['rs']->getImage()}}" alt="preview"></div>
+                                    <div class="col s6"><img id="preview" class="materialboxed" width="100px" src="{{$admin['rs']->getImage()}}" alt="preview"></div>
                                 </div>
                             </div>
                         </div>
@@ -44,6 +44,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#image').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {

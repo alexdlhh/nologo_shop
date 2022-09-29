@@ -23,7 +23,7 @@
                             </div>
                             <div class="col s12 input-field">
                                 <textarea id="description"></textarea>
-                                <label for="description">Descripción</label>
+                                <label for="description" class="labeldesk">Descripción</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">

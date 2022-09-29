@@ -23,7 +23,7 @@
                             </div>
                             <div class="col s12 input-field">
                                 <textarea id="description">{{ $admin['course']->getDescription() }}</textarea>
-                                <label for="description">Descripción</label>
+                                <label for="description" class="labeldesk">Descripción</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">

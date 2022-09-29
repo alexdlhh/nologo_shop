@@ -55,6 +55,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#save').click(function(){
             spiner();
             if($('#password').val()==$('#password_confirmation').val()){

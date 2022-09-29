@@ -35,12 +35,12 @@
                             </div>
                             <div class="col s12 input-field">
                                 <textarea id="description">{{$admin['school']->getDescription()}}"</textarea>
-                                <label for="description">Descriptión</label>
+                                <label for="description" class="labeldesk">Descriptión</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <div class="col s6"><input id="icon" type="file" class="validate"></div>
-                                    <div class="col s6"><img id="preview" width="100px" src="{{$admin['school']->getLogo()}}" alt="preview"></div>
+                                    <div class="col s6"><img class="materialboxed" id="preview" width="100px" src="{{$admin['school']->getLogo()}}" alt="preview"></div>
                                 </div>
                             </div>                            
                             <div class="col s6 input-field">
@@ -74,6 +74,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#icon').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {

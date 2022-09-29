@@ -19,7 +19,7 @@
                             </div>
                             <div class="col s12 input-field">
                                 <textarea id="description">{{ $admin['journal']->getDescripcion() }}</textarea>
-                                <label for="description">Descripción</label>
+                                <label for="description" class="labeldesk">Descripción</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">
@@ -28,7 +28,7 @@
                                         <input id="image" type="file" class="validate">
                                     </div>
                                     <div class="col s6">
-                                        <img id="preview" width="100px" src="{{$admin['journal']->getImage()}}" alt="preview">
+                                        <img id="preview" class="materialboxed" width="100px" src="{{$admin['journal']->getImage()}}" alt="preview">
                                     </div>
                                 </div>
                             </div>    
@@ -69,6 +69,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#image').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {

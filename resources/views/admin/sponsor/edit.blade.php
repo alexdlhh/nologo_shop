@@ -23,18 +23,18 @@
                             </div>
                             <div class="col s12 input-field">
                                 <textarea id="description">{{ $admin['sponsor']->getDescrption() }}</textarea>
-                                <label for="description">Descripción</label>
+                                <label for="description" class="labeldesk">Descripción</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <div class="col s6"><label for="image_white">Logo blanco</label><br><input id="image_white" type="file" class="validate"></div>
-                                    <div class="col s6"><img id="preview_white" width="100px" src="{{$admin['sponsor']->getWhite()}}" alt="preview_white"></div>
+                                    <div class="col s6"><img id="preview_white" width="100px" src="{{$admin['sponsor']->getWhite()}}" class="materialboxed" alt="preview_white"></div>
                                 </div>
                             </div>    
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <div class="col s6"><label for="image">Logo</label><br><input id="image" type="file" class="validate"></div>
-                                    <div class="col s6"><img id="preview" width="100px" src="{{$admin['sponsor']->getImage()}}" alt="preview"></div>
+                                    <div class="col s6"><img id="preview" width="100px" src="{{$admin['sponsor']->getImage()}}" class="materialboxed" alt="preview"></div>
                                 </div>
                             </div>     
                         </div>
@@ -56,6 +56,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#image').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {

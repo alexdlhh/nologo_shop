@@ -23,13 +23,13 @@
                             </div>
                             <div class="col s12">
                                 <textarea id="content_text">{{ $admin['news']->getContent() }}</textarea>
-                                <label for="content_text">Contenido</label>
+                                <label for="content_text" class="labeldesk">Contenido</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">
                                     <input type="text" id="default_image" value="{{ $admin['news']->getFeatureImage() }}" hidden>
                                     <div class="col s6"><input id="feature_image" type="file" class="validate"></div>
-                                    <div class="col s6"><img id="peview" width="100px" src="{{ $admin['news']->getFeatureImage() }}" alt="preview"></div>
+                                    <div class="col s6"><img id="peview" class="materialboxed" width="100px" src="{{ $admin['news']->getFeatureImage() }}" alt="preview"></div>
                                 </div>
                             </div>                            
                             <div class="col s6 input-field">
@@ -82,6 +82,7 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('.materialboxed').materialbox();
         $('#feature_image').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {
