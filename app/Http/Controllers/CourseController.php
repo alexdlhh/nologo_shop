@@ -25,7 +25,7 @@ class CourseController extends Controller
         foreach($school as $s){
             $school_name[$s->id] = $s->name;
         }
-        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'search'=>$search, 'total_courses'=>$total_courses, 'total_pages'=>$total_pages, 'page'=>$page, 'school_id'=>$school_id, 'school_name'=>$school_name, 'schools'=>$school,'section' => 'school','subsection' => 'listcourse']]);
+        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'search'=>$search, 'total_courses'=>$total_courses, 'total_pages'=>$total_pages, 'page'=>$page, 'school_id'=>$school_id, 'school_name'=>$school_name, 'schools'=>$school,'section' => 'school','subsection' => 'listcourses']]);
     }
     
     /**

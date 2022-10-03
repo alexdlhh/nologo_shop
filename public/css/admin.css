@@ -24,11 +24,14 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
+#tabla{
+    padding-left: 5px;
+}
 .material-icons.prefix {
-    margin-left: 1.1em;
+    margin-left: 1.4em;
 }
 .input-field.col #searchlabel {
-    left: 3.75rem !important;
+    left: 4.7rem !important;
 }
 .input-field.col label {
     left: 1.4rem !important;
@@ -148,6 +151,9 @@ li a p{
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
+.filtro_content{
+    width: 100.4%;
+}
 .list-child {
     padding-left: 1.7rem !important;
 }
@@ -210,6 +216,22 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav{
     box-shadow: none !important;
+}
+.box-title{
+    text-align: center;
+}
+.box-image {
+    text-align: center;
+}
+.box-link{
+    color: #445668 !important;
+}
+.box-link:hover{
+    color: #515DE1 !important;
+}
+.olimpic{
+    margin-top:20px !important;
+    margin-bottom:20px !important;
 }
 
 /* .what-is-included .group .list li .popover {

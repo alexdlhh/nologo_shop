@@ -250,7 +250,7 @@
                                             @php
                                                 $current_url = explode('/',$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
                                             @endphp
-                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons {{$current_url[2]=='users'&&$current_url[4]==Auth::user()->id ? 'active' : ''}}">person</i></a>
+                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons {{count($current_url)>=4 && $current_url[2]=='users'&&$current_url[4]==Auth::user()->id ? 'active' : ''}}">person</i></a>
                                         </li>
                                         <li>
                                             <a class="nav-link" href="/admin/eventos"><i class="material-icons">notifications</i></a>

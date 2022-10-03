@@ -27,21 +27,18 @@ class EspecialidadesController extends Controller
      */
     public function getAll()
     {
-        $page = $request->get('page');
-        $search = $request->get('search');
         $especialidades = $this->especialidadesRepository->getAll();
-        return view('admin.especialidades.list', ['admin'=>['title'=>'Albums','especialidades'=>$especialidades,'section' => 'rfeg','subsection' => 'listespecialidades']]);
+        return view('admin.especialidades.list', ['admin'=>['title'=>'Especialidades','especialidades'=>$especialidades,'section' => 'rfeg','subsection' => 'listespecialidades']]);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getOne(Request $request)
+    public function getOne($id)
     {
-        $id = $request->get('id');
-        $especialidades = $this->especialidadesRepository->getOne(['id' => $id]);
-        return response()->json($especialidades);
+        $especialidades = $this->especialidadesRepository->getOne($id);
+        return view('admin.especialidades.edit', ['admin'=>['title'=>$especialidades->getName(),'especialidades'=>$especialidades,'section' => 'rfeg','subsection' => 'listespecialidades']]);
     }
 
     /**

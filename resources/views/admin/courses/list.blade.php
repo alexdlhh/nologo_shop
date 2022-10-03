@@ -5,33 +5,40 @@
 @section('content')
 <div class="container_admin">
     <div class="row">        
-        <div class="col s12 m12">            
-            <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <div class="row" id="filtros">   
-                            <div class="s12">
-                                <h6 class="header">Filtros</h6>
-                            </div>
-                            <div class="col s6 input-field">
-                                <input type="text" id="searchCriteria" value="{{$admin['searchCriteria'] ?? ''}}">
-                                <label for="searchCriteria">Buscar</label>
-                            </div>
-                            <div class="col s6 input-field">
-                                <select id="schools">
-                                    <option value="" disabled selected>Escuela</option>
-                                    @foreach($admin['schools'] as $school)
-                                        <option value="{{ $school->id }}" {{ $admin['school_id'] == $school->id ? 'selected' : '' }}>{{ $school->name }}</option>
-                                    @endforeach
-                                </select>
+        <div class="col s12 m12"> 
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">filter_list</i>Filtros</div>
+                    <div class="collapsible-body">           
+                        <div class="card horizontal filtro_content">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="row" id="filtros">   
+                                        <div class="col s12">
+                                            <h6 class="header">Filtros</h6>
+                                        </div>
+                                        <div class="col s6 input-field">
+                                            <input type="text" id="searchCriteria" value="{{$admin['searchCriteria'] ?? ''}}">
+                                            <label for="searchCriteria">Buscar</label>
+                                        </div>
+                                        <div class="col s6 input-field">
+                                            <select id="schools">
+                                                <option value="" disabled selected>Escuela</option>
+                                                @foreach($admin['schools'] as $school)
+                                                    <option value="{{ $school->id }}" {{ $admin['school_id'] == $school->id ? 'selected' : '' }}>{{ $school->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-action right">
+                                    <a href="#" id="searchBtn">Buscar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-action right">
-                        <a href="#" id="searchBtn">Buscar</a>
-                    </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
         <div class="col s12 m12">            
             <div class="card horizontal">

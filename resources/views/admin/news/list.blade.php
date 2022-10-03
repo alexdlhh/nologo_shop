@@ -5,36 +5,43 @@
 @section('content')
 <div class="container_admin">
     <div class="row">        
-        <div class="col s12 m12">            
-            <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <div class="row" id="filtros">   
-                            <div class="col s12">
-                                <h6 class="header">Filtros</h6>
-                            </div>                         
-                            <div class="col s3 input-field">
-                                <input id="fecha_search" type="date" value="{{ $admin['filter']['fecha_search'] ?? '' }}">
-                            </div>
-                            <div class="col s6 input-field">
-                                <input type="text" id="searchCriteria" value="{{$admin['filter']['searchCriteria'] ?? ''}}">
-                                <label for="searchCriteria">Buscar por título</label>
-                            </div>
-                            <div class="col s2 input-field">
-                            <p>
-                                <label>
-                                    <input type="checkbox" id="state" checked="{{$admin['filter']['status']==1?true:false}}"/>
-                                    <span>Publicado</span>
-                                </label>
-                            </p>
+        <div class="col s12 m12">    
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">filter_list</i>Filtros</div>
+                    <div class="collapsible-body">        
+                        <div class="card horizontal filtro_content">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="row" id="filtros">   
+                                        <div class="col s12">
+                                            <h6 class="header">Filtros</h6>
+                                        </div>                         
+                                        <div class="col s3 input-field">
+                                            <input id="fecha_search" type="date" value="{{ $admin['filter']['fecha_search'] ?? '' }}">
+                                        </div>
+                                        <div class="col s6 input-field">
+                                            <input type="text" id="searchCriteria" value="{{$admin['filter']['searchCriteria'] ?? ''}}">
+                                            <label for="searchCriteria">Buscar por título</label>
+                                        </div>
+                                        <div class="col s2 input-field">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" id="state" checked="{{$admin['filter']['status']==1?true:false}}"/>
+                                                <span>Publicado</span>
+                                            </label>
+                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-action right">
+                                    <a href="#" id="searchBtn">Buscar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-action right">
-                        <a href="#" id="searchBtn">Buscar</a>
-                    </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
         <div class="col s12 m12">            
             <div class="card horizontal">

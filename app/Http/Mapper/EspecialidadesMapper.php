@@ -19,7 +19,7 @@ class EspecialidadesMapper
         !empty($data['current_season']) ? $especialidades->setCurrentSeason($data['current_season']) : null;
         !empty($data['pos']) ? $especialidades->setPos($data['pos']) : null;
         !empty($data['description']) ? $especialidades->setDescription($data['description']) : null;
-        !empty($data['olimpica']) ? $especialidades->setOlimpica($data['olimpica']) : null;
+        !empty($data['olimpico']) ? $especialidades->setOlimpico($data['olimpico']) : null;
 
         return $especialidades;
     }

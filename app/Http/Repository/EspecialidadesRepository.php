@@ -20,16 +20,17 @@ class EspecialidadesRepository
         if(!empty($search)) {
             $especialidades = DB::table('especialidades')
                 ->where('name', 'like', '%'.$search.'%')
-                ->orderBy('name', 'asc')
+                ->orderBy('olimpico', 'desc')
                 ->skip($page)->take(10)->get();
         } else {
             $especialidades = DB::table('especialidades')
-                ->orderBy('name', 'asc')
+                ->orderBy('olimpico', 'desc')
                 ->skip($page)->take(10)->get();
         }
-        if(!empty($especialidades->toArray())) {
+        if(!empty($especialidades)) {
             $especialidadesList = $especialidadesMapper->mapCollection($especialidades->toArray());
         }
+
         return $especialidadesList;
     }
     
@@ -37,12 +38,12 @@ class EspecialidadesRepository
      * @param array $filter
      * @return EspecialidadesEntity
      */
-    public function getOne($filter = []){
+    public function getOne($id){
         $especialidadesMapper = new EspecialidadesMapper();
         $especialidades = DB::table('especialidades')
-            ->where($filter)
-            ->first();
-        $especialidades = $especialidadesMapper->map(get_object_vars($especialidades));
+            ->where('id', $id)
+            ->get();
+        $especialidades = $especialidadesMapper->map(get_object_vars($especialidades[0]));
         return $especialidades;
     }
     
@@ -63,7 +64,7 @@ class EspecialidadesRepository
                     'current_season' => $especialidades->getCurrentSeason(),
                     'pos' => $especialidades->getPos(),
                     'description' => $especialidades->getDescription(),
-                    'olimpica' => $especialidades->getOlimpica(),
+                    'olimpico' => $especialidades->getOlimpico(),
                 ]
             );
         return $id;
@@ -87,7 +88,7 @@ class EspecialidadesRepository
                     'current_season' => $especialidades->getCurrentSeason(),
                     'pos' => $especialidades->getPos(),
                     'description' => $especialidades->getDescription(),
-                    'olimpica' => $especialidades->getOlimpica(),
+                    'olimpico' => $especialidades->getOlimpico(),
                 ]
             );
         return $id;
