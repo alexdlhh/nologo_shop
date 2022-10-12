@@ -261,6 +261,24 @@ CREATE TABLE `tag_product_rel` (
   `id_product` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `team` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `description` text,
+  `image` varchar(255) DEFAULT NULL,
+  `current_season` int(11) DEFAULT NULL,
+  `pos` int(11) DEFAULT NULL,
+  `olimpico` int(11) DEFAULT NULL,
+  `especialidad` int(11) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `tiktok` varchar(255) DEFAULT NULL,
+  `youtube` varchar(255) DEFAULT NULL,
+  `twich` varchar(255) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -409,6 +427,10 @@ INSERT INTO `tag_new_rel` (`id_tag`, `id_new`) VALUES
 
 
 
+
+
+INSERT INTO `team` (`id`, `name`, `alias`, `description`, `image`, `current_season`, `pos`, `olimpico`, `especialidad`, `twitter`, `instagram`, `tiktok`, `youtube`, `twich`) VALUES
+(1, 'test', 'test', 'kldsjhfrgbvsdkfg', 'siuyrfdjbgsij', 2022, 1, 1, 1, NULL, NULL, NULL, NULL, NULL);
 
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
