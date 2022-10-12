@@ -43,7 +43,7 @@
                                 <label for="pos">Posición:</label>
                             </div>
                             <div class="col s12">
-                                <textarea id="description"></textarea>
+                                <textarea id="description"><?=$admin['especialidades']->getDescription()?></textarea>
                                 <label for="description" class="labeldesk">Contenido</label>
                             </div>
                             <div class="col s6 form-control">
@@ -72,29 +72,7 @@
                 <div class="card-stacked">
                     <div class="card-content">
                         <div class="row">
-                            <div class="col s12 m3 new_player">
-                                <div class="card">
-                                    <div class="card-image">
-                                        <img src="\images\1661689188lapatata.jpg">
-                                        <span class="card-title">Añadir</span>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="row">
-                                            <div class="col s12 form-control">
-                                                <input type="text" id="new_player_name">
-                                                <label for="new_player_name">Nombre:</label>
-                                            </div>
-                                            <div class="col s12 form-control">
-                                                <input type="text" id="new_player_social">
-                                                <label for="new_player_social">Redes Sociales:</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-action">
-                                        <a href="#">Guardar</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @dump($admin['team'])
                         </div>
                     </div>
                 </div>
