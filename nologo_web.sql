@@ -13,7 +13,7 @@ CREATE TABLE `album` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cat_new_rel` (
   `id_new` int(11) DEFAULT NULL,
@@ -275,6 +275,8 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `album` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'test', '2022-09-30 19:08:01', NULL);
 
 
 INSERT INTO `cat_new_rel` (`id_new`, `id_cat`) VALUES
@@ -308,17 +310,17 @@ INSERT INTO `employee` (`id`, `name`, `email`, `phone`, `charge`, `twitter`, `fe
 
 
 INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
-(1, 'Artística Masculina', 'artistica-masculina', NULL, 2022, 1, NULL, 1);
+(1, 'Artística Masculina', 'artistica-masculina', '\\images\\especialidades\\ga_masculina.png', 2022, 1, NULL, 1);
 INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
-(2, 'Artística Femenina', 'artistica-femenina', NULL, 2022, 2, NULL, 1);
+(2, 'Artística Femenina', 'artistica-femenina', '\\images\\especialidades\\ga_femenina.png', 2022, 2, NULL, 1);
 INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
-(3, 'Rítmica', 'ritmica', NULL, 2022, 3, NULL, 1);
+(3, 'Rítmica', 'ritmica', '\\images\\especialidades\\g_ritmica.png', 2022, 3, NULL, 1);
 INSERT INTO `especialidades` (`id`, `name`, `alias`, `icon`, `current_season`, `pos`, `description`, `olimpico`) VALUES
-(4, 'Trampolin', 'trampolin', NULL, 2022, 4, NULL, 1),
-(5, 'Aeróbica', 'aerobica', NULL, 2022, 1, NULL, 0),
-(6, 'Acrobática', 'acrobatica', NULL, 2022, 2, NULL, 0),
-(7, 'Para Todos', 'para-todos', NULL, 2022, 3, NULL, 0),
-(8, 'Parkour', 'parkour', NULL, 2022, 4, NULL, 0);
+(4, 'Trampolin', 'trampolin', '\\images\\especialidades\\trampolin.png', 2022, 4, NULL, 1),
+(5, 'Aeróbica', 'aerobica', '\\images\\especialidades\\aerobica.png', 2022, 1, NULL, 0),
+(6, 'Acrobática', 'acrobatica', '\\images\\especialidades\\acrobatica.png', 2022, 2, NULL, 0),
+(7, 'Para Todos', 'para-todos', '\\images\\especialidades\\g_para_todos.png', 2022, 3, NULL, 0),
+(8, 'Parkour', 'parkour', '\\images\\especialidades\\parkour.png', 2022, 4, NULL, 0);
 
 
 
