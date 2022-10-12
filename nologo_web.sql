@@ -277,7 +277,7 @@ CREATE TABLE `team` (
   `youtube` varchar(255) DEFAULT NULL,
   `twich` varchar(255) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -431,7 +431,12 @@ INSERT INTO `tag_new_rel` (`id_tag`, `id_new`) VALUES
 
 INSERT INTO `team` (`id`, `name`, `alias`, `description`, `image`, `current_season`, `pos`, `olimpico`, `especialidad`, `twitter`, `instagram`, `tiktok`, `youtube`, `twich`) VALUES
 (1, 'test', 'test', 'kldsjhfrgbvsdkfg', 'siuyrfdjbgsij', 2022, 1, 1, 1, NULL, NULL, NULL, NULL, NULL);
-
+INSERT INTO `team` (`id`, `name`, `alias`, `description`, `image`, `current_season`, `pos`, `olimpico`, `especialidad`, `twitter`, `instagram`, `tiktok`, `youtube`, `twich`) VALUES
+(2, 'test', 'test', 'kldsjhfrgbvsdkfg', 'siuyrfdjbgsij', 2022, 2, 1, 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `team` (`id`, `name`, `alias`, `description`, `image`, `current_season`, `pos`, `olimpico`, `especialidad`, `twitter`, `instagram`, `tiktok`, `youtube`, `twich`) VALUES
+(3, 'test', 'test', 'kldsjhfrgbvsdkfg', 'siuyrfdjbgsij', 2022, 3, 1, 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `team` (`id`, `name`, `alias`, `description`, `image`, `current_season`, `pos`, `olimpico`, `especialidad`, `twitter`, `instagram`, `tiktok`, `youtube`, `twich`) VALUES
+(4, 'test', 'test', 'kldsjhfrgbvsdkfg', 'siuyrfdjbgsij', 2022, 4, 1, 1, NULL, NULL, NULL, NULL, NULL);
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
 (1, 'Alejandro de la Haba Heredia', 'alexdlhh@gmail.com', NULL, '$2y$10$HLOqElZPwqT6PFusmZd0qeyi6anKqFF/ZM9aNMX2BNHFjMvRLLxHq', NULL, '2022-08-14 18:31:15', '2022-08-14 18:31:15', 1);
