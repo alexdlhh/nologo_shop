@@ -233,7 +233,43 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     margin-top:20px !important;
     margin-bottom:20px !important;
 }
-
+.sub_section{
+    font-weight: bold;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom: #445668 1px solid;
+}
+/*textedit plugin ajuste en modales*/
+#add_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(1){
+    width: 100% !important;
+}
+#add_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(2){
+    width: 100% !important;
+}
+#add_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(3){
+    width: 100% !important;
+}
+#add_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div:nth-child(1){
+    width: 99% !important;
+}
+#add_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1){
+    width: 100% !important;
+}
+#edit_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(1){
+    width: 100% !important;
+}
+#edit_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(2){
+    width: 100% !important;
+}
+#edit_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(3){
+    width: 100% !important;
+}
+#edit_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(3) > div:nth-child(1){
+    width: 99% !important;
+}
+#edit_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1){
+    width: 100% !important;
+}
 /* .what-is-included .group .list li .popover {
     position: absolute;
     left: -16px;
