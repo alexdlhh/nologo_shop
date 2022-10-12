@@ -26,10 +26,29 @@ class RSController extends Controller
     /**
      * store new social media
      */
-    public function store(Request $request){
+    public function postCreate(Request $request){
         $rsRepository = new RSRepository();
-        $rs = $rsRepository->create($request->all());
-        return $rs;
+        $image_url = '';
+        if(!empty($request->file('icon')) && $request->file('icon')!='undefined'){
+            //upload image
+            $image = $request->file('icon');
+            //prepare image name with title without special characters and spaces
+            $image_name = str_replace(' ', '', $request->input('name'));
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/social/');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/social/'.$imageName;
+        }
+        if($request->input('id') != 0){
+            $rs = $rsRepository->update($request, $image_url);
+            return $request->input('id');
+        }else{
+            $rs = $rsRepository->create($request,$image_url);
+            return $rs;
+        }
+        
     }
 
     /**

@@ -18,12 +18,12 @@
                                 <label for="name">Nombre</label>
                             </div>
                             <div class="col s6 input-field">
-                                <input id="description" type="text" class="validate">
-                                <label for="description">Url</label>
+                                <input id="url_field" type="text" class="validate">
+                                <label for="url_field">Url</label>
                             </div>
                             <div class="col s12 input-field">
                                 <div class="row">
-                                    <div class="col s6"><label for="image">Icono</label><br><input id="image" type="file" class="validate"></div>
+                                    <div class="col s6"><label for="icon">Icono</label><br><input id="icon" type="file" class="validate"></div>
                                     <div class="col s6"><img id="preview" class="materialboxed" width="100px" src="" alt="preview"></div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
     $(document).ready(function(){
         $('select').formSelect();
         $('.materialboxed').materialbox();
-        $('#image').change(function(){
+        $('#icon').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#preview').attr('src', e.target.result);
@@ -55,12 +55,12 @@
         $('#save').click(function(){
             spiner();
             var name = $('#name').val();
-            var description = $('#description').html();
-            var image = $('#image').prop('files');
+            var url = $('#url_field').val();
+            var icon = $('#icon').prop('files');
             var formData = new FormData();
             formData.append('name', name);
-            formData.append('description', description);
-            formData.append('image', image[0]);
+            formData.append('url', url);
+            formData.append('icon', icon[0]);
             formData.append('id',0);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
@@ -73,6 +73,10 @@
                 success: function(data){
                     removeSpiner();
                     window.location.href='/admin/rs/edit/'+data;
+                },
+                error: function(data){
+                    removeSpiner();
+                    console.log(data);
                 }
             });
         });
