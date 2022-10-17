@@ -94,7 +94,7 @@ label.active {
     color: #445668;
 }
 .container_admin{
-    width: 94%;
+    width: 95%;
     margin:0 auto;    
 }
 .card-stacked{
@@ -270,6 +270,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 #edit_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1){
     width: 100% !important;
 }
+
 /* .what-is-included .group .list li .popover {
     position: absolute;
     left: -16px;

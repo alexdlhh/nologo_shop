@@ -54,8 +54,8 @@
                                     </label>
                                 </p>
                             </div>
-                            <div class="col s6 form-control">
-                                <a href="javascript:;" class="save_general btn btn-success">Guardar</a>
+                            <div class="col s12 form-control">
+                                <a href="javascript:;" class="save_general btn btn-success right">Guardar</a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-content">
-                        <div class="row">
+                        <div class="row" id="imageListId">
                             @foreach($admin['team'] as $team)
                                 <div class="col s12 m3">
                                     <div class="card">
@@ -811,5 +811,20 @@
     $(document).ready(function(){
         $('.modal').modal();
     });
+</script>
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> 
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js" defer></script>
+<script>
+    $(function() {
+        $("#imageListId").sortable({
+            update: function(event, ui) {
+                    getIdsOfImages();
+                } //end update		
+        });
+    });
+
+    function getIdsOfImages() {
+        console.log('aqui');
+    }
 </script>
 @endsection
