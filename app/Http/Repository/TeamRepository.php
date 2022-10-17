@@ -50,4 +50,74 @@ class TeamRepository{
         $teamList = $teamMapper->mapCollection($teamList);
         return $teamList;
     }
+    
+    /**
+     * @param Request $request
+     * @return int
+     */
+    public function postTeamNew(Request $request, $img){
+        $teamMapper = new TeamMapper();
+        $data = $request->all();
+        $team = $teamMapper->map($data);
+        $id = DB::table('team')
+            ->insertGetId(
+                [
+                    'name' => $team->getName(),
+                    'alias' => $team->getAlias(),
+                    'description' => $team->getDescription(),
+                    'image' => $img,
+                    'current_season' => $team->getCurrentSeason(),
+                    'pos' => $team->getPos(),
+                    'olimpico' => $team->getOlimpico(),
+                    'especialidad' => $team->getEspecialidad(),
+                    'twitter' => $team->getTwitter(),
+                    'twich' => $team->getTwich(),
+                    'instagram' => $team->getInstagram(),
+                    'youtube' => $team->getYoutube(),
+                    'tiktok' => $team->getTiktok(),
+                ]
+            );
+        return $id;
+    }
+
+    /**
+     * @param Request $request
+     * @return int
+     */
+    public function postTeamEdit(Request $request, $img){
+        $teamMapper = new TeamMapper();
+        $data = $request->all();
+        $team = $teamMapper->map($data);
+        $id = DB::table('team')
+            ->where('id', $team->getId())
+            ->update(
+                [
+                    'name' => $team->getName(),
+                    'alias' => $team->getAlias(),
+                    'description' => $team->getDescription(),
+                    'image' => $img,
+                    'current_season' => $team->getCurrentSeason(),
+                    'pos' => $team->getPos(),
+                    'olimpico' => $team->getOlimpico(),
+                    'especialidad' => $team->getEspecialidad(),
+                    'twitter' => $team->getTwitter(),
+                    'twich' => $team->getTwich(),
+                    'instagram' => $team->getInstagram(),
+                    'youtube' => $team->getYoutube(),
+                    'tiktok' => $team->getTiktok(),
+                ]
+            );
+        return $id;
+    }
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function postTeamDelete($id){
+        $id = DB::table('team')
+            ->where('id', $id)
+            ->delete();
+        return $id;
+    }
 }

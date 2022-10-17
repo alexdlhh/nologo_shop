@@ -18,6 +18,11 @@ class TeamMapper{
         !empty($data['pos']) ? $team->setPos($data['pos']) : null;
         !empty($data['description']) ? $team->setDescription($data['description']) : null;
         !empty($data['olimpico']) ? $team->setOlimpico($data['olimpico']) : null;
+        !empty($data['twitter']) ? $team->setTwitter($data['twitter']) : null;
+        !empty($data['instagram']) ? $team->setInstagram($data['instagram']) : null;
+        !empty($data['youtube']) ? $team->setYoutube($data['youtube']) : null;
+        !empty($data['tiktok']) ? $team->setTiktok($data['tiktok']) : null;
+        !empty($data['twich']) ? $team->setTwich($data['twich']) : null;
 
         return $team;
     }

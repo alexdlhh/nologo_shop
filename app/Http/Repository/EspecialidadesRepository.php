@@ -74,7 +74,7 @@ class EspecialidadesRepository
      * @param array $data
      * @return int
      */
-    public function update(Request $request){
+    public function postEditGeneral(Request $request){
         $especialidadesMapper = new EspecialidadesMapper();
         $data = $request->all();
         $especialidades = $especialidadesMapper->map($data);
@@ -103,5 +103,25 @@ class EspecialidadesRepository
             ->where('id', $id)
             ->delete();
         return $id;
+    }
+
+    /**
+     * @param int $id identificador de la especialidad
+     * @param array $players array de jugadores [id,pos]
+     * @return int $status of the operation
+     */
+    public function postReorder($id, $year, $players){
+        $status = 0;
+        foreach($players as $player){
+            $status = DB::table('team')
+                ->where('id', $id)
+                ->where('year', $year)
+                ->update(
+                    [
+                        'pos' => $player['pos'],
+                    ]
+                );
+        }
+        return $status;
     }
 }

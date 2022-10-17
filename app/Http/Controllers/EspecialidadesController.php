@@ -72,4 +72,57 @@ class EspecialidadesController extends Controller
         return response()->json(['id' => $id]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postEditGeneral(Request $request){
+        $id = $this->especialidadesRepository->postEditGeneral($request);
+        return response()->json(['id' => $id]);
+    }
+
+    /**
+     * Nos llega la id de la especialidad, junto con un array de jugadores y sus nuevas posiciones
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postReorder(Request $request){
+        $id = $this->especialidadesRepository->postReorder($request);
+        return response()->json(['id' => $id]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postTeamNew(Request $request){
+        $image="";
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            //upload image
+            $image = $image->store('public/especialidades/team');
+            $image = str_replace("public/","",$image);
+        }
+        $id = $this->teamRepository->postTeamNew($request,$image);
+        return response()->json(['id' => $id]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postTeamEdit(Request $request){
+        $id = $this->teamRepository->postTeamEdit($request);
+        return response()->json(['id' => $id]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postTeamDelete(Request $request){
+        $id = $this->teamRepository->postTeamDelete($request);
+        return response()->json(['id' => $id]);
+    }
+
 }

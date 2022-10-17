@@ -14,9 +14,10 @@ class TeamEntity{
     public $twitter;
     public $instagram;
     public $tiktok;
+    public $youtube;
     public $twich;
 
-    public function __construct($id=0, $name="", $alias="", $image="", $current_season=0, $pos=0, $description="", $olimpico=0, $especialidad=0, $twitter="", $instagram="", $tiktok="", $twich=""){
+    public function __construct($id=0, $name="", $alias="", $image="", $current_season=0, $pos=0, $description="", $olimpico=0, $especialidad=0, $twitter="", $instagram="", $youtube="", $tiktok="", $twich=""){
         $this->id = $id;
         $this->name = $name;
         $this->alias = $alias;
@@ -28,6 +29,7 @@ class TeamEntity{
         $this->especialidad = $especialidad;
         $this->twitter = $twitter;
         $this->instagram = $instagram;
+        $this->yotube = $youtube;
         $this->tiktok = $tiktok;
         $this->twich = $twich;
     }
@@ -74,6 +76,10 @@ class TeamEntity{
 
     public function getInstagram(){
         return $this->instagram;
+    }
+
+    public function getYoutube(){
+        return $this->youtube;
     }
 
     public function getTiktok(){
@@ -126,6 +132,10 @@ class TeamEntity{
 
     public function setInstagram($instagram){
         $this->instagram = $instagram;
+    }
+
+    public function setYoutube($youtube){
+        $this->youtube = $youtube;
     }
 
     public function setTiktok($tiktok){
