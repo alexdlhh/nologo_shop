@@ -5,16 +5,19 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         @yield('css')
     </head>
-    <body>        
+    <body>      
         <nav class="nav-extended">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="center-box hide-on-med-and-down">
+                @foreach($headers as $header)
+                    <li class="nav-item"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
+                @endforeach
+            </ul>
+            <ul class="right hide-on-med-and-down">
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
@@ -27,34 +30,40 @@
                         <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
                     </li>
                 @endguest
-                </ul>
-            </div>
-            <div class="nav-content">
-                <ul class="tabs tabs-transparent">
-                    @foreach($headers as $header)
-                        <li class="tab"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
-                    @endforeach
-                </ul>
+            </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-        @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">Registrate</a>
-            </li>
-        @else
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
-            </li>
-        @endguest
+            @foreach($headers as $header)
+                <li class="nav-item"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
+            @endforeach
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
+                </li>
+            @endguest
         </ul>
+          
+
 
         @yield('content')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                setTimeout(function(){
+                    $('.sidenav').sidenav();
+                }, 500);
+            });
+        </script>
         @yield('scripts')
         <footer class="page-footer">
             <div class="container">
