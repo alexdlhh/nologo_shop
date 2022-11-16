@@ -242,4 +242,19 @@ class NewsRepository
             ->update(['status' => $news->status]);
         return $query;
     }
+
+    /**
+     * @param int $limit
+     * @return array
+     */
+    public function getNews($limit){
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->take($limit)
+            ->get();
+        $news = $newsMapper->mapCollection($news);
+        return $news;
+    }
 }

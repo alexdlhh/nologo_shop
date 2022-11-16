@@ -28,7 +28,7 @@ class NewsMapper{
      * @param Array $data
      * @return array
      */
-    public function mapCollection(array $data): array
+    public function mapCollection($data): array
     {
         $news = [];
         foreach ($data as $item) {

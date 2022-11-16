@@ -7,14 +7,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         @yield('css')
     </head>
-    <body>      
+    <body> 
+        @yield('header_especial') 
         <nav class="nav-extended">
             <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#!" class="brand-logo">
+                <img src="/blanco.png" alt="rfeg">
+            </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="center-box hide-on-med-and-down">
-                @foreach($headers as $header)
-                    <li class="nav-item"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
+                @foreach($front['headers'] as $header)
+                    <li class="nav-item {{$front['section']==$header->getTitle()?'active':''}}"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
                 @endforeach
             </ul>
             <ul class="right hide-on-med-and-down">
@@ -31,12 +34,12 @@
                     </li>
                 @endguest
             </ul>
-            </div>
+            </div>            
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            @foreach($headers as $header)
-                <li class="nav-item"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
+            @foreach($front['headers'] as $header)
+                <li class="nav-item {{$front['section']==$header->getTitle()?'active':''}}"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
             @endforeach
             @guest
                 <li class="nav-item">

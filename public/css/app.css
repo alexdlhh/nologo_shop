@@ -58,9 +58,186 @@ nav.nav-extended .nav-content {
 .container {
     width: 80%;
 }
-
-
+.brand-logo img{
+    height: 64px;
+}
+nav ul li.active{
+    background-color: transparent !important;
+}
+.active a{
+    color: #13E5D7 !important;
+}
+nav ul a:hover {
+    background-color: transparent !important;
+    color: #13E5D7 !important;
+}
+#video_box{
+    position: absolute;
+    overflow: hidden;
+    height: 80%;
+    width: 100%;
+}
+#video_header{
+    width: 100%;
+    position: relative;
+    top: -20%;
+    z-index: 1;
+}
+.nav-extended,.nav-wrapper{
+    z-index: 9 !important;
+    padding-top: 15px;
+}
+#header_title{
+    z-index: 9;
+    position: relative;
+    width: 35%;
+}
+#header_title h1{
+    z-index: 9;
+    color: white;
+    font-weight: 300;
+    line-height: 1.5;
+}
+#profile{
+    margin-bottom: 0px !important;
+    background: #13E5D7;
+    background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7 22%);
+    background: -webkit-linear-gradient(left, #0A2540 0%,#13E5D7 22%);
+    background: linear-gradient(to right, #0A2540 0%,#13E5D7 22%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#13E5D7',GradientType=2 );
+}
+.fix_video{
+    padding-bottom: 6.85%;
+}
+.vertical-text{
+    transform: translate(0%, 540%) rotate(-90deg);
+    transform-origin: 0 0;
+    font-size: 2rem;
+    color: white;
+    font-weight: 300;
+    width: 300px !important;
+    height: 50px;
+}
+.selector-vetical{
+    width: 10%;
+    float: left;
+}
+.areapersonal{
+    width: 90%;
+    float: left;
+}
+.calendar_day{
+    background-color: #0A2540;
+    color: white;
+    width: 33px;
+    text-align: center;
+    line-height: 0.95;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 3px;
+}
 /*FOOTER*/
 .page-footer{
     margin-top: 100px;
+}
+
+/*HOME*/
+.homenews{
+    color: #0A2540;
+}
+.homenews .row{
+    margin-bottom: 0;
+}
+.tablehome th{
+    background-color: #0A2540;
+    color: white;
+    padding-left: 12px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+.tablehome tr{
+    border: 0px solid white;
+    margin-bottom:2px;
+}
+.whitedeep{
+    background: white;
+    margin-top: 50px;
+    width: 99% !important;
+}
+.tablehome td{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.whitedeep .card .card-content{
+    padding: 0px !important;
+}
+.newshometitle{
+    line-height: 1.1;
+    margin-top: 3px;
+    padding-left:3px;
+}
+.frase1{
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+}
+.frase2{
+    text-align: right;
+    font-size: 2.5rem;
+    color: #0A2540;
+}
+#motivadora{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: #13E5D7;
+    background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7 52%);
+    background: -webkit-linear-gradient(left, #0A2540 0%,#13E5D7 52%);
+    background: linear-gradient(to right, #0A2540 0%,#13E5D7 52%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#13E5D7',GradientType=2 );
+}
+#noticias h2{
+    color: white;
+    padding-left:40px;
+    font-weight: 300;
+}
+#eventos h2{
+    color: white;
+    padding-left:40px;
+    font-weight: 300;
+}
+.carousel .carousel-item{
+    width: 300px !important;
+}
+.carousel2 .carousel-item{
+    width: 300px !important;
+}
+.imgbackground{
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 250px;
+    margin-bottom:0px !important;
+}
+#patrocinadores{
+    padding-top:40px;
+    padding-bottom: 40px;
+    background-color: white;
+    margin-bottom:0px !important;
+}
+#patrocinadores h2{
+    color: #0A2540;
+    padding-left:40px;
+    font-weight: 300;
+}
+.sponsor{
+    text-align: center;
+}
+.sponsor img{
+    width: 50px;
 }
