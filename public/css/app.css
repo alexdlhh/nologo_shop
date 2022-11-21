@@ -3,10 +3,7 @@
     font-family: 'Lora'; 
     src: local('Lora'),url('/fonts/static/Lora-Regular.ttf')
 }
-@font-face {
-    font-family: 'Manrope'; 
-    src: local('Manrope'),url('/fonts/Manrope-VariableFont_wght.ttf')
-}
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600;800&display=swap');
 @font-face {
     font-family: 'ManropeBold';
     src: local('ManropeBold'),url('/fonts/static/Manrope-Bold.ttf');
