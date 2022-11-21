@@ -56,8 +56,7 @@ class JournalRepository
                     ->get();
             }
         }
-        
-        $journalList = $journalMapper->mapCollection(get_object_vars($journal));
+        $journalList = $journalMapper->mapCollection($journal->toArray());
         return $journalList;
     }
     
@@ -95,17 +94,52 @@ class JournalRepository
     public function create(Request $request, string $image, string $url){
         $journalMapper = new JournalMapper();
         $journal = $journalMapper->map($request->all());
-        $id = DB::table('journal')->insertGetId(
-            [
-                'title' => $journal->getTitle(),
-                'description' => $journal->getDescription(),
-                'image' => $image,
-                'url' => $url,
-                'album' => $journal->getAlbum(),
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        );
+        if($image!='' && $url!=''){
+            $id = DB::table('journal')->insertGetId(
+                [
+                    'title' => $journal->getTitle(),
+                    'description' => $journal->getDescription(),
+                    'image' => $image,
+                    'url' => $url,
+                    'album' => $journal->getAlbum(),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+        }elseif($image!=''){
+            $id = DB::table('journal')->insertGetId(
+                [
+                    'title' => $journal->getTitle(),
+                    'description' => $journal->getDescription(),
+                    'image' => $image,
+                    'album' => $journal->getAlbum(),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+        }elseif($url!=''){
+            $id = DB::table('journal')->insertGetId(
+                [
+                    'title' => $journal->getTitle(),
+                    'description' => $journal->getDescription(),
+                    'url' => $url,
+                    'album' => $journal->getAlbum(),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+        }else{
+            $id = DB::table('journal')->insertGetId(
+                [
+                    'title' => $journal->getTitle(),
+                    'description' => $journal->getDescription(),
+                    'album' => $journal->getAlbum(),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+
+        }
         return $id;
     }
     
@@ -115,18 +149,56 @@ class JournalRepository
     public function update(Request $request, string $image, string $url){
         $journalMapper = new JournalMapper();
         $journal = $journalMapper->map($request->all());
-        $id = DB::table('journal')
-            ->where('id', $journal->getId())
-            ->update(
-                [
-                    'title' => $journal->getTitle(),
-                    'description' => $journal->getDescription(),
-                    'image' => $image,
-                    'url' => $url,
-                    'album' => $journal->getAlbum(),
-                    'updated_at' => date('Y-m-d H:i:s')
-                ]
-            );
+        if($image!='' && $url!=''){
+            DB::table('journal')
+                ->where('id', $journal->getId())
+                ->update(
+                    [
+                        'title' => $journal->getTitle(),
+                        'description' => $journal->getDescription(),
+                        'image' => $image,
+                        'url' => $url,
+                        'album' => $journal->getAlbum(),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+        }elseif($image!=''){
+            DB::table('journal')
+                ->where('id', $journal->getId())
+                ->update(
+                    [
+                        'title' => $journal->getTitle(),
+                        'description' => $journal->getDescription(),
+                        'image' => $image,
+                        'album' => $journal->getAlbum(),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+        }elseif($url!=''){
+            DB::table('journal')
+                ->where('id', $journal->getId())
+                ->update(
+                    [
+                        'title' => $journal->getTitle(),
+                        'description' => $journal->getDescription(),
+                        'url' => $url,
+                        'album' => $journal->getAlbum(),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+        }else{
+            DB::table('journal')
+                ->where('id', $journal->getId())
+                ->update(
+                    [
+                        'title' => $journal->getTitle(),
+                        'description' => $journal->getDescription(),
+                        'album' => $journal->getAlbum(),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+        }
+        return $journal->getId();
     }
     
     /**

@@ -25,7 +25,7 @@
                                             <select id="albums">
                                                 <option value="" disabled selected>Album</option>
                                                 @foreach($admin['albums'] as $album)
-                                                    <option value="{{ $album->id }}" {{ $admin['album_id'] == $album->id ? 'selected' : '' }}>{{ $album->name }}</option>
+                                                    <option value="{{ $album->id }}" {{ $admin['album'] == $album->id ? 'selected' : '' }}>{{ $album->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -44,35 +44,25 @@
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-content">
-                        <div class="row" id="tabla">   
-                            <table class="striped">
-                                <thead>
-                                <tr>
-                                    <th>Portada</th>
-                                    <th>Titulo</th>
-                                    <th>Album</th>
-                                    <th>Opciones</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                @foreach($admin['journals'] as $journal)
-                                    <tr>
-                                        <td><img src="{{ $course->getImage() }}" class="materialboxed" width="80px" alt=""></td>
-                                        <td>{{ $journal->getName() }}</td>
-                                        <td>
-                                            <p>
-                                            {{$admin['album_name'][$journal->getId()]}}
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <a href="/admin/journal/edit/{{$journal->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                            <a href="javascript:void(0);" data-id="{{$journal->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                        <div class="row" id="cards">   
+                            @foreach($admin['journals'] as $journal)
+                                <div class="col s12 m6 l4">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <img src="{{ $journal->image }}">
+                                            <span class="card-title"></span>
+                                        </div>
+                                        <div class="card-content">
+                                            <p>{{ $journal->title }}</p>
+                                        </div>
+                                        <div class="card-action">
+                                            <a href="/admin/journal/edit/{{ $journal->id }}">Editar</a>
+                                            <a href="{{ $journal->url }}">Ver</a>
+                                            <a href="javascript:void(0);" class="del" data-id="{{ $journal->id }}">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="row">
                             <ul class="pagination">

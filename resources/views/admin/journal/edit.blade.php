@@ -37,7 +37,7 @@
                                     <div class="col s6">
                                         <label for="url">Documento</label><br>
                                         <input id="url_file" type="file" class="validate"><br>
-                                        <iframe src="{{$admin['journal']->getUrl()}}" frameborder="0"></iframe>
+                                        <embed src="{{$admin['journal']->getUrl()}}" width="500" height="375" type="application/pdf">
                                         <!--p>o bien escriba la url</p>
                                         <input id="url" type="text" class="validate" value="{{$admin['journal']->getUrl()}}"-->
                                     </div>

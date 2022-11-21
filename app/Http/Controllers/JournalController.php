@@ -16,12 +16,12 @@ class JournalController extends Controller
     {
         $journalRepository = new JournalRepository();
         $albumRepository = new AlbumRepository();
-        $journals = $journalRepository->getAll($album,$page, $search);
+        $journals = $journalRepository->getAll($album,$page,$search);
         $total = $journalRepository->getTotal($album,$search);
         $albums = $albumRepository->getAll(0,'');
         $pages = ceil($total/10);
 
-        return view('admin.journal.list', ['admin'=>['title'=>'Revistas','albums'=>$albums,'journals'=>$journals, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'jorunal','subsection' => 'listjournal']]);
+        return view('admin.journal.list', ['admin'=>['title'=>'Revistas','albums'=>$albums,'album'=>$album,'journals'=>$journals, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'jorunal','subsection' => 'listjournal']]);
     }
     
     /**
@@ -67,10 +67,6 @@ class JournalController extends Controller
             //change $request feature_image content to current location of image
             $image = '/images/journal/'.$image_name;
             $request->input('image', $image);
-        }else{
-            if(!empty($request->input('old_image'))){
-                $image = $request->input('old_image');
-            }
         }
         if(!empty($request->file('url_file'))){
             $url = $request->file('url_file');
@@ -83,10 +79,6 @@ class JournalController extends Controller
             //change $request feature_image content to current location of image
             $url = '/files/journal/'.$url_name;
             $request->input('url_file', $url);
-        }else{
-            if(!empty($request->input('old_url'))){
-                $url = $request->input('old_url');
-            }
         }
         if($request->input('id') == 0){
             $id = $journalRepository->create($request, $image, $url);
@@ -100,7 +92,7 @@ class JournalController extends Controller
      * @param int $id
      * @return int $id
      */
-    public function delete(int $id){
+    public function postDelete(int $id){
         $journalRepository = new JournalRepository();
         $journalRepository->delete($id);
         return $id;
