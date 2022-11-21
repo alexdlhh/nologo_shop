@@ -35,10 +35,10 @@ services:
           - /var/lib/mysql
       restart: always
       environment:
-          MYSQL_ROOT_PASSWORD: nologo
-          MYSQL_USER: nologo
-          MYSQL_PASSWORD: nologo
-          MYSQL_DATABASE: nologo_web
+          MYSQL_ROOT_PASSWORD: gHm%!1@alX
+          MYSQL_USER: dockuser
+          MYSQL_PASSWORD: gHm%!1@alX
+          MYSQL_DATABASE: rfeg_web
 
 
 networks:

@@ -3,6 +3,18 @@
     font-family: 'Lora'; 
     src: local('Lora'),url('/fonts/static/Lora-Regular.ttf')
 }
+@font-face {
+    font-family: 'Manrope'; 
+    src: local('Manrope'),url('/fonts/Manrope-VariableFont_wght.ttf')
+}
+@font-face {
+    font-family: 'ManropeBold';
+    src: local('ManropeBold'),url('/fonts/static/Manrope-Bold.ttf');
+}
+html,body,p,span,a,li,td,h1,h2,h3,h4,h5,h6,label {
+    font-family: "Manrope","Helvetica Neue",sans-serif !important;
+    font-weight: normal !important;
+}
 /*BASE*/
 body{
     margin: 0;
