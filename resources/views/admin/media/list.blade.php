@@ -41,7 +41,11 @@
                                 <div class="col s12 m4">
                                     <div class="card">
                                         <div class="card-image">
+                                            @if($media->getType() == 'image')
                                             <img src="{{ $media->getUrl() }}" class="materialboxed" alt="$media->getDescription()">
+                                            @else
+                                            <iframe src="{{ $media->getUrl() }}" class="video_size" frameborder="0"></iframe>
+                                            @endif
                                         </div>
                                         <div class="card-content">
                                             <span class="card-title">{{$media->getTitle()}}</span>

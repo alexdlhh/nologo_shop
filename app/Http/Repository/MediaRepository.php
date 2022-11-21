@@ -44,6 +44,20 @@ class MediaRepository
     }
 
     /**
+     * getbyid
+     * @param $id
+     * @return MediaEntity
+     */
+    public function getById($id){
+        $mediaMapper = new MediaMapper();
+        $media = DB::table('media')
+            ->where('id', $id)
+            ->first();
+        $media = $mediaMapper->map(get_object_vars($media));
+        return $media;
+    }
+
+    /**
      * get by collection id its relating to media, one collection can have many media
      * @param $id
      * @return array
@@ -62,32 +76,69 @@ class MediaRepository
      * @param array $data
      * @return bool
      */
-    public function create(Request $request){
+    public function create(Request $request,$url,$type){
         $mediaMapper = new MediaMapper();
         $media = $mediaMapper->map($request->all());
-        $media->save();
-        return true;
+        $id = DB::table('media')->insertGetId([
+            'title' => $media->getTitle(), 
+            'description' => $media->getDescription(),
+            'type' => $type,
+            'created_at' => !empty($media->getCreatedAt()) ? $media->getCreatedAt() : date('Y-m-d H:i:s'),
+            'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
+            'url' => $url,
+            'coleccion' => $media->getColeccion()
+            ]);
+        return $id;
     }
     
     /**
      * @param array $data
      */
-    public function update(Request $request, $filter = []){
+    public function update(Request $request,$url,$type){
         $mediaMapper = new MediaMapper();
         $media = $mediaMapper->map($request->all());
-        DB::table('media')
-            ->where($filter)
-            ->update($media->toArray());
+        dump($media);
+        dump($url);
+        dump($type);
+        if($type=='image'){
+            DB::table('media')
+                ->where('id', $media->getId())
+                ->update([
+                    'title' => $media->getTitle(), 
+                    'description' => $media->getDescription(),
+                    'type' => $type,
+                    'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
+                    'url' => $url,
+                    'coleccion' => $media->getColeccion()
+                ]);
+        } elseif($type=='video'){
+            DB::table('media')
+                ->where('id', $media->getId())
+                ->update([
+                    'title' => $media->getTitle(), 
+                    'description' => $media->getDescription(),
+                    'type' => $type,
+                    'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
+                    'url' => $url,
+                    'coleccion' => $media->getColeccion()
+                ]);
+        } else {
+            DB::table('media')
+                ->where('id', $media->getId())
+                ->update([
+                    'title' => $media->getTitle(), 
+                    'description' => $media->getDescription(),
+                    'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
+                    'coleccion' => $media->getColeccion()
+                ]);
+        }
     }
 
     /**
      * @param array $data
      */
-    public function delete(Request $request, $filter = []){
+    public function delete($id){
         $mediaMapper = new MediaMapper();
-        $media = $mediaMapper->map($request->all());
-        DB::table('media')
-            ->where($filter)
-            ->delete();
+        DB::table('media')->where('id', '=', $id)->delete();
     }
 }

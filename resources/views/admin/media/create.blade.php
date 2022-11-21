@@ -87,20 +87,24 @@
             formData.append('description', description);
             formData.append('coleccion', coleccion);
             formData.append('created_at', created_at);
-            formData.append('video', video[0]);
+            formData.append('video', video);
             formData.append('id', 0);
             formData.append('image', image[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
             $.ajax({
-                url: '{{ route('admin.journals.store') }}',
+                url: '{{ route('admin.media.store') }}',
                 type: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/journal/edit/'+data;
+                    window.location.href='/admin/media/edit/'+data;
+                },
+                error: function(data){
+                    removeSpiner();
+                    console.log(data);
                 }
             });
         });

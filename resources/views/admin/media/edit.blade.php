@@ -11,17 +11,17 @@
                     <div class="card-content">
                         <div class="row" id="formulario">   
                             <div class="col s12">
-                                <h6 class="header">Nuevo Media</h6>
+                                <h6 class="header">Editar Media</h6>
                             </div>
                             <div class="col s6 input-field">
                                 <input id="title" type="text" class="validate" value="{{ $admin['media']->getTitle() }}">
                                 <label for="title">Titulo</label>
                             </div>
-                            <div class="col s6 input-field">
+                            <div class="col s6 input-field">                                
                                 <select id="coleccion">
                                     <option value="" disabled>Elige una colección</option>
                                     @foreach($admin['colecciones'] as $coleccion)
-                                        <option value="{{$coleccion->id}} {{ $coleccion->id==$admin['media']->getColeccion()?'selected':'' }}">{{$coleccion->name}}</option>
+                                        <option value="{{$coleccion->id}}" {{ $coleccion->id==$admin['media']->getColeccion()?'selected':'' }}>{{$coleccion->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -32,15 +32,16 @@
                             <div class="col s6 input-field">
                                 <div class="row">
                                     <div class="col s12"><label for="image">Imagen</label><br><input id="image" type="file" class="validate"></div>
-                                    <div class="col s12"><img id="preview" class="materialboxed" width="100px" src="{{ $admin['media']->getType()==1?$admin['media']->getUrl():'' }}" alt="preview"></div>
+                                    <div class="col s12"><img id="preview" class="materialboxed" width="100px" src="{{ $admin['media']->getType()=='image'?$admin['media']->getUrl():'' }}" alt="preview"></div>
                                 </div>
                             </div>  
                             <div class="col s6 input-field">
                                 <div class="row">
                                     <div class="col s12"><label for="video">Video</label><br><input id="video" type="text" class="validate" value="https://www.youtube.com/embed/{{ $admin['media']->getType()==2?$admin['media']->getUrl():'' }}"></div>
-                                    <div class="col s12"><iframe id="video_preview" src="{{ $admin['media']->getType()==2?$admin['media']->getUrl():'' }}" frameborder="0"></iframe></div>
+                                    <div class="col s12"><iframe id="video_preview" src="{{ $admin['media']->getType()=='video'?$admin['media']->getUrl():'' }}" frameborder="0"></iframe></div>
                                 </div>
-                            </div>            
+                            </div>        
+                            <input type="hidden" id="id" value="{{ $admin['media']->getId() }}">    
                         </div>
                     </div>
                 </div>
@@ -78,6 +79,7 @@
             var coleccion = $('#coleccion').val();
             var image = $('#image').prop('files');
             var video = $('#video').val();
+            var id = $('#id').val();
             //now datetime sql format
             var date = new Date();
             var created_at = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
@@ -87,13 +89,13 @@
             formData.append('description', description);
             formData.append('coleccion', coleccion);
             formData.append('created_at', created_at);
-            formData.append('video', video[0]);
-            formData.append('id', 0);
+            formData.append('video', video);
+            formData.append('id', id);
             formData.append('image', image[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
             $.ajax({
-                url: '{{ route('admin.journals.store') }}',
+                url: '{{ route('admin.media.store') }}',
                 type: 'POST',
                 data: formData,
                 processData: false,

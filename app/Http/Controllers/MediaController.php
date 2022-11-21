@@ -42,6 +42,7 @@ class MediaController extends Controller
     {
         $mediaRepository = new MediaRepository();
         $url = '';
+        $type = '';
         if(!empty($request->file('image'))){
             //upload image
             $image = $request->file('image');
@@ -50,10 +51,10 @@ class MediaController extends Controller
             $image->move($destinationPath, $name);
             $type = 'image';
             $url = '/images/colecciones/'.$name;
-        } else {
+        } elseif($request->input('video') != 'https://www.youtube.com/embed/') {
             //save video url
             $type = 'video';
-            $url = $request->video;
+            $url = $request->input('video');
         }
 
         if($request->id == 0){

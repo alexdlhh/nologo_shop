@@ -96,8 +96,20 @@
                                 </li>
                                 <li>
                                     <a href="/admin/media/create" class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}"><b>Añadir Media</b></span><span class="child-selector {{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">></span>
+                                        <span class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}"><b>Añadir Fotos y Videos</b></span><span class="child-selector {{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">Añadir nuevo recurso gráfico</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/albums" class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}"><b>Listar Album</b></span><span class="child-selector {{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Administrar conjunto de revistas</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/journal/create" class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}"><b>Añadir Revista</b></span><span class="child-selector {{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">Añadir nueva revista</p>
                                     </a>
                                 </li>
                             </ul>
@@ -122,7 +134,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
+                    <!--li>
                         <div class="collapsible-header {{$admin['section'] == 'journal' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'journal' ? 'active' : ''}}">local_library</i>Revistas</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'journal' ? 'display: block;' : ''}}">
                             <ul class="list-child">
@@ -152,7 +164,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li-->
                     <li>
                         <div class="collapsible-header {{$admin['section'] == 'school' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'school' ? 'active' : ''}}">school</i>Escuelas</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'school' ? 'display: block;' : ''}}">

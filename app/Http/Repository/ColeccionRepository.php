@@ -21,11 +21,11 @@ class ColeccionRepository
         if(!empty($search)) {
             $coleccion = DB::table('coleccion')
                 ->where('name', 'like', '%'.$search.'%')
-                ->orderBy('name', 'asc')
+                ->orderBy('name', 'desc')
                 ->skip($page)->take(10)->get();
         } else {
             $coleccion = DB::table('coleccion')
-                ->orderBy('name', 'asc')
+                ->orderBy('name', 'desc')
                 ->skip($page)->take(10)->get();
         }
         if(!empty($coleccion->toArray())) {

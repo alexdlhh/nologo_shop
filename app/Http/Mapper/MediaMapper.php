@@ -2,14 +2,14 @@
 
 namespace App\Http\Mapper;
 
-use App\Http\Entities\MediaEntity;
+use App\Http\Entity\MediaEntity;
 
 class MediaMapper{
     /**
      * @param array $data
      * @return MediaEntity
      */
-    public function map(array $data): MediaEntity
+    public function map($data): MediaEntity
     {
         $media = new MediaEntity();
         !empty($data['id']) ? $media->setId($data['id']) : null;

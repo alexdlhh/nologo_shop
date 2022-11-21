@@ -11,7 +11,7 @@
                     <div class="card-content">
                         <div class="row" id="formulario">   
                             <div class="col s12">
-                                <h6 class="header">Nueva Colección</h6>
+                                <h6 class="header">Editar Colección</h6>
                             </div>
                             <input type="text" id="id" value="{{ $admin['coleccion']->id }}" hidden>
                             <div class="col s6 input-field">
@@ -27,6 +27,7 @@
     <div class="rightf">
         <a href="javascript:void(0);" id="del" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
         <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
+        <a href="/admin/media_list/{{ $admin['coleccion']->id }}" id="save" class="btn-floating btn-large waves-effect waves-light yellow"><i class="material-icons">remove_red_eye</i></a>
     </div>
 </div>
 @endsection
