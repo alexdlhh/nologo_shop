@@ -232,4 +232,6 @@ return [
 
     ],
 
+    'Common' => 'App\Http\Helpers\Common'
+
 ];

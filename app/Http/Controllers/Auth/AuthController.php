@@ -8,7 +8,6 @@ use Session;
 use App\Models\User;
 use Hash;
 use App\Http\Repository\RSRepository;
-
 use App\Http\Repository\PagesRepository;
 
 class AuthController extends Controller
@@ -21,6 +20,7 @@ class AuthController extends Controller
 
     public function index(){
         $pageRepository = new PagesRepository();
+        $RSRepository = new RSRepository();
         $headers = $pageRepository->getAll('section','=','1');
         $rs = $RSRepository->getAll();
         $front = [
