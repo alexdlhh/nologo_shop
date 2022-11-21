@@ -465,3 +465,17 @@ nav ul a {
     font-weight: 800 !important;
     /*font-family: 'ManropeBold' !important;*/
 }
+
+/*RESPONSIVE*/
+/*Media query 1360px ancho*/
+@media only screen and (max-width: 1360px){
+    nav ul a {
+        font-size: 0.66rem !important;
+    }
+}
+/*Media query 1460px ancho*/
+@media only screen and (max-width: 1460px){
+    nav ul a {
+        font-size: 0.8rem !important;
+    }
+}
