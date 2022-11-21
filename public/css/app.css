@@ -467,15 +467,6 @@ nav ul a {
 }
 
 /*RESPONSIVE*/
-/*Media query 1360px ancho*/
-@media only screen and (max-width: 1360px){
-    nav ul a {
-        font-size: 0.66rem !important;
-    }
-    #header_title h1 {
-        font-size: 3rem !important;
-    }
-}
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
     nav ul a {
@@ -483,5 +474,14 @@ nav ul a {
     }
     #header_title h1 {
         font-size: 3.5rem !important;
+    }
+}
+/*Media query 1360px ancho*/
+@media only screen and (max-width: 1360px){
+    nav ul a {
+        font-size: 0.64rem !important;
+    }
+    #header_title h1 {
+        font-size: 3rem !important;
     }
 }
