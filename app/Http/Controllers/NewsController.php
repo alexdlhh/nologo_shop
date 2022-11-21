@@ -9,7 +9,7 @@ use App\Http\Repository\CategoryNewRepository;
 use App\Http\Repository\TagNewRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
-use App\Http\Helpers\Common;
+//use App\Http\Helpers\Common;
 
 class NewsController extends Controller
 {
@@ -170,13 +170,13 @@ class NewsController extends Controller
      * Vista de la front Page
      */
     public function frontPage($menu1='2022', $menu2='noviembre'){
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
 
@@ -198,13 +198,13 @@ class NewsController extends Controller
      * Vista de la front Page
      */
     public function frontPageCalendar($menu1='ritmica', $menu2='todo'){
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
 
@@ -226,13 +226,13 @@ class NewsController extends Controller
      * Vista de la front Page
      */
     public function frontPageMultimedia($menu1='2022', $menu2='ritmica'){
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
 
@@ -254,13 +254,13 @@ class NewsController extends Controller
      * Vista de la front Page
      */
     public function frontPageRevista($menu1='2022', $menu2='todo'){
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
 
@@ -282,13 +282,13 @@ class NewsController extends Controller
      * Vista de la front Page
      */
     public function frontPageSchool($menu1='cursos', $menu2='entrenadores'){
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
 
@@ -306,5 +306,16 @@ class NewsController extends Controller
         return view('pages.'.$menu1)->with('front',$front);
     }
 
+    public function header_order($headers){
+        $order = [];
+        $aux = [];
+        foreach($headers as $_link){
+            $order[$_link->getOrder()] = $_link;
+        }
+        for($i = 1; $i <= count($order); $i++){
+            $aux[] = $order[$i];
+        }
+        return $aux;
+    }
 
 }

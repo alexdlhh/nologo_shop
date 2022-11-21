@@ -9,7 +9,7 @@ use App\Http\Repository\NewsRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\PagesRepository;
-use App\Http\Helpers\Common;
+//use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
 {
@@ -134,13 +134,13 @@ class EspecialidadesController extends Controller
      * Vista de la front Page
      */
     public function frontPage($menu1='ritmica', $menu2='equipos'){
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $especialidades = $this->especialidadesRepository->getAll();
@@ -157,5 +157,16 @@ class EspecialidadesController extends Controller
             'menu2' => $menu2,
         ];
         return view('pages.especialidades')->with('front',$front);
+    }
+    public function header_order($headers){
+        $order = [];
+        $aux = [];
+        foreach($headers as $_link){
+            $order[$_link->getOrder()] = $_link;
+        }
+        for($i = 1; $i <= count($order); $i++){
+            $aux[] = $order[$i];
+        }
+        return $aux;
     }
 }
