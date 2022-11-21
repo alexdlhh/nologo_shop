@@ -46,6 +46,20 @@ class ColeccionRepository
         $coleccion = $coleccionMapper->map(get_object_vars($coleccion));
         return $coleccion;
     }
+
+    /**
+     * obtener por id
+     * @param $id
+     * @return ColeccionEntity
+     */
+    public function getById($id){
+        $coleccionMapper = new ColeccionMapper();
+        $coleccion = DB::table('coleccion')
+            ->where('id', $id)
+            ->first();
+        $coleccion = $coleccionMapper->map(get_object_vars($coleccion));
+        return $coleccion;
+    }
     
     /**
      * @param array $data
@@ -59,11 +73,11 @@ class ColeccionRepository
             ->insertGetId(
                 [
                     'name' => $coleccion->getName(),
-                    'created_at' => $coleccion->getCreatedAt(),
-                    'updated_at' => $coleccion->getUpdatedAt(),
+                    'create_at' => !empty($coleccion->getCreatedAt())?$coleccion->getCreatedAt():date('Y-m-d H:i:s'),
+                    'update_at' => !empty($coleccion->getUpdatedAt())?$coleccion->getUpdatedAt():date('Y-m-d H:i:s'),
                 ]
             );
-        return $coleccion->id;
+        return $id;
     }
     
     /**
@@ -79,23 +93,19 @@ class ColeccionRepository
             ->update(
                 [
                     'name' => $coleccion->getName(),
-                    'updated_at' => $coleccion->getUpdatedAt(),
+                    'update_at' => !empty($coleccion->getUpdatedAt())?$coleccion->getUpdatedAt():date('Y-m-d H:i:s'),
                 ]
             );
-        return $coleccion->id;
+        return $id;
     }
     
     /**
      * @param array $data
      * @return int
      */
-    public function delete(Request $request){
-        $coleccionMapper = new ColeccionMapper();
-        $data = $request->all();
-        $coleccion = $coleccionMapper->map($data);
-        $id = DB::table('coleccion')
-            ->where('id', $coleccion->id)
+    public function delete($id){
+        return DB::table('coleccion')
+            ->where('id', $id)
             ->delete();
-        return $coleccion->id;
     }
 }

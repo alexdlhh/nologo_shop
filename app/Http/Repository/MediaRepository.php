@@ -42,6 +42,21 @@ class MediaRepository
         $media = $mediaMapper->map($media);
         return $media;
     }
+
+    /**
+     * get by collection id its relating to media, one collection can have many media
+     * @param $id
+     * @return array
+     */
+    public function getByColection($id){
+        $mediaMapper = new MediaMapper();
+        $media = DB::table('media')
+            ->where('coleccion', $id)
+            ->get();
+        $mediaList = $mediaMapper->mapCollection($media);
+        return $mediaList;
+    }
+    
     
     /**
      * @param array $data

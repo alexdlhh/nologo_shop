@@ -10,8 +10,8 @@ class ColeccionMapper
         $coleccion = new ColeccionEntity();
         !empty($data['id'])?$coleccion->setId($data['id']):'';
         !empty($data['name'])?$coleccion->setName($data['name']):'';
-        !empty($data['created_at'])?$coleccion->setCreatedAt($data['created_at']):'';
-        !empty($data['updated_at'])?$coleccion->setUpdatedAt($data['updated_at']):'';
+        !empty($data['create_at'])?$coleccion->setCreatedAt($data['create_at']):date('Y-m-d H:i:s');
+        !empty($data['update_at'])?$coleccion->setUpdatedAt($data['update_at']):date('Y-m-d H:i:s');
         return $coleccion;
     }
 

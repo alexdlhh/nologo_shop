@@ -110,10 +110,10 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/media/delete/{id}',[MediaController::class,'postDelete'])->name('admin.media.delete');
     /**ADMIN COLECCION */
     Route::get('admin/colecciones/{page?}/{search?}',[ColeccionController::class,'colecciones'])->name('admin.colecciones.list');
-    Route::get('admin/colecciones/create',[ColeccionController::class,'CreateColeccion'])->name('admin.colecciones.create');
-    Route::get('admin/colecciones/edit/{id}',[ColeccionController::class,'EditColeccion'])->name('admin.colecciones.edit');
-    Route::post('admin/colecciones/save',[ColeccionController::class,'postCreate'])->name('admin.colecciones.store');
-    Route::get('admin/colecciones/delete/{id}',[ColeccionController::class,'postDelete'])->name('admin.colecciones.delete');
+    Route::get('admin/coleccion/create',[ColeccionController::class,'create'])->name('admin.coleccion.create');
+    Route::get('admin/coleccion/edit/{id}',[ColeccionController::class,'edit'])->name('admin.coleccion.edit');
+    Route::post('admin/coleccion/save',[ColeccionController::class,'postCreate'])->name('admin.coleccion.store');
+    Route::get('admin/coleccion/delete/{id}',[ColeccionController::class,'postDelete'])->name('admin.coleccion.delete');
     /**ADMIN PAGES */
     Route::get('admin/pages',[PageController::class,'getAll'])->name('admin.pages.list');
     Route::get('admin/page/{id}',[PageController::class,'edit'])->name('admin.pages.edit');

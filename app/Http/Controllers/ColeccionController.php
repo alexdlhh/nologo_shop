@@ -54,11 +54,10 @@ class ColeccionController extends Controller
     /**
      * Delete a newly created resource in storage.
      */
-    public function postDelete(Request $request)
+    public function postDelete($id)
     {
         $coleccionRepository = new ColeccionRepository();
-        $coleccionRepository->delete($request);
-        return true;
+        echo $coleccionRepository->delete($id);
     }
 
     /**

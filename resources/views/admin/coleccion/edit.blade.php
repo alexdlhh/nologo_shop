@@ -13,6 +13,7 @@
                             <div class="col s12">
                                 <h6 class="header">Nueva Colección</h6>
                             </div>
+                            <input type="text" id="id" value="{{ $admin['coleccion']->id }}" hidden>
                             <div class="col s6 input-field">
                                 <input id="name" type="text" class="validate" value="{{ $admin['coleccion']->getName() }}">
                                 <label for="name">Nombre</label>
@@ -38,6 +39,7 @@
             var name = $('#name').val();
             var formData = new FormData();
             formData.append('name', name);
+            formData.append('id', $('#id').val());
             formData.append('_token', '{{csrf_token()}}');
             $.ajax({
                 url: '{{ route('admin.coleccion.store') }}',

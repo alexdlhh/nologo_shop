@@ -79,6 +79,7 @@
                     url: '/admin/coleccion/delete/'+id,
                     type: 'GET',
                     success: function(result){
+                        //console.log(result);
                         window.location.reload();
                     }
                 });
@@ -86,7 +87,7 @@
         })
         $('#searchBtn').click(function(){
             var search = $('#searchCriteria').val();
-            window.location.href = '/admin/coleccion/'+search;
+            window.location.href = '/admin/colecciones/'+search;
         });
     });
 </script>
