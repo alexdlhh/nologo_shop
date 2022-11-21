@@ -459,3 +459,8 @@ nav.nav-extended{
 a.active{
     color: #15F0DC;
 }
+nav ul a {
+    text-transform: uppercase;
+    font-weight: 800 !important;
+    font-family: 'ManropeBold' !important;
+}

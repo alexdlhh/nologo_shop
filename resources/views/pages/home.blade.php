@@ -17,8 +17,7 @@
 <div class="container fix_video">
     <div id="header_title">
         <h1>
-            Real
-            Federación
+            Real Federación<br>
             Española<br>
             de Gimnasia
         </h1>
