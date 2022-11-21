@@ -18,7 +18,7 @@
                                 <label for="name">Titulo</label>
                             </div>
                             <div class="col s12 input-field">
-                                <textarea id="description">{{ $admin['journal']->getDescripcion() }}</textarea>
+                                <textarea id="description">{{ $admin['journal']->getDescription() }}</textarea>
                                 <label for="description" class="labeldesk">Descripción</label>
                             </div>
                             <div class="col s12 input-field">
@@ -37,19 +37,21 @@
                                     <div class="col s6">
                                         <label for="url">Documento</label><br>
                                         <input id="url_file" type="file" class="validate"><br>
-                                        <p>o bien escriba la url</p>
-                                        <input id="url" type="text" class="validate" value="{{$admin['journal']->getUrl()}}">
+                                        <iframe src="{{$admin['journal']->getUrl()}}" frameborder="0"></iframe>
+                                        <!--p>o bien escriba la url</p>
+                                        <input id="url" type="text" class="validate" value="{{$admin['journal']->getUrl()}}"-->
                                     </div>
                                     <div class="col s6">
                                         <select id="album">
                                             <option value="" disabled selected>Album</option>
                                             @foreach($admin['albums'] as $album)
-                                                <option value="{{ $album->id }}">{{ $album->name }}</option>
+                                                <option value="{{ $album->id }}" {{$album->id==$admin['journal']->getAlbum()?'selected':''}}>{{ $album->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                            </div>        
+                            </div>    
+                            <input type="text" id="id" value="{{ $admin['journal']->getId() }}" hidden>    
                         </div>
                     </div>
                 </div>
@@ -87,13 +89,13 @@
             var created_at = $('#created_at').val();
             var album = $('#album').val();
             var formData = new FormData();
-            formData.append('name', name);
+            formData.append('title', name);
             formData.append('description', description);
             formData.append('url', url);
             formData.append('album', album);
             formData.append('created_at', created_at);
             formData.append('url_file', url_file[0]);
-            formData.append('id', 0);
+            formData.append('id', $('#id').val());
             formData.append('image', image[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');

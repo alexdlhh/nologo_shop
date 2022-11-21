@@ -57,7 +57,7 @@ class JournalRepository
             }
         }
         
-        $journalList = $journalMapper->mapCollection($journal);
+        $journalList = $journalMapper->mapCollection(get_object_vars($journal));
         return $journalList;
     }
     
@@ -70,7 +70,21 @@ class JournalRepository
         $journal = DB::table('journal')
             ->where('id', $id)
             ->first();
-        $journal = $journalMapper->map($journal->toArray());
+        $journal = $journalMapper->map(get_object_vars($journal));
+        return $journal;
+    }
+
+    /**
+     * get by id
+     * @param int $id
+     * @return JournalEntity
+     */
+    public function getById(int $id){
+        $journalMapper = new JournalMapper();
+        $journal = DB::table('journal')
+            ->where('id', $id)
+            ->first();
+        $journal = $journalMapper->map(get_object_vars($journal));
         return $journal;
     }
     

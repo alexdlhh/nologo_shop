@@ -61,37 +61,37 @@ class JournalController extends Controller
             //prepare image name with title without special characters and spaces
             $image_name = str_replace(' ', '', $request->input('name'));
             $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
-            $image = time().$image_name.'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/images/employee/');
-            $image->move($destinationPath, $image);
+            $image_name = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/journal/');
+            $image->move($destinationPath, $image_name);
             //change $request feature_image content to current location of image
-            $image = '/images/employee/'.$image;
+            $image = '/images/journal/'.$image_name;
             $request->input('image', $image);
         }else{
             if(!empty($request->input('old_image'))){
                 $image = $request->input('old_image');
             }
         }
-        if(!empty($request->file('url'))){
-            $url = $request->file('url');
+        if(!empty($request->file('url_file'))){
+            $url = $request->file('url_file');
             //prepare image name with title without special characters and spaces
-            $url_name = str_replace(' ', '', $request->input('name'));
+            $url_name = str_replace(' ', '', $request->input('title'));
             $url_name = preg_replace('/[^A-Za-z0-9\-]/', '', $url_name);        
-            $url = time().$url_name.'.'.$url->getClientOriginalExtension();
+            $url_name = time().$url_name.'.'.$url->getClientOriginalExtension();
             $destinationPath=public_path('/files/journal/');
-            $url->move($destinationPath, $url);
+            $url->move($destinationPath, $url_name);
             //change $request feature_image content to current location of image
-            $url = '/files/journal/'.$url;
-            $request->input('url', $url);
+            $url = '/files/journal/'.$url_name;
+            $request->input('url_file', $url);
         }else{
             if(!empty($request->input('old_url'))){
                 $url = $request->input('old_url');
             }
         }
         if($request->input('id') == 0){
-            $id = $journalRepository->create($request->all(), $image, $url);
+            $id = $journalRepository->create($request, $image, $url);
         }else{
-            $id = $journalRepository->update($request->all(), $image, $url);
+            $id = $journalRepository->update($request, $image, $url);
         }
         return $id;
     }

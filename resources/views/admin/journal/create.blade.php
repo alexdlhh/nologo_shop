@@ -32,8 +32,8 @@
                                     <div class="col s6">
                                         <label for="url">Documento</label><br>
                                         <input id="url_file" type="file" class="validate"><br>
-                                        <p>o bien escriba la url</p>
-                                        <input id="url" type="text" class="validate">
+                                        <!--p>o bien escriba la url</p>
+                                        <input id="url" type="text" class="validate"-->
                                     </div>
                                     <div class="col s6">
                                         <select id="album">
@@ -82,7 +82,7 @@
             var created_at = $('#created_at').val();
             var album = $('#album').val();
             var formData = new FormData();
-            formData.append('name', name);
+            formData.append('title', name);
             formData.append('description', description);
             formData.append('url', url);
             formData.append('album', album);
