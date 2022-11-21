@@ -472,10 +472,16 @@ nav ul a {
     nav ul a {
         font-size: 0.66rem !important;
     }
+    #header_title h1 {
+        font-size: 3rem !important;
+    }
 }
-/*Media query 1460px ancho*/
-@media only screen and (max-width: 1460px){
+/*Media query 1560px ancho*/
+@media only screen and (max-width: 1560px){
     nav ul a {
-        font-size: 0.8rem !important;
+        font-size: 0.75rem !important;
+    }
+    #header_title h1 {
+        font-size: 3.5rem !important;
     }
 }
