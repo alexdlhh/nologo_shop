@@ -26,7 +26,7 @@
 <div class="row" id="profile">
     <div class="col s1">
         <div class="vertical-text">
-            <div class="selector-vetical">></div> <div class="areapersonal">Área Personal <br>de Alex</div>
+            <div class="selector-vetical">></div> <div class="areapersonal">Área Personal de<br> Alex</div>
         </div>
     </div>
     <div class="col s11 area_personal_fix">
