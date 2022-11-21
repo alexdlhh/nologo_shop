@@ -42,8 +42,12 @@ class AlbumController extends Controller
      */
     public function postCreate(Request $request){
         $albumRepository = new AlbumRepository();
-        $id = $albumRepository->create($request);
-        return redirect()->route('admin.albums');
+        if($request->input('id') != null){
+            $id = $albumRepository->update($request,$request->input('id'));
+        } else {
+            $id = $albumRepository->create($request);
+        }
+        return $id;
     }
 
     /**
@@ -51,7 +55,7 @@ class AlbumController extends Controller
      * @param int $id
      * @return int $status
      */
-    public function delete(int $id){
+    public function postDelete(int $id){
         $albumRepository = new AlbumRepository();
         $status = $albumRepository->delete($id);
         return $status;

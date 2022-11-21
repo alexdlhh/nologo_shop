@@ -5,7 +5,7 @@ use App\Http\Entity\AlbumEntity;
 
 class AlbumMapper
 {
-    public function map(array $data)
+    public function map($data)
     {
         $album = new AlbumEntity();
         !empty($data['id'])?$album->setId($data['id']):'';
@@ -15,7 +15,7 @@ class AlbumMapper
         return $album;
     }
 
-    public function mapCollection(array $data)
+    public function mapCollection($data)
     {
         $albumList = [];
         foreach ($data as $item) {

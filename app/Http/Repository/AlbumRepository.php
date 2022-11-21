@@ -45,7 +45,21 @@ class AlbumRepository
         $album = DB::table('album')
             ->where('id', $id)
             ->first();
-        $album = $albumMapper->map($album);
+        $album = $albumMapper->map(get_object_vars($album));
+        return $album;
+    }
+
+    /**
+     * getById
+     * @param int $id
+     * @return array
+     */
+    public function getById(int $id){
+        $albumMapper = new AlbumMapper();
+        $album = DB::table('album')
+            ->where('id', $id)
+            ->first();
+        $album = $albumMapper->map(get_object_vars($album));
         return $album;
     }
     
@@ -60,10 +74,10 @@ class AlbumRepository
         $id = DB::table('album')
             ->insertGetId([
                 'name' => $album->getName(),
-                'created_at' => $album->getCreatedAt(),
-                'updated_at' => $album->getUpdatedAt()
+                'created_at' => !empty($album->getCreatedAt()) ? $album->getCreatedAt() : date('Y-m-d H:i:s'),
+                'updated_at' => !empty($album->getUpdatedAt()) ? $album->getUpdatedAt() : date('Y-m-d H:i:s'),
         ]);
-        return $album->id;
+        return $id;
     }
 
     /**
@@ -78,10 +92,10 @@ class AlbumRepository
             ->where('id', $id)
             ->update([
                 'name' => $album->getName(),
-                'created_at' => $album->getCreatedAt(),
-                'updated_at' => $album->getUpdatedAt()
+                'created_at' => !empty($album->getCreatedAt()) ? $album->getCreatedAt() : date('Y-m-d H:i:s'),
+                'updated_at' => !empty($album->getUpdatedAt()) ? $album->getUpdatedAt() : date('Y-m-d H:i:s'),
             ]);
-        return $album->id;
+        return $id;
     }
 
     /**

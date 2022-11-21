@@ -25,12 +25,12 @@
                                         <p class="{{$admin['subsection'] == 'list' ? 'active' : ''}}">Listado de noticias de la federación</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/news/create" class="{{$admin['subsection'] == 'save' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'save' ? 'active' : ''}}"><b>Añadir Noticia</b></span><span class="child-selector {{$admin['subsection'] == 'save' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'save' ? 'active' : ''}}">Añadir una nueva noticia</p>
                                     </a>
-                                </li>
+                                </li-->
                                 <li>
                                     <a href="/admin/categoriesNew" class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}"><b>Categorias</b></span><span class="child-selector {{$admin['subsection'] == 'cat' ? 'active' : ''}}">></span>
@@ -56,12 +56,12 @@
                                         <p class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">Lista de empleados de RFEF</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/employees" class="{{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}"><b>Añadir Empleado</b></span><span class="child-selector {{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'saveemployees' ? 'active' : ''}}">Añadir empleado a RFEF</p>
                                     </a>
-                                </li>
+                                </li-->
                                 <li>
                                     <a href="#" class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">></span>
@@ -106,6 +106,18 @@
                                         <p class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Administrar conjunto de revistas</p>
                                     </a>
                                 </li>
+                                <!--li>
+                                    <a href="/admin/album/create" class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}"><b>Crear Album</b></span><span class="child-selector {{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">Crear nuevo conjunto de revistas</p>
+                                    </a>
+                                </li-->
+                                <!--li>
+                                    <a href="/admin/journals" class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}"><b>Listar Revistas</b></span><span class="child-selector {{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">Listado de Revistas</p>
+                                    </a>
+                                </li-->
                                 <li>
                                     <a href="/admin/journal/create" class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}"><b>Añadir Revista</b></span><span class="child-selector {{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">></span>
@@ -125,12 +137,12 @@
                                         <p class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">Listado de Patrocinadores y posiciones</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="" class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}"><b>Añadir Patrocinador</b></span><span class="child-selector {{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">Añadir Patrocinador a la web</p>
                                     </a>
-                                </li>
+                                </li-->
                             </ul>
                         </div>
                     </li>
@@ -175,24 +187,24 @@
                                         <p class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}">Listado de escuelas RFEG</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/school/create" class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}"><b>Añadir Escuela</b></span><span class="child-selector {{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">Añadir nueva escuela</p>
                                     </a>
-                                </li>
+                                </li-->
                                 <li>
                                     <a href="/admin/courses" class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}"><b>Listar Cursos</b></span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">Listado de cursos RFEG</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/course/create" class="{{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savecourse' ? 'active' : ''}}"><b>Crear Curso</b></span><span class="child-selector {{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'savecourse' ? 'active' : ''}}">Añadir nuevo curso a RFEG</p>
                                     </a>
-                                </li>
+                                </li-->
                             </ul>
                         </div>
                     </li>
@@ -206,12 +218,12 @@
                                         <p class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">Listado de usuarios registrados</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/users/create" class="{{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'saveusers' ? 'active' : ''}}"><b>Añadir Usuario</b></span><span class="child-selector {{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'saveusers' ? 'active' : ''}}">Añadir nuevo usuario</p>
                                     </a>
-                                </li>
+                                </li-->
                             </ul>
                         </div>
                     </li>
@@ -225,12 +237,12 @@
                                         <p class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Listado de redes sociales de RFEG</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/rs/create" class="{{$admin['subsection'] == 'savers' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savers' ? 'active' : ''}}"><b>Añadir Red Social</b></span><span class="child-selector {{$admin['subsection'] == 'savers' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'savers' ? 'active' : ''}}">Añadir nueva Red Social</p>
                                     </a>
-                                </li>
+                                </li-->
                             </ul>
                         </div>
                     </li>

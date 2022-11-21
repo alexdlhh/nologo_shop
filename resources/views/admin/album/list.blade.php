@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="rightf">
-        <a href="/admin/course/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a href="/admin/album/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
     </div>
 </div>
 @endsection

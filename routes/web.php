@@ -98,10 +98,10 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/journal/delete/{id}',[JournalController::class,'postDelete'])->name('admin.journals.delete');
     /**ADMIN ALBUM */
     Route::get('admin/albums/{page?}/{search?}',[AlbumController::class,'albums'])->name('admin.albums.list');
-    Route::get('admin/album/create',[AlbumController::class,'CreateAlbum'])->name('admin.albums.create');
+    Route::get('admin/album/create',[AlbumController::class,'CreateAlbum'])->name('admin.album.create');
     Route::get('admin/album/edit/{id}',[AlbumController::class,'EditAlbum'])->name('admin.album.edit');
     Route::post('admin/album/save',[AlbumController::class,'postCreate'])->name('admin.album.store');
-    Route::get('admin/album/delete/{id}',[AlbumController::class,'postDelete'])->name('admin.albums.delete');
+    Route::get('admin/album/delete/{id}',[AlbumController::class,'postDelete'])->name('admin.album.delete');
     /**ADMIN MEDIA */
     Route::get('admin/media_list/{coleccion?}/{search?}',[MediaController::class,'media'])->name('admin.media.list');
     Route::get('admin/media/create',[MediaController::class,'CreateMedia'])->name('admin.media.create');
