@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Repository\PagesRepository;
-use App\Http\Helpers\Common;
+//use App\Http\Helpers\Common;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Repository\NewsRepository;
@@ -18,13 +18,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $common = new Common();
+        //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $news = $newRepository->getNews(5);
-        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $front = [
@@ -35,5 +35,17 @@ class HomeController extends Controller
             'sponsors' => $sponsors
         ];
         return view('pages.home')->with('front',$front);
+    }
+
+    public function header_order($headers){
+        $order = [];
+        $aux = [];
+        foreach($headers as $_link){
+            $order[$_link->getOrder()] = $_link;
+        }
+        for($i = 1; $i <= count($order); $i++){
+            $aux[] = $order[$i];
+        }
+        return $aux;
     }
 }
