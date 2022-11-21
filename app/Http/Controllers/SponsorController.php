@@ -19,7 +19,7 @@ class SponsorController extends Controller
         $sponsors = $sponsorRepository->getAll();
         return view('admin.sponsor.list')->with('admin',[
             'title' => 'Listado de Sponsors',
-            'sponsor' => $sponsors,
+            'sponsors' => $sponsors,
             'section' => 'sponsor',
             'subsection' => 'listsponsor'
         ]);
@@ -35,16 +35,23 @@ class SponsorController extends Controller
     {
         $sponsorRepository = new SponsorRepository();
         $image_url= '';
-        if(!empty($request->input('image'))){
-            $image = $request->input('image');
+        $image_white= '';
+        if(!empty($request->file('image'))){
+            $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images/sponsors'), $imageName);
-            $image_url = 'images/sponsors/'.$imageName;
+            $image->move(public_path('/images/sponsors'), $imageName);
+            $image_url = '/images/sponsors/'.$imageName;
+        }
+        if(!empty($request->file('white'))){
+            $image = $request->file('white');
+            $imageName = time().'_white.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/images/sponsors'), $imageName);
+            $image_white = '/images/sponsors/'.$imageName;
         }
         if($request->id == 0){
-            $id = $sponsorRepository->create($request,$image_url);
+            $id = $sponsorRepository->create($request,$image_url,$image_white);
         } else {
-            $id = $sponsorRepository->update($request,$request->id,$image_url);
+            $id = $sponsorRepository->update($request,$request->id,$image_url,$image_white);
         }
         
         return $id;

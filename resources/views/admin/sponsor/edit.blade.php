@@ -22,7 +22,7 @@
                                 <label for="url">Url</label>
                             </div>
                             <div class="col s12 input-field">
-                                <textarea id="description">{{ $admin['sponsor']->getDescrption() }}</textarea>
+                                <textarea id="description">{{ $admin['sponsor']->getDescription() }}</textarea>
                                 <label for="description" class="labeldesk">Descripción</label>
                             </div>
                             <div class="col s12 input-field">

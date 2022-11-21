@@ -1,4 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@font-face {
+    font-family: 'Lora'; 
+    src: local('Lora'),url('/fonts/static/Lora-Regular.ttf')
+}
 /*BASE*/
 body{
     margin: 0;
@@ -55,9 +59,7 @@ nav.nav-extended .nav-content {
     max-width: 80%;
     margin-left: 10%;
 }
-.container {
-    width: 80%;
-}
+
 .brand-logo img{
     height: 64px;
 }
@@ -74,14 +76,18 @@ nav ul a:hover {
 #video_box{
     position: absolute;
     overflow: hidden;
-    height: 80%;
     width: 100%;
+    max-height:571px;
+    text-align: center;
 }
 #video_header{
     width: 100%;
     position: relative;
-    top: -20%;
+    margin-top: -7%;
     z-index: 1;
+}
+.fix_video{
+    height: 450px;
 }
 .nav-extended,.nav-wrapper{
     z-index: 9 !important;
@@ -96,7 +102,7 @@ nav ul a:hover {
     z-index: 9;
     color: white;
     font-weight: 300;
-    line-height: 1.5;
+    line-height: 1.1;
 }
 #profile{
     margin-bottom: 0px !important;
@@ -110,21 +116,30 @@ nav ul a:hover {
     padding-bottom: 6.85%;
 }
 .vertical-text{
-    transform: translate(0%, 540%) rotate(-90deg);
+    transform: translate(0%, 610%) rotate(-90deg);
     transform-origin: 0 0;
     font-size: 2rem;
     color: white;
     font-weight: 300;
     width: 300px !important;
     height: 50px;
+    text-align: center;
+    padding-right: 30px;
+    font-family: 'Lora';
+}
+.area_personal_fix{
+    padding-left: 35px !important;
 }
 .selector-vetical{
     width: 10%;
     float: left;
+    margin-top: 20px;
+    font-family: 'Lora';
 }
 .areapersonal{
     width: 90%;
     float: left;
+    font-family: 'Lora';
 }
 .calendar_day{
     background-color: #0A2540;
@@ -160,9 +175,11 @@ nav ul a:hover {
     margin-bottom:2px;
 }
 .whitedeep{
-    background: white;
-    margin-top: 50px;
+    background: #DCEFF1;
+    margin-top: 20px;
+    padding-left: 20px;
     width: 99% !important;
+    padding-right: 20px;
 }
 .tablehome td{
     padding-top: 5px;
@@ -182,11 +199,13 @@ nav ul a:hover {
     text-align: center;
     font-size: 2.5rem;
     color: white;
+    font-family: 'Lora';
 }
 .frase2{
     text-align: right;
     font-size: 2.5rem;
     color: #0A2540;
+    font-family: 'Lora';
 }
 #motivadora{
     padding-top: 40px;
@@ -198,6 +217,7 @@ nav ul a:hover {
     background: -webkit-linear-gradient(left, #0A2540 0%,#13E5D7 52%);
     background: linear-gradient(to right, #0A2540 0%,#13E5D7 52%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#13E5D7',GradientType=2 );
+    font-family: 'Lora';
 }
 #noticias h2{
     color: white;
@@ -211,9 +231,11 @@ nav ul a:hover {
 }
 .carousel .carousel-item{
     width: 300px !important;
+    height: 500px !important;
 }
 .carousel2 .carousel-item{
     width: 300px !important;
+    height: 500px !important;
 }
 .imgbackground{
     background-image: url('/images/background.jpg');
@@ -239,5 +261,189 @@ nav ul a:hover {
     text-align: center;
 }
 .sponsor img{
-    width: 50px;
+    height: 100px;
+}
+.newshometitle p{
+    padding-left:10px;
+    padding-right:10px;
+}
+.home_card_fix{
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+.home_card_fix .card{
+    /*gona make nice shadows to this card*/
+    -webkit-box-shadow:6px 7px 13px -4px rgb(0 0 0 / 75%);
+    -moz-box-shadow:6px 7px 13px -4px rgb(0 0 0 / 75%);
+    box-shadow:6px 7px 13px -4px rgb(0 0 0 / 75%);
+}
+.clear-both{
+    clear: both;
+}
+.container {
+    width: 80% !important;
+    max-width: 2580px !important;
+}
+.overflow_img{
+    height: 260px;
+    overflow: hidden;
+}
+.overflow_img img{
+    width: 100%;
+    padding-top: 55px;
+}
+h7{
+    font-weight: bold;
+}
+h7 a{
+    color: white;
+    text-decoration: none;
+}
+.br{
+    margin:63px;
+}
+.fotter_img{
+    width: 100%;
+}
+.whitelink{
+    color: white;
+    text-decoration: none;
+}
+#rrss{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.rounded_img{
+    width: 30px;
+    border-radius: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+.rounded_img img{
+    width: 100%;
+}
+.badge{
+    top: 22px;
+    right: 10%;
+    position: absolute;
+    background: red;
+    height: 15px;
+    padding: 0px;
+    width: 14px;
+    margin: 0px;
+    text-align: center;
+    line-height: 1;
+    border-radius: 100%;
+}
+.avatar_fix{
+    padding-top: 13px;
+}
+.bocadillo{
+    width: 200px;
+    position: absolute;
+    background: white;
+    padding-top: 20px;
+    padding-bottom:0px;
+    z-index: 10;
+    display: none;
+    border-radius: 4px;
+}
+.flecha{
+    width:10px;
+    height: 10px;
+    margin:0 auto;
+    /*rotamos 45º*/
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-top: -25px;
+    background: white;
+}
+.bocadillo ul li{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.bocadillo ul li:hover{
+    background: #EAEEF1;
+}
+.bocadillo ul li a{
+    color: #0A2540;
+    font-weight: bold;
+    position: relative;
+    top: -4px;
+}
+.bocadillo_RFEG {
+    left: 17.5%;
+}
+.bocadillo_especialities {
+    left: 16.7%;
+    width: 415px;    
+}
+.bocadillo_especialities p{
+    text-align: center;
+}
+.bocadillo_media {
+    left: 44.5%;
+}
+.bocadillo_calendar {
+    left: 37.5%;
+}
+.bocadillo.bocadillo_schools {
+    left: 53%;
+}
+.noolimpicas{
+    background: #EAEEF1;
+    margin-bottom: 0px !important;
+    border-radius: 0px 0px 4px 4px;
+}
+.big_block{
+    height: 100px;
+    width: 100%;
+}
+.lista{
+    width: 100%;
+    margin:0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/*listado horizontal*/
+.lista ul li{
+    display: inline-block;
+    margin-right:20px;
+    text-align: left;
+}
+.listado h1{
+    color: white;
+}
+.lista ul li a{
+    color: #596979;
+    text-decoration: none;
+    font-weight: bold;
+}
+.lista ul li a:hover{
+    color: #15F0DC;
+}
+.lista ul li a.active{
+    color: #15F0DC;
+}
+.listado > div:nth-child(1) > div:nth-child(2) > img:nth-child(1){
+    width: 60%;
+}
+.mundial{
+    text-align: right;
+}
+nav.nav-extended{
+    box-shadow: none !important;
+}
+.title-section{
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+.mock img{
+    width: 100%;
+}
+a.active{
+    color: #15F0DC;
 }

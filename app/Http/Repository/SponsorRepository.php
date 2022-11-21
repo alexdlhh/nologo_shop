@@ -35,7 +35,7 @@ class SponsorRepository
         $sponsor = DB::table('sponsor')
             ->where('id', $id)
             ->first();
-        $sponsor = $sponsorMapper->map($sponsor);
+        $sponsor = $sponsorMapper->map(get_object_vars($sponsor));
         return $sponsor;
     }
     

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\User;
 use Hash;
+use App\Http\Repository\RSRepository;
 
 use App\Http\Repository\PagesRepository;
 
@@ -21,7 +22,13 @@ class AuthController extends Controller
     public function index(){
         $pageRepository = new PagesRepository();
         $headers = $pageRepository->getAll('section','=','1');
-        return view('auth.login')->with('headers',$headers);
+        $rs = $RSRepository->getAll();
+        $front = [
+            'headers' => $headers,
+            'section' => 'Login',
+            'rs' => $rs
+        ];
+        return view('auth.login')->with('front',$front);
 
     }  
 

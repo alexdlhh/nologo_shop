@@ -2,7 +2,7 @@
 
 namespace App\Http\Mapper;
 
-use App\Http\Entities\SponsorEntity;
+use App\Http\Entity\SponsorEntity;
 
 class SponsorMapper
 {

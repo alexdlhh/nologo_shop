@@ -3,11 +3,14 @@
     Home
 @endsection
 @section('header_especial')
-<div id="video_box">
+<!--div id="video_box">
     <video id="video_header" autoplay loop muted>
         <source src="video.mp4" type="video/mp4">
         Tu navegador no soporta el formato de video
     </video>
+</div-->
+<div id="video_box">
+    <img id="video_header" src="\GR1C4175_web.jpg" alt="">
 </div>
 @endsection
 @section('content')
@@ -24,12 +27,12 @@
 <div class="row" id="profile">
     <div class="col s1">
         <div class="vertical-text">
-            <div class="selector-vetical">></div> <div class="areapersonal">Area Personal de Alex</div>
+            <div class="selector-vetical">></div> <div class="areapersonal">Área Personal <br>de Alex</div>
         </div>
     </div>
-    <div class="col s11">
+    <div class="col s11 area_personal_fix">
         <div class="row whitedeep">
-            <div class="col s12 m4">
+            <div class="col s12 m4 home_card_fix">
                 <div class="card">
                     <div class="card-content">
                         <table class="tablehome">
@@ -63,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12 m4 home_card_fix">
                 <div class="card">
                     <div class="card-content">
                         <table class="tablehome">
@@ -97,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12 m4 home_card_fix">
                 <div class="card">
                     <div class="card-content">
                         <table class="tablehome">
@@ -138,11 +141,15 @@
     <div class="frase1">Detras de cada historia hay personas que son<br>capaces de convertir lo ordinario en excepcional</div>
     <div class="frase2">Más que un deporte, una pasion ___</div>
 </div>
+<div class="clear-both"></div>
 <div class="row" id="noticias">
     <h2>Noticias</h2>
     <div class="carousel">
         @foreach($front['news'] as $new)
-        <a class="carousel-item" href="{{$new->getPermantlink()}}"><img src="{{$new->getFeatureImage()}}"></a>
+        <a class="carousel-item" href="{{$new->getPermantlink()}}">
+            <div class="overflow_img"><img src="{{$new->getFeatureImage()}}"></div>
+            <p>{{$new->getTitle()}}</p>
+        </a>
         @endforeach
     </div>
 </div>
@@ -150,25 +157,23 @@
     <h2>Eventos</h2>
     <div class="carousel carr2">
         @foreach($front['news'] as $new)
-        <a class="carousel-item" href="{{$new->getPermantlink()}}"><img src="{{$new->getFeatureImage()}}"></a>
+        <a class="carousel-item" href="{{$new->getPermantlink()}}">
+            <div class="overflow_img"><img src="{{$new->getFeatureImage()}}"></div>
+            <p>{{$new->getTitle()}}</p>
+        </a>
         @endforeach
     </div>
 </div>
 <div class="row imgbackground"></div>
 <div class="row" id="patrocinadores">
     <h2>Patrocinadores & Colaboradores</h2>
-    <div class="col s3 sponsor">
-        <img src="/images/1661453495lapatata.jpg" alt="">
+    <div class="col offset-s1"></div>
+    @foreach($front['sponsors'] as $sponsor)
+    <div class="col s2 sponsor">
+        <img src="{{$sponsor->getImage()}}" alt="{{$sponsor->getName()}}">
     </div>
-    <div class="col s3 sponsor">
-        <img src="/images/1661453495lapatata.jpg" alt="">
-    </div>
-    <div class="col s3 sponsor">
-        <img src="/images/1661453495lapatata.jpg" alt="">
-    </div>
-    <div class="col s3 sponsor">
-        <img src="/images/1661453495lapatata.jpg" alt="">
-    </div>
+    @endforeach
+    <div class="col offset-s1"></div>
 </div>
 @endsection
 @section('scripts')

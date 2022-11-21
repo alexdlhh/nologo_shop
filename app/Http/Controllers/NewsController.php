@@ -7,6 +7,9 @@ use App\Http\Repository\PagesRepository;
 use App\Http\Repository\NewsRepository;
 use App\Http\Repository\CategoryNewRepository;
 use App\Http\Repository\TagNewRepository;
+use App\Http\Repository\RSRepository;
+use App\Http\Repository\SponsorRepository;
+use App\Http\Helpers\Common;
 
 class NewsController extends Controller
 {
@@ -161,6 +164,146 @@ class NewsController extends Controller
         $newsRepository = new NewsRepository();
         $state = $newsRepository->changeState($id);
         return $state;
+    }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPage($menu1='2022', $menu2='noviembre'){
+        $common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/news',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Noticias',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.news')->with('front',$front);
+    }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPageCalendar($menu1='ritmica', $menu2='todo'){
+        $common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/calendar',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Calendario',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.calendarios')->with('front',$front);
+    }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPageMultimedia($menu1='2022', $menu2='ritmica'){
+        $common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/media',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Multimedia',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.media')->with('front',$front);
+    }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPageRevista($menu1='2022', $menu2='todo'){
+        $common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/media',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Revistas',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.revista')->with('front',$front);
+    }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPageSchool($menu1='cursos', $menu2='entrenadores'){
+        $common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/schools',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'Escuela',
+            'title'=>'Escuela',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.'.$menu1)->with('front',$front);
     }
 
 }

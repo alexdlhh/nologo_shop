@@ -5,6 +5,11 @@ use App\Http\Mapper\EspecialidadesMapper;
 use App\Http\Repository\EspecialidadesRepository;
 use App\Http\Repository\TeamRepository;
 use Illuminate\Http\Request;
+use App\Http\Repository\NewsRepository;
+use App\Http\Repository\RSRepository;
+use App\Http\Repository\SponsorRepository;
+use App\Http\Repository\PagesRepository;
+use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
 {
@@ -125,4 +130,32 @@ class EspecialidadesController extends Controller
         return response()->json(['id' => $id]);
     }
 
+    /**
+     * Vista de la front Page
+     */
+    public function frontPage($menu1='ritmica', $menu2='equipos'){
+        $common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $common->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+        $especialidades = $this->especialidadesRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/especialities',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Especialidades',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.especialidades')->with('front',$front);
+    }
 }

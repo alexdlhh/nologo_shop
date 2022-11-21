@@ -67,7 +67,7 @@
         $('#image_white').change(function(){
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#preview:white').attr('src', e.target.result);
+                $('#preview_white').attr('src', e.target.result);
             }
             reader.readAsDataURL(this.files[0]);
         });
@@ -95,7 +95,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/sponsor/edit/'+data;
+                    //window.location.href='/admin/sponsor/edit/'+data;
                 }
             });
         });
