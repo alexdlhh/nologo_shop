@@ -42,8 +42,15 @@ class AuthController extends Controller
 
     public function registration(){
         $pageRepository = new PagesRepository();
+        $RSRepository = new RSRepository();
         $headers = $pageRepository->getAll('section','=','1');
-        return view('auth.registration')->with('headers',$headers);
+        $rs = $RSRepository->getAll();
+        $front = [
+            'headers' => $headers,
+            'section' => 'Login',
+            'rs' => $rs
+        ];
+        return view('auth.registration')->with('front',$front);
 
     }
 
