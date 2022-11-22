@@ -59,6 +59,103 @@ class JournalRepository
         $journalList = $journalMapper->mapCollection($journal->toArray());
         return $journalList;
     }
+
+    /**
+     * Get journal by album
+     */
+    public function getByAlbum($album=''){
+        //buscamos el album en la columna name de la tabla album y obtenemos su id
+        if(!empty($album)){
+            if($album=='todo'){
+                $journals = DB::table('journal')
+                    ->orderBy('journal.id', 'desc')
+                    ->get();
+                $journalMapper = new JournalMapper();
+                $journalList = $journalMapper->mapCollection($journals->toArray()); 
+                return $journalList;
+            }else{
+                $album_id = DB::table('album')
+                ->where('album.name', $album)
+                ->get();
+                $album_id = $album_id[0]->id;
+                $journals = DB::table('journal')
+                    ->where('journal.album', $album_id)
+                    ->get();
+                $journalMapper = new JournalMapper();
+                $journalList = $journalMapper->mapCollection($journals->toArray()); 
+                return $journalList;
+            }
+        }else{
+            return false;
+        }
+            
+    }
+
+    /**
+     * Esta funcion obtiene el nombre de un album y el nombe en minuscula de un mes, se debe de obtener
+     * el id del album y el numero de mes para poder obtener los datos de la tabla journal, tanto album como mes pueden 
+     * venir con el valor "todo" el cual indica que ese campo no va a filtrar el resultado
+     * @param string $album
+     * @param string $month
+     * @return array
+     */
+    public function getByAlbumNameAndMonthName($album='todo', $month='todo'){
+        if($album=='todo' && $month=='todo'){
+            $journals = DB::table('journal')
+                ->orderBy('journal.id', 'desc')
+                ->get();
+            $journalMapper = new JournalMapper();
+            $journalList = $journalMapper->mapCollection($journals->toArray()); 
+            return $journalList;
+        }else{
+            if($album=='todo'){
+                $month_id = DB::table('month')
+                    ->where('month.name', $month)
+                    ->get();
+                $month_id = $month_id[0]->id;
+                $journals = DB::table('journal')
+                    ->where('journal.month', $month_id)
+                    ->orderBy('journal.id', 'desc')
+                    ->get();
+                $journalMapper = new JournalMapper();
+                $journalList = $journalMapper->mapCollection($journals->toArray()); 
+                return $journalList;
+            }else{
+                if($month=='todo'){
+                    $album_id = DB::table('album')
+                        ->where('album.name', $album)
+                        ->get();
+                    $album_id = $album_id[0]->id;
+                    $journals = DB::table('journal')
+                        ->where('journal.album', $album_id)
+                        ->orderBy('journal.id', 'desc')
+                        ->get();
+                    $journalMapper = new JournalMapper();
+                    $journalList = $journalMapper->mapCollection($journals->toArray()); 
+                    return $journalList;
+                }else{
+                    $album_id = DB::table('album')
+                        ->where('album.name', $album)
+                        ->get();
+                    $album_id = $album_id[0]->id;
+                    $month_id = DB::table('month')
+                        ->where('month.name', $month)
+                        ->get();
+                    $month_id = $month_id[0]->id;
+                    $journals = DB::table('journal')
+                        ->where('journal.album', $album_id)
+                        ->where('journal.month', $month_id)
+                        ->orderBy('journal.id', 'desc')
+                        ->get();
+                    $journalMapper = new JournalMapper();
+                    $journalList = $journalMapper->mapCollection($journals->toArray()); 
+                    return $journalList;
+                }
+            }
+        }
+    }
+
+    
     
     /**
      * @param array $filter

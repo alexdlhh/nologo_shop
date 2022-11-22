@@ -104,13 +104,15 @@ class JournalController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPageRevista($menu1='2022', $menu2='todo'){
+    public function frontPageRevista($menu1='todo', $menu2='todo'){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $albumRepository = new AlbumRepository();
+        $journalRepository = new JournalRepository();
+        $journals = $journalRepository->getByAlbum($menu1, $menu2);
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
@@ -125,6 +127,7 @@ class JournalController extends Controller
             'sponsors' => $sponsors,
             'subsection' => 'especialidades',
             'title'=>'Revistas',
+            'journals' => $journals,
             'albums' => $albums,
             'menu1' => $menu1,
             'menu2' => $menu2,
