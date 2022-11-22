@@ -63,6 +63,27 @@
                                 </select>
                                 <label for="tags">Tags</label>
                             </div>
+                            <div class="input-field col s12">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Galería</span>
+                                        <input type="file" multiple id="galeria">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Sube 1 o mas imagenes">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="galery_viewer">
+                                @if(!empty($admin['albumnew']))
+                                    @foreach($admin['albumnew'] as $image)
+                                    <div class="col s3">
+                                        <img src="{{ $image }}" alt="galeria" class="materialboxed">
+                                        <a href="#!" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                    </div>
+                                    @endforeach
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,8 +143,35 @@
                 processData: false,
                 contentType: false,
                 success: function(data){
-                    removeSpiner();
-                    window.location.reload();
+                    var files = $('#galeria').prop('files');
+                    //por cada file vamos a subirlo junto a la id de la noticia (data)
+                    if(files.length>0){
+                        for (var i = 0; i < files.length; i++) {
+                            var formData = new FormData();
+                            formData.append('id', data);
+                            formData.append('image', files[i]);
+                            formData.append('_token', '{{csrf_token()}}');
+                            formData.append('enctype', 'multipart/form-data');
+                            $.ajax({
+                                url: '/admin/albumnew/create',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                async: false,
+                                success: function(data2){
+                                    console.log(data2);
+                                    if(files.length == i+1){
+                                        //removeSpiner();
+                                        //window.location.href='/admin/news/edit/'+data;
+                                    }
+                                }
+                            });
+                        }
+                    }else{
+                        //removeSpiner();
+                        //window.location.href='/admin/news/edit/'+data;
+                    }
                 }
             });
         });

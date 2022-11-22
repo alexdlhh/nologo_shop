@@ -60,6 +60,9 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/news/edit', [NewsController::class,'postEdit'])->name('admin.news.update');
     Route::get('admin/news/delete/{id}', [NewsController::class,'delete'])->name('admin.news.delete');
     Route::post('admin/news/status', [NewsController::class,'status'])->name('admin.news.status');
+    /**ALBUMNEWS NEWS */
+    Route::post('admin/albumnew/create', [NewsController::class,'uploadAlbum'])->name('admin.albumnew.store');
+    Route::get('admin/albumnew/delete/{id}', [NewsController::class,'deleteAlbum'])->name('admin.albumnew.delete');
     /**ADMIN CATEGORY NEWS */
     Route::get('admin/categoriesNew',[CategoryNewController::class,'index'])->name('admin.categoriesNew.list');
     Route::post('admin/categoriesNew/save',[CategoryNewController::class,'postCreate'])->name('admin.categoriesNew.store');

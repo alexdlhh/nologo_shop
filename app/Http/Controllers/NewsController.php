@@ -9,6 +9,7 @@ use App\Http\Repository\CategoryNewRepository;
 use App\Http\Repository\TagNewRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
+use App\Http\Repository\AlbumNewRepository;
 //use App\Http\Helpers\Common;
 
 class NewsController extends Controller
@@ -86,8 +87,10 @@ class NewsController extends Controller
         
         //obtenemos las categorias relacionadas a la noticia
         $categoryNewRepository = new CategoryNewRepository();
-        $categories = $categoryNewRepository->getByNews($id);
+        $albumNewRepository = new AlbumNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
+        $categories = $categoryNewRepository->getByNews($id);
+        $albumnew = $albumNewRepository->getAllByIdNew($id);
         $array_categories = [];
         foreach($categories as $category){
             $array_categories[] = $category->id_cat;
@@ -105,6 +108,7 @@ class NewsController extends Controller
         return view('admin.news.edit')->with('admin',[
             'title' => 'Editar Noticia',
             'news' => $news,
+            'albumnew' => $albumnew,
             'categories' => $categoryNew,
             'tags' => $tagNew,
             'array_category' => $array_categories,
@@ -164,6 +168,31 @@ class NewsController extends Controller
         $newsRepository = new NewsRepository();
         $state = $newsRepository->changeState($id);
         return $state;
+    }
+
+    /**
+     * upload album to new
+     */
+    function uploadAlbum(Request $request){
+        $newsRepository = new NewsRepository();
+        $albumNewRepository = new AlbumNewRepository();
+        $id = $request->input('id');
+        $image = $request->file('file');
+        $imageName = time().$image->getClientOriginalName();
+        $destinationPath = public_path('/images/news/');
+        $image->move($destinationPath, $imageName);
+        $image_url = '/images/news/'.$imageName;
+        $albumNewRepository->create($id, $image_url);
+        return $image_url;
+    }
+
+    /**
+     * delete album to new
+     */
+    function deleteAlbum($id){
+        $albumNewRepository = new AlbumNewRepository();
+        $albumNewRepository->delete($id);
+        return $id;
     }
 
     /**
