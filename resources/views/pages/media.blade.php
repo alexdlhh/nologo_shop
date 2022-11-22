@@ -24,16 +24,18 @@
         </div>
         <div class="lista">
             <ul>
-                <li><a href="/media/ritmica/" class="{{$front['menu2']=='todo' ? 'active':''}}">TODO</a></li>
+                <li><a href="/media/{{$front['menu1']}}/" class="{{$front['menu2']=='todo' ? 'active':''}}">TODO</a></li>
                 @foreach($front['especialidades'] as $especialidades)
-                    <li><a href="/media/{{strtolower($especialidades->alias)}}/" class="{{$front['menu2']==$especialidades->alias ? 'active':''}}">{{strtoupper($especialidades->name)}}</a></li>
+                    <li><a href="/media/{{$front['menu1']}}/{{strtolower($especialidades->alias)}}/" class="{{$front['menu2']==$especialidades->alias ? 'active':''}}">{{strtoupper($especialidades->name)}}</a></li>
                 @endforeach           
             </ul>
         </div>
     </div>
 </div>
-<div class="mediaGrid">
-    @foreach($front['media'] as $media)
+
+@if(!empty($front['media']))
+    <div class="mediaGrid">
+    @foreach($front['media'] as $media)    
         <div class="media_item">
             @if($media->type=='image')
             <img src="{{$media->url}}" class="materialboxed" alt="{{$media->title}}">
@@ -42,7 +44,11 @@
             @endif
         </div>
     @endforeach
-</div>
+    </div>
+@else
+<h3 class="not_found">No hay resultados</h3>
+@endif
+
 @endsection
 @section('scripts')
 @endsection

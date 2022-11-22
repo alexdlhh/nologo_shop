@@ -79,10 +79,22 @@ class MediaRepository
      */
     public function getByColectionAndSpeciality($coleccion, $especialidad){
         $mediaMapper = new MediaMapper();
-        $media = DB::table('media')
-            ->where('coleccion', $coleccion)
-            ->where('especialidad', $especialidad)
-            ->get();
+        if($coleccion=='all' && $especialidad=='all'){
+            $media = DB::table('media')->get();
+        } else if($coleccion=='all' && $especialidad!='all'){
+            $media = DB::table('media')
+                ->where('especialidad', $especialidad)
+                ->get();
+        } else if($coleccion!='all' && $especialidad=='all'){
+            $media = DB::table('media')
+                ->where('coleccion', $coleccion)
+                ->get();
+        } else {
+            $media = DB::table('media')
+                ->where('coleccion', $coleccion)
+                ->where('especialidad', $especialidad)
+                ->get();
+        }
         $mediaList = $mediaMapper->mapCollection($media->toArray());
         return $mediaList;
     }

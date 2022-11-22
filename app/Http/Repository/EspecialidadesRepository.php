@@ -134,6 +134,7 @@ class EspecialidadesRepository
         $id = DB::table('especialidades')
             ->where('alias', $slug)
             ->get();
-        return $id[0]->id;
+        empty($id) ? $id = 0 : $id = $id[0]->id;
+        return $id;
     }
 }

@@ -126,7 +126,7 @@ class MediaController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPageMultimedia($menu1='2022', $menu2='ritmica'){
+    public function frontPageMultimedia($menu1='todo', $menu2='todo'){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -137,9 +137,27 @@ class MediaController extends Controller
         $coleccionRepository = new ColeccionRepository();
         $especialidadesRepository = new EspecialidadesRepository();
         $mediaRepository = new MediaRepository();
-        $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
-        $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
-        $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+        if($menu1 == 'todo'){
+            if($menu2 == 'todo'){
+                $media = $mediaRepository->getAll();
+            } else {
+                $id_coleccion='all';
+                $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
+                $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+            }
+        } else {
+            if($menu2 == 'todo'){
+                $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
+                $id_especialidad='all';
+                $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+            } else {
+                $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
+                $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
+                $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+            }
+        }
+        
+
         $especialidades = $especialidadesRepository->getAll();
         $colecciones=$coleccionRepository->getAll();
         $rs = $RSRepository->getAll();

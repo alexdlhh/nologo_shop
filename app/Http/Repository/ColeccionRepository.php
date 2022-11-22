@@ -108,6 +108,9 @@ class ColeccionRepository
         $coleccion = DB::table('coleccion')
             ->where('name', $slug)
             ->first();
+        if(empty($coleccion)) {
+            return 0;
+        }
         $coleccion = $coleccionMapper->map(get_object_vars($coleccion));
         return $coleccion->getId();
     }
