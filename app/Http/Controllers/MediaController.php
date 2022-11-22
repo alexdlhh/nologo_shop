@@ -136,6 +136,10 @@ class MediaController extends Controller
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $coleccionRepository = new ColeccionRepository();
         $especialidadesRepository = new EspecialidadesRepository();
+        $mediaRepository = new MediaRepository();
+        $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
+        $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
+        $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
         $especialidades = $especialidadesRepository->getAll();
         $colecciones=$coleccionRepository->getAll();
         $rs = $RSRepository->getAll();
@@ -153,6 +157,7 @@ class MediaController extends Controller
             'especialidades' => $especialidades,
             'menu1' => $menu1,
             'menu2' => $menu2,
+            'media' => $media
         ];
         return view('pages.media')->with('front',$front);
     }

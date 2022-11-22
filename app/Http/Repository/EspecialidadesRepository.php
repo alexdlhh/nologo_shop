@@ -124,4 +124,16 @@ class EspecialidadesRepository
         }
         return $status;
     }
+
+    /**
+     * getIdBySlug
+     * @param string $slug
+     * @return int
+     */
+    public function getIdBySlug($slug){
+        $id = DB::table('especialidades')
+            ->where('alias', $slug)
+            ->get();
+        return $id[0]->id;
+    }
 }

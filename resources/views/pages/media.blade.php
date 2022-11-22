@@ -32,8 +32,16 @@
         </div>
     </div>
 </div>
-<div class="mock">
-    <img src="\mock\Mesa 21.jpg" alt="">
+<div class="mediaGrid">
+    @foreach($front['media'] as $media)
+        <div class="media_item">
+            @if($media->type=='image')
+            <img src="{{$media->url}}" class="materialboxed" alt="{{$media->title}}">
+            @else
+            <iframe src="{{$media->url}}" frameborder="0"></iframe>
+            @endif
+        </div>
+    @endforeach
 </div>
 @endsection
 @section('scripts')

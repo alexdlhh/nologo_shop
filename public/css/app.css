@@ -465,6 +465,35 @@ nav ul a {
     font-weight: 800 !important;
     /*font-family: 'ManropeBold' !important;*/
 }
+/*
+la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener varios .media_item los cuales mantendrán todos la misma altura respetando la proporcón de la imagen y manteniendo un margin de 2px entre ellos, .media_item va a contener una imagen o un iframe
+*/
+.mediaGrid{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.media_item{
+    width: 33.3%;
+    margin: 0px;
+    height: auto;
+    padding-bottom: 0px;
+    position: relative;
+    overflow: hidden;
+}
+.media_item img{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.media_item iframe{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
 
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/

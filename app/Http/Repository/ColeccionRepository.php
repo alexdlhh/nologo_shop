@@ -98,6 +98,19 @@ class ColeccionRepository
             );
         return $id;
     }
+
+    /**
+     * @param array $data
+     * @return int
+     */
+    public function getIdBySlug($slug){
+        $coleccionMapper = new ColeccionMapper();
+        $coleccion = DB::table('coleccion')
+            ->where('name', $slug)
+            ->first();
+        $coleccion = $coleccionMapper->map(get_object_vars($coleccion));
+        return $coleccion->getId();
+    }
     
     /**
      * @param array $data

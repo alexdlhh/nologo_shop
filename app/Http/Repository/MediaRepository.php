@@ -70,7 +70,22 @@ class MediaRepository
         $mediaList = $mediaMapper->mapCollection($media);
         return $mediaList;
     }
-    
+
+    /**
+     * Obtener por colección y especialidad
+     * @param $coleccion
+     * @param $especialidad
+     * @return array
+     */
+    public function getByColectionAndSpeciality($coleccion, $especialidad){
+        $mediaMapper = new MediaMapper();
+        $media = DB::table('media')
+            ->where('coleccion', $coleccion)
+            ->where('especialidad', $especialidad)
+            ->get();
+        $mediaList = $mediaMapper->mapCollection($media->toArray());
+        return $mediaList;
+    }
     
     /**
      * @param array $data
