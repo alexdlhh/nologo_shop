@@ -2,7 +2,7 @@
 
 namespace App\Http\Entity;
 
-class AlbumEntity{
+class AlbumNewEntity{
     public $id;
     public $url;
     public $id_new;

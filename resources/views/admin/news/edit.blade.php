@@ -78,8 +78,8 @@
                                 @if(!empty($admin['albumnew']))
                                     @foreach($admin['albumnew'] as $image)
                                     <div class="col s3">
-                                        <img src="{{ $image }}" alt="galeria" class="materialboxed">
-                                        <a href="#!" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                        <img src="{{ $image->url }}" alt="galeria" class="materialboxed galery_news_img">
+                                        <a href="#!" data-id="{{$image->id}}" class="delalbum btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
                                     </div>
                                     @endforeach
                                 @endif
@@ -175,6 +175,17 @@
                 }
             });
         });
+        $('.delalbum').click(function(){
+            //get a /admin/albumnew/delete/ + id
+            var id = $(this).attr('data-id');
+            $.ajax({
+                url: '/admin/albumnew/delete/'+id,
+                type: 'GET',
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        })
         $('#title').change(function(){
             var title = $(this).val();
             var alias = title.replace(/ /g, '-').toLowerCase();
