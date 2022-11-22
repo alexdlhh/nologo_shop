@@ -17,6 +17,14 @@
                                 <input id="title" type="text" class="validate" value="{{ $admin['media']->getTitle() }}">
                                 <label for="title">Titulo</label>
                             </div>
+                            <div class="col s12">
+                                <select name="" id="especialidades">
+                                    <option value="" disabled selected>Elige una especialidad</option>
+                                    @foreach($admin['especialidades'] as $especialidad)
+                                        <option value="{{$especialidad->id}}">{{$especialidad->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="col s6 input-field">                                
                                 <select id="coleccion">
                                     <option value="" disabled>Elige una colección</option>

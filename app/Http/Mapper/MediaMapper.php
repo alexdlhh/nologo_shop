@@ -20,6 +20,7 @@ class MediaMapper{
         !empty($data['updated_at']) ? $media->setUpdatedAt($data['updated_at']) : null;
         !empty($data['url']) ? $media->setUrl($data['url']) : null;
         !empty($data['coleccion']) ? $media->setColeccion($data['coleccion']) : null;
+        !empty($data['especialidad']) ? $media->setEspecialidad($data['especialidad']) : null;
         return $media;
     }
     

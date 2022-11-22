@@ -43,8 +43,8 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/especialidades/{menu1?}/{menu2?}',[EspecialidadesController::class, 'frontPage'])->name('front.especialidades');
 Route::get('/news/{menu1?}/{menu2?}',[NewsController::class, 'frontPage'])->name('front.news');
 Route::get('/calendar/{menu1?}/{menu2?}',[NewsController::class, 'frontPageCalendar'])->name('front.calendar');
-Route::get('/media/{menu1?}/{menu2?}',[NewsController::class, 'frontPageMultimedia'])->name('front.media');
-Route::get('/revistas/{menu1?}/{menu2?}',[NewsController::class, 'frontPageRevista'])->name('front.revista');
+Route::get('/media/{menu1?}/{menu2?}',[MediaController::class, 'frontPageMultimedia'])->name('front.media');
+Route::get('/revistas/{menu1?}/{menu2?}',[JournalController::class, 'frontPageRevista'])->name('front.revista');
 Route::get('/schools/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.cursos');
 Route::get('/normativa/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.escuela');
 /**

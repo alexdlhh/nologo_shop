@@ -86,7 +86,8 @@ class MediaRepository
             'created_at' => !empty($media->getCreatedAt()) ? $media->getCreatedAt() : date('Y-m-d H:i:s'),
             'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
             'url' => $url,
-            'coleccion' => $media->getColeccion()
+            'coleccion' => $media->getColeccion(),
+            'especialidad' => $media->getEspecialidad(),
             ]);
         return $id;
     }
@@ -97,9 +98,6 @@ class MediaRepository
     public function update(Request $request,$url,$type){
         $mediaMapper = new MediaMapper();
         $media = $mediaMapper->map($request->all());
-        dump($media);
-        dump($url);
-        dump($type);
         if($type=='image'){
             DB::table('media')
                 ->where('id', $media->getId())
@@ -109,7 +107,8 @@ class MediaRepository
                     'type' => $type,
                     'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
                     'url' => $url,
-                    'coleccion' => $media->getColeccion()
+                    'coleccion' => $media->getColeccion(),
+                    'especialidad' => $media->getEspecialidad(),
                 ]);
         } elseif($type=='video'){
             DB::table('media')
@@ -120,7 +119,8 @@ class MediaRepository
                     'type' => $type,
                     'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
                     'url' => $url,
-                    'coleccion' => $media->getColeccion()
+                    'coleccion' => $media->getColeccion(),
+                    'especialidad' => $media->getEspecialidad(),
                 ]);
         } else {
             DB::table('media')
@@ -129,7 +129,8 @@ class MediaRepository
                     'title' => $media->getTitle(), 
                     'description' => $media->getDescription(),
                     'updated_at' => !empty($media->getUpdatedAt()) ? $media->getUpdatedAt() : date('Y-m-d H:i:s'),
-                    'coleccion' => $media->getColeccion()
+                    'coleccion' => $media->getColeccion(),
+                    'especialidad' => $media->getEspecialidad(),
                 ]);
         }
     }

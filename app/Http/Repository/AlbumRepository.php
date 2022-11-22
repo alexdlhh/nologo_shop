@@ -23,11 +23,11 @@ class AlbumRepository
         if(!empty($search)) {
             $album = DB::table('album')
                 ->where('name', 'like', '%'.$search.'%')
-                ->orderBy('id', 'desc')
+                ->orderBy('name', 'desc')
                 ->skip($page)->take(10)->get();
         } else {
             $album = DB::table('album')
-                ->orderBy('id', 'desc')
+                ->orderBy('name', 'desc')
                 ->skip($page)->take(10)->get();
         }
         if(!empty($album->toArray())) {

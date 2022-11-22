@@ -225,62 +225,6 @@ class NewsController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPageMultimedia($menu1='2022', $menu2='ritmica'){
-        //$common = new Common();
-        $pageRepository = new PagesRepository();
-        $newRepository = new NewsRepository();
-        $RSRepository = new RSRepository();
-        $sponsorRepository = new SponsorRepository();
-        $news = $newRepository->getNews(5);
-        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
-        $rs = $RSRepository->getAll();
-        $sponsors = $sponsorRepository->getAll();
-
-        $front = [
-            'headers' => $headers,
-            'section' => '/media',
-            'news' => $news,
-            'rs' => $rs,
-            'sponsors' => $sponsors,
-            'subsection' => 'especialidades',
-            'title'=>'Multimedia',
-            'menu1' => $menu1,
-            'menu2' => $menu2,
-        ];
-        return view('pages.media')->with('front',$front);
-    }
-
-    /**
-     * Vista de la front Page
-     */
-    public function frontPageRevista($menu1='2022', $menu2='todo'){
-        //$common = new Common();
-        $pageRepository = new PagesRepository();
-        $newRepository = new NewsRepository();
-        $RSRepository = new RSRepository();
-        $sponsorRepository = new SponsorRepository();
-        $news = $newRepository->getNews(5);
-        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
-        $rs = $RSRepository->getAll();
-        $sponsors = $sponsorRepository->getAll();
-
-        $front = [
-            'headers' => $headers,
-            'section' => '/media',
-            'news' => $news,
-            'rs' => $rs,
-            'sponsors' => $sponsors,
-            'subsection' => 'especialidades',
-            'title'=>'Revistas',
-            'menu1' => $menu1,
-            'menu2' => $menu2,
-        ];
-        return view('pages.revista')->with('front',$front);
-    }
-
-    /**
-     * Vista de la front Page
-     */
     public function frontPageSchool($menu1='cursos', $menu2='entrenadores'){
         //$common = new Common();
         $pageRepository = new PagesRepository();

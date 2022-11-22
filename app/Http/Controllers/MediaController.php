@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Repository\ColeccionRepository;
 use App\Http\Repository\PagesRepository;
 use App\Http\Repository\MediaRepository;
+use App\Http\Repository\NewsRepository;
+use App\Http\Repository\RSRepository;
+use App\Http\Repository\SponsorRepository;
+use App\Http\Repository\EspecialidadesRepository;
 
 class MediaController extends Controller
 {
@@ -19,12 +23,15 @@ class MediaController extends Controller
         $mediaRepository = new MediaRepository();
         $media=$mediaRepository->getAll($coleccion, $search);
         $coleccionRepository = new ColeccionRepository();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $especialidades = $especialidadesRepository->getAll();
         $colecciones=$coleccionRepository->getAll();
         return view('admin.media.list')->with('admin',[
             'title' => 'Listado de Media',
             'media' => $media,
             'colecciones' => $colecciones,
             'coleccion' => $coleccion,
+            'especialidades' => $especialidades,
             'section' => 'media',
             'subsection' => 'listmedia'
         ]);
@@ -83,11 +90,14 @@ class MediaController extends Controller
     {
         $coleccionRepository = new ColeccionRepository();
         $colecciones=$coleccionRepository->getAll();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $especialidades = $especialidadesRepository->getAll();
         return view('admin.media.create')->with('admin',[
             'title' => 'Subir Media',
             'colecciones' => $colecciones,
             'coleccion' => $coleccion,
             'section' => 'media',
+            'especialidades' => $especialidades,
             'subsection' => 'savemedia'
         ]);
     }
@@ -101,12 +111,62 @@ class MediaController extends Controller
         $media=$mediaRepository->getById($id);
         $coleccionRepository = new ColeccionRepository();
         $colecciones=$coleccionRepository->getAll();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $especialidades = $especialidadesRepository->getAll();
         return view('admin.media.edit')->with('admin',[
             'title' => 'Editar Media',
             'media' => $media,
             'colecciones' => $colecciones,
             'section' => 'media',
+            'especialidades' => $especialidades,
             'subsection' => 'savemedia'
         ]);
     }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPageMultimedia($menu1='2022', $menu2='ritmica'){
+        //$common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
+        $coleccionRepository = new ColeccionRepository();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $especialidades = $especialidadesRepository->getAll();
+        $colecciones=$coleccionRepository->getAll();
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/media',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Multimedia',
+            'colecciones' => $colecciones,
+            'especialidades' => $especialidades,
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.media')->with('front',$front);
+    }
+
+    public function header_order($headers){
+        $order = [];
+        $aux = [];
+        foreach($headers as $_link){
+            $order[$_link->getOrder()] = $_link;
+        }
+        for($i = 1; $i <= count($order); $i++){
+            $aux[] = $order[$i];
+        }
+        return $aux;
+    }
+
 }
