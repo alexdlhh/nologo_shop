@@ -137,6 +137,12 @@
                                         <p class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">Listado de Patrocinadores y posiciones</p>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="/admin/banners" class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}"><b>Listar Banners</b></span><span class="child-selector {{$admin['subsection'] == 'banner' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}">Listado de Banners de la web</p>
+                                    </a>
+                                </li>
                                 <!--li>
                                     <a href="" class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}"><b>Añadir Patrocinador</b></span><span class="child-selector {{$admin['subsection'] == 'savesponsor' ? 'active' : ''}}">></span>

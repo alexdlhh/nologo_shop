@@ -10,6 +10,7 @@ use App\Http\Repository\TagNewRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\AlbumNewRepository;
+use App\Http\Repository\BannerRepository;
 //use App\Http\Helpers\Common;
 
 class NewsController extends Controller
@@ -204,10 +205,12 @@ class NewsController extends Controller
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
+        $bannerRepository = new BannerRepository();
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
+        $banners = $bannerRepository->getOne('news_detail');
 
         $front = [
             'headers' => $headers,
@@ -218,6 +221,7 @@ class NewsController extends Controller
             'subsection' => 'especialidades',
             'title'=>'Noticias',
             'menu1' => $menu1,
+            'banners' => $banners,
             'menu2' => $menu2,
         ];
         return view('pages.news')->with('front',$front);
@@ -259,11 +263,12 @@ class NewsController extends Controller
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
-        $sponsorRepository = new SponsorRepository();
+        $sponsorRepository = new SponsorRepository();        
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
+        
 
         $front = [
             'headers' => $headers,

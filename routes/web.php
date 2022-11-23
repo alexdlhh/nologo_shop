@@ -18,6 +18,7 @@ use App\Http\Controllers\RSController;
 use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Pages\HomeController;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,6 +130,13 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/sponsors/save',[SponsorController::class,'postCreate'])->name('admin.sponsor.store');
     Route::post('admin/sponsors/delete',[SponsorController::class,'postDelete'])->name('admin.sponsors.delete');
     Route::post('admin/sponsors/status',[SponsorController::class,'postStatus'])->name('admin.sponsors.status');
+    /**BANNERS */
+    Route::get('admin/banners',[BannerController::class,'banners'])->name('admin.banners.list');
+    Route::get('admin/banner/create',[BannerController::class,'CreateBanner'])->name('admin.banners.create');
+    Route::get('admin/banner/edit/{id}',[BannerController::class,'EditBanner'])->name('admin.banners.edit');
+    Route::post('admin/banner/save',[BannerController::class,'postCreate'])->name('admin.banners.store');
+    Route::get('admin/banner/delete/{id}',[BannerController::class,'postDelete'])->name('admin.banners.delete');
+    Route::post('admin/banner/status',[BannerController::class,'postStatus'])->name('admin.banners.status');
     /**ADMIN RS */
     Route::get('admin/social',[RSController::class,'rs'])->name('admin.rs.list');
     Route::get('admin/rs/create',[RSController::class,'Create'])->name('admin.rs.create');
