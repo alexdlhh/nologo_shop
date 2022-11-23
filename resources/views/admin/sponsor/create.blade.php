@@ -18,7 +18,7 @@
                                 <label for="name">Nombre</label>
                             </div>
                             <div class="col s6 input-field">
-                                <input id="url" type="text" class="validate">
+                                <input id="url" type="text" class="validate" value="https://">
                                 <label for="url">Url</label>
                             </div>
                             <div class="col s12 input-field">
@@ -95,7 +95,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    //window.location.href='/admin/sponsor/edit/'+data;
+                    window.location.href='/admin/sponsor/edit/'+data;
                 }
             });
         });

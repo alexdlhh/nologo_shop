@@ -207,6 +207,9 @@
                 instance2.next();
             }
             },2000)
+            /**
+             * en .carousel hay un numero indeterminado de .carousel-item, solo hay espacio para mostrar 5, si hay mas de 5 se muestran 5 y cada 2 segundos los .carousel-item rotan de abajo hacia arriba como si de un cubo se tratara
+             */
         }); 
     </script>
 @endsection
