@@ -274,7 +274,8 @@ nav ul a:hover {
     text-align: center;
 }
 .sponsor img{
-    height: 100px;
+    max-height: 100px;
+    max-width: 200px;
 }
 .newshometitle p{
     padding-left:10px;

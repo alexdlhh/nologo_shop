@@ -167,8 +167,8 @@
 <div class="row" id="patrocinadores">
     <h2>Patrocinadores & Colaboradores</h2>
     <div class="col offset-s1"></div>
-    @foreach($front['sponsors'] as $sponsor)
-    <div class="col s2 sponsor">
+    @foreach($front['sponsors'] as $idx => $sponsor)
+    <div class="col s2 sponsor sponsor_{{$idx}}">
         <img src="{{$sponsor->getImage()}}" alt="{{$sponsor->getName()}}">
     </div>
     @endforeach
@@ -188,7 +188,6 @@
             });
 
             setInterval(()=>{
-            console.log(instance.pressed);
             if(!instance.pressed){
                 instance.next();
             }
@@ -202,14 +201,77 @@
             });
 
             setInterval(()=>{
-            console.log(instance2.pressed);
             if(!instance2.pressed){
                 instance2.next();
             }
             },2000)
             /**
-             * en .carousel hay un numero indeterminado de .carousel-item, solo hay espacio para mostrar 5, si hay mas de 5 se muestran 5 y cada 2 segundos los .carousel-item rotan de abajo hacia arriba como si de un cubo se tratara
+             * en div#patrocinadores hay un numero indeterminado de .sponsor, 
+             * solo hay espacio para mostrar 5 por lo que el resto permanecerán ocultos, 
+             * si hay mas de 5 se muestran 5 y cada 2 segundos los div.sponsor hacen una animación donde giran de forma vertical y se muestran los siguientes 5
              */
+            var sponsors = $('.sponsor');
+            var sponsors_count = sponsors.length;
+            for(var i = 0; i < sponsors_count; i++){
+                if(i > 4){
+                    sponsors.eq(i).hide();
+                }
+            }
+            var actual=4;
+            var angulo = 0;
+            //cada 2 segundos sustituimos los 5 primeros por los siguientes 5
+            setInterval(()=>{
+                for(var i = 0; i < sponsors_count; i++){
+                    if(i > actual && i <= actual+5){
+                        sponsors.eq(i).show();
+                    }else{
+                        sponsors.eq(i).hide();
+                    }
+                    angulo = 0;
+                }
+                actual+=5;
+                if(actual >= sponsors_count){
+                    actual = 0;
+                }
+            },2500)
+            //hacemos rotar los div.sponsor
+            var cubo = $('.sponsor');
+            var tope = 90;
+            var crece = true;
+            var rotacion = function(){
+                if(crece){
+                    if(angulo > 90){
+                        angulo -= 1;
+                        top = 0;
+                    }else{
+                        angulo += 1;
+                        tope = 90;
+                    }
+                    if(angulo == tope){
+                        crece = false;
+                    }
+                }else{
+                    if(angulo < 0){
+                        angulo += 1;
+                        tope = 90;
+                    }else{
+                        angulo -= 1;
+                        tope = 0;
+                    }
+                    if(angulo == tope){
+                        crece = true;
+                    }
+                    if(angulo < 0){
+                        angulo = 1;
+                    }
+                }
+                cubo.css({
+                    'transform': 'rotateX('+angulo+'deg)'
+                });
+            };
+            setInterval(rotacion, 10);
+
+
         }); 
     </script>
 @endsection

@@ -11,7 +11,7 @@
         @yield('header_especial') 
         <nav class="nav-extended">
             <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">
+            <a href="/" class="brand-logo">
                 <img src="/blanco.png" alt="rfeg">
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
