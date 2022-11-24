@@ -277,6 +277,29 @@ nav ul a:hover {
     max-height: 100px;
     max-width: 200px;
 }
+.newzone{
+    background-color: #2D6E8C;
+    color: white;
+}
+.newzone h2{
+    margin-bottom:0px;
+    margin-top:0px;
+    padding-bottom:0px;    
+    padding-top:0px;    
+    width: 80%;
+    margin:0 auto;
+    padding-left: 0px;
+}
+.newzone_title{
+    color: white;
+}
+.linea{
+    border-top: 2px solid white;
+    width: 100px;
+    display: inline-block;
+    padding-top: 20px;
+    margin-right: 16px;
+}
 .newshometitle p{
     padding-left:10px;
     padding-right:10px;

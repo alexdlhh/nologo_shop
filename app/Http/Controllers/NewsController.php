@@ -199,13 +199,15 @@ class NewsController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPage($menu1='2022', $menu2='noviembre'){
+    public function frontPage($menu1="todo",$menu2="todo",$id=0){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $bannerRepository = new BannerRepository();
+        $categoryNewRepository = new CategoryNewRepository();
+        $categoryNew = $categoryNewRepository->getAll();
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
@@ -214,17 +216,52 @@ class NewsController extends Controller
 
         $front = [
             'headers' => $headers,
-            'section' => '/news',
+            'section' => '/noticias',
             'news' => $news,
             'rs' => $rs,
             'sponsors' => $sponsors,
             'subsection' => 'especialidades',
             'title'=>'Noticias',
+            'categories' => $categoryNew,
             'menu1' => $menu1,
             'banners' => $banners,
             'menu2' => $menu2,
         ];
         return view('pages.news')->with('front',$front);
+    }
+
+    /**
+     * Vista del listado de noticias en front Page
+     */
+    public function frontPageList($menu1='todo', $menu2='todo'){
+        //$common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $bannerRepository = new BannerRepository();
+        $categoryNewRepository = new CategoryNewRepository();
+        $categoryNew = $categoryNewRepository->getAll();
+        $news = $newRepository->getNews(5);
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+        $banners = $bannerRepository->getOne('news_detail');
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/noticias',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Noticias',
+            'categories' => $categoryNew,
+            'menu1' => $menu1,
+            'banners' => $banners,
+            'menu2' => $menu2,
+        ];
+        return view('pages.news_list')->with('front',$front);
     }
 
     /**
