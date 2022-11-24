@@ -242,6 +242,19 @@ nav ul a:hover {
     padding-left:40px;
     font-weight: 300;
 }
+.newzone .carousel{
+    padding-top: 20px;
+    height: 300px !important;
+}
+.newzone .carousel .carousel-item{
+    width: 300px !important;
+    height: 300px !important;
+    top:-50px;
+}
+hr{
+    color: white;
+    opacity: 0.4;
+}
 .carousel .carousel-item{
     width: 300px !important;
     height: 500px !important;
@@ -287,8 +300,10 @@ nav ul a:hover {
     padding-bottom:0px;    
     padding-top:0px;    
     width: 80%;
+    font-size: 3.5em;
+    text-transform: uppercase;
     margin:0 auto;
-    padding-left: 0px;
+    padding-left: 0px !important;
 }
 .newzone_title{
     color: white;

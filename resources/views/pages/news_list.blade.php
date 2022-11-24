@@ -51,6 +51,28 @@
         </a>
         @endforeach
     </div>
+    <hr>
+</div>
+<div class="row new_list">
+    <div class="col s12 m12 l12">
+        <div class="row">
+            @foreach($front['news'] as $new)
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="{{$new->getPermantlink()}}"><img src="{{$new->getFeatureImage()}}"></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="new_list_title">{{$new->getTitle()}}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{$new->getPermantlink()}}">Leer más</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 </div>
 @endsection
 @section('scripts')
