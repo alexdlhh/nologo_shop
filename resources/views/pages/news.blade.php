@@ -46,17 +46,18 @@
         </div>
     </div>
 </div>
-<div class="row newzone" id="noticias" >
+<div class="row newzone" id="noticias">
     <h2>{{$front['menu1']}}</h2>
     <h2><div class="linea"></div>{{$front['menu2']}}</h2>
     <div class="carousel">
         @foreach($front['news'] as $new)
-        <a class="carousel-item" href="{{$new->getPermantlink()}}">
+        <a class="carousel-item" href="/noticia/{{$front['menu1']}}/{{$front['menu2']}}/{{$new->getPermantlink()}}">
             <div class="overflow_img"><img src="{{$new->getFeatureImage()}}"></div>
             <p class="newzone_title">{{$new->getTitle()}}</p>
         </a>
         @endforeach
     </div>
+    <hr>
 </div>
 <div class="mock">
     <img src="\mock\Mesa 19.jpg" alt="">

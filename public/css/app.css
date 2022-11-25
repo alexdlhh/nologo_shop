@@ -617,7 +617,16 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
     font-family: "Manrope","Helvetica Neue",sans-serif !important;
     font-weight: 300 !important;
 }
-
+div.row.new_list > div > div.row > div > div.card > div.card-image{
+    max-height: 300px;
+    overflow: hidden;
+}
+.lista ul li a{
+    text-transform: uppercase;
+}
+.new_list{
+    background-color: #2D6E8C;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){

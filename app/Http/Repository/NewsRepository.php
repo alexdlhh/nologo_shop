@@ -257,4 +257,22 @@ class NewsRepository
         $news = $newsMapper->mapCollection($news);
         return $news;
     }
+
+    /**
+     * Get by year and month the news, had to check created_at who is a datetime, so we need to compare the year and month of the datetime
+     * @param int $year
+     * @param int $month
+     * @return array
+     */
+    public function getNewsByYearAndMonth($year, $month){
+        $newsMapper = new NewsMapper();
+        //vamos a buscar en la base de datos las noticias que tengan el año y mes que nos pasan con un like
+        $news = DB::table('new')
+            ->where('status', 1)
+            ->where('created_at', 'like', $year.'-'.$month.'%')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $news = $newsMapper->mapCollection($news->toArray());
+        return $news;        
+    }
 }

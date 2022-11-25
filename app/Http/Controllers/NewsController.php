@@ -207,12 +207,14 @@ class NewsController extends Controller
         $sponsorRepository = new SponsorRepository();
         $bannerRepository = new BannerRepository();
         $categoryNewRepository = new CategoryNewRepository();
+        $albumNewRepository = new AlbumNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $banners = $bannerRepository->getOne('news_detail');
+        $albumnew = $albumNewRepository->getAllByIdNew($id);
 
         $front = [
             'headers' => $headers,
@@ -223,6 +225,7 @@ class NewsController extends Controller
             'subsection' => 'especialidades',
             'title'=>'Noticias',
             'categories' => $categoryNew,
+            'albumnew' => $albumnew,
             'menu1' => $menu1,
             'banners' => $banners,
             'menu2' => $menu2,
@@ -233,7 +236,7 @@ class NewsController extends Controller
     /**
      * Vista del listado de noticias en front Page
      */
-    public function frontPageList($menu1='todo', $menu2='todo'){
+    public function frontPageList($menu1='2022', $menu2='todo'){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -242,7 +245,7 @@ class NewsController extends Controller
         $bannerRepository = new BannerRepository();
         $categoryNewRepository = new CategoryNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
-        $news = $newRepository->getNews(5);
+        $news = $newRepository->getNewsByYearAndMonth($menu1,$this->getNumberOfMonth($menu2));
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
@@ -255,7 +258,7 @@ class NewsController extends Controller
             'rs' => $rs,
             'sponsors' => $sponsors,
             'subsection' => 'especialidades',
-            'title'=>'Noticias',
+            'title'=>'Noticia',
             'categories' => $categoryNew,
             'menu1' => $menu1,
             'banners' => $banners,
@@ -331,6 +334,92 @@ class NewsController extends Controller
             $aux[] = $order[$i];
         }
         return $aux;
+    }
+
+    public function getNumberOfMonth($month_name){
+        $month_number = '';
+        switch($month_name){
+            case 'enero':
+                $month_number = '01';
+                break;
+            case 'febrero':
+                $month_number = '02';
+                break;
+            case 'marzo':
+                $month_number = '03';
+                break;
+            case 'abril':
+                $month_number = '04';
+                break;
+            case 'mayo':
+                $month_number = '05';
+                break;
+            case 'junio':
+                $month_number = '06';
+                break;
+            case 'julio':
+                $month_number = '07';
+                break;
+            case 'agosto':
+                $month_number = '08';
+                break;
+            case 'septiembre':
+                $month_number = '09';
+                break;
+            case 'octubre':
+                $month_number = '10';
+                break;
+            case 'noviembre':
+                $month_number = '11';
+                break;
+            case 'diciembre':
+                $month_number = '12';
+                break;
+        }
+        return $month_number;
+    }
+
+    public function getMonthName($month_number){
+        $month_name = '';
+        switch($month_number){
+            case '01':
+                $month_name = 'enero';
+                break;
+            case '02':
+                $month_name = 'febrero';
+                break;
+            case '03':
+                $month_name = 'marzo';
+                break;
+            case '04':
+                $month_name = 'abril';
+                break;
+            case '05':
+                $month_name = 'mayo';
+                break;
+            case '06':
+                $month_name = 'junio';
+                break;
+            case '07':
+                $month_name = 'julio';
+                break;
+            case '08':
+                $month_name = 'agosto';
+                break;
+            case '09':
+                $month_name = 'septiembre';
+                break;
+            case '10':
+                $month_name = 'octubre';
+                break;
+            case '11':
+                $month_name = 'noviembre';
+                break;
+            case '12':
+                $month_name = 'diciembre';
+                break;
+        }
+        return $month_name;
     }
 
 }
