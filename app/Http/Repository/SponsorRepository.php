@@ -54,7 +54,9 @@ class SponsorRepository
                 'white' => $image_white,
                 'url' => $sponsor->getUrl(),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'subtitle' => $sponsor->getSubtitle(),
+                'type' => $sponsor->getType()
             ]);
         return $id;
     }
@@ -64,30 +66,46 @@ class SponsorRepository
      * 
      * @return bool
      */
-    public function update(Request $request,int $id, string $image){
+    public function update(Request $request,int $id, string $image, string $image_white){
         $sponsorMapper = new SponsorMapper();
         $sponsor = $sponsorMapper->map($request->all());
-        $id = DB::table('sponsor')
+        //si $image o $image_white estan vacios, no se actualizan
+        if($image != '' && $image != 'undefined'){
+            DB::table('sponsor')
+            ->where('id', $id)
+            ->update([
+                'image' => $image
+            ]);
+        }
+        if($image_white != '' && $image_white != 'undefined'){
+            DB::table('sponsor')
+            ->where('id', $id)
+            ->update([
+                'white' => $image_white,
+            ]);
+        }
+        $updated = DB::table('sponsor')
             ->where('id', $id)
             ->update([
                 'name' => $sponsor->getName(),
                 'description' => $sponsor->getDescription(),
-                'image' => $image,
-                'white' => $image_white,
                 'url' => $sponsor->getUrl(),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'subtitle' => $sponsor->getSubtitle(),
+                'type' => $sponsor->getType()
             ]);
-        return $id;
+        return $sponsor->getId();
     }
 
     /**
      * @param array $data
      * @return bool
      */
-    public function delete($filter = []){
+    public function delete($id){
         $sponsorMapper = new SponsorMapper();
-        $sponsor = $sponsorMapper->map($filter);
-        $sponsor->delete();
+        $deleted = DB::table('sponsor')
+            ->where('id', $id)
+            ->delete();
         return true;
     }
 }

@@ -29,7 +29,7 @@ nav{
     background-color: #0A2540 !important;
 }
 .center-box{
-    margin: 0 auto;
+    margin: 14px auto;
     width: 70%;
 }
 .navbar-laravel{
@@ -58,9 +58,9 @@ nav{
     border-bottom: 1px inherit #c3c2c2;
 }
 nav.nav-extended .nav-wrapper {
-    min-height: 64px;
-    max-width: 80%;
-    margin-left: 10%;
+    height: 130px !important;
+    max-width: 90%;
+    margin-left: 6%;
 }
 nav.nav-extended .nav-content {
     position: relative;
@@ -70,7 +70,7 @@ nav.nav-extended .nav-content {
 }
 
 .brand-logo img{
-    height: 64px;
+    height: 100px;
 }
 nav ul li.active{
     background-color: transparent !important;
@@ -80,13 +80,13 @@ nav ul li.active{
 }
 nav ul a:hover {
     background-color: transparent !important;
-    color: #13E5D7 !important;
+    color: #16958d !important;
 }
 #video_box{
     position: absolute;
     overflow: hidden;
     width: 100%;
-    max-height:571px;
+    max-height:700px;
     text-align: center;
 }
 #video_header{
@@ -96,22 +96,23 @@ nav ul a:hover {
     z-index: 1;
 }
 .fix_video{
-    height: 450px;
+    height: 508px;
 }
 .nav-extended,.nav-wrapper{
     z-index: 9 !important;
-    padding-top: 15px;
+    padding-top: 20px;
 }
 #header_title{
     z-index: 9;
     position: relative;
     width: 35%;
+    top: 70px;
 }
 #header_title h1{
     z-index: 9;
     color: white;
     font-weight: 200;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 #profile{
     margin-bottom: 0px !important;
@@ -334,7 +335,7 @@ hr{
     clear: both;
 }
 .container {
-    width: 80% !important;
+    width: 87% !important;
     max-width: 2580px !important;
 }
 .overflow_img{
@@ -621,7 +622,7 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
 }
 .mediaGrid__item__content__date__month{
     color: white;
-    font-size: 2.3em;
+    font-size: 15px;
     margin-bottom: 12px;
     text-transform: capitalize;
     width: 40%;
@@ -674,7 +675,6 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
 .line_title{
     width: 65px;
     border-bottom: 3px solid;
-    display: inline-block;
     margin-top: 56px;
     margin-left: -10px;
     margin-right: 10px;
@@ -726,6 +726,23 @@ h3.especial{
 .galery_news {
     margin-top: 20px;
 }
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #fff;
+    height: 5px;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.indeterminate {
+    background-color: #1e88e5;
+    z-index: 9999;
+    width: 0%;
+    height: 5px;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
@@ -733,7 +750,10 @@ h3.especial{
         font-size: 0.75rem !important;
     }
     #header_title h1 {
-        font-size: 3.5rem !important;
+        font-size: 4.2rem !important;
+    }
+    .fix_video {
+        height: 391px;
     }
 }
 /*Media query 1360px ancho*/
@@ -742,9 +762,12 @@ h3.especial{
         font-size: 0.64rem !important;
     }
     #header_title h1 {
-        font-size: 3rem !important;
+        font-size: 3.5rem !important;
     }
     .line_title {
         width: 50px;
+    }
+    .fix_video {
+        height: 324px;
     }
 }

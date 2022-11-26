@@ -13,30 +13,7 @@
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
                                 <div class="card-content">
-                                    <div class="row" id="tabla">   
-                                        <table class="striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Imagen</th>
-                                                <th>Nombre</th>
-                                                <th>Opciones</th>
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            @foreach($admin['sponsors'] as $sponsor)
-                                                <tr>
-                                                    <td><img src="{{ $sponsor->getImage() }}" class="materialboxed" width="80px" alt=""></td>
-                                                    <td>{{ $sponsor->getName() }}</td>
-                                                    <td>
-                                                        <a href="/admin/sponsor/edit/{{$sponsor->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                                        <a href="javascript:void(0);" data-id="{{$sponsor->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    LOS FILTROS
                                 </div>
                             </div>
                         </div>
@@ -56,6 +33,7 @@
                                 <tr>
                                     <th>Icono</th>
                                     <th>Nombre</th>
+                                    <th>Tipo</th>
                                     <th>Opciones</th>
                                 </tr>
                                 </thead>
@@ -65,6 +43,7 @@
                                     <tr>
                                         <td><img src="{{ $sponsor->getImage() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $sponsor->getName() }}</td>
+                                        <td>{{ $sponsor->getType() }}</td>
                                         <td>
                                             <a href="/admin/sponsor/edit/{{$sponsor->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
                                             <a href="javascript:void(0);" data-id="{{$sponsor->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
@@ -91,12 +70,15 @@
         $('.materialboxed').materialbox();
         $('.del').click(function(){
             var id = $(this).attr('data-id');
-            if(confirm('¿Estás seguro de eliminar este empleado?')){
+            if(confirm('¿Estás seguro de eliminar este sponsor?')){
                 $.ajax({
                     url: '/admin/sponsor/delete/'+id,
                     type: 'GET',
                     success: function(result){
                         window.location.reload();
+                    },
+                    error: function(result){
+                        console.log(result);
                     }
                 });
             }

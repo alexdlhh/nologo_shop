@@ -8,6 +8,10 @@
         @yield('css')
     </head>
     <body> 
+        <!--BARA DE CARGA DE LA WEB, debe ser una línea blanca que se valla rellenando de azul conforme termina de cargar la web-->
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>        
         @yield('header_especial') 
         <nav class="nav-extended">
             <div class="nav-wrapper">
@@ -18,7 +22,7 @@
             <ul class="center-box hide-on-med-and-down">
                 @foreach($front['headers'] as $header)
                     <li class="nav-item header-link {{$front['section']==$header->getTitle()?'active':''}}" data-id="{{ str_replace('/','',$header->getUrl())!=''?str_replace('/','',$header->getUrl()):'RFEG' }}">
-                        <a href="{{$header->getUrl()}}" class="{{!empty($front['section']) && $front['section']==$header->getUrl()?'active':''}}">{{ $header->getTitle() }}</a>
+                        <a href="{{($header->id==5||$header->id==10)?$header->getUrl():'javascript:;'}}" class="{{!empty($front['section']) && $front['section']==$header->getUrl()?'active':''}}">{{ $header->getTitle() }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -29,7 +33,7 @@
                     </li>
                 @else
                     <li><a href=""><i class="material-icons">notifications</i> <div class="badge">4</div></a></li>
-                    <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="user.png" alt=""></div></a></li>
+                    <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="/user.png" alt=""></div></a></li>
                     <li><a href=""><i class="material-icons">settings</i></a></li>
                 @endguest
             </ul>
@@ -48,9 +52,9 @@
                     <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
                 </li>
             @else
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
-                </li>
+                <li><a href=""><i class="material-icons">notifications</i> <div class="badge">4</div></a></li>
+                <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="/user.png" alt=""></div></a></li>
+                <li><a href=""><i class="material-icons">settings</i></a></li>
             @endguest
         </ul>
 
@@ -145,6 +149,9 @@
                         $('.bocadillo_'+seccion).css('display','none');
                     }, 10000);
                 });
+                setTimeout(() => {
+                    document.querySelector('.progress').style.display = 'none';
+                }, 500);
             });
         </script>
         @yield('scripts')

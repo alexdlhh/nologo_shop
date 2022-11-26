@@ -49,6 +49,7 @@ Route::get('media/{menu1?}/{menu2?}',[MediaController::class, 'frontPageMultimed
 Route::get('revistas/{menu1?}/{menu2?}',[JournalController::class, 'frontPageRevista'])->name('front.revista');
 Route::get('schools/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.cursos');
 Route::get('normativa/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.escuela');
+Route::get('patrocinadores/{menu1?}',[SponsorController::class, 'frontPage'])->name('front.sponsor');
 /**
  * HOME
  */
@@ -129,7 +130,7 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/sponsor/create',[SponsorController::class,'CreateSponsor'])->name('admin.sponsors.create');
     Route::get('admin/sponsor/edit/{id}',[SponsorController::class,'EditSponsor'])->name('admin.sponsors.edit');
     Route::post('admin/sponsors/save',[SponsorController::class,'postCreate'])->name('admin.sponsor.store');
-    Route::post('admin/sponsors/delete',[SponsorController::class,'postDelete'])->name('admin.sponsors.delete');
+    Route::get('admin/sponsor/delete/{id}',[SponsorController::class,'postDelete'])->name('admin.sponsors.delete');
     Route::post('admin/sponsors/status',[SponsorController::class,'postStatus'])->name('admin.sponsors.status');
     /**BANNERS */
     Route::get('admin/banners',[BannerController::class,'banners'])->name('admin.banners.list');

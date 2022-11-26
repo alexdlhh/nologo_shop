@@ -18,8 +18,20 @@
                                 <label for="name">Nombre</label>
                             </div>
                             <div class="col s6 input-field">
+                                <input id="subtitle" type="text" class="validate">
+                                <label for="subtitle">Subtitulo</label>
+                            </div>
+                            <div class="col s6 input-field">
                                 <input id="url" type="text" class="validate" value="https://">
                                 <label for="url">Url</label>
+                            </div>
+                            <div class="col s6 input-field">
+                                <select name="" id="type">
+                                    <option value="principal">Principal</option>
+                                    <option value="patrocinadores">Patrocinadores</option>
+                                    <option value="colaboradores">Colaboradores</option>
+                                </select>
+                                <label for="type">Tipo</label>
                             </div>
                             <div class="col s12 input-field">
                                 <textarea id="description"></textarea>
@@ -85,6 +97,8 @@
             formData.append('image', image[0]);
             formData.append('id', 0);
             formData.append('white', image_white[0]);
+            formData.append('type', $('#type').val());
+            formData.append('subtitle', $('#subtitle').val());
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
             $.ajax({

@@ -10,7 +10,7 @@ class SponsorMapper
      * @param array $data
      * @return SponsorEntity
      */
-    public function map(array $data): SponsorEntity
+    public function map($data): SponsorEntity
     {
         $sponsor = new SponsorEntity();
         !empty($data['id']) ? $sponsor->setId($data['id']) : '';
@@ -21,6 +21,8 @@ class SponsorMapper
         !empty($data['updated_at']) ? $sponsor->setUpdatedAt($data['updated_at']) : '';
         !empty($data['url']) ? $sponsor->setUrl($data['url']) : '';
         !empty($data['white']) ? $sponsor->setWhite($data['white']) : '';
+        !empty($data['type']) ? $sponsor->setType($data['type']) : '';
+        !empty($data['subtitle']) ? $sponsor->setSubtitle($data['subtitle']) : '';
         return $sponsor;
     }
     

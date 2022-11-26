@@ -11,8 +11,10 @@ class SponsorEntity{
     public $created_at;
     public $updated_at;
     public $url;
+    public $subtite;
+    public $type;
     
-    public function __construct($id=0, $name='', $description='', $image='', $created_at='', $updated_at='', $url='', $white=''){
+    public function __construct($id=0, $name='', $description='', $image='', $created_at='', $updated_at='', $url='', $white='', $subtitle='', $type=''){
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
@@ -21,6 +23,8 @@ class SponsorEntity{
         $this->updated_at = $updated_at;
         $this->url = $url;
         $this->white = $white;
+        $this->subtitle = $subtitle;
+        $this->type = $type;
     }
     
     /**
@@ -85,6 +89,22 @@ class SponsorEntity{
     public function getWhite()
     {
         return $this->white;
+    }
+
+    /**
+     * @return string $subtitle
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @return string $type
+     */
+    public function getType()
+    {
+        return $this->type;
     }
     
     /**
@@ -152,6 +172,22 @@ class SponsorEntity{
     }
 
     /**
+     * @param string $subtitle
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -164,7 +200,9 @@ class SponsorEntity{
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'url' => $this->url,
-            'white' => $this->white
+            'white' => $this->white,
+            'subtitle' => $this->subtitle,
+            'type' => $this->type
         ];
     }
 }
