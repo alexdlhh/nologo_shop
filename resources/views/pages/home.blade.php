@@ -39,6 +39,9 @@
                             <tr>
                                 <th>Noticias</th>
                             </tr>
+                            @php
+                                $count=0;
+                            @endphp
                             @foreach($front['news'] as $new)
                             @php
                                 $day = date('d', strtotime($new->getCreatedAt()));
@@ -61,6 +64,12 @@
                                     </a>
                                 </td>
                             </tr>
+                            @php
+                            $count++;
+                                if($count == 4){
+                                    break;
+                                }
+                            @endphp
                             @endforeach
                         </table>
                     </div>
@@ -73,6 +82,9 @@
                             <tr>
                                 <th>Calendario</th>
                             </tr>
+                            @php
+                                $count=0;
+                            @endphp
                             @foreach($front['news'] as $new)
                             @php
                                 $day = date('d', strtotime($new->getCreatedAt()));
@@ -95,6 +107,12 @@
                                     </a>
                                 </td>
                             </tr>
+                            @php
+                            $count++;
+                                if($count == 4){
+                                    break;
+                                }
+                            @endphp
                             @endforeach
                         </table>
                     </div>
@@ -107,6 +125,9 @@
                             <tr>
                                 <th>Ultimos dias para ...</th>
                             </tr>
+                            @php
+                                $count=0;
+                            @endphp
                             @foreach($front['news'] as $new)
                             @php
                                 $day = date('d', strtotime($new->getCreatedAt()));
@@ -129,6 +150,12 @@
                                     </a>
                                 </td>
                             </tr>
+                            @php
+                            $count++;
+                                if($count == 4){
+                                    break;
+                                }
+                            @endphp
                             @endforeach
                         </table>
                     </div>
