@@ -18,6 +18,10 @@
                                 <label for="title">Titulo</label>
                             </div>
                             <div class="col s12 input-field">
+                                <input id="subtitle" type="text" class="validate">
+                                <label for="subtitle">Subtitulo</label>
+                            </div>
+                            <div class="col s12 input-field">
                                 <input id="alias" type="text" class="validate">
                                 <label for="alias">PermantLink</label>
                             </div>
@@ -113,6 +117,7 @@
             var alias = $('#alias').val();
             var formData = new FormData();
             formData.append('title', title);
+            formData.append('subtitle', $('#subtitle').val());
             formData.append('content', content);
             formData.append('permantlink', alias);
             formData.append('created_at', date);
@@ -155,8 +160,8 @@
                             });
                         }
                     }else{
-                        //removeSpiner();
-                        //window.location.href='/admin/news/edit/'+data;
+                        removeSpiner();
+                        window.location.href='/admin/news/edit/'+data;
                     }
                 }
             });

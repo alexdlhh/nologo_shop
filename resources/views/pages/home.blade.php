@@ -186,6 +186,7 @@
                 numVisible: 5,
                 padding:10
             });
+            //mantenemos el carrusel como fullwidth
 
             setInterval(()=>{
             if(!instance.pressed){

@@ -148,6 +148,7 @@ class NewsRepository
         $id = DB::table('new')
             ->insertGetId([
                 'title' => $news->getTitle(),
+                'subtitle' => $news->getSubtitle(),
                 'content' => $news->getContent(),
                 'created_at' => $news->getCreatedAt(),
                 'updated_at' => $news->getUpdatedAt(),
@@ -180,10 +181,11 @@ class NewsRepository
     public function update(Request $request, String $image_url){
         $newsMapper = new NewsMapper();
         $data = $request->all();
-        $id = DB::table('new')
+        DB::table('new')
             ->where('id', $data['id'])
             ->update([
                 'title' => $data['title'],
+                'subtitle' => $data['subtitle'],
                 'content' => $data['content'],
                 'updated_at' => date('Y-m-d H:i:s'),
                 'status' => $data['status']?1:0,
@@ -191,24 +193,24 @@ class NewsRepository
                 'feature_image' => $image_url,
             ]);
         //borramos las relaciones de la noticia con las categorias en new_cat_rel
-        DB::table('cat_new_rel')->where('id_new', $id)->delete();
+        DB::table('cat_new_rel')->where('id_new', $data['id'])->delete();
         //creamos las relaciones de la noticia con las categorias en new_cat_rel
         $data['category'] = explode(',', $data['category']);
         foreach($data['category'] as $category) {
             DB::table('cat_new_rel')->insert(
-                ['id_new' => $id, 'id_cat' => $category]
+                ['id_new' =>$data['id'], 'id_cat' => $category]
             );
         }
         //borramos las relaciones de la noticia con los tags en new_tag_rel
-        DB::table('tag_new_rel')->where('id_new', $id)->delete();
+        DB::table('tag_new_rel')->where('id_new', $data['id'])->delete();
         //creamos las relaciones de la noticia con los tags en new_tag_rel
         $data['tags'] =  explode(',', $data['tags']);
         foreach($data['tags'] as $tag) {
             DB::table('tag_new_rel')->insert(
-                ['id_new' => $id, 'id_tag' => $tag]
+                ['id_new' => $data['id'], 'id_tag' => $tag]
             );
         }
-        return $id;
+        return $data['id'];
     }
 
     /**
@@ -274,5 +276,35 @@ class NewsRepository
             ->get();
         $news = $newsMapper->mapCollection($news->toArray());
         return $news;        
+    }
+
+    /**
+     * get by permantlink the new
+     * @param string $permantlink
+     * @return array
+     */
+    public function getNewsByPermantlink($permantlink){
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->where('status', 1)
+            ->where('alias', $permantlink)
+            ->first();
+        $news = $newsMapper->map(get_object_vars($news));
+        return $news;
+    }
+
+    /**
+     * Get the 5 last news
+     * @return array
+     */
+    public function getLastNews(){
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+        $news = $newsMapper->mapCollection($news);
+        return $news;
     }
 }

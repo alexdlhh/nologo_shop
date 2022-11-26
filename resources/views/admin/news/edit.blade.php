@@ -18,6 +18,10 @@
                                 <label for="title">Titulo</label>
                             </div>
                             <div class="col s12 input-field">
+                                <input id="subtitle" type="text" class="validate" value="{{$admin['news']->getSubtitle()}}">
+                                <label for="subtitle">Subtitulo</label>
+                            </div>
+                            <div class="col s12 input-field">
                                 <input id="alias" type="text" class="validate" value="{{ $admin['news']->getPermantlink() }}">
                                 <label for="alias">PermantLink</label>
                             </div>
@@ -119,12 +123,15 @@
             var date = $('#date').val();
             var publicado = $('#publicado').is(':checked');
             var category = $('#category').val();
+            console.log(category);
             var tags = $('#tags').val();
+            console.log(tags);
             var feature_image = $('#feature_image').prop('files');
             console.log(feature_image); 
             var alias = $('#alias').val();
             var formData = new FormData();
             formData.append('title', title);
+            formData.append('subtitle', $('#subtitle').val());
             formData.append('content', content);
             formData.append('permantlink', alias);
             formData.append('created_at', date);
@@ -169,7 +176,7 @@
                             });
                         }
                     }else{
-                        //removeSpiner();
+                        removeSpiner();
                         //window.location.href='/admin/news/edit/'+data;
                     }
                 }

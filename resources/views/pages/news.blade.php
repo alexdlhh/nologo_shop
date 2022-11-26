@@ -59,8 +59,68 @@
     </div>
     <hr>
 </div>
-<div class="mock">
-    <img src="\mock\Mesa 19.jpg" alt="">
+<div id="new_detail" class="row">
+    <div class="col s12 new_card">
+        <div class="row">
+            <div class="col s12">
+                <h1>{{$front['new']->getTitle()}}</h1>
+                <p>{{$front['new']->getSubtitle()}}</p>
+                @php
+                $date = new DateTime($front['new']->getCreatedAt());
+                $date = $date->format('d/m/Y');       
+                @endphp
+                <p class="date">{{$date}}</p>
+                <div class="portada">
+                    <img src="{{$front['new']->getFeatureImage()}}" alt="">
+                </div>
+            </div>
+            <div class="col s9">
+                <div class="text_new">
+                    {!!$front['new']->getContent()!!}
+                </div>
+            </div>
+            <div class="col s3">
+                <div class="banner">
+                    <img src="{{$front['banners']->getImg()}}" alt="">
+                </div>
+                <div class="last_news">
+                    <div class="line_title"></div><h3 class="especial">Otras noticias</h3>
+                    <div class="clear-both"></div>
+                    @php
+                    $count=1;
+                    @endphp
+                    @foreach($front['last_news'] as $new)
+                    <a href="/noticia/{{$front['menu1']}}/{{$front['menu2']}}/{{$new->getPermantlink()}}">
+                        <div class="row">
+                            <div class="col s2 number_list">
+                                {{$count}}.
+                                @php
+                                $count++;
+                                @endphp
+                            </div>
+                            <div class="col s10">
+                                <p class="newzone_title">{{$new->getTitle()}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            @if($front['albumnew'])
+            <div class="col s12 galery_news">
+                <div class="area_news">
+                    <div class="linear_title"></div>
+                    <div class="text-title">Galería de fotos</div>
+                </div>
+                @foreach($front['albumnew'] as $album)
+                <div class="galery_img">
+                    <img src="{{$album->getUrl()}}" alt="">
+                </div>
+                @endforeach                
+            </div>
+            @endif
+        </div>
+    </div>
 </div>
 @endsection
 @section('scripts')

@@ -146,7 +146,7 @@ class NewsController extends Controller
         //create news
         $id = $newsRepository->update($request,$image_url);
 
-        return $id;
+        return $request->input('id');
     }
 
     /**
@@ -199,7 +199,7 @@ class NewsController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPage($menu1="todo",$menu2="todo",$id=0){
+    public function frontPage($menu1="todo",$menu2="todo",$alias=''){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -209,17 +209,23 @@ class NewsController extends Controller
         $categoryNewRepository = new CategoryNewRepository();
         $albumNewRepository = new AlbumNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
-        $news = $newRepository->getNews(5);
+        $new = $newRepository->getNewsByPermantlink($alias);
+        $menu2 = empty($menu2)?date('m'):$this->getNumberOfMonth($menu2);
+        $news = $newRepository->getNewsByYearAndMonth($menu1,$menu2);
+        $last_news = $newRepository->getLastNews();
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $banners = $bannerRepository->getOne('news_detail');
-        $albumnew = $albumNewRepository->getAllByIdNew($id);
+        $albumnew = $albumNewRepository->getAllByIdNew($new->id);
+        $menu2 = $this->getMonthName($menu2);
 
         $front = [
             'headers' => $headers,
             'section' => '/noticias',
+            'new' => $new,
             'news' => $news,
+            'last_news' => $last_news,
             'rs' => $rs,
             'sponsors' => $sponsors,
             'subsection' => 'especialidades',
@@ -236,7 +242,7 @@ class NewsController extends Controller
     /**
      * Vista del listado de noticias en front Page
      */
-    public function frontPageList($menu1='2022', $menu2='todo'){
+    public function frontPageList($menu1='2022', $menu2=''){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -245,12 +251,13 @@ class NewsController extends Controller
         $bannerRepository = new BannerRepository();
         $categoryNewRepository = new CategoryNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
-        $news = $newRepository->getNewsByYearAndMonth($menu1,$this->getNumberOfMonth($menu2));
+        $menu2 = empty($menu2)?date('m'):$this->getNumberOfMonth($menu2);
+        $news = $newRepository->getNewsByYearAndMonth($menu1,$menu2);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $banners = $bannerRepository->getOne('news_detail');
-
+        $menu2 = $this->getMonthName($menu2);
         $front = [
             'headers' => $headers,
             'section' => '/noticias',

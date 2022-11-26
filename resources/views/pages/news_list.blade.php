@@ -24,8 +24,6 @@
         </div>
         <div class="lista">
             <ul>
-                <li><a href="/noticias/{{$front['menu1']}}/todo" class="{{$front['menu1']=='todo' ? 'active':''}}">TODO</a></li>
-                <li><a href="/noticias/{{$front['menu1']}}/enero" class="{{$front['menu2']=='todo' ? 'active':''}}">TODO</a></li>
                 <li><a href="/noticias/{{$front['menu1']}}/enero" class="{{$front['menu2']=='enero' ? 'active':''}}">Enero</a></li>
                 <li><a href="/noticias/{{$front['menu1']}}/febrero" class="{{$front['menu2']=='febrero' ? 'active':''}}">Febrero</a></li>
                 <li><a href="/noticias/{{$front['menu1']}}/marzo" class="{{$front['menu2']=='marzo' ? 'active':''}}">Marzo</a></li>
@@ -84,7 +82,7 @@
         var instance = M.Carousel.init(elem,{
             duration: 400,
             dist: 0,
-            numVisible: 5,
+            numVisible: 7,
             padding:10
         });
 

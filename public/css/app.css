@@ -247,7 +247,7 @@ nav ul a:hover {
     height: 300px !important;
 }
 .newzone .carousel .carousel-item{
-    width: 300px !important;
+    width: 400px !important;
     height: 300px !important;
     top:-50px;
 }
@@ -256,12 +256,12 @@ hr{
     opacity: 0.4;
 }
 .carousel .carousel-item{
-    width: 300px !important;
-    height: 500px !important;
+    width: 400px !important;
+    height: 600px !important;
 }
 .carousel2 .carousel-item{
-    width: 300px !important;
-    height: 500px !important;
+    width: 400px !important;
+    height: 600px !important;
 }
 .imgbackground{
     background-image: url('/images/background.jpg');
@@ -293,6 +293,7 @@ hr{
 .newzone{
     background-color: #2D6E8C;
     color: white;
+    margin-bottom:0px !important;
 }
 .newzone h2{
     margin-bottom:0px;
@@ -337,7 +338,8 @@ hr{
     max-width: 2580px !important;
 }
 .overflow_img{
-    height: 260px;
+    height: auto;
+    max-height: 300px;
     overflow: hidden;
 }
 .overflow_img img{
@@ -597,6 +599,16 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
     max-height: 275px;
     padding-top: 20px;
 }
+.portada img{
+    width: 100%;
+    height: auto;
+}
+.date{
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 1.4em;
+    color: #2D6E8C;
+}
 .mediaGrid__item__content__date__year{
     color: white;
     font-size: 2.3em;
@@ -618,7 +630,7 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
     font-weight: 300 !important;
 }
 div.row.new_list > div > div.row > div > div.card > div.card-image{
-    max-height: 300px;
+    max-height: 250px;
     overflow: hidden;
 }
 .lista ul li a{
@@ -626,6 +638,93 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
 }
 .new_list{
     background-color: #2D6E8C;
+}
+#new_detail{
+    padding:5%;
+    background-color: #2D6E8C;
+}
+.new_card{
+    background-color: white;
+    border-radius: 15px;
+    padding: 1% 5% 5% 5% !important;
+    -webkit-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+    -moz-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+    box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+}
+#new_detail > div > div > div:nth-child(1) > p:nth-child(2){
+    font-size: 2.4em;
+    margin-bottom: 5px;
+}
+.banner {
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.portada{
+    margin-bottom: 50px !important;
+}
+.text_new p{
+    font-size: 1.3em !important;
+}
+.text_new span{
+    font-size: 1.3em !important;
+}
+.text_new{
+    font-size: 1.3em !important;
+}
+.line_title{
+    width: 65px;
+    border-bottom: 3px solid;
+    display: inline-block;
+    margin-top: 56px;
+    margin-left: -10px;
+    margin-right: 10px;
+    float: left;
+}
+h3.especial{
+    float: right;
+    font-size: 4em;
+    width: 80%;
+}
+.number_list{
+    color: #7ABEE2;
+    padding: 5px;
+    font-size: 3.3em;
+    padding-left: 30px !important;
+}
+.newzone_title {
+    color: white;
+    font-size: 1em;
+    padding-left: 10px;
+}
+.last_news{
+    background-color: #0A2540;
+    color: #7ABEE2;
+    padding-bottom: 20px;
+}
+.linear_title{
+    width: 65px;
+    border-bottom: 3px solid #2D6E8C;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+.text-title{
+    width: 80%;
+    color: #2D6E8C;
+    display: inline-block;
+    font-size: 4em;
+}
+.banner img{
+    width: 100%;
+    height: auto;
+}
+.galery_img {
+    display: contents;
+}
+.galery_img img {
+    height: 350px;
+}
+.galery_news {
+    margin-top: 20px;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
@@ -644,5 +743,8 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
     }
     #header_title h1 {
         font-size: 3rem !important;
+    }
+    .line_title {
+        width: 50px;
     }
 }

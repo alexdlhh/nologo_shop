@@ -23,7 +23,7 @@ class HomeController extends Controller
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
-        $news = $newRepository->getNews(5);
+        $news = $newRepository->getNewsByYearAndMonth(date('Y'),date('m'));
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();

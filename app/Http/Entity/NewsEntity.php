@@ -11,8 +11,9 @@ class NewsEntity{
     public $feature_image;
     public $status;
     public $alias;
+    public $subtitle;
     
-    public function __construct($id=0, $title='', $content='', $created_at='', $updated_at='', $feature_image='', $status='', $alias='') {
+    public function __construct($id=0, $title='', $content='', $created_at='', $updated_at='', $feature_image='', $status='', $alias='', $subtitle='') {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
@@ -21,6 +22,7 @@ class NewsEntity{
         $this->feature_image = $feature_image;
         $this->status = $status;
         $this->alias = $alias;
+        $this->subtitle = $subtitle;
     }
 
     public function getId()
@@ -55,6 +57,10 @@ class NewsEntity{
     {
         return $this->alias;
     }
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
 
     public function setId($id)
     {
@@ -87,6 +93,25 @@ class NewsEntity{
     public function setPermantlink($alias)
     {
         $this->alias = $alias;
+    }
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'content' => $this->content,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'feature_image' => $this->feature_image,
+            'status' => $this->status,
+            'alias' => $this->alias,
+            'subtitle' => $this->subtitle,
+        ];
     }
     
 }

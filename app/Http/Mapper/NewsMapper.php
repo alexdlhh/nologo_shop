@@ -21,6 +21,7 @@ class NewsMapper{
         !empty($data['status'])?$news->setStatus($data['status']?1:0):0;
         !empty($data['permantlink'])?$news->setPermantlink($data['permantlink']):0;
         !empty($data['alias'])?$news->setPermantlink($data['alias']):0;
+        !empty($data['subtitle'])?$news->setSubtitle($data['subtitle']):'';
         return $news;
     }
     
