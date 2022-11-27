@@ -123,7 +123,11 @@ class SponsorController extends Controller
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-
+        $_sponsor = [];
+        foreach($sponsors as $sponsor){
+            $_sponsor[$sponsor->type][] = $sponsor;
+        }
+        $sponsors = $_sponsor;
         $front = [
             'headers' => $headers,
             'section' => '/patrocinadores',

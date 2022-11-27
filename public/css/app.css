@@ -277,10 +277,12 @@ hr{
     margin-bottom:0px !important;
 }
 #patrocinadores{
-    padding-top:40px;
-    padding-bottom: 40px;
-    background-color: white;
-    margin-bottom:0px !important;
+    background: linear-gradient(135deg, #046384, #6EB8C3);
+    padding: 5%;
+    padding-left: 6.5% !important;
+    padding-right: 6.5% !important;
+    padding-top: 1%;
+    max-width: 2580px !important;
 }
 #patrocinadores h2{
     color: #0A2540;
@@ -826,6 +828,12 @@ h3.especial{
     margin-bottom: 16px;
     margin-right: 15px;
 }
+.title_line_dark{
+    width: 65px;
+    border-bottom: 3px solid #4B4D69;
+    margin-bottom: 16px;
+    margin-right: 15px;
+}
 .sub_section_esp h3{
     padding-top: 0px !important;
     margin-top: 0px !important;
@@ -925,6 +933,69 @@ h3.especial{
     padding-right: 6.5% !important;
     padding-top: 1%;
     max-width: 2580px !important;
+}
+.sponsor_header .row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    width: 100%;
+}
+.sponsor_img{
+    text-align: center;
+}
+.sponsor_img img{
+    width: auto;
+    height: 127px;
+    max-width: 100%;
+}
+.collapsible-body{
+    background-color: white;
+}
+.btn2{
+    text-decoration: none;
+    color: #fff;
+    background-color: #F1F2F4 !important;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 600;
+    padding: 0 16px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn2:hover{
+    background-color: #737c7e !important;
+}
+.patrocinadores_box{
+    background-color: white;
+    border-radius: 5px;
+}
+.patrocinador_row{
+    border-radius: 5px;
+}
+.patrocinadores_box .row .col a img{
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+    padding: 20px !important;
+}
+.sponsor_name{
+    color: #535E7A;
+    font-size: 2.3em;
+}
+.subtitle{
+    font-size: 1.5em;
+    color: #535E7A;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
