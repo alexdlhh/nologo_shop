@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Repository\SchoolRepository;
 use App\Http\Repository\CourseRepository;
 use App\Http\Repository\PagesRepository;
+use App\Http\Repository\NewsRepository;
+use App\Http\Repository\CategoryNewRepository;
+use App\Http\Repository\TagNewRepository;
+use App\Http\Repository\RSRepository;
+use App\Http\Repository\SponsorRepository;
+use App\Http\Repository\AlbumNewRepository;
+use App\Http\Repository\BannerRepository;
 
 class SchoolController extends Controller
 {
@@ -94,5 +101,46 @@ class SchoolController extends Controller
     public function postStatus(Request $request){
         $schoolRepository = new SchoolRepository();
         return $schoolRepository->updateStatus($request);
+    }
+
+    /**
+     * Vista de la front Page
+     */
+    public function frontPage($menu1='cursos', $menu2='entrenadores'){
+        //$common = new Common();
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();        
+        $news = $newRepository->getNews(5);
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+        
+
+        $front = [
+            'headers' => $headers,
+            'section' => '/schools',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'Escuela',
+            'title'=>'Escuela',
+            'menu1' => $menu1,
+            'menu2' => $menu2,
+        ];
+        return view('pages.'.$menu1)->with('front',$front);
+    }
+
+    public function header_order($headers){
+        $order = [];
+        $aux = [];
+        foreach($headers as $_link){
+            $order[$_link->getOrder()] = $_link;
+        }
+        for($i = 1; $i <= count($order); $i++){
+            $aux[] = $order[$i];
+        }
+        return $aux;
     }
 }

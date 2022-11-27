@@ -754,7 +754,7 @@ h3.especial{
     padding-top: 1%;
     max-width: 2580px !important;
 }
-#tabla1,#tabla2,#tabla3,#tabla4{
+#tabla1,#tabla2,#tabla3,#tabla4,#tabla5,#tabla6{
     background-color: white;
     border-radius: 5px;
     padding: 20px;
@@ -912,6 +912,14 @@ h3.especial{
 }
 .section_calendar{
     background: linear-gradient(135deg, #4A4E69, #978996);
+    padding: 5%;
+    padding-left: 6.5% !important;
+    padding-right: 6.5% !important;
+    padding-top: 1%;
+    max-width: 2580px !important;
+}
+.section_cursos{
+    background: linear-gradient(135deg, #010027, #D24B83);
     padding: 5%;
     padding-left: 6.5% !important;
     padding-right: 6.5% !important;

@@ -49,8 +49,8 @@ Route::get('noticias/{menu1?}/{menu2?}',[NewsController::class, 'frontPageList']
 Route::get('calendar/{menu1?}/{menu2?}',[CalendarController::class, 'frontPage'])->name('front.calendar');
 Route::get('media/{menu1?}/{menu2?}',[MediaController::class, 'frontPageMultimedia'])->name('front.media');
 Route::get('revistas/{menu1?}/{menu2?}',[JournalController::class, 'frontPageRevista'])->name('front.revista');
-Route::get('schools/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.cursos');
-Route::get('normativa/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.escuela');
+Route::get('schools/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])->name('front.cursos');
+Route::get('normativa/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])->name('front.escuela');
 Route::get('patrocinadores/{menu1?}',[SponsorController::class, 'frontPage'])->name('front.sponsor');
 Route::get('rfeg/{menu1?}/{menu2?}',[RFEGController::class, 'frontPage'])->name('front.rfeg');
 /**
