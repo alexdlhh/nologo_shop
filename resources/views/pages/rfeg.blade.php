@@ -63,6 +63,7 @@ $normativa_heads = [
         <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
         <div class="subtitle_rfeg"><div class="linear_title_rfeg"></div>{{date('Y')}}-{{date('Y')+1}}</div>
     </div>
+    @if($front['menu1']!='rfeg' || $front['menu1']!='gobierno')'])
     <div id="tabla1">
         <div class="container_table">
             <h4>Otros protocolos</h4>
@@ -80,6 +81,7 @@ $normativa_heads = [
             </div>
         </div>
     </div>
+    @endif
     @if($front['menu1']=='gobierno')
     <div id="tabla2">
         <div class="container_table">
@@ -87,7 +89,7 @@ $normativa_heads = [
             <div class="row head_table">
                 <div class="col s6">NOMBRE</div>
                 <div class="col s2">CARGO</div>
-                <div class="col s2">ESPECIALIDAD</div>
+                <div class="col s4">ESPECIALIDAD</div>
             </div>
             <div class="row content_table">
                 <div class="col s6">Maria José San Martín López</div>
@@ -95,6 +97,11 @@ $normativa_heads = [
                 <div class="col s4">Gimnasia Artística Mascuilina (GAM)</div>
             </div>
         </div>
+    </div>
+    @endif
+    @if($front['menu1']=='rfeg')
+    <div id="empleados">
+
     </div>
     @endif
 </div>
