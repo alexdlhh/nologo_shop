@@ -756,6 +756,28 @@ h3.especial{
     padding-top: 1%;
     max-width: 2580px !important;
 }
+.rfeg_back_2{
+    background-color: #262837;
+    padding: 5%;
+    padding-left: 6.5% !important;
+    padding-right: 6.5% !important;
+    padding-top: 1%;
+    max-width: 2580px !important;
+}
+.presidente_img {
+    padding-top: 30px;
+}
+.presidente .col p{
+    color: white;
+    font-size: 1.6em;
+}
+.presidente .col ul li{
+    color: white;
+}
+.presidente_img img{
+    width: 100%;
+    height: auto;
+}
 #tabla1,#tabla2,#tabla3,#tabla4,#tabla5,#tabla6{
     background-color: white;
     border-radius: 5px;
@@ -816,6 +838,33 @@ h3.especial{
     padding-right: 6.5% !important;
     padding-top: 1%;
     max-width: 2580px !important;
+}
+#empleados{
+    background: linear-gradient(135deg, #262837, #38A0C5);
+    padding: 5%;
+    padding-left: 6.5% !important;
+    padding-right: 6.5% !important;
+    padding-top: 1%;
+    max-width: 2580px !important;
+}
+.empleado{
+    background-color: #F1F2F4;
+    border-radius: 5px;
+    padding: 10px;
+    border-bottom: 5px solid #38A0C5;
+}
+.empp{
+    padding-top: 20px  !important;
+    padding-left: 40px  !important;
+    padding-right: 40px  !important;
+    padding-bottom: 20px  !important;
+}
+.bandeja_rfeg{
+    color: #38A0C5;
+}
+.empleado_img img{
+    width: 100%;
+    height: auto;
 }
 .sub_section_esp{
     font-size: 3em;
@@ -950,6 +999,16 @@ h3.especial{
     background: white;
     border-radius: 5px;
     padding: 40px;
+}
+.bandejaemp{
+    background: white;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    margin-bottom:50px;
+    margin-top:50px;
 }
 .prefs .row .col p{
     margin-bottom: 44px;

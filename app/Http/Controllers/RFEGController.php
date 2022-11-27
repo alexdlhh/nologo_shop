@@ -34,7 +34,7 @@ class RFEGController extends Controller
         $this->bannerRepository = $bannerRepository;
     }
 
-    public function frontPage($menu1='rfeg',$menu2='todo')
+    public function frontPage($menu1='rfeg',$menu2='rfeg')
     {
         //$common = new Common();
         $pageRepository = new PagesRepository();
