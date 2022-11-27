@@ -9,6 +9,8 @@ use App\Http\Repository\NewsRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\PagesRepository;
+use App\Http\Repository\ColeccionRepository;
+use App\Http\Repository\MediaRepository;
 //use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
@@ -139,11 +141,14 @@ class EspecialidadesController extends Controller
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
+        $coleccionRepository = new ColeccionRepository();
+        $mediaRepository = new MediaRepository();
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $especialidades = $this->especialidadesRepository->getAll();
+        $media = $mediaRepository->getByColectionAndSpeciality(1,3);
 
         $front = [
             'headers' => $headers,
@@ -155,6 +160,7 @@ class EspecialidadesController extends Controller
             'title'=>'Especialidades',
             'menu1' => $menu1,
             'menu2' => $menu2,
+            'media' => $media,
         ];
         return view('pages.especialidades')->with('front',$front);
     }

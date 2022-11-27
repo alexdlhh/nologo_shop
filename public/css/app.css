@@ -754,7 +754,7 @@ h3.especial{
     padding-top: 1%;
     max-width: 2580px !important;
 }
-#tabla1,#tabla2,#tabla3{
+#tabla1,#tabla2,#tabla3,#tabla4{
     background-color: white;
     border-radius: 5px;
     padding: 20px;
@@ -886,6 +886,29 @@ h3.especial{
 .player_name h5{
     font-size: 1.8em;
     font-weight: 200;
+}
+.btn{
+    background-color: #F1F2F4 !important;
+    font-weight: 800 !important;
+    color: #535E7A !important;
+    padding-bottom: 50px !important;
+    margin-left: 30px;
+}
+.btn img{
+    width: 30px;
+    height: auto;
+    position: relative;
+    top: 10px;
+}
+.color_violet{
+    color: #651997 !important;
+}
+.card-image {
+    max-height: 280px;
+}
+.nobackground{
+    background: linear-gradient(135deg, #CA01CC, #4E0185) !important;
+    padding-bottom: 100px;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
