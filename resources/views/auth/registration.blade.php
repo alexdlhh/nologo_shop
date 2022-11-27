@@ -51,7 +51,7 @@
                                     <label for="password_confirm" class="active">Confirmar Contraseña</label>
                                 </div>
                             </div>
-                            <button type="submit" id="register" class="btn btn-primary">
+                            <button type="submit" id="register" class="btn3 btn-primary">
                                 Registrarse
                             </button>
                         </div>

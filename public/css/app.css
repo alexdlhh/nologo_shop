@@ -934,6 +934,26 @@ h3.especial{
     padding-top: 1%;
     max-width: 2580px !important;
 }
+.area_cliente{
+    background: linear-gradient(135deg, #3f3f42, #9c9b9c);
+    padding: 5%;
+    padding-left: 6.5% !important;
+    padding-right: 6.5% !important;
+    padding-top: 1%;
+    max-width: 2580px !important;
+}
+.avatar_field img{
+    width: 100px;
+    height: auto;
+}
+.bandeja{
+    background: white;
+    border-radius: 5px;
+    padding: 40px;
+}
+.prefs .row .col p{
+    margin-bottom: 44px;
+}
 .sponsor_header .row{
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -975,6 +995,57 @@ h3.especial{
 }
 .btn2:hover{
     background-color: #737c7e !important;
+}
+.btn3{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #F1F2F4 !important;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 600;
+    padding: 0 16px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn3:hover{
+    background-color: #737c7e !important;
+    color: white;
+}
+.btn4{
+    text-decoration: none;
+    color: #fff !important;
+    text-align: center;
+    letter-spacing: .5px;
+    background-color: #db1717 !important;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 600;
+    padding: 0 16px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn4:hover{
+    background-color: #331a1a !important;
 }
 .patrocinadores_box{
     background-color: white;

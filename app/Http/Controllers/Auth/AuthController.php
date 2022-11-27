@@ -129,13 +129,20 @@ class AuthController extends Controller
 
     public function dashboard(){
         $pageRepository = new PagesRepository();
+        $RSRepository = new RSRepository();
         $headers = $pageRepository->getAll('section','=','1');
+        $rs = $RSRepository->getAll();
+        $front = [
+            'headers' => $headers,
+            'section' => 'Dashboard',
+            'rs' => $rs
+        ];
         $admin = ['title' => 'Dashboard','section'=>'','subsection'=>''];
         if(Auth::check()){
-            return Auth::user()->role==1 ?  view('admin/admin')->with('admin',$admin) :  view('dashboard')->with('headers',$headers);
+            return Auth::user()->role==1 ?  view('admin/admin')->with('admin',$admin) :  view('dashboard')->with('front',$front);
         }
 
-        return redirect("login")->withSuccess('Opps! You do not have access');
+        return redirect("login")->withSuccess('Opps! No tienes acceso');
 
     }
 

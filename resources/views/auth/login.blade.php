@@ -38,11 +38,11 @@
                         
                         </div>
                         <div class="card-action">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn3 btn-primary">
                                 Inicia Sesión
                             </button> 
                             <span> o </span> 
-                            <a class="btn red darken-1" href="/registration">
+                            <a class="btn4" href="/registration">
                                 Registrate
                             </a>                     
                         </div>
