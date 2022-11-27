@@ -59,16 +59,16 @@
         </ul>
 
         <div class="bocadillos">
-            <div class="bocadillo bocadillo_RFEG" data-id="rfeg">
+            <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Presentación</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Quiénes Somos</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Organo de gobierno</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Normativa</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Ley de Transparencia</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Estatutos</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="">Elecciones</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/comunicados">Presentación</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/rfeg">Quiénes Somos</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/gobierno">Organo de gobierno</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/normativa">Normativa</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/estatutos">Estatutos</a></li>
+                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_especialities" data-id="especialidades">

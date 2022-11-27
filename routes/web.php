@@ -19,6 +19,7 @@ use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\RFEGController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,7 @@ Route::get('revistas/{menu1?}/{menu2?}',[JournalController::class, 'frontPageRev
 Route::get('schools/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.cursos');
 Route::get('normativa/{menu1?}/{menu2?}',[NewsController::class, 'frontPageSchool'])->name('front.escuela');
 Route::get('patrocinadores/{menu1?}',[SponsorController::class, 'frontPage'])->name('front.sponsor');
+Route::get('rfeg/{menu1?}/{menu2?}',[RFEGController::class, 'frontPage'])->name('front.rfeg');
 /**
  * HOME
  */
