@@ -29,7 +29,7 @@ class HomeController extends Controller
         $sponsors = $sponsorRepository->getAll();
         $front = [
             'headers' => $headers,
-            'section' => 'RFEG',
+            'section' => '',
             'news' => $news,
             'rs' => $rs,
             'sponsors' => $sponsors

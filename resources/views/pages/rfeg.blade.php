@@ -63,7 +63,7 @@ $normativa_heads = [
         <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
         <div class="subtitle_rfeg"><div class="linear_title_rfeg"></div>{{date('Y')}}-{{date('Y')+1}}</div>
     </div>
-    @if($front['menu1']!='rfeg' || $front['menu1']!='gobierno')'])
+    @if($front['menu1']!='rfeg' || $front['menu1']!='gobierno')
     <div id="tabla1">
         <div class="container_table">
             <h4>Otros protocolos</h4>

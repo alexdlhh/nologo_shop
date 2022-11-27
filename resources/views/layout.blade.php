@@ -62,13 +62,13 @@
             <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/comunicados">Presentación</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/rfeg">Quiénes Somos</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/gobierno">Organo de gobierno</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/normativa">Normativa</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/estatutos">Estatutos</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/comunicados">Presentación</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/rfeg">Quiénes Somos</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/gobierno">Organo de gobierno</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/normativa">Normativa</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/estatutos">Estatutos</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_especialities" data-id="especialidades">
@@ -77,14 +77,14 @@
                         <p>OLIMPICAS</p>
                         <div class="col s6">
                             <ul>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Artística masculina</a></li>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Artística femenina</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Artística masculina</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Artística femenina</a></li>
                             </ul>
                         </div>
                         <div class="col s6">
                             <ul>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Ritmica</a></li>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Trampolin</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Ritmica</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Trampolin</a></li>
                             </ul>
                         </div>
                     </div>
@@ -92,14 +92,14 @@
                         <p>NO OLIMPICAS</p>
                         <div class="col s6">
                             <ul>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Aeróbica</a></li>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Acrobática</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Aeróbica</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Acrobática</a></li>
                             </ul>
                         </div>
                         <div class="col s6">
                             <ul>                                
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Para Todos</a></li>
-                                <li><img width="20" src="icon.png" alt=""><a href="/especialidades">Parkour</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Para Todos</a></li>
+                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades">Parkour</a></li>
                             </ul>
                         </div>
                     </div>
@@ -108,22 +108,22 @@
             <div class="bocadillo bocadillo_media" data-id="multimedia">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="icon.png" alt=""><a href="/media">Fotos y vídeos</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/revistas">Revistas</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/media">Fotos y vídeos</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/revistas">Revistas</a></li>
                 </ul>
             </div>
-            <div class="bocadillo bocadillo_calendar" data-id="calendario">
+            <div class="bocadillo bocadillo_calendario" data-id="calendario">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="icon.png" alt=""><a href="/calendar">Competiciones Nacionales</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/calendar">Competiciones Internacionales</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/calendar">Competiciones Nacionales</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/calendar">Competiciones Internacionales</a></li>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_schools" data-id="school">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="icon.png" alt=""><a href="/schools">Cursos</a></li>
-                    <li><img width="20" src="icon.png" alt=""><a href="/normativa">Normativa</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/schools">Cursos</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/normativa">Normativa</a></li>
                 </ul>
             </div>            
         </div>
