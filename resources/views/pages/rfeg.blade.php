@@ -80,6 +80,7 @@ $normativa_heads = [
             </div>
         </div>
     </div>
+    @if($front['menu1']=='gobierno')
     <div id="tabla2">
         <div class="container_table">
             <h4>Comité de jueces</h4>
@@ -95,6 +96,7 @@ $normativa_heads = [
             </div>
         </div>
     </div>
+    @endif
 </div>
 <div class="modal" id="modal1">
     <div class="modal-content">
