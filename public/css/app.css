@@ -910,6 +910,14 @@ h3.especial{
     background: linear-gradient(135deg, #CA01CC, #4E0185) !important;
     padding-bottom: 100px;
 }
+.section_calendar{
+    background: linear-gradient(135deg, #4A4E69, #978996);
+    padding: 5%;
+    padding-left: 6.5% !important;
+    padding-right: 6.5% !important;
+    padding-top: 1%;
+    max-width: 2580px !important;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
