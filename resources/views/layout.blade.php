@@ -9,7 +9,7 @@
     </head>
     <body> 
         <!--BARA DE CARGA DE LA WEB, debe ser una línea blanca que se valla rellenando de azul conforme termina de cargar la web-->
-        <div class="progress">
+        <div class="progress floatingbox">
             <div class="indeterminate"></div>
         </div>        
         @yield('header_especial') 
@@ -142,11 +142,16 @@
                     var seccion = $(this).attr('data-id');
                     $(".bocadillo").hide();
                     $('.bocadillo_'+seccion).css('display','block');
+                    //Transición para suavizar la aparición
+                    $('.bocadillo_'+seccion).css('opacity','0');
+                    $('.bocadillo_'+seccion).animate({opacity: 1}, 300);                    
                 });
                 $(".header-link").on("mouseout", function () {
                     var seccion = $(this).attr('data-id');
-                    setTimeout(() => {
-                        $('.bocadillo_'+seccion).css('display','none');
+                    setTimeout(() => {                        
+                        //Transición para suavizar la ocultación
+                        $('.bocadillo_'+seccion).css('opacity','1');
+                        $('.bocadillo_'+seccion).animate({opacity: 0}, 300);
                     }, 10000);
                 });
                 setTimeout(() => {

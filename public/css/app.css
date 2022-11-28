@@ -3,7 +3,7 @@
     font-family: 'Lora'; 
     src: local('Lora'),url('/fonts/static/Lora-Regular.ttf')
 }
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600;800&family=Scope+One&display=swap');
 @font-face {
     font-family: 'ManropeBold';
     src: local('ManropeBold'),url('/fonts/static/Manrope-Bold.ttf');
@@ -89,10 +89,20 @@ nav ul a:hover {
     max-height:700px;
     text-align: center;
 }
+/*#video_header{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}*/
 #video_header{
     width: 100%;
     position: relative;
     z-index: 1;
+    background-image: url(/GR1C4175_web.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 700px;
 }
 .fix_video{
     height: 508px;
@@ -115,25 +125,29 @@ nav ul a:hover {
 }
 #profile{
     margin-bottom: 0px !important;
-    background: #13E5D7;
+    background: #15c8d5;
     background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7 22%);
-    background: -webkit-linear-gradient(left, #0A2540 0%,#13E5D7 22%);
-    background: linear-gradient(to right, #0A2540 0%,#13E5D7 22%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#13E5D7',GradientType=2 );
+    background: -webkit-linear-gradient(left, #0A2540 0%,#15c8d5 22%);
+    background: linear-gradient(to right, #0A2540 0%,#15c8d5 22%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#15c8d5',GradientType=2 );
+}
+.row #profile .col.s1 {
+    height:330px;
+    width:6%;
 }
 .fix_video{
     padding-bottom: 6.85%;
 }
 .vertical-text{
-    transform: translate(0%, 379%) rotate(-90deg);
+    transform: translate(0%, 662%) rotate(-90deg);
     transform-origin: 0 0;
     font-size: 2rem;
     color: white;
-    font-weight: 300;
-    width: 338px !important;
+    font-weight: 200;
+    width: 330px !important;
     height: 50px;
     text-align: center;
-    padding-right: 30px;
+    padding-right: 30px; 
     font-family: 'Lora';
 }
 .area_personal_fix{
@@ -144,8 +158,9 @@ nav ul a:hover {
 .selector-vertical{
     width: 10%;
     float: left;
-    margin: 25px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
     font-family: 'Lora';
+    padding: 25px 30px 30px 30px;
 }
 .areapersonal{
     width: 80%;
@@ -155,8 +170,10 @@ nav ul a:hover {
     font-weight: 200;
     font-size: 27px;
     text-align: left;
-    padding-left: 10px;
     padding-top: 20px;
+    position: relative;
+    top: -20%;
+    padding-left: 32px;
 }
 .calendar_day{
     background-color: #0A2540;
@@ -215,26 +232,29 @@ nav ul a:hover {
 .frase1{
     text-align: center;
     font-size: 2.5rem;
+    line-height: 1.3em;
     color: white;
-    font-family: 'Lora';
+    font-family: 'Scope One';
 }
 .frase2{
-    text-align: right;
+    text-align: center;
     font-size: 2.5rem;
+    padding-left: 30%;
     color: #0A2540;
-    font-family: 'Lora';
+    font-family: 'Scope One';
 }
+
 #motivadora{
     padding-top: 40px;
     padding-bottom: 40px;
     padding-left: 40px;
     padding-right: 40px;
-    background: #13E5D7;
-    background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7 52%);
-    background: -webkit-linear-gradient(left, #0A2540 0%,#13E5D7 52%);
-    background: linear-gradient(to right, #0A2540 0%,#13E5D7 52%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#13E5D7',GradientType=2 );
     font-family: 'Lora';
+    background: #15c8d5;
+    background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7);
+    background: -webkit-linear-gradient(left, #0A2540 0%,#15c8d5);
+    background: linear-gradient(to right, #0A2540 0%,#15c8d5);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#15c8d5',GradientType=2 );
 }
 #noticias h2{
     color: white;
@@ -284,13 +304,26 @@ hr{
     padding-top: 1%;
     max-width: 2580px !important;
 }
+#patrocinadores_home{
+    background: white;
+    padding-top: 1%;
+    padding-bottom: 8%;
+    max-width: 2580px !important;
+}
 #patrocinadores h2{
     color: #0A2540;
     padding-left:40px;
     font-weight: 300;
 }
+.floatingbox{
+    position:fixed !important;
+}
+.patrocinadores_home h2{
+    padding-left: 2.3733333rem;
+}
 .sponsor{
     text-align: center;
+    position: relative;
 }
 .sponsor img{
     max-height: 100px;
@@ -1140,8 +1173,15 @@ h3.especial{
         height: 391px;
     }
     #video_header{
-        margin-top: -7%;
+        height: 582px;
     }
+    .areapersonal{
+        top: -90%;
+        padding-left: 32px;
+    }
+    /*#video_header{
+        margin-top: -7%;
+    }*/
 }
 /*Media query 1360px ancho*/
 @media only screen and (max-width: 1360px){
@@ -1157,7 +1197,13 @@ h3.especial{
     .fix_video {
         height: 324px;
     }
-    #video_header{
+    .areapersonal{
+        top: -112%;
+    }
+    /*#video_header{
         margin-top: -7%;
+    }*/
+    #video_header{
+        height: 516px;
     }
 }
