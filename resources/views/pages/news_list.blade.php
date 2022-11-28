@@ -43,14 +43,14 @@
 <div class="row newzone" id="noticias">
     <h2>{{$front['menu1']}}</h2>
     <h2><div class="linea"></div>{{$front['menu2']}}</h2>
-    <div class="carousel">
+    <!--div class="carousel">
         @foreach($front['news'] as $new)
         <a class="carousel-item" href="/noticia/{{$front['menu1']}}/{{$front['menu2']}}/{{$new->getPermantlink()}}">
             <div class="overflow_img"><img src="{{$new->getFeatureImage()}}"></div>
             <p class="newzone_title">{{$new->getTitle()}}</p>
         </a>
         @endforeach
-    </div>
+    </div-->
     <hr>
 </div>
 <div class="row new_list">
@@ -78,9 +78,9 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
-        var elem = document.querySelector('.carousel');
+        /*var elem = document.querySelector('.carousel');
         var instance = M.Carousel.init(elem,{
-            duration: 400,
+            duration: 2000,
             dist: 0,
             numVisible: 7,
             padding:10
@@ -91,6 +91,47 @@
             instance.next();
         }
         },2000)
+
+        $('.carousel').hover(function(){
+            instance.pressed = true;
+        },function(){
+            instance.pressed = false;
+        });*/
+
+        //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
+        var page = 1;
+        var loading = false;
+        $(window).scroll(function() {
+            if($(window).scrollTop() > $('body').height()-1700) {
+                if(!loading){
+                    loading = true;
+                    page++;
+                    var html = '<div class="center"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div><div>';
+                    $('.new_list').append(html);
+                    $.ajax({
+                        url: '/getNewsScroll/'+page,
+                        type: 'GET',
+                        success: function(data) {
+                            if(data.length>0){
+                                data.forEach(function(newItem){
+                                    var html = '<div class="col s12 m6 l4"><div class="card"><div class="card-image"><a href="/noticia/{{$front['menu1']}}/{{$front['menu2']}}/'+newItem.permalink+'"><img src="'+newItem.feature_image+'"></a></div><div class="card-content"><p class="new_list_title">'+newItem.title+'</p></div><div class="card-action"><a href="/noticia/{{$front['menu1']}}/{{$front['menu2']}}/'+newItem.permalink+'">Leer más</a></div></div></div>';
+                                    $('.new_list .row').append(html);
+                                });
+                            }else{
+                                page--;
+                            }
+                            $('.preloader-wrapper').remove();
+                            loading = false;
+                        }
+                    });
+                }
+            }
+        });
+        
     });
+
+    
+
+
 </script>
 @endsection

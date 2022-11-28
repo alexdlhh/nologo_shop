@@ -76,7 +76,7 @@
             </div>
             <div class="col s9">
                 <div class="text_new">
-                    {!!$front['new']->getContent()!!}
+                    <p>{!!$front['new']->getContent()!!}</p>
                 </div>
             </div>
             <div class="col s3">
@@ -114,7 +114,7 @@
                 </div>
                 @foreach($front['albumnew'] as $album)
                 <div class="galery_img">
-                    <img src="{{$album->getUrl()}}" alt="">
+                    <img src="{{$album->getUrl()}}" class="materialboxed" alt="">
                 </div>
                 @endforeach                
             </div>
@@ -126,6 +126,7 @@
 @section('scripts')
 <script>
     $(document).ready(function(){
+        $('.materialboxed').materialbox();
         var elem = document.querySelector('.carousel');
         var instance = M.Carousel.init(elem,{
             duration: 400,

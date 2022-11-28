@@ -242,7 +242,7 @@ class NewsController extends Controller
     /**
      * Vista del listado de noticias en front Page
      */
-    public function frontPageList($menu1='2022', $menu2=''){
+    public function frontPageList($menu1='todo', $menu2='todo'){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -251,13 +251,13 @@ class NewsController extends Controller
         $bannerRepository = new BannerRepository();
         $categoryNewRepository = new CategoryNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
-        $menu2 = empty($menu2)?date('m'):$this->getNumberOfMonth($menu2);
+        $menu2 = empty($menu2)?'':$this->getNumberOfMonth($menu2);
         $news = $newRepository->getNewsByYearAndMonth($menu1,$menu2);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $banners = $bannerRepository->getOne('news_detail');
-        $menu2 = $this->getMonthName($menu2);
+        $menu2 = $menu2!=''?$this->getMonthName($menu2):'';
         $front = [
             'headers' => $headers,
             'section' => '/noticias',
@@ -272,6 +272,21 @@ class NewsController extends Controller
             'menu2' => $menu2,
         ];
         return view('pages.news_list')->with('front',$front);
+    }
+
+    /**
+     * Esta función obtendrá la siguiente tanda de noticias
+     * @param $pag
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNewsScroll($pag=2){
+        $newRepository = new NewsRepository();
+        if($pag<2){
+            $pag = 2;
+        }
+        $pag = ($pag-1)*10;
+        $news = $newRepository->getNewsByYearAndMonth('todo','',$pag);
+        return response()->json($news);
     }
 
     /**

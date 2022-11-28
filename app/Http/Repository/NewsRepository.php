@@ -266,14 +266,23 @@ class NewsRepository
      * @param int $month
      * @return array
      */
-    public function getNewsByYearAndMonth($year, $month){
+    public function getNewsByYearAndMonth($year, $month, $init=0, $limit=10){
         $newsMapper = new NewsMapper();
         //vamos a buscar en la base de datos las noticias que tengan el año y mes que nos pasan con un like
-        $news = DB::table('new')
-            ->where('status', 1)
-            ->where('created_at', 'like', $year.'-'.$month.'%')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        if($year=='todo'){
+            $news = DB::table('new')
+                ->where('status', 1)
+                ->orderBy('created_at', 'desc')
+                ->skip($init)
+                ->take($limit)
+                ->get();
+        }else{
+            $news = DB::table('new')
+                ->where('status', 1)
+                ->where('created_at', 'like', $year.'-'.$month.'%')
+                ->orderBy('created_at', 'desc')
+                ->get();
+            }
         $news = $newsMapper->mapCollection($news->toArray());
         return $news;        
     }

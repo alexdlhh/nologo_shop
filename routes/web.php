@@ -53,6 +53,7 @@ Route::get('schools/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])->
 Route::get('normativa/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])->name('front.escuela');
 Route::get('patrocinadores/{menu1?}',[SponsorController::class, 'frontPage'])->name('front.sponsor');
 Route::get('rfeg/{menu1?}/{menu2?}',[RFEGController::class, 'frontPage'])->name('front.rfeg');
+Route::get('getNewsScroll/{pag?}',[NewsController::class, 'getNewsScroll'])->name('getNewsScroll');
 /**
  * HOME
  */
