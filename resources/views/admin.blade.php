@@ -63,7 +63,7 @@
                                     </a>
                                 </li-->
                                 <li>
-                                    <a href="#" class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">
+                                    <a href="/admin/rfeg" class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">Administrar contenido RFEF</p>
                                     </a>

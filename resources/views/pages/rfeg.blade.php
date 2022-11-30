@@ -19,6 +19,7 @@ $normativa_heads = [
     'reglamentos' => 'Reglamentos',
     'normativas' => 'Normativas',
     'protocolos' => 'Protocolos',
+    'rfeg' => '',
 ];
 @endphp
 

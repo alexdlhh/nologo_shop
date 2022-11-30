@@ -209,76 +209,14 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/informacion/save',[InformacionController::class,'postCreate'])->name('admin.informacion.store');
     Route::post('admin/informacion/delete',[InformacionController::class,'postDelete'])->name('admin.informacion.delete');
     /**ADMIN RFEG */
+    Route::get('admin/rfeg',[RfegController::class,'adminRFEG'])->name('admin.rfeg.section');
+    Route::get('admin/rfeg/{section}',[RfegController::class,'adminRFEGSection'])->name('admin.rfeg.list');
     /**ADMIN REGLAMENTOS */
-    Route::get('admin/reglamentos',[ReglamentosController::class,'getAll'])->name('admin.reglamentos.list');
-    Route::get('admin/reglamento/{id}',[ReglamentosController::class,'getOne'])->name('admin.reglamentos.edit');
-    Route::get('admin/reglamento/create',[ReglamentosController::class,'create'])->name('admin.reglamentos.create');
-    Route::post('admin/reglamento/save',[ReglamentosController::class,'postCreate'])->name('admin.reglamentos.store');
-    Route::post('admin/reglamento/delete',[ReglamentosController::class,'postDelete'])->name('admin.reglamentos.delete');
-    /**ADMIN ORGANOS DE GOBIERNO */
-    Route::get('admin/refg/organos/{year}',[OrganosController::class,'getAll'])->name('admin.organos.list');
-    Route::get('admin/refg/ocupacion/organos/',[OrganosController::class,'getOcupacion'])->name('admin.organos.list');
-    Route::get('admin/organo/{id}',[OrganosController::class,'getOne'])->name('admin.organos.edit');
-    Route::get('admin/organo/ocupacion/{id}',[OrganosController::class,'getOneOcupacion'])->name('admin.organos.edit');
-    Route::get('admin/organos/create',[OrganosController::class,'create'])->name('admin.organos.create');
-    Route::get('admin/organos/ocupacion/create',[OrganosController::class,'createOcupacion'])->name('admin.organos.create');
-    Route::post('admin/organos/save',[OrganosController::class,'postCreate'])->name('admin.organos.store');
-    Route::post('admin/organos/ocupacion/save',[OrganosController::class,'postCreateOcupacion'])->name('admin.organos.store');
-    Route::post('admin/organos/ocupacion/delete',[OrganosController::class,'postDeleteOcupacion'])->name('admin.organos.delete');
-    Route::post('admin/organos/delete',[OrganosController::class,'postDelete'])->name('admin.organos.delete');
-    /**ADMIN MYD */
-    Route::get('admin/myd/list',[MydController::class,'getAll'])->name('admin.myd.list');
-    Route::get('admin/myd/list/{id}',[MydController::class,'getAllCat'])->name('admin.myd.listCat');
-    Route::get('admin/myd/{id}',[MydController::class,'getOne'])->name('admin.myd.edit');
-    Route::get('admin/myd/create',[MydController::class,'create'])->name('admin.myd.create');
-    Route::post('admin/myd/save',[MydController::class,'postCreate'])->name('admin.myd.store');
-    Route::post('admin/myd/delete',[MydController::class,'postDelete'])->name('admin.myd.delete');
-    Route::get('admin/myd/Cat/{id}',[MydController::class,'getOne'])->name('admin.myd.editCat');
-    Route::get('admin/myd/Cat/create',[MydController::class,'create'])->name('admin.myd.createCat');
-    Route::post('admin/myd/Cat/save',[MydController::class,'postCreate'])->name('admin.myd.storeCat');
-    Route::post('admin/myd/Cat/delete',[MydController::class,'postDelete'])->name('admin.myd.deleteCat');
-    /**ADMIN COMUNICADOS */
-    Route::get('admin/comunicados',[ComunicadosController::class,'getAll'])->name('admin.comunicados.list');
-    Route::get('admin/comunicado/{id}',[ComunicadosController::class,'getOne'])->name('admin.comunicados.edit');
-    Route::get('admin/comunicado/create',[ComunicadosController::class,'create'])->name('admin.comunicados.create');
-    Route::post('admin/comunicado/save',[ComunicadosController::class,'postCreate'])->name('admin.comunicados.store');
-    Route::post('admin/comunicado/delete',[ComunicadosController::class,'postDelete'])->name('admin.comunicados.delete');
     /**ADMIN EMPLOYEE */
     Route::get('admin/employees/{page?}/{search?}',[EmployeeController::class,'employees'])->name('admin.employees.list');
     Route::get('admin/employee/create',[EmployeeController::class,'CreateEmployee'])->name('admin.employees.create');
     Route::get('admin/employee/edit/{id}',[EmployeeController::class,'EditEmployee'])->name('admin.employees.edit');
     Route::post('admin/employees/save',[EmployeeController::class,'postCreate'])->name('admin.employees.store');
     Route::get('admin/employees/delete/{id}',[EmployeeController::class,'postDelete'])->name('admin.employees.delete');
-    /**ADMIN LEYTRANSPARENCIA */
-    Route::get('admin/leytransparencia',[LeyTransparenciaController::class,'getAll'])->name('admin.leytransparencia.list');
-    Route::get('admin/leytransparencia/{id}',[LeyTransparenciaController::class,'getOne'])->name('admin.leytransparencia.edit');
-    Route::get('admin/leytransparencia/create',[LeyTransparenciaController::class,'create'])->name('admin.leytransparencia.create');
-    Route::post('admin/leytransparencia/save',[LeyTransparenciaController::class,'postCreate'])->name('admin.leytransparencia.store');
-    Route::post('admin/leytransparencia/delete',[LeyTransparenciaController::class,'postDelete'])->name('admin.leytransparencia.delete');
-    Route::get('admin/leytransparencia/{type}/{id}',[LeyTransparenciaController::class,'getOne'])->name('admin.leytransparencia.editpral');
-    Route::get('admin/leytransparencia/{type}/create',[LeyTransparenciaController::class,'create'])->name('admin.leytransparencia.createpral');
-    Route::post('admin/leytransparencia/{type}/save',[LeyTransparenciaController::class,'postCreate'])->name('admin.leytransparencia.storepral');
-    Route::post('admin/leytransparencia/{type}/delete',[LeyTransparenciaController::class,'postDelete'])->name('admin.leytransparencia.deletepral');
-    /**ADMIN ESTATUTOS */
-    Route::get('admin/estatutos',[EstatutosController::class,'getAll'])->name('admin.estatutos.list');
-    Route::get('admin/estatuto/{id}',[EstatutosController::class,'getOne'])->name('admin.estatutos.edit');
-    Route::get('admin/estatuto/create',[EstatutosController::class,'create'])->name('admin.estatutos.create');
-    Route::post('admin/estatuto/save',[EstatutosController::class,'postCreate'])->name('admin.estatutos.store');
-    Route::post('admin/estatuto/delete',[EstatutosController::class,'postDelete'])->name('admin.estatutos.delete');
-    /**ADMIN FEDERACIONES */
-    Route::get('admin/federaciones',[FederacionesController::class,'getAll'])->name('admin.federaciones.list');
-    Route::get('admin/federacion/{id}',[FederacionesController::class,'getOne'])->name('admin.federaciones.edit');
-    Route::get('admin/federacion/create',[FederacionesController::class,'create'])->name('admin.federaciones.create');
-    Route::post('admin/federacion/save',[FederacionesController::class,'postCreate'])->name('admin.federaciones.store');
-    Route::post('admin/federacion/delete',[FederacionesController::class,'postDelete'])->name('admin.federaciones.delete');
-    /**ADMIN ELECCIONES */
-    Route::get('admin/elecciones',[EleccionesController::class,'getAll'])->name('admin.elecciones.list');
-    Route::get('admin/eleccion/{id}',[EleccionesController::class,'getOne'])->name('admin.elecciones.edit');
-    Route::get('admin/eleccion/create',[EleccionesController::class,'create'])->name('admin.elecciones.create');
-    Route::post('admin/eleccion/save',[EleccionesController::class,'postCreate'])->name('admin.elecciones.store');
-    Route::post('admin/eleccion/delete',[EleccionesController::class,'postDelete'])->name('admin.elecciones.delete');
-    Route::get('admin/eleccionCharge/{id}',[EleccionesController::class,'getOneCharge'])->name('admin.elecciones.editCharge');
-    Route::get('admin/eleccionCharge/create',[EleccionesController::class,'createCharge'])->name('admin.elecciones.createCharge');
-    Route::post('admin/eleccion/saveCharge',[EleccionesController::class,'postCreateCharge'])->name('admin.elecciones.storeCharge');
-    Route::post('admin/eleccion/deleteCharge',[EleccionesController::class,'postDeleteCharge'])->name('admin.elecciones.deleteCharge');
+    
 });

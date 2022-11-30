@@ -72,4 +72,33 @@ class RFEGController extends Controller
         }
         return $aux;
     }
+    //desde aqui vamos a seleccionjar a que seccion vamos a ir
+    public function adminRFEG(){
+
+        return view('admin.rfeg.section', [
+            'admin'=>[
+                'title'=>'RFEG',
+                'section' => 'rfeg',
+                'subsection' => 'adminrfef'
+                ]]);
+    
+    }
+
+    public function adminRFEGSection($seccion='', $subseccion=""){        
+        $table = '';
+        if($seccion == 'gobierno'){
+            $table = 2;
+        }
+        if($seccion != 'normativa'){
+            $table = 1;
+        }
+        $table_content = []; //array de objetos 
+        return view('admin.rfeg.list', [
+            'admin'=>[
+                'title'=>'RFEG',
+                'section' => 'rfeg',
+                'subsection' => 'adminrfef',
+                'table' => $table,
+                ]]);
+    }
 }

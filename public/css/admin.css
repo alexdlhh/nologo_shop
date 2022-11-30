@@ -281,12 +281,17 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .card.horizontal .card-image {
     max-width: 100% !important;
 }
+.subsection_rfeg{
+    display: none;
+}
 /*media query movil*/
 @media only screen and (max-width: 700px) {
     .card.horizontal .card-image {
         max-width: 100% !important;
     }
 }
+
+
 
 /* .what-is-included .group .list li .popover {
     position: absolute;
