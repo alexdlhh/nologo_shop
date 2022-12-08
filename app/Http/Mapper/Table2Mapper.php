@@ -13,6 +13,7 @@ class Table2Mapper
         !empty($data['cargo'])?$table2->setCargo($data['cargo']):'';
         !empty($data['especialidad'])?$table2->setEspecialidad($data['especialidad']):'';
         !empty($data['order'])?$table2->setOrder($data['order']):'';
+        !empty($data['rfeg_title'])?$table2->setRfegTitle($data['rfeg_title']):'';
         return $table2;
     }
 

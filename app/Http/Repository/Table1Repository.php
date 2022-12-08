@@ -23,12 +23,12 @@ class Table1Repository
 
         $page = ($page-1)*10;
         if(!empty($search)) {
-            $table1 = DB::table('table1')
+            $table1 = DB::table('rfeg_table1')
                 ->where('name', 'like', '%'.$search.'%')
                 ->orderBy('name', 'desc')
                 ->skip($page)->take(10)->get();
         } else {
-            $table1 = DB::table('table1')
+            $table1 = DB::table('rfeg_table1')
                 ->orderBy('name', 'desc')
                 ->skip($page)->take(10)->get();
         }
@@ -45,7 +45,7 @@ class Table1Repository
      */
     public function getById(int $id){
         $table1Mapper = new Table1Mapper();
-        $table1 = DB::table('table1')
+        $table1 = DB::table('rfeg_table1')
             ->where('id', $id)
             ->first();
         $table1 = $table1Mapper->map(get_object_vars($table1));
@@ -55,26 +55,42 @@ class Table1Repository
     /**
      * save if id is 0 we do insewr else we do update
      */
-    public function save($data){
+    public function save($data,$file_url=''){
         $table1Mapper = new Table1Mapper();
         $table1 = $table1Mapper->map($data);
         if($table1->getId() == 0){
-            $id = DB::table('table1')->insertGetId(
+            $id = DB::table('rfeg_table1')->insertGetId(
                 [
-                    'name' => $table1->getName(),
-                    'type' => $table1->getType(),
+                    'documento' => $table1->getDocumento(),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'download_pdf' => $file_url,
+                    'rfeg_title' => $table1->getRfeg_title(),
                 ]
             );
             $table1->setId($id);
         }else{
-            DB::table('table1')
+            if($file_url == ''){
+                DB::table('rfeg_table1')
                 ->where('id', $table1->getId())
                 ->update(
                     [
-                        'name' => $table1->getName(),
-                        'type' => $table1->getType(),
+                        'documento' => $table1->getDocumento(),
+                        'updated_at' => date('Y-m-d H:i:s'),
                     ]
                 );
+            }else{
+                DB::table('rfeg_table1')
+                ->where('id', $table1->getId())
+                ->update(
+                    [
+                        'documento' => $table1->getDocumento(),
+                        'updated_at' => date('Y-m-d H:i:s'),
+                        'download_pdf' => $file_url,
+                    ]
+                );
+            }
+            
         }
         return $table1;
     }
@@ -86,9 +102,22 @@ class Table1Repository
      */
     public function delete(int $id){
         $table1Mapper = new Table1Mapper();
-        $table1 = DB::table('table1')
+        $table1 = DB::table('rfeg_table1')
             ->where('id', $id)
             ->delete();
+        return $table1;
+    }
+
+    /**
+     * getbyRfegTitle
+     */
+    public function getbyRfegTitle(int $id){
+        $table1Mapper = new Table1Mapper();
+        $table1 = DB::table('rfeg_table1')
+            ->where('rfeg_title', $id)
+            ->orderBy('order', 'desc')
+            ->get();
+        $table1 = $table1Mapper->mapCollection($table1->toArray());
         return $table1;
     }
 }

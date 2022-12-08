@@ -891,6 +891,7 @@ h3.especial{
     border-radius: 3px;
     border: 1px solid #D3E3E7;
     font-size: 1.3em;
+    margin-bottom: 3px !important;
 }
 .header_esp {
     padding-bottom: 0px;

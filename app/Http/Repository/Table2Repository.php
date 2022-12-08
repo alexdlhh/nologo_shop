@@ -23,12 +23,12 @@ class Table2Repository
 
         $page = ($page-1)*10;
         if(!empty($search)) {
-            $table2 = DB::table('table2')
+            $table2 = DB::table('rfeg_table2')
                 ->where('nombre', 'like', '%'.$search.'%')
                 ->orderBy('nombre', 'desc')
                 ->skip($page)->take(10)->get();
         } else {
-            $table2 = DB::table('table2')
+            $table2 = DB::table('rfeg_table2')
                 ->orderBy('nombre', 'desc')
                 ->skip($page)->take(10)->get();
         }
@@ -45,7 +45,7 @@ class Table2Repository
      */
     public function getById(int $id){
         $table2Mapper = new Table2Mapper();
-        $table2 = DB::table('table2')
+        $table2 = DB::table('rfeg_table2')
             ->where('id', $id)
             ->first();
         $table2 = $table2Mapper->map(get_object_vars($table2));
@@ -59,24 +59,24 @@ class Table2Repository
         $table2Mapper = new Table2Mapper();
         $table2 = $table2Mapper->map($data);
         if($table2->getId() == 0){
-            $id = DB::table('table2')->insertGetId(
+            $id = DB::table('rfeg_table2')->insertGetId(
                 [
                     'nombre' => $table2->getNombre(),
                     'cargo' => $table2->getCargo(),
                     'especialidad' => $table2->getEspecialidad(),
-                    'order' => $table2->getOrder(),
+                    'rfeg_title' => $table2->getRfegTitle()
                 ]
             );
             $table2->setId($id);
         } else {
-            DB::table('table2')
+            DB::table('rfeg_table2')
                 ->where('id', $table2->getId())
                 ->update(
                     [
                         'nombre' => $table2->getNombre(),
                         'cargo' => $table2->getCargo(),
                         'especialidad' => $table2->getEspecialidad(),
-                        'order' => $table2->getOrder(),
+                        'rfeg_title' => $table2->getRfegTitle()
                     ]
                 );
         }
@@ -89,6 +89,19 @@ class Table2Repository
      * @return array
      */
     public function delete(int $id){
-        DB::table('table2')->where('id', '=', $id)->delete();
+        DB::table('rfeg_table2')->where('id', '=', $id)->delete();
+    }
+
+    /**
+     * getbyRfegTitle
+     */
+    public function getbyRfegTitle(int $id){
+        $table2Mapper = new Table2Mapper();
+        $table2 = DB::table('rfeg_table2')
+            ->where('rfeg_title', $id)
+            ->orderBy('order', 'desc')
+            ->get();
+        $table2 = $table2Mapper->mapCollection($table2->toArray());
+        return $table2;
     }
 }

@@ -64,23 +64,31 @@ $normativa_heads = [
     <div class="section_rfeg">
         <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
     </div>
+    @if(!empty($front['rfeg_title']))
+    @foreach($front['rfeg_title'] as $key=>$rfeg_title)
     <div id="tabla1">
         <div class="container_table">
-            <h4>Otros protocolos</h4>
+            <h4>{{$rfeg_title->name}}</h4>
             <div class="row head_table">
                 <div class="col s6">DOCUMENTO</div>
                 <div class="col s2">FECHA PUBLICACIÓN</div>
                 <div class="col s2">FECHA ACTUALIZACIÓN</div>
                 <div class="col s2">DESCARGAR PDF</div>
             </div>
+            @if(!empty($front['content_tables'][$rfeg_title->id]))
+            @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
             <div class="row content_table">
-                <div class="col s6">Guía de procedimientos RFEG 2022</div>
-                <div class="col s2">2022</div>
-                <div class="col s2">-</div>
-                <div class="col s2"><a href="#modal1" data-url="/test.pdf" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                <div class="col s6">{{$rfeg_content->documento}}</div>
+                <div class="col s2">{{$rfeg_content->created_at}}</div>
+                <div class="col s2">{{$rfeg_content->updated_at}}</div>
+                <div class="col s2"><a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
             </div>
+            @endforeach
+            @endif
         </div>
     </div>
+    @endforeach
+    @endif
 </div>
 @endif
 @if($front['menu1']=='gobierno')
@@ -89,21 +97,29 @@ $normativa_heads = [
         <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
         <div class="subtitle_rfeg"><div class="linear_title_rfeg"></div>{{date('Y')}}-{{date('Y')+1}}</div>
     </div>
+    @if(!empty($front['rfeg_title']))
+    @foreach($front['rfeg_title'] as $key=>$rfeg_title)
     <div id="tabla2">
         <div class="container_table">
-            <h4>Comité de jueces</h4>
+            <h4>{{$rfeg_title->name}}</h4>
             <div class="row head_table">
                 <div class="col s6">NOMBRE</div>
                 <div class="col s2">CARGO</div>
                 <div class="col s4">ESPECIALIDAD</div>
             </div>
+            @if(!empty($front['content_tables'][$rfeg_title->id]))
+            @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
             <div class="row content_table">
-                <div class="col s6">Maria José San Martín López</div>
-                <div class="col s2">Presidente</div>
-                <div class="col s4">Gimnasia Artística Mascuilina (GAM)</div>
+                <div class="col s6">{{$rfeg_content->nombre}}</div>
+                <div class="col s2">{{$rfeg_content->cargo}}</div>
+                <div class="col s4">{{$rfeg_content->especialidad}}</div>
             </div>
+            @endforeach
+            @endif
         </div>
     </div>
+    @endforeach
+    @endif
 </div>
 @endif
 @if($front['menu2']=='rfeg' && $front['menu1']=='rfeg')
@@ -189,7 +205,11 @@ $normativa_heads = [
 
 <div class="modal" id="modal1">
     <div class="modal-content">
-        
+        <div class="row">
+            <div class="col s12">
+                <iframe id="see_pdf_iframe" src="" width="100%" height="500px"></iframe>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>

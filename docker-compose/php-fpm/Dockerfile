@@ -3,6 +3,14 @@
 
 FROM php:7.4-fpm
 
+# increase the memory limit
+RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
+RUN echo "upload_max_filesize=100M" > $PHP_INI_DIR/conf.d/upload_max_filesize.ini
+RUN echo "post_max_size=100M" > $PHP_INI_DIR/conf.d/post_max_size.ini
+RUN echo "max_execution_time=300" > $PHP_INI_DIR/conf.d/max_execution_time.ini
+
+
+
 # Arguments defined in docker-compose.yml
 ARG user
 ARG uid
@@ -37,3 +45,7 @@ WORKDIR /var/www
 USER $user
 
 EXPOSE 3306
+
+
+
+

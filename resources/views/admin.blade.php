@@ -47,8 +47,8 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'rfef' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'rfef' ? 'active' : ''}}">account_balance</i>RFEG</div>
-                        <div class="collapsible-body" style="{{$admin['section'] == 'rfef' ? 'display: block;' : ''}}">
+                        <div class="collapsible-header {{$admin['section'] == 'rfeg' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'rfef' ? 'active' : ''}}">account_balance</i>RFEG</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'rfeg' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/employees" class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">

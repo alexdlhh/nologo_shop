@@ -8,14 +8,16 @@ class Table2Entity{
     public $cargo;
     public $especialidad;
     public $order;
+    public $rfeg_title;
 
-    public function __construct($id=0, $nombre='', $cargo='', $especialidad='', $order='')
+    public function __construct($id=0, $nombre='', $cargo='', $especialidad='', $order='', $rfeg_title='')
     {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->cargo = $cargo;
         $this->especialidad = $especialidad;
         $this->order = $order;
+        $this->rfeg_title = $rfeg_title;
     }
 
     public function getId()
@@ -43,6 +45,11 @@ class Table2Entity{
         return $this->order;
     }
 
+    public function getRfegTitle()
+    {
+        return $this->rfeg_title;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -68,6 +75,11 @@ class Table2Entity{
         $this->order = $order;
     }
 
+    public function setRfegTitle($rfeg_title)
+    {
+        $this->rfeg_title = $rfeg_title;
+    }
+
     public function toArray()
     {
         return [
@@ -76,6 +88,7 @@ class Table2Entity{
             'cargo' => $this->cargo,
             'especialidad' => $this->especialidad,
             'order' => $this->order,
+            'rfeg_title' => intval($this->rfeg_title)
         ];
     }
 

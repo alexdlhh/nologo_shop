@@ -54,7 +54,25 @@ class RFEGController extends Controller
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-        
+        $rfeg_title='';
+        $content_tables = [];
+        if($menu1 == 'gobierno'){
+            $rfeg_title = $this->rfegTitleRepository->getbyType($menu1);            
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table2Repository->getbyRfegTitle($title->getId());
+            }
+            $table = 2;            
+        }
+        if($menu1 != 'gobierno'){
+            $rfeg_title = $this->rfegTitleRepository->getbyType($menu1); 
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
+            }
+            if($menu1 == 'normativa'){
+                $rfeg_title = $this->rfegTitleRepository->getbyType($menu2);                
+            }
+            $table = 1;            
+        }
 
         $front = [
             'headers' => $headers,
@@ -62,6 +80,8 @@ class RFEGController extends Controller
             'news' => $news,
             'rs' => $rs,
             'sponsors' => $sponsors,
+            'rfeg_title' => $rfeg_title,
+            'content_tables' => $content_tables,
             'subsection' => 'RFEG',
             'title'=>'RFEG',
             'menu1' => $menu1,
@@ -96,16 +116,23 @@ class RFEGController extends Controller
     public function adminRFEGSection($seccion='', $subseccion=""){        
         $table = '';
         $rfeg_title='';
-        
+        $content_tables = [];
         if($seccion == 'gobierno'){
-            $rfeg_title = $this->rfegTitleRepository->getbyType($seccion);
+            $rfeg_title = $this->rfegTitleRepository->getbyType($seccion);            
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table2Repository->getbyRfegTitle($title->getId());
+            }
             $table = 2;            
         }
         if($seccion != 'gobierno'){
-            $table = 1;
-            if($seccion == 'normativa'){
-                $rfeg_title = $this->rfegTitleRepository->getbyType($subseccion);
+            $rfeg_title = $this->rfegTitleRepository->getbyType($seccion); 
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
             }
+            if($seccion == 'normativa'){
+                $rfeg_title = $this->rfegTitleRepository->getbyType($subseccion);                
+            }
+            $table = 1;            
         }
 
         $table_content = []; //array de objetos 
@@ -116,7 +143,9 @@ class RFEGController extends Controller
                 'subsection' => 'adminrfef',
                 'table' => $table,
                 'seccion' => $seccion,
+                'subseccion' => $subseccion,
                 'rfeg_title' => $rfeg_title,
+                'content_tables' => $content_tables,
                 ]]);
     }
 
@@ -170,7 +199,15 @@ class RFEGController extends Controller
      * @return type
      */
     public function createRFEGTable1(Request $request){
-        $rfegTable1 = $this->table1Repository->create($request->all());
+        $file_url = '';
+        if($request->hasFile('download_pdf')){
+            $file = $request->file('download_pdf');
+            $file_name = time().$file->getClientOriginalName();
+            $destinationPath = public_path('/files/rfeg/');
+            $file->move($destinationPath, $file_name);
+            $file_url = '/files/rfeg/'.$file_name;
+        }
+        $rfegTable1 = $this->table1Repository->save($request->all(), $file_url);
         return response()->json($rfegTable1);
     }
 
@@ -180,7 +217,15 @@ class RFEGController extends Controller
      * @return type
      */
     public function updateRFEGTable1(Request $request){
-        $rfegTable1 = $this->table1Repository->update($request->all());
+        $file_url = '';
+        if($request->hasFile('download_pdf')){
+            $file = $request->file('download_pdf');
+            $file_name = time().$file->getClientOriginalName();
+            $destinationPath = public_path('/files/rfeg/');
+            $file->move($destinationPath, $file_name);
+            $file_url = '/files/rfeg/'.$file_name;
+        }
+        $rfegTable1 = $this->table1Repository->save($request->all(), $file_url);
         return response()->json($rfegTable1);
     }
 
@@ -189,8 +234,8 @@ class RFEGController extends Controller
      * @param Request $request
      * @return type
      */
-    public function deleteRFEGTable1(Request $request){
-        $rfegTable1 = $this->table1Repository->delete($request->all());
+    public function deleteRFEGTable1($id){
+        $rfegTable1 = $this->table1Repository->delete($id);
         return response()->json($rfegTable1);
     }
 
@@ -200,7 +245,7 @@ class RFEGController extends Controller
      * @return type
      */
     public function createRFEGTable2(Request $request){
-        $rfegTable2 = $this->table2Repository->create($request->all());
+        $rfegTable2 = $this->table2Repository->save($request->all(),$file);
         return response()->json($rfegTable2);
     }
 
@@ -210,7 +255,7 @@ class RFEGController extends Controller
      * @return type
      */
     public function updateRFEGTable2(Request $request){
-        $rfegTable2 = $this->table2Repository->update($request->all());
+        $rfegTable2 = $this->table2Repository->save($request->all());
         return response()->json($rfegTable2);
     }
 
@@ -219,8 +264,8 @@ class RFEGController extends Controller
      * @param Request $request
      * @return type
      */
-    public function deleteRFEGTable2(Request $request){
-        $rfegTable2 = $this->table2Repository->delete($request->all());
+    public function deleteRFEGTable2($id){
+        $rfegTable2 = $this->table2Repository->delete($id);
         return response()->json($rfegTable2);
     }
 
