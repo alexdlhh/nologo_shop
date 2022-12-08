@@ -279,8 +279,9 @@ class NewsRepository
         }else{
             $news = DB::table('new')
                 ->where('status', 1)
-                ->where('created_at', 'like', $year.'-'.$month.'%')
                 ->orderBy('created_at', 'desc')
+                ->skip($init)
+                ->take($limit)
                 ->get();
             }
         $news = $newsMapper->mapCollection($news->toArray());

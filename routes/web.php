@@ -211,6 +211,16 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     /**ADMIN RFEG */
     Route::get('admin/rfeg',[RfegController::class,'adminRFEG'])->name('admin.rfeg.section');
     Route::get('admin/rfeg/{section}',[RfegController::class,'adminRFEGSection'])->name('admin.rfeg.list');
+    Route::get('admin/rfeg_edit/{id}',[RfegController::class,'adminRFEGEdit'])->name('admin.rfeg.edit');
+    Route::post('admin/rfeg_title/create',[RfegController::class,'createRFEGTitle'])->name('admin.rfeg_title.create');
+    Route::post('admin/rfeg_title/edit',[RfegController::class,'updateRFEGTitle'])->name('admin.rfeg_title.update');
+    Route::get('admin/rfeg_title/delete/{id}',[RfegController::class,'deleteRFEGTitle'])->name('admin.rfeg_title.delete');
+    Route::post('admin/rfeg_table1/create',[RfegController::class,'createRFEGTable1'])->name('admin.rfeg_table1.create');
+    Route::post('admin/rfeg_table1/edit',[RfegController::class,'updateRFEGTable1'])->name('admin.rfeg_table1.edit');
+    Route::get('admin/rfeg_table1/delete/{id}',[RfegController::class,'deleteRFEGTable1'])->name('admin.rfeg_table1.delete');
+    Route::post('admin/rfeg_table2/create',[RfegController::class,'createRFEGTable2'])->name('admin.rfeg_table2.create');
+    Route::post('admin/rfeg_table2/edit',[RfegController::class,'updateRFEGTable2'])->name('admin.rfeg_table2.edit');
+    Route::get('admin/rfeg_table2/delete/{id}',[RfegController::class,'deleteRFEGTable2'])->name('admin.rfeg_table2.delete');
     /**ADMIN REGLAMENTOS */
     /**ADMIN EMPLOYEE */
     Route::get('admin/employees/{page?}/{search?}',[EmployeeController::class,'employees'])->name('admin.employees.list');

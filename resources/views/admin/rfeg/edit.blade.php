@@ -9,14 +9,30 @@
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-content">
-                        
+                        <div class="row">
+                            <div class="col s6 form-control">
+                                <label for="documento">Documento</label>
+                                <input type="text" name="documento" id="documento" value="doc">
+                            </div>
+                            <div class="col s6">
+                                <div class="file-field">
+                                    <div class="btn">
+                                        <span>Archivo</span>
+                                        <input type="file" name="image" id="image">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="rightf">
-        <a href="/admin/rs/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a href="javascript:;" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">disk</i></a>
     </div>
 </div>
 @endsection

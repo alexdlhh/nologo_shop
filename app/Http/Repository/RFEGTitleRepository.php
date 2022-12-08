@@ -51,6 +51,18 @@ class RFEGTitleRepository
     }
 
     /**
+     * getbyType
+     */
+    public function getByType($type){
+        $rfegTitleMapper = new RFEGTitleMapper();
+        $rfegTitle = DB::table('rfeg_title')
+            ->where('type', $type)
+            ->get();
+        $rfegTitle = $rfegTitleMapper->mapCollection($rfegTitle->toArray());
+        return $rfegTitle;
+    }
+
+    /**
      * save if id is 0 we do insewr else we do update
      */
     public function save($data){

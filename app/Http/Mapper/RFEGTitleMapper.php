@@ -21,7 +21,7 @@ class RFEGTitleMapper
             if(is_array($item)){
                 $titleList[] = $this->map($item);
             }else{
-                $titleList[] = $this->map(get_object_vars($item));
+                $titleList[] = $this->map(get_object_vars($item));                
             }
         }
         return $titleList;
