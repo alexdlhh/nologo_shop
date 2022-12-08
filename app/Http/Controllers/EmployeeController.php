@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Repository\EmployeeRepository;
 use App\Http\Repository\PagesRepository;
+use App\Http\Repository\RFEGTitleRepository;
+use App\Http\Repository\GeneralRepository;
 
 class EmployeeController extends Controller
 {
@@ -15,19 +17,48 @@ class EmployeeController extends Controller
     public function employees(int $page=1, string $search='')
     {
         $employeeRepository = new EmployeeRepository();
-        $employees = $employeeRepository->getAll($page, $search);
+        $rfegTitleRepository = new RFEGTitleRepository();
+        $generalRepository = new GeneralRepository();
         $total = $employeeRepository->getTotal($search);
         $pages = ceil($total/10);
+        $rfeg_title='';
+        $rfeg_title = $rfegTitleRepository->getbyType('rfeg');      
+        $general = $generalRepository->getAll();    
+        $content_tables = [];
+        foreach($rfeg_title as $title){
+            $content_tables[$title->getId()] = $employeeRepository->getbyRfegTitle($title->getId());
+        }
 
-        return view('admin.employee.list', ['admin'=>['title'=>'Empleados','employees'=>$employees, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'rfeg','subsection' => 'employees']]);
+        return view('admin.employee.list', ['admin'=>[
+            'title'=>'Empleados',
+            'employees'=>$content_tables, 
+            'search'=>$search, 
+            'page'=>$page, 
+            'total_pages'=>$total, 
+            'pages'=>$pages,
+            'section' => 'rfeg',
+            'subsection' => 'employees',
+            'seccion' => 'rfeg',
+            'subseccion' => 'employees',
+            'general' => $general,
+            'rfeg_title' => $rfeg_title
+            ]]);
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function CreateEmployee()
+    public function CreateEmployee($rfeg_title=0)
     {
-        return view('admin.employee.create', ['admin'=>['title'=>'Crear Empleado','section' => 'rfeg','subsection' => 'saveemployees']]);
+        return view('admin.employee.create', [
+            'admin'=>[
+                'title'=>'Crear Empleado',
+                'section' => 'rfeg',
+                'subsection' => 'saveemployees',
+                'seccion' => 'rfeg',
+                'subseccion' => 'employees',
+                'rfeg_title' => $rfeg_title
+                ]]);
     }
 
     /**
@@ -79,5 +110,27 @@ class EmployeeController extends Controller
     public function delete(int $id){
         $employeeRepository = new EmployeeRepository();
         return $employeeRepository->delete($id);
+    }
+
+    /**
+     * postGeneral
+     */
+    public function postGeneral(Request $request){
+        $generalRepository = new GeneralRepository();
+        $image = '';
+        if(!empty($request->file('image'))){
+            $image = $request->file('image');
+            //prepare image name with title without special characters and spaces
+            $image_name = str_replace(' ', '', $request->input('name'));
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $image_name = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/images/general/');
+            $image->move($destinationPath, $image_name);
+            //change $request feature_image content to current location of image
+            $image = '/images/general/'.$image_name;
+            $request->input('image', $image);
+        }
+        $generalRepository->update($request->all(),$image);
+        return 1;
     }
 }

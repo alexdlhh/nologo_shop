@@ -131,75 +131,46 @@ $normativa_heads = [
         <div class="presidente row">
             <div class="col s4">
                 <div class="presidente_img">
-                    <img src="/presidente.png" alt="">
+                    <img src="{{$front['general']['image']}}" alt="">
                 </div>
                 <div class="presidente_contacto">
                     <ul>
                         <li><b>Presidente</b></li>
-                        <li>Jesús Carballo Martinez</li>
-                        <li><a href="mailto:jesuscarballo@rfegimnasia.es">jesuscarballo@rfegimnasia.es</a></li>
+                        <li>{{$front['general']['name']}}</li>
+                        <li><a href="mailto:{{$front['general']['email']}}">{{$front['general']['email']}}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col s8">
-                <p>Es para mí un placer daros la bienvenida a la nueva web de la Real Federación Española de Gimnasia.</p>
-                <p>Somos conscientes de la importancia de las nuevas tecnologías y los diferentes canales de difusión en la comunicación de todo lo que acontece a nuestro deporte. Por ello, desde todo el equipo de la RFEG deseamos que esta nueva etapa de modernización sea beneficiosa para todos nuestros usuarios.</p>
-                <p>Nuevos contenidos informativos, audiovisuales y sociales formarán parte de esta innovadora web que sin duda refleja una trabajada calidad visual acorde con un deporte tan artístico y bello como la Gimnasia.</p>
-                <p>Reforzamos la información en directo, los resultados on-line y los canales de streaming para la retrasmisión de las competiciones de nuestro amplio calendario.</p>
-                <p>Asimismo el lanzamiento conjunto de la APP garantiza que todo aquel aficionado o profesional de este deporte podrá estar informado allá donde vaya a través de su teléfono móvil.</p>
-                <p>La sencillez de los menús y la claridad de los elementos de información será de gran utilidad para aquellos que necesiten encontrar información, documentos, normativas, circulares, reglamentos o demás contenidos institucionales de esta federación.</p>
-                <p>Este lanzamiento es sólo el principio de muchos cambios y nuevos contenidos que iremos incorporando para disfrute de todos los que nos siguen el día a día, como la tienda on-line próximamente activa y contenidos técnicos en formato audiovisual para aquellos entrenadores y jueces que quieran seguir aprendiendo y formándose como profesionales.</p>
-                <p>Gracias a nuestros fieles seguidores que nos animáis a seguir creciendo y consiguiendo que la gimnasia llegue a todos los rincones del mundo.</p>
-                <p>¡¡¡Bienvenidos!!!</p>
-                <p>Jesús Carballo</p>
-                <p>jesuscarballo@rfegimnasia.es</p>
+                {!!$front['general']['content_text']!!}
             </div>
         </div>
     </div>
 
     <div id="empleados">
+        @foreach($front['rfeg_title'] as $key=>$rfeg_title)
         <div class="bandejaemp">
-            <h3 class="bandeja_rfeg">Secretaría general y administración</h3>
+            <h3 class="bandeja_rfeg">{{$rfeg_title->name}}</h3>
             <div class="row">
-                @for($i=0;$i<=3;$i++)
+                @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
                 <div class="col s3 empp">
                     <div class="empleado">
                         <div class="empleado_img">
-                            <img src="/empleado.png" alt="">
+                            <img src="{{$rfeg_content->featuredImage}}" alt="">
                         </div>
                         <div class="empleado_contacto">
                             <ul>
-                                <li><b>Secretario general</b></li>
-                                <li>Jesús Carballo Martinez</li>
-                                <li><a href="mailto:imarron@rfegimnasia.es">imarron@rfegimnasia.es</a></li>
+                                <li><b>{{$rfeg_content->charge}}</b></li>
+                                <li>{{$rfeg_content->name}}</li>
+                                <li><a href="mailto:{{$rfeg_content->email}}">{{$rfeg_content->email}}</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </div>
-        <div class="bandejaemp">
-            <h3 class="bandeja_rfeg">Departamento técnico</h3>
-            <div class="row">
-                @for($i=0;$i<=13;$i++)
-                <div class="col s3 empp">
-                    <div class="empleado">
-                        <div class="empleado_img">
-                            <img src="/empleado.png" alt="">
-                        </div>
-                        <div class="empleado_contacto">
-                            <ul>
-                                <li><b>Secretario general</b></li>
-                                <li>Jesús Carballo Martinez</li>
-                                <li><a href="mailto:imarron@rfegimnasia.es">imarron@rfegimnasia.es</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                @endfor
-            </div>
-        </div>
+        @endforeach
     </div>
 @endif
 

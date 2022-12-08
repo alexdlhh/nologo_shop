@@ -20,6 +20,7 @@ class EmployeeMapper
         !empty($data['charge']) ? $employee->setCharge($data['charge']) : null;
         !empty($data['twitter']) ? $employee->setTwitter($data['twitter']) : null;
         !empty($data['featuredImage']) ? $employee->setFeaturedImage($data['featuredImage']) : null;
+        !empty($data['rfeg_table']) ? $employee->setRfegTable($data['rfeg_table']) : null;
 
         return $employee;
     }

@@ -42,7 +42,7 @@
                                 <input id="twitter" type="text" class="validate" value="{{ $admin['employee']->getTwitter() }}">
                                 <label for="twitter">Twitter</label>
                             </div>
-                            
+                            <input type="text" id="rfeg_title" value="{{ $admin['employee']->getRfegTable() }}" hidden>
                         </div>
                     </div>
                 </div>
@@ -85,6 +85,7 @@
             formData.append('twitter', twitter);
             formData.append('id', <?=$admin['employee']->getId()?>);
             formData.append('featuredImage', featuredImage[0]);
+            formData.append('rfeg_table', $('#rfeg_title').val());
             formData.append('old_image', old_image);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');

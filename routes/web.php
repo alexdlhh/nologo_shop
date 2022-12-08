@@ -224,9 +224,9 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     /**ADMIN REGLAMENTOS */
     /**ADMIN EMPLOYEE */
     Route::get('admin/employees/{page?}/{search?}',[EmployeeController::class,'employees'])->name('admin.employees.list');
-    Route::get('admin/employee/create',[EmployeeController::class,'CreateEmployee'])->name('admin.employees.create');
+    Route::get('admin/employee/create/{rfeg_title?}',[EmployeeController::class,'CreateEmployee'])->name('admin.employees.create');
     Route::get('admin/employee/edit/{id}',[EmployeeController::class,'EditEmployee'])->name('admin.employees.edit');
     Route::post('admin/employees/save',[EmployeeController::class,'postCreate'])->name('admin.employees.store');
-    Route::get('admin/employees/delete/{id}',[EmployeeController::class,'postDelete'])->name('admin.employees.delete');
-    
+    Route::get('admin/employee/delete/{id}',[EmployeeController::class,'delete'])->name('admin.employees.delete');
+    Route::post('admin/employee/general',[EmployeeController::class,'postGeneral'])->name('admin.employees.general');
 });

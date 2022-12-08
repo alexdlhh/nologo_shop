@@ -13,6 +13,8 @@ use App\Http\Repository\BannerRepository;
 use App\Http\Repository\Table1Repository;
 use App\Http\Repository\Table2Repository;
 use App\Http\Repository\RFEGTitleRepository;
+use App\Http\Repository\EmployeeRepository;
+use App\Http\Repository\GeneralRepository;
 
 class RFEGController extends Controller
 {
@@ -49,7 +51,16 @@ class RFEGController extends Controller
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
-        $sponsorRepository = new SponsorRepository();        
+        $sponsorRepository = new SponsorRepository();   
+        $employeeRepository = new EmployeeRepository();  
+        $generalRepository = new GeneralRepository();
+        $rfegTitleRepository = new RFEGTitleRepository();
+        $rfeg_title = $rfegTitleRepository->getbyType('rfeg');      
+        $general = $generalRepository->getAll();    
+        $content_tables = [];
+        foreach($rfeg_title as $title){
+            $content_tables[$title->getId()] = $employeeRepository->getbyRfegTitle($title->getId());
+        }  
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
@@ -71,6 +82,11 @@ class RFEGController extends Controller
             if($menu1 == 'normativa'){
                 $rfeg_title = $this->rfegTitleRepository->getbyType($menu2);                
             }
+            if($menu1 == 'rfeg'){
+                foreach($rfeg_title as $title){
+                    $content_tables[$title->getId()] = $employeeRepository->getbyRfegTitle($title->getId());
+                }
+            }
             $table = 1;            
         }
 
@@ -82,6 +98,7 @@ class RFEGController extends Controller
             'sponsors' => $sponsors,
             'rfeg_title' => $rfeg_title,
             'content_tables' => $content_tables,
+            'general' => $general,
             'subsection' => 'RFEG',
             'title'=>'RFEG',
             'menu1' => $menu1,

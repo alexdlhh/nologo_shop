@@ -59,7 +59,8 @@ class EmployeeRepository
                 'phone' => $employee->getPhone(),
                 'charge' => $employee->getCharge(),
                 'twitter' => $employee->getTwitter(),
-                'featuredImage' => $image
+                'featuredImage' => $image,
+                'rfeg_table' => $employee->getRfegTable()
             ]
         );
         return $id;
@@ -81,7 +82,8 @@ class EmployeeRepository
                     'phone' => $employee->getPhone(),
                     'charge' => $employee->getCharge(),
                     'twitter' => $employee->getTwitter(),
-                    'featuredImage' => $image
+                    'featuredImage' => $image,
+                    'rfeg_table' => $employee->getRfegTable()
                 ]
             );
         return $id;
@@ -91,10 +93,10 @@ class EmployeeRepository
      * @param array $data
      * @return bool
      */
-    public function delete(Request $request){
-        $employeeMapper = new EmployeeMapper();
-        $employee = $employeeMapper->map($request->all());
-        $employee->delete();
+    public function delete($id){
+        $employee = DB::table('employee')
+            ->where('id', $id)
+            ->delete();
         return true;
     }
 
@@ -112,5 +114,17 @@ class EmployeeRepository
                 ->count();
         }
         return $total;
+    }
+
+    /**
+     * getbyRfegTitle
+     */
+    public function getbyRfegTitle($id){
+        $employeeMapper = new EmployeeMapper();
+        $employee = DB::table('employee')
+            ->where('rfeg_table', $id)
+            ->get();
+        $employee = $employeeMapper->mapCollection($employee->toArray());
+        return $employee;
     }
 }

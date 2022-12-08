@@ -39,7 +39,7 @@
                                 <input id="twitter" type="text" class="validate">
                                 <label for="twitter">Twitter</label>
                             </div>
-                            
+                            <input type="text" id="rfeg_title" value="{{ $admin['rfeg_title'] }}" hidden>
                         </div>
                     </div>
                 </div>
@@ -79,6 +79,7 @@
             formData.append('phone', phone);
             formData.append('charge', charge);
             formData.append('twitter', twitter);
+            formData.append('rfeg_table', $('#rfeg_title').val());
             formData.append('id', 0);
             formData.append('featuredImage', featuredImage[0]);
             formData.append('_token', '{{csrf_token()}}');

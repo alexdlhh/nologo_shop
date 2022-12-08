@@ -10,8 +10,9 @@ class EmployeeEntity{
     public $charge;
     public $twitter;
     public $featuredImage;
+    public $rfeg_table;
 
-    public function __construct($id = 0, $name = '', $email = '', $phone = '', $charge = '', $twitter = '', $featuredImage = '')
+    public function __construct($id = 0, $name = '', $email = '', $phone = '', $charge = '', $twitter = '', $featuredImage = '', $rfeg_table = '')
     {
         $this->id = $id;
         $this->name = $name;
@@ -20,6 +21,7 @@ class EmployeeEntity{
         $this->charge = $charge;
         $this->twitter = $twitter;
         $this->featuredImage = $featuredImage;
+        $this->rfeg_table = $rfeg_table;
     }
 
     /**
@@ -79,6 +81,14 @@ class EmployeeEntity{
     }
 
     /**
+     * @return string $rfeg_table
+     */
+    public function getRfegTable()
+    {
+        return $this->rfeg_table;
+    }
+
+    /**
      * @param int $id
      */
     public function setId($id)
@@ -135,6 +145,14 @@ class EmployeeEntity{
     }
 
     /**
+     * @param string $rfeg_table
+     */
+    public function setRfegTable($rfeg_table)
+    {
+        $this->rfeg_table = $rfeg_table;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -147,6 +165,7 @@ class EmployeeEntity{
             'charge' => $this->charge,
             'twitter' => $this->twitter,
             'featured_image' => $this->featuredImage,
+            'rfeg_table' => $this->rfeg_table
         ];
     }
 

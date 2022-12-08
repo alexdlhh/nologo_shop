@@ -886,6 +886,13 @@ h3.especial{
     color: #616E8A;
     font-size: 1.5em;
 }
+.empleado_img {
+    max-height: 300px;
+    overflow: hidden;
+}
+.empleado_contacto {
+    height: 75px;
+}
 .content_table{
     background-color: #F1F2F4;
     border-radius: 3px;
