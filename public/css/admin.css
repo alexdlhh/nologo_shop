@@ -299,6 +299,87 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 #filtros > div:nth-child(6) > div:nth-child(2) > div{
     width: 98% !important;
 }
+.event{
+    width: 100% !important;
+    text-align: left;
+    padding: 2px;
+}
+.e_fecha{
+    background-color: #515DE1;
+    border: 1px solid #ffffff;
+}
+.e_fecha a{
+    color: white;
+}
+.e_fecha:hover{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    background-color: #ffffff;
+    border: 1px solid #515DE1;
+}
+.e_fecha:hover a{
+    color: #515DE1;
+}
+.e_inscripcion{
+    background-color: #dbb405;
+    border: 1px solid #ffffff;
+}
+.e_inscripcion a{
+    color: white;
+}
+.e_inscripcion:hover{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    background-color: #ffffff;
+    border: 1px solid #dbb405;
+}
+.e_inscripcion:hover a{
+    color: #dbb405;
+}
+.e_licencia{
+    background-color: #04c7b7;
+    border: 1px solid #ffffff;
+}
+.e_licencia a{
+    color: white;
+}
+.e_licencia:hover{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    background-color: #ffffff;
+    border: 1px solid #04c7b7;
+}
+.e_licencia:hover a{
+    color: #04c7b7;
+}
+.e_sorteo{
+    background-color: #f44336;
+    border: 1px solid #ffffff;
+}
+.e_sorteo a{
+    color: white;
+}
+.e_sorteo:hover{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    background-color: #ffffff;
+    border: 1px solid #f44336;
+}
+.e_sorteo:hover a{
+    color: #f44336;
+}
+.disable-cell{
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #ddd;
+}
+.yesterday-cell{
+    background-color: #797272;
+    color: black;
+}
+.today-cell{
+    background-color: #9ea5f0;
+    color: white;
+}
+.little-fix{
+    margin-top: 23px;
+}
 /*media query movil*/
 @media only screen and (max-width: 700px) {
     .card.horizontal .card-image {

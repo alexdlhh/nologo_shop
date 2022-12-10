@@ -262,7 +262,7 @@ class RFEGController extends Controller
      * @return type
      */
     public function createRFEGTable2(Request $request){
-        $rfegTable2 = $this->table2Repository->save($request->all(),$file);
+        $rfegTable2 = $this->table2Repository->save($request->all());
         return response()->json($rfegTable2);
     }
 

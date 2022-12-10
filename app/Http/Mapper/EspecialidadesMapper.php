@@ -20,7 +20,7 @@ class EspecialidadesMapper
         !empty($data['pos']) ? $especialidades->setPos($data['pos']) : null;
         !empty($data['description']) ? $especialidades->setDescription($data['description']) : null;
         !empty($data['olimpico']) ? $especialidades->setOlimpico($data['olimpico']) : null;
-
+        !empty($data['acronimo']) ? $especialidades->setAcronimo($data['acronimo']) : null;
         return $especialidades;
     }
     

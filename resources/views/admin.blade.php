@@ -81,6 +81,12 @@
                                         <p class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">Administrar caracteristicas generales de especialidades RFEF</p>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="/admin/calendario" class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}"><b>Calendario</b></span><span class="child-selector {{$admin['subsection'] == 'calendario' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}">Administrar calendarios nacionales e internacionales de especialidades RFEF</p>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

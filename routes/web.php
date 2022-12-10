@@ -184,18 +184,11 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/directo/create',[DirectoController::class,'create'])->name('admin.directo.create');
     Route::post('admin/directo/save',[DirectoController::class,'postCreate'])->name('admin.directo.store');
     Route::post('admin/directo/delete',[DirectoController::class,'postDelete'])->name('admin.directo.delete');
-    /**ADMIN CALENDARIO NACIONAL */
-    Route::get('admin/calendario/{especialidad}/{year}',[CalendarioController::class,'getAll'])->name('admin.calendario.list');
-    Route::get('admin/calendario/{id}',[CalendarioController::class,'getOne'])->name('admin.calendario.edit');
-    Route::get('admin/calendario/create',[CalendarioController::class,'create'])->name('admin.calendario.create');
-    Route::post('admin/calendario/save',[CalendarioController::class,'postCreate'])->name('admin.calendario.store');
-    Route::post('admin/calendario/delete',[CalendarioController::class,'postDelete'])->name('admin.calendario.delete');
-    /**ADMIN CALENDARIO INTERNACIONAL */
-    Route::get('admin/calendario-internacional/{especialidad}/{year}',[CalendarioInternacionalController::class,'getAll'])->name('admin.calendario-internacional.list');
-    Route::get('admin/calendario-internacional/{id}',[CalendarioInternacionalController::class,'getOne'])->name('admin.calendario-internacional.edit');
-    Route::get('admin/calendario-internacional/create',[CalendarioInternacionalController::class,'create'])->name('admin.calendario-internacional.create');
-    Route::post('admin/calendario-internacional/save',[CalendarioInternacionalController::class,'postCreate'])->name('admin.calendario-internacional.store');
-    Route::post('admin/calendario-internacional/delete',[CalendarioInternacionalController::class,'postDelete'])->name('admin.calendario-internacional.delete');
+    /**ADMIN CALENDARIO */
+    Route::get('admin/calendario/{month?}/{year?}',[CalendarController::class,'getMonth'])->name('admin.calendar.list');
+    Route::get('admin/eventos/{id}',[CalendarController::class,'getOne'])->name('admin.evento.edit');
+    Route::post('admin/evento/save',[CalendarController::class,'save'])->name('admin.evento.store');
+    Route::get('admin/evento/delete/{id}',[CalendarController::class,'delete'])->name('admin.evento.delete');
     /**ADMIN COMISIONES TECNICAS */
     Route::get('admin/comisiones/{especialidad}/{year}',[ComisionesController::class,'getAll'])->name('admin.comisiones.list');
     Route::get('admin/comisiones/{id}',[ComisionesController::class,'getOne'])->name('admin.comisiones.edit');
