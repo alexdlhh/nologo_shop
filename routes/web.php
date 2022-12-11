@@ -95,7 +95,7 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/school/delete/{id}',[SchoolController::class,'postDelete'])->name('admin.schools.delete');
     Route::post('admin/school/status',[SchoolController::class,'postStatus'])->name('admin.schools.status');
     /**ADMIN COURSES */
-    Route::get('admin/courses/{school_id?}/{page?}/{search?}',[CourseController::class,'courses'])->name('admin.courses.list');
+    Route::get('admin/courses/{type?}',[CourseController::class,'courses'])->name('admin.courses.list');
     Route::post('admin/course/save',[CourseController::class,'postCreate'])->name('admin.courses.store');
     Route::get('admin/course/delete/{id}',[CourseController::class,'postDelete'])->name('admin.courses.delete');
     Route::get('admin/course/edit/{id}',[CourseController::class,'edit'])->name('admin.courses.edit');

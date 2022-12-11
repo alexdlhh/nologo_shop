@@ -5,29 +5,29 @@ namespace App\Http\Entity;
 class CourseEntity
 {
     public $id;
-    public $name;
-    public $description;
-    public $price;
-    public $image;
-    public $duration;
-    public $school_id;
-    public $created_at;
-    public $updated_at;
-    public $inscripcion;
-
-    public function __construct($id=0, $name='', $description='', $price=0, $image='', $duration=0, $school_id=0, $created_at='', $updated_at='',$inscripcion='')
+    public $curso;
+    public $fecha;
+    public $fecha_fin;
+    public $lugar;
+    public $convocatoria_pdf;
+    public $inscripcion_pdf;
+    public $formularios_pdf;
+    public $active;
+    public $type;
+    
+    public function __construct($id = 0, $curso = '', $fecha = '', $fecha_fin = '', $lugar = '', $convocatoria_pdf = '', $inscripcion_pdf = '', $formularios_pdf = '', $active = '', $type = '')
     {
         $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->price = $price;
-        $this->image = $image;
-        $this->duration = $duration;
-        $this->school_id = $school_id;
-        $this->created_at = $created_at;
-        $this->updated_at = $updated_at;
-        $this->inscripcion = $inscripcion;
-    } 
+        $this->curso = $curso;
+        $this->fecha = $fecha;
+        $this->fecha_fin = $fecha_fin;
+        $this->lugar = $lugar;
+        $this->convocatoria_pdf = $convocatoria_pdf;
+        $this->inscripcion_pdf = $inscripcion_pdf;
+        $this->formularios_pdf = $formularios_pdf;
+        $this->active = $active;
+        $this->type = $type;
+    }
 
     /**
      * @return int $id
@@ -38,75 +38,75 @@ class CourseEntity
     }
 
     /**
-     * @return string $name
+     * @return string $curso
      */
-    public function getName()
+    public function getCurso()
     {
-        return $this->name;
+        return $this->curso;
     }
 
     /**
-     * @return string $description
+     * @return string $fecha
      */
-    public function getDescription()
+    public function getFecha()
     {
-        return $this->description;
+        return $this->fecha;
     }
 
     /**
-     * @return float $price
+     * @return string $fecha_fin
      */
-    public function getPrice()
+    public function getFechaFin()
     {
-        return $this->price;
+        return $this->fecha_fin;
     }
 
     /**
-     * @return string $image
+     * @return string $lugar
      */
-    public function getImage()
+    public function getLugar()
     {
-        return $this->image;
+        return $this->lugar;
     }
 
     /**
-     * @return string $created_at
+     * @return string $convocatoria_pdf
      */
-    public function getCreatedAt()
+    public function getConvocatoriaPdf()
     {
-        return $this->created_at;
+        return $this->convocatoria_pdf;
     }
 
     /**
-     * @return string $updated_at
+     * @return string $inscripcion_pdf
      */
-    public function getUpdatedAt()
+    public function getInscripcionPdf()
     {
-        return $this->updated_at;
+        return $this->inscripcion_pdf;
     }
 
     /**
-     * @return int $duration
+     * @return string $formularios_pdf
      */
-    public function getDuration()
+    public function getFormulariosPdf()
     {
-        return $this->duration;
+        return $this->formularios_pdf;
+    }
+    
+    /**
+     * @return string $active
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 
     /**
-     * @return int $school_id
+     * @return string $type
      */
-    public function getSchoolId()
+    public function getType()
     {
-        return $this->school_id;
-    }
-
-    /**
-     * @return int $inscripcion
-     */
-    public function getInscripcion()
-    {
-        return $this->inscripcion;
+        return $this->type;
     }
 
     /**
@@ -118,72 +118,75 @@ class CourseEntity
     }
 
     /**
-     * @param string $name
+     * @param string $curso
      */
-    public function setName($name)
+    public function setCurso($curso)
     {
-        $this->name = $name;
+        $this->curso = $curso;
     }
 
     /**
-     * @param string $description
+     * @param string $fecha
      */
-    public function setDescription($description)
+    public function setFecha($fecha)
     {
-        $this->description = $description;
+        $this->fecha = $fecha;
     }
 
     /**
-     * @param float $price
+     * @param string $fecha_fin
      */
-    public function setPrice($price)
+    public function setFechaFin($fecha_fin)
     {
-        $this->price = $price;
+        $this->fecha_fin = $fecha_fin;
     }
 
     /**
-     * @param string $image
+     * @param string $lugar
      */
-    public function setImage($image)
+    public function setLugar($lugar)
     {
-        $this->image = $image;
+        $this->lugar = $lugar;
     }
 
     /**
-     * @param string $created_at
+     * @param string $convocatoria_pdf
      */
-    public function setCreatedAt($created_at)
+    public function setConvocatoriaPdf($convocatoria_pdf)
     {
-        $this->created_at = $created_at;
+        $this->convocatoria_pdf = $convocatoria_pdf;
     }
 
     /**
-     * @param string $updated_at
+     * @param string $inscripcion_pdf
      */
-    public function setUpdatedAt($updated_at)
+    public function setInscripcionPdf($inscripcion_pdf)
     {
-        $this->updated_at = $updated_at;
+        $this->inscripcion_pdf = $inscripcion_pdf;
     }
 
     /**
-     * @param int $duration
+     * @param string $formularios_pdf
      */
-    public function setDuration($duration){
-        $this->duration = $duration;
+    public function setFormulariosPdf($formularios_pdf)
+    {
+        $this->formularios_pdf = $formularios_pdf;
     }
 
     /**
-     * @param int $school_id
+     * @param string $active
      */
-    public function setSchoolId($school_id){
-        $this->school_id = $school_id;
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
     /**
-     * @param int $inscripcion
+     * @param string $type
      */
-    public function setInscripcion($inscripcion){
-        $this->inscripcion = $inscripcion;
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     /**
@@ -193,15 +196,16 @@ class CourseEntity
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'price' => $this->price,
-            'image' => $this->image,
-            'duration' => $this->duration,
-            'school_id' => $this->school_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'inscripcion' => $this->inscripcion
+            'curso' => $this->curso,
+            'fecha' => $this->fecha,
+            'fecha_fin' => $this->fecha_fin,
+            'lugar' => $this->lugar,
+            'convocatoria_pdf' => $this->convocatoria_pdf,
+            'inscripcion_pdf' => $this->inscripcion_pdf,
+            'formularios_pdf' => $this->formularios_pdf,
+            'active' => $this->active,
+            'type' => $this->type,
         ];
     }
+
 }

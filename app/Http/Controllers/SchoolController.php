@@ -13,6 +13,7 @@ use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\AlbumNewRepository;
 use App\Http\Repository\BannerRepository;
+use App\Http\Repository\RFEGTitleRepository;
 
 class SchoolController extends Controller
 {
@@ -111,13 +112,24 @@ class SchoolController extends Controller
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
-        $sponsorRepository = new SponsorRepository();        
+        $sponsorRepository = new SponsorRepository();  
+        $courseRepository = new CourseRepository();    
+        $rfegTitleRepository = new RFEGTitleRepository();  
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-        
-
+        $courses = $courseRepository->getAll($menu2=='todo'?'':$menu2);
+        $rfeg_title = $rfegTitleRepository->getStatic('cursos');
+        if($menu2!='todo'){
+            $_rfeg_title=[];
+            foreach($rfeg_title as $_title){
+                if($_title->getType()==$menu2){
+                    $_rfeg_title[] = $_title;
+                }
+            }
+            $rfeg_title = $_rfeg_title;
+        }
         $front = [
             'headers' => $headers,
             'section' => '/schools',
@@ -128,6 +140,8 @@ class SchoolController extends Controller
             'title'=>'Escuela',
             'menu1' => $menu1,
             'menu2' => $menu2,
+            'courses' => $courses,
+            'rfeg_title' => $rfeg_title
         ];
         return view('pages.'.$menu1)->with('front',$front);
     }

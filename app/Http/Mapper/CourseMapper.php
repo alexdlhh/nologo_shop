@@ -13,15 +13,15 @@ class CourseMapper
     {
         $course = new CourseEntity();
         !empty($data['id']) ? $course->setId($data['id']) : null;
-        !empty($data['name']) ? $course->setName($data['name']) : null;
-        !empty($data['description']) ? $course->setDescription($data['description']) : null;
-        !empty($data['price']) ? $course->setPrice($data['price']) : null;
-        !empty($data['duration']) ? $course->setDuration($data['duration']) : null;
-        !empty($data['image']) ? $course->setImage($data['image']) : null;
-        !empty($data['created_at']) ? $course->setCreatedAt($data['created_at']) : null;
-        !empty($data['updated_at']) ? $course->setUpdatedAt($data['updated_at']) : null;
-        !empty($data['school_id']) ? $course->setSchoolId($data['school_id']) : null;
-        !empty($data['inscripcion']) ? $course->setInscripcion($data['inscripcion']) : null;
+        !empty($data['curso']) ? $course->setCurso($data['curso']) : null;
+        !empty($data['fecha']) ? $course->setFecha($data['fecha']) : null;
+        !empty($data['fecha_fin']) ? $course->setFechaFin($data['fecha_fin']) : null;
+        !empty($data['lugar']) ? $course->setLugar($data['lugar']) : null;
+        !empty($data['active']) ? $course->setActive($data['active']) : null;
+        !empty($data['type']) ? $course->setType($data['type']) : null;
+        !empty($data['convocatoria_pdf']) ? $course->setConvocatoriaPdf($data['convocatoria_pdf']) : null;
+        !empty($data['inscripcion_pdf']) ? $course->setInscripcionPdf($data['inscripcion_pdf']) : null;
+        !empty($data['formularios_pdf']) ? $course->setFormulariosPdf($data['formularios_pdf']) : null;
         return $course;
     }
 
@@ -29,7 +29,7 @@ class CourseMapper
      * @param Array $data
      * @return array
      */
-    public function mapCollection(array $data): array
+    public function mapCollection($data): array
     {
         $courses = [];
         foreach ($data as $item) {

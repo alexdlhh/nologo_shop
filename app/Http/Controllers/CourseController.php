@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Http\Repository\SchoolRepository;
 use App\Http\Repository\CourseRepository;
 use App\Http\Repository\PagesRepository;
+use App\Http\Repository\RFEGTitleRepository;
 
 class CourseController extends Controller
 {
@@ -13,19 +13,13 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function courses(int $school_id=0, int $page=1, string $search='')
+    public function courses(string $type='')
     {
+        $rfegTitleRepository = new RFEGTitleRepository();
         $courseRepository = new CourseRepository();
-        $courses = $courseRepository->getAll($school_id,$page,$search);
-        $total_courses = $courseRepository->getTotalCourses($school_id,$page,$search);
-        $total_pages = ceil($total_courses/10);
-        $schoolRepository = new SchoolRepository();
-        $school = $schoolRepository->getAll();
-        $school_name = [];
-        foreach($school as $s){
-            $school_name[$s->id] = $s->name;
-        }
-        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'search'=>$search, 'total_courses'=>$total_courses, 'total_pages'=>$total_pages, 'page'=>$page, 'school_id'=>$school_id, 'school_name'=>$school_name, 'schools'=>$school,'section' => 'school','subsection' => 'listcourses']]);
+        $courses = $courseRepository->getAll($type);
+        $rfeg_title = $rfegTitleRepository->getStatic('cursos');
+        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'section' => 'school','subsection' => 'listcourses', 'rfeg_title'=>$rfeg_title]]);
     }
     
     /**
@@ -34,9 +28,7 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createCourse(){
-        $schoolRepository = new SchoolRepository();
-        $schools = $schoolRepository->getAll();
-        return view('admin.courses.create')->with(['admin'=>['title'=>'Crear Curso', 'schools'=>$schools,'section' => 'school',   'subsection' => 'savecourse']]);
+        return view('admin.courses.create')->with(['admin'=>['title'=>'Crear Curso','section' => 'school', 'subsection' => 'listcourses']]);
     }
     
     /**
@@ -48,45 +40,50 @@ class CourseController extends Controller
     public function postCreate(Request $request)
     {
         $courseRepository = new CourseRepository();
-        $image_url='';
+        $convocatoria_url='';
         $inscripcion_url='';
+        $formularios_url='';
         //upload image
-        if(!empty($request->file('image'))){
-            $image = $request->file('image');
-            //prepare image name with title without special characters and spaces
-            $image_name = str_replace(' ', '', $request->input('name'));
-            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
-            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/images/course/');
-            $image->move($destinationPath, $imageName);
-            //change $request feature_image content to current location of image
-            $image_url = '/images/course/'.$imageName;
-            $request->input('image', $image_url);
-        }else{
-            if(!empty($request->input('old_image'))){
-                $image_url = $request->input('old_image');
-            }
+        if(!empty($request->file('convocatoria_pdf'))){
+            $convocatoria = $request->file('convocatoria_pdf');
+            //prepare convocatoria name with title without special characters and spaces
+            $convocatoria_name = str_replace(' ', '', $request->input('name'));
+            $convocatoria_name = preg_replace('/[^A-Za-z0-9\-]/', '', $convocatoria_name);        
+            $convocatoriaName = time().$convocatoria_name.'_conv.'.$convocatoria->getClientOriginalExtension();
+            $destinationPath=public_path('/files/course/');
+            $convocatoria->move($destinationPath, $convocatoriaName);
+            //change $request feature_convocatoria content to current location of convocatoria
+            $convocatoria_url = '/files/course/'.$convocatoriaName;
+            $request->input('convocatoria_pdf', $convocatoria_url);
         }
-        if(!empty($request->file('inscripcion'))){
-            $inscripcion = $request->file('inscripcion');
+        if(!empty($request->file('inscripcion_pdf'))){
+            $inscripcion = $request->file('inscripcion_pdf');
             //prepare inscripcion name with title without special characters and spaces
             $inscripcion_name = str_replace(' ', '', $request->input('name'));
             $inscripcion_name = preg_replace('/[^A-Za-z0-9\-]/', '', $inscripcion_name);        
-            $inscripcionName = time().$inscripcion_name.'.'.$inscripcion->getClientOriginalExtension();
+            $inscripcionName = time().$inscripcion_name.'_insc.'.$inscripcion->getClientOriginalExtension();
             $destinationPath=public_path('/inscripcions/course/');
             $inscripcion->move($destinationPath, $inscripcionName);
             //change $request feature_inscripcion content to current location of inscripcion
             $inscripcion_url = '/files/fomularios/'.$inscripcionName;
             $request->input('inscripcion', $inscripcion_url);
-        }else{
-            if(!empty($request->input('old_inscripcion'))){
-                $inscripcion_url = $request->input('old_inscripcion');
-            }
+        }
+        if(!empty($request->file('formularios_pdf'))){
+            $formularios = $request->file('formularios_pdf');
+            //prepare formularios name with title without special characters and spaces
+            $formularios_name = str_replace(' ', '', $request->input('name'));
+            $formularios_name = preg_replace('/[^A-Za-z0-9\-]/', '', $formularios_name);        
+            $formulariosName = time().$formularios_name.'_form.'.$formularios->getClientOriginalExtension();
+            $destinationPath=public_path('/formularioss/course/');
+            $formularios->move($destinationPath, $formulariosName);
+            //change $request feature_formularios content to current location of formularios
+            $formularios_url = '/files/fomularios/'.$formulariosName;
+            $request->input('formularios', $formularios_url);
         }
         if($request->input('id')==0){
-            $id = $courseRepository->create($request,$image_url,$inscripcion_url);
+            $id = $courseRepository->create($request,$convocatoria_url,$inscripcion_url,$formularios_url);
         } else {
-            $id = $courseRepository->update($request,$image_url,$inscripcion_url);
+            $id = $courseRepository->update($request,$convocatoria_url,$inscripcion_url,$formularios_url);
         }
         return $id;
     }
@@ -100,9 +97,7 @@ class CourseController extends Controller
     public function edit($id){
         $courseRepository = new CourseRepository();
         $course = $courseRepository->getOne($id);
-        $schoolRepository = new SchoolRepository();
-        $schools = $schoolRepository->getAll();
-        return view('admin.courses.edit')->with(['admin'=>['title'=>'Editar Curso', 'course'=>$course, 'schools'=>$schools,'section' => 'school',
+        return view('admin.courses.edit')->with(['admin'=>['title'=>'Editar Curso', 'course'=>$course, 'section' => 'school',
         'subsection' => 'savecourse']]);
     }
     

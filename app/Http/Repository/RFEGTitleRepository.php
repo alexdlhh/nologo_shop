@@ -90,4 +90,22 @@ class RFEGTitleRepository
             ->delete();
         return $rfegTitle;
     }
+
+    /**
+     * Get static ids, if section is cursos we get ids in 29,30,31,32,33, if is normativa 24,25,26,27,28
+     */
+    public function getStatic($section){
+        if($section == 'cursos') {
+            $rfegTitle = DB::table('rfeg_title')
+                ->whereIn('id', [29,30,31,32,33])
+                ->get();
+        } else {
+            $rfegTitle = DB::table('rfeg_title')
+                ->whereIn('id', [24,25,26,27,28])
+                ->get();
+        }
+        $rfegTitleMapper = new RFEGTitleMapper();
+        $rfegTitle = $rfegTitleMapper->mapCollection($rfegTitle->toArray());
+        return $rfegTitle;
+    }
 }

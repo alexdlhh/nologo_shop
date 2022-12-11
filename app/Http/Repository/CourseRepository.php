@@ -12,42 +12,22 @@ class CourseRepository
 {
 
     /**
-     * @param array $data
+     * @param array $type // si esta vacio devuelve todos los cursos
      * @return array
      */
-    public function getAll($school_id=0,$page=1,$search='')
+    public function getAll($type="")
     {
         $courseMapper = new CourseMapper();
-        $page = ($school_id-1)*10;
-        if(!empty($id)) {
-            if(!empty($search)){
-                $courses = DB::table('course')
-                    ->where('school_id', $school_id)
-                    ->where('name', 'like', '%'.$search.'%')
-                    ->orderBy('id', 'desc')
-                    ->skip($page)->take(10)->get();
-            }else{
-                $courses = DB::table('course')
-                    ->where('school_id', $school_id)
-                    ->skip($page)->take(10)->get();
-            }
-        } else {
-            if(!empty($search)){
-                $courses = DB::table('course')
-                    ->where('name', 'like', '%'.$search.'%')
-                    ->orderBy('id', 'desc')
-                    ->skip($page)->take(10)->get();
-            }else{
-                $courses = DB::table('course')
-                    ->skip($page)->take(10)->get();
-            }
+        if($type == ""){
+            $courses = DB::table('course')
+                ->get();
+        }else{
+            $courses = DB::table('course')
+                ->where('type',$type)
+                ->get();
         }
-        $aux = [];
-        foreach ($courses as $course) {
-            $aux[] = $course;
-        }
-        $courseList = $courseMapper->mapCollection($aux);
-        return $courseList;
+        $courses = $courseMapper->mapCollection($courses);
+        return $courses;
     }
 
     /**
@@ -67,20 +47,27 @@ class CourseRepository
      * @param array $data
      * @return int
      */
-    public function create(Request $request, string $image_url, string $inscripcion_url){
+    public function create(Request $request, string $convocatoria_pdf, string $inscripcion_pdf, string $formularios_pdf){
         $courseMapper = new CourseMapper();
         $course = $courseMapper->map($request->all());
         $id = DB::table('course')->insertGetId([
-            'name' => $course->getName(),
-            'description' => $course->getDescription(),
-            'price' => $course->getPrice(),
-            'duration' => $course->getDuration(),
-            'school_id' => $course->getSchoolId(),
-            'image' => $image_url,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-            'inscripcion' => $inscripcion_url
+            'curso' => $course->getCurso(),
+            'fecha' => $course->getFecha(),
+            'fecha_fin' => $course->getFechaFin(),
+            'lugar' => $course->getLugar(),
+            'active' => $course->getActive()?1:0,
+            'type' => $course->getType(),
         ]);
+        if(!empty($convocatoria_pdf)){
+            DB::table('course')->where('id', $id)->update(['convocatoria_pdf' => $convocatoria_pdf]);
+        }
+        if(!empty($inscripcion_pdf)){
+            DB::table('course')->where('id', $id)->update(['inscripcion_pdf' => $inscripcion_pdf]);
+        }
+        if(!empty($formularios_pdf)){
+            DB::table('course')->where('id', $id)->update(['formularios_pdf' => $formularios_pdf]);
+        }
+
         return $id;
     }
 
@@ -88,19 +75,27 @@ class CourseRepository
      * @param array $data
      * @return int
      */
-    public function update(Request $request, string $image_url, string $inscripcion_url){
+    public function update(Request $request, string $convocatoria_pdf, string $inscripcion_pdf, string $formularios_pdf){
         $courseMapper = new CourseMapper();
         $course = $courseMapper->map($request->all());
         $id = DB::table('course')->where('id', $course->getId())->update([
-            'name' => $course->getName(),
-            'description' => $course->getDescription(),
-            'price' => $course->getPrice(),
-            'duration' => $course->getDuration(),
-            'school_id' => $course->getSchoolId(),
-            'image' => $image_url,
-            'updated_at' => date('Y-m-d H:i:s'),
-            'inscripcion' => $inscripcion_url
+            'curso' => $course->getCurso(),
+            'fecha' => $course->getFecha(),
+            'fecha_fin' => $course->getFechaFin(),
+            'lugar' => $course->getLugar(),
+            'active' => $course->getActive()?1:0,
+            'type' => $course->getType(),
         ]);
+        if(!empty($convocatoria_pdf)){
+            DB::table('course')->where('id', $course->getId())->update(['convocatoria_pdf' => $convocatoria_pdf]);
+        }
+        if(!empty($inscripcion_pdf)){
+            DB::table('course')->where('id', $course->getId())->update(['inscripcion_pdf' => $inscripcion_pdf]);
+        }
+        if(!empty($formularios_pdf)){
+            DB::table('course')->where('id', $course->getId())->update(['formularios_pdf' => $formularios_pdf]);
+        }
+
         return $id;
     }
 
@@ -124,7 +119,7 @@ class CourseRepository
             if(!empty($search)){
                 $total = DB::table('course')
                     ->where('school_id', $school_id)
-                    ->where('name', 'like', '%'.$search.'%')
+                    ->where('curso', 'like', '%'.$search.'%')
                     ->orderBy('id', 'desc')
                     ->count();
             }else{
@@ -135,7 +130,7 @@ class CourseRepository
         } else {
             if(!empty($search)){
                 $total = DB::table('course')
-                    ->where('name', 'like', '%'.$search.'%')
+                    ->where('curso', 'like', '%'.$search.'%')
                     ->orderBy('id', 'desc')
                     ->count();
             }else{

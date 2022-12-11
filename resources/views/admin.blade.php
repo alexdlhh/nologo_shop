@@ -190,13 +190,13 @@
                         </div>
                     </li-->
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'school' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'school' ? 'active' : ''}}">school</i>Escuelas</div>
+                        <div class="collapsible-header {{$admin['section'] == 'school' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'school' ? 'active' : ''}}">school</i>Escuela Nacional</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'school' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
-                                    <a href="/admin/schools" class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}"><b>Listar Escuelas</b></span><span class="child-selector {{$admin['subsection'] == 'listschool' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listschool' ? 'active' : ''}}">Listado de escuelas RFEG</p>
+                                    <a href="/admin/normativa_school" class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}"><b>Normativa</b></span><span class="child-selector {{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">Normativa de escuelas y cursos RFEG</p>
                                     </a>
                                 </li>
                                 <!--li>
