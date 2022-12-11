@@ -35,14 +35,14 @@ $header_subtitle_esp = [
         </div>        
         <div class="lista">
         <ul>
-                <li><a href="/especialidades/artistica-masculina/" class="{{$front['menu1']=='artistica-masculina' ? 'active':''}}">ARTÍSTICA MASC.</a></li>
-                <li><a href="/especialidades/artistica-femenina/" class="{{$front['menu1']=='artistica-femenina' ? 'active':''}}">ARTÍSTICA FEM.</a></li>
-                <li><a href="/especialidades/ritmica/" class="{{$front['menu1']=='ritmica' ? 'active':''}}">RÍTMICA</a></li>
-                <li><a href="/especialidades/trampolin/" class="{{$front['menu1']=='trampolin' ? 'active':''}}">TRAMPOLÍN</a></li>
-                <li><a href="/especialidades/aerobica/" class="{{$front['menu1']=='aerobica' ? 'active':''}}">AERÓBICA</a></li>
-                <li><a href="/especialidades/acrobatica/" class="{{$front['menu1']=='acrobatica' ? 'active':''}}">ACROBÁTICA</a></li>
-                <li><a href="/especialidades/para-todos/" class="{{$front['menu1']=='para-todos' ? 'active':''}}">PARA TODOS</a></li>
-                <li><a href="/especialidades/parkour/" class="{{$front['menu1']=='parkour' ? 'active':''}}">PARKOUR</a></li>
+                <li><a href="/calendar/artistica-masculina/" class="{{$front['menu1']=='artistica-masculina' ? 'active':''}}">ARTÍSTICA MASC.</a></li>
+                <li><a href="/calendar/artistica-femenina/" class="{{$front['menu1']=='artistica-femenina' ? 'active':''}}">ARTÍSTICA FEM.</a></li>
+                <li><a href="/calendar/ritmica/" class="{{$front['menu1']=='ritmica' ? 'active':''}}">RÍTMICA</a></li>
+                <li><a href="/calendar/trampolin/" class="{{$front['menu1']=='trampolin' ? 'active':''}}">TRAMPOLÍN</a></li>
+                <li><a href="/calendar/aerobica/" class="{{$front['menu1']=='aerobica' ? 'active':''}}">AERÓBICA</a></li>
+                <li><a href="/calendar/acrobatica/" class="{{$front['menu1']=='acrobatica' ? 'active':''}}">ACROBÁTICA</a></li>
+                <li><a href="/calendar/para-todos/" class="{{$front['menu1']=='para-todos' ? 'active':''}}">PARA TODOS</a></li>
+                <li><a href="/calendar/parkour/" class="{{$front['menu1']=='parkour' ? 'active':''}}">PARKOUR</a></li>
             </ul>
         </div>
         <div class="lista">
@@ -61,48 +61,50 @@ $header_subtitle_esp = [
             <div class="linear_title_esp"></div>{{$header_subtitle_esp[$front['menu2']]}}
         </div>
     </div>
-    @if($front['menu2']=='todo' || $front['menu2']=='nacional')
-    <div id="tabla4">
-        <div class="container_table">
-            <h4 class="color_violet">Calendario nacional <a href="javascript:;" data-url="/test.pdf" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a></h4>
-            <div class="row head_table">
-                <div class="col s4">COMPETICIÓN</div>
-                <div class="col s2">FECHA</div>
-                <div class="col s2">LICENCIA</div>
-                <div class="col s2">INSCRIPCIÓN</div>
-                <div class="col s2">SORTEO</div>
-            </div>
-            <div class="row content_table">
-                <div class="col s4">Control Liga Clubes GR</div>
-                <div class="col s2">25-26 febrero</div>
-                <div class="col s2">13 enero</div>
-                <div class="col s2">26 enero</div>
-                <div class="col s2">2 febrero</div>
-            </div>
-        </div>
-    </div>
-    @endif
-    @if($front['menu2']=='todo' || $front['menu2']=='internacional')
-    <div id="tabla4">
-        <div class="container_table">
-            <h4 class="color_violet">Calendario internacional <a href="javascript:;" data-url="/test.pdf" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a></h4>
-            <div class="row head_table">
-                <div class="col s4">COMPETICIÓN</div>
-                <div class="col s2">FECHA</div>
-                <div class="col s2">LICENCIA</div>
-                <div class="col s2">INSCRIPCIÓN</div>
-                <div class="col s2">SORTEO</div>
-            </div>
-            <div class="row content_table">
-                <div class="col s4">Control Liga Clubes GR</div>
-                <div class="col s2">25-26 febrero</div>
-                <div class="col s2">13 enero</div>
-                <div class="col s2">26 enero</div>
-                <div class="col s2">2 febrero</div>
+    @foreach($front['eventos'] as $evento)
+        @if(($front['menu2']=='todo' || $front['menu2']=='nacional') && $evento->getNacional()==1)
+        <div id="tabla4">
+            <div class="container_table">
+                <h4 class="color_violet">Calendario nacional @if(!empty($evento->getDownloadPdf())) <a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a>@endif</h4>
+                <div class="row head_table">
+                    <div class="col s4">COMPETICIÓN</div>
+                    <div class="col s2">FECHA</div>
+                    <div class="col s2">LICENCIA</div>
+                    <div class="col s2">INSCRIPCIÓN</div>
+                    <div class="col s2">SORTEO</div>
+                </div>
+                <div class="row content_table">
+                    <div class="col s4">{{$evento->getCompeticion()}}</div>
+                    <div class="col s2">{{str_replace('-','/',$evento->getFecha())}} - {{str_replace('-','/',$evento->getFechaFin())}}</div>
+                    <div class="col s2">{{$evento->getLicencia()=='0001-01-01'?'-':str_replace('-','/',$evento->getLicencia())}}</div>
+                    <div class="col s2">{{$evento->getInscripcion()=='0001-01-01'?'-':str_replace('-','/',$evento->getInscripcion())}}</div>
+                    <div class="col s2">{{$evento->getSorteo()=='0001-01-01'?'-':str_replace('-','/',$evento->getSorteo())}}</div>
+                </div>
             </div>
         </div>
-    </div>
-    @endif
+        @endif
+        @if($front['menu2']=='todo' || $front['menu2']=='internacional' && $evento->getNacional()==0)
+        <div id="tabla4">
+            <div class="container_table">
+                <h4 class="color_violet">Calendario internacional  @if(!empty($evento->getDownloadPdf()))<a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a>@endif</h4>
+                <div class="row head_table">
+                    <div class="col s4">COMPETICIÓN</div>
+                    <div class="col s2">FECHA</div>
+                    <div class="col s2">LICENCIA</div>
+                    <div class="col s2">INSCRIPCIÓN</div>
+                    <div class="col s2">SORTEO</div>
+                </div>
+                <div class="row content_table">
+                    <div class="col s4">{{$evento->getCompeticion()}}</div>
+                    <div class="col s2">{{str_replace('-','/',$evento->getFecha())}} - {{str_replace('-','/',$evento->getFechaFin())}}</div>
+                    <div class="col s2">{{$evento->getLicencia()=='0001-01-01'?'-':str_replace('-','/',$evento->getLicencia())}}</div>
+                    <div class="col s2">{{$evento->getInscripcion()=='0001-01-01'?'-':str_replace('-','/',$evento->getInscripcion())}}</div>
+                    <div class="col s2">{{$evento->getSorteo()=='0001-01-01'?'-':str_replace('-','/',$evento->getSorteo())}}</div>
+                </div>
+            </div>
+        </div>
+        @endif    
+    @endforeach
 </div>
 @endsection
 @section('scripts')

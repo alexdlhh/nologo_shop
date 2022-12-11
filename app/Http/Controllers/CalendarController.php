@@ -25,6 +25,23 @@ class CalendarController extends Controller
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
+        $eventoRepository = new EventoRepository();
+        $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
+        $aux=[];
+        foreach($eventos as $evento){
+            if($menu2 == 'nacional'){
+                if($evento->getNacional() == 1){
+                    $aux[] = $evento;
+                }
+            }elseif($menu2 == 'internacional'){
+                if($evento->getNacional() == 0){
+                    $aux[] = $evento;
+                }
+            }else{
+                $aux[] = $evento;
+            }
+        }
+        $eventos = $aux;
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
@@ -40,6 +57,7 @@ class CalendarController extends Controller
             'title'=>'Calendario',
             'menu1' => $menu1,
             'menu2' => $menu2,
+            'eventos' => $eventos,
         ];
         return view('pages.calendarios')->with('front',$front);
     }

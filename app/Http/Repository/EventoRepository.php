@@ -155,4 +155,19 @@ class EventoRepository
     public function deleteEvent($id){
         DB::table('evento')->where('id', '=', $id)->delete();
     }
+
+    /**
+     * getEvents by especialidad alias
+     */
+    public function getEventsByEspecialidadAlias($alias){
+        $eventos = DB::table('evento')
+            ->join('especialidades', 'evento.especialidad', '=', 'especialidades.acronimo')
+            ->select('evento.*')
+            ->where('especialidades.alias', '=', $alias)
+            ->where('evento.active', '=', 1)
+            ->orderBy('evento.fecha', 'asc')
+            ->get();
+        $eventoMapper = new EventoMapper();
+        return $eventoMapper->mapCollection($eventos);
+    }
 }
