@@ -13,6 +13,7 @@ $titles = [
     'transparencia' => 'Ley de Transparencia',
     'estatutos' => 'Estatutos',
     'ffaa' => 'FFAA',
+    'elecciones' => 'Elecciones',
 ];
 $normativa_heads = [
     'todo' => 'Todo',

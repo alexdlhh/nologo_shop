@@ -13,6 +13,7 @@ $titles = [
     'transparencia' => 'Ley de Transparencia',
     'estatutos' => 'Estatutos',
     'ffaa' => 'FFAA',
+    'elecciones' => 'Elecciones'
 ];
 $normativa_heads = [
     'todo' => 'Todo',
@@ -45,6 +46,7 @@ $normativa_heads = [
                 <li><a href="/rfeg/transparencia/" class="{{$front['menu1']=='transparencia' ? 'active':''}}">LEY DE TRANSPARENCIA</a></li>
                 <li><a href="/rfeg/estatutos/" class="{{$front['menu1']=='estatutos' ? 'active':''}}">ESTATUTOS</a></li>
                 <li><a href="/rfeg/ffaa/" class="{{$front['menu1']=='ffaa' ? 'active':''}}">FFAA</a></li>
+                <li><a href="/rfeg/elecciones/" class="{{$front['menu1']=='elecciones' ? 'active':''}}">ELECCIONES</a></li>
             </ul>
         </div>
         @if($front['menu1']=='normativa')

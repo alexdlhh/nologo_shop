@@ -21,6 +21,7 @@
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/transparencia') }}">Ley de Transparencia</a></li>
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/estatutos') }}">Estatutos</a></li>
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/ffaa') }}">FFAA</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/elecciones') }}">Elecciones</a></li>
                                 </ul>
                             </div>
                         </div>
