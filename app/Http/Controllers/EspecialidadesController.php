@@ -148,7 +148,8 @@ class EspecialidadesController extends Controller
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $especialidades = $this->especialidadesRepository->getAll();
-        $media = $mediaRepository->getByColectionAndSpeciality(1,3);
+        $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
+        $media = $mediaRepository->getMediaScroll(0,$especialidad);
 
         $front = [
             'headers' => $headers,
@@ -163,7 +164,8 @@ class EspecialidadesController extends Controller
             'media' => $media,
         ];
         return view('pages.especialidades')->with('front',$front);
-    }
+    }    
+
     public function header_order($headers){
         $order = [];
         $aux = [];

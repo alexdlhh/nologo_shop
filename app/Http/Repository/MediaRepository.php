@@ -77,25 +77,43 @@ class MediaRepository
      * @param $especialidad
      * @return array
      */
-    public function getByColectionAndSpeciality($coleccion, $especialidad){
+    public function getByColectionAndSpecialityScroll($coleccion, $especialidad, $pag=0){
         $mediaMapper = new MediaMapper();
-        if($coleccion=='all' && $especialidad=='all'){
-            $media = DB::table('media')->get();
-        } else if($coleccion=='all' && $especialidad!='all'){
+        if($coleccion=='todo' && $especialidad=='todo'){
+            $media = DB::table('media')->skip($pag)->take(9)->get();
+        } else if($coleccion=='todo' && $especialidad!='todo'){
             $media = DB::table('media')
                 ->where('especialidad', $especialidad)
+                ->skip($pag)
+                ->take(9)
                 ->get();
-        } else if($coleccion!='all' && $especialidad=='all'){
+        } else if($coleccion!='todo' && $especialidad=='todo'){
             $media = DB::table('media')
                 ->where('coleccion', $coleccion)
+                ->skip($pag)
+                ->take(9)
                 ->get();
         } else {
             $media = DB::table('media')
                 ->where('coleccion', $coleccion)
                 ->where('especialidad', $especialidad)
+                ->skip($pag)
+                ->take(9)
                 ->get();
         }
         $mediaList = $mediaMapper->mapCollection($media->toArray());
+        return $mediaList;
+    }
+
+    /**
+     * getByEpeciality
+     */
+    public function getByEpeciality($id){
+        $mediaMapper = new MediaMapper();
+        $media = DB::table('media')
+            ->where('especialidad', $id)
+            ->get();
+        $mediaList = $mediaMapper->mapCollection($media);
         return $mediaList;
     }
     
@@ -168,5 +186,26 @@ class MediaRepository
     public function delete($id){
         $mediaMapper = new MediaMapper();
         DB::table('media')->where('id', '=', $id)->delete();
+    }
+
+    /**
+     * @param array $data
+     */
+    public function getMediaScroll($pag,$especialidad){
+        $mediaMapper = new MediaMapper();
+        if($especialidad=='todo'){
+            $media = DB::table('media')
+                ->skip($pag)
+                ->take(9)
+                ->get();
+        } else {
+            $media = DB::table('media')
+                ->where('especialidad', $especialidad)
+                ->skip($pag)
+                ->take(9)
+                ->get();
+        }
+        $mediaList = $mediaMapper->mapCollection($media);
+        return $mediaList;
     }
 }

@@ -124,6 +124,23 @@ class MediaController extends Controller
     }
 
     /**
+     * Esta función obtendrá la siguiente tanda de noticias
+     * @param $pag
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getMediaScroll($pag=2, $especialidad='todo'){
+        $mediaRepository = new MediaRepository();
+        $especialidadesRepository = new EspecialidadesRepository();
+        if($pag<2){
+            $pag = 2;
+        }
+        $pag = ($pag-1)*9;
+        $especialidad = $especialidadesRepository->getIdBySlug($especialidad);
+        $media = $mediaRepository->getMediaScroll($pag, $especialidad);
+        return response()->json(['media' => $media]);
+    }
+
+    /**
      * Vista de la front Page
      */
     public function frontPageMultimedia($menu1='todo', $menu2='todo'){
@@ -139,24 +156,23 @@ class MediaController extends Controller
         $mediaRepository = new MediaRepository();
         if($menu1 == 'todo'){
             if($menu2 == 'todo'){
-                $media = $mediaRepository->getAll();
+                $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo');
             } else {
                 $id_coleccion='all';
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
-                $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
             }
         } else {
             if($menu2 == 'todo'){
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
                 $id_especialidad='all';
-                $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
             } else {
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
-                $media = $mediaRepository->getByColectionAndSpeciality($id_coleccion,$id_especialidad);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
             }
         }
-        
 
         $especialidades = $especialidadesRepository->getAll();
         $colecciones=$coleccionRepository->getAll();
@@ -178,6 +194,36 @@ class MediaController extends Controller
             'media' => $media
         ];
         return view('pages.media')->with('front',$front);
+    }
+
+    public function scrollComplete($pag=2,$menu1='todo', $menu2='todo'){
+        $mediaRepository = new MediaRepository();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $coleccionRepository = new ColeccionRepository();
+        if($pag<2){
+            $pag = 2;
+        }
+        $pag = ($pag-1)*9;
+        if($menu2 == 'todo'){
+            if($menu1 == 'todo'){
+                $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo',$pag);
+            } else {
+                $id_coleccion='all';
+                $id_especialidad=$especialidadesRepository->getIdBySlug($menu1);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
+            }
+        } else {
+            if($menu2 == 'todo'){
+                $id_coleccion=$coleccionRepository->getIdBySlug($menu2);
+                $id_especialidad='all';
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
+            } else {
+                $id_coleccion=$coleccionRepository->getIdBySlug($menu2);
+                $id_especialidad=$especialidadesRepository->getIdBySlug($menu1);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
+            }
+        }
+        return response()->json(['media' => $media]);
     }
 
     public function header_order($headers){

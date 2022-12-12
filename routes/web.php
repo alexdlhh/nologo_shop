@@ -54,6 +54,8 @@ Route::get('normativa/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])
 Route::get('patrocinadores/{menu1?}',[SponsorController::class, 'frontPage'])->name('front.sponsor');
 Route::get('rfeg/{menu1?}/{menu2?}',[RFEGController::class, 'frontPage'])->name('front.rfeg');
 Route::get('getNewsScroll/{pag?}',[NewsController::class, 'getNewsScroll'])->name('getNewsScroll');
+Route::get('getMediaScroll/{pag}/{especialidad?}',[MediaController::class, 'getMediaScroll'])->name('getMediaScroll');
+Route::get('getMediaScrollGeneral/{pag}/{especialidad?}/{coleccion?}',[MediaController::class, 'scrollComplete'])->name('scrollComplete');
 /**
  * HOME
  */

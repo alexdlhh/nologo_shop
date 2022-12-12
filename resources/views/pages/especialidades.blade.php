@@ -246,6 +246,45 @@ $header_subtitle_esp = [
             $('.team_category').removeClass('active');
             $(this).addClass('active');
         });
+        @if($front['menu2']=='multimedia')
+        //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
+        var page = 1;
+        var loading = false;
+        $(window).scroll(function() {
+            if($(window).scrollTop() > $('body').height()-1700) {
+                if(!loading){
+                    loading = true;
+                    page++;
+                    var html = '<div class="center"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div><div>';
+                    $('.mediaGrid').append(html);
+                    $.ajax({
+                        url: '/getMediaScroll/'+page+'/'+"{{$front['menu1']}}",
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data)
+                            console.log(data.media)
+                            if(data.media.length>0){
+                                $.each(data.media, function(index, newItem) {
+                                    console.log(newItem)
+                                    if(newItem.type=='image'){
+                                        var html = '<div class="media_item"><img src="'+newItem.url+'" class="materialboxed" alt="'+newItem.title+'"></div>';
+                                    }else{
+                                        var html = '<div class="media_item"><iframe src="'+newItem.url+'" frameborder="0"></iframe></div>';
+                                    }
+                                    $('.mediaGrid').append(html);
+                                });
+                            }else{
+                                page--;
+                            }
+                            $('.preloader-wrapper').remove();
+                            loading = false;
+                        }
+                    });
+                }
+            }
+        });
+        @endif
     });
 </script>
 @endsection
