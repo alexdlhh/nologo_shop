@@ -14,17 +14,13 @@ class SchoolMapper
     {
         $school = new SchoolEntity();
         $school->setId(!empty($data['id'])?$data['id']:0);
-        $school->setName(!empty($data['name'])?$data['name']:'');
-        $school->setAddress(!empty($data['address'])?$data['address']:'');
-        $school->setPhone(!empty($data['phone'])?$data['phone']:'');
-        $school->setEmail(!empty($data['email'])?$data['email']:'');
-        $school->setWebsite(!empty($data['website'])?$data['website']:'');
-        $school->setLogo(!empty($data['logo'])?$data['logo']:'');
-        $school->setDescription(!empty($data['description'])?$data['description']:'');
+        $school->setDocumento(!empty($data['documento'])?$data['documento']:'');
         $school->setCreatedAt(!empty($data['created_at'])?$data['created_at']:date('Y-m-d H:i:s'));
         $school->setUpdatedAt(!empty($data['updated_at'])?$data['updated_at']:date('Y-m-d H:i:s'));
-        $school->setWebsite(!empty($data['website'])?$data['website']:'');
-        $school->setStatus(!empty($data['status'])?$data['status']:0);
+        $school->setDownloadPdf(!empty($data['download_pdf'])?$data['download_pdf']:'');
+        $school->setType(!empty($data['type'])?$data['type']:'');
+        $school->setActive(!empty($data['active'])?$data['active']:0);
+        
         return $school;
     }
     

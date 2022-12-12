@@ -55,23 +55,29 @@ $header_subtitle_esp = [
             <div class="linear_title_esp"></div>{{$header_subtitle_esp[$front['menu2']]}}
         </div>
     </div>
+    @foreach($front['rfeg_title'] as $rfeg_title)
     <div id="tabla6">
         <div class="container_table">
-            <h4 class="color_violet">Listado de documentos</h4>
+            <h4 class="color_violet">{{$rfeg_title->name}}</h4>
             <div class="row head_table">
                 <div class="col s6">DOCUMENTO</div>
                 <div class="col s2">FECHA PUBLICACIÓN</div>
                 <div class="col s2">FECHA ACTUALIZACIÓN</div>
                 <div class="col s2">DESCARGAR PDF</div>
             </div>
+            @foreach($front['normativas'] as $normativas)
+            @if($normativas->getType()==$rfeg_title->type)
             <div class="row content_table">
-                <div class="col s6">Resolución CSD 7 febrero 2012 Plan Formativo Especialidades Gimnasia</div>
-                <div class="col s2">28 febrero 2012</div>
-                <div class="col s2">-</div>
-                <div class="col s2"><a href="#modal1" data-url="/test.pdf" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                <div class="col s6">{{$normativas->getDocumento()}}</div>
+                <div class="col s2">{{str_replace('-','/',$normativas->getCreatedAt())}}</div>
+                <div class="col s2">{{str_replace('-','/',$normativas->getUpdatedAt())}}</div>
+                <div class="col s2"><a href="#modal1" data-url="{{$normativas->getDownloadPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
             </div>
+            @endif
+            @endforeach
         </div>
     </div>
+    @endforeach
 </div>
 <div class="modal" id="modal1">
     <div class="modal-content">

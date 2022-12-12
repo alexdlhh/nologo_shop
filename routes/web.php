@@ -86,14 +86,10 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/users/edit/{id}',[AuthController::class,'editUser'])->name('admin.users.edit');
     Route::post('admin/users/edit',[AuthController::class,'updateUser'])->name('admin.users.update');
     Route::get('admin/users/create',[AuthController::class,'createUser'])->name('admin.users.create');
-    /**ADMIN SCHOOL */
-    Route::get('admin/schools',[SchoolController::class,'schools'])->name('admin.schools.list');
-    Route::get('admin/schools/{page?}/{search?}',[SchoolController::class,'schools'])->name('admin.schools.list');
-    Route::get('admin/school/create',[SchoolController::class,'createSchool'])->name('admin.schools.create');
-    Route::get('admin/school/edit/{id}',[SchoolController::class,'editSchool'])->name('admin.schools.edit');
-    Route::post('admin/school/save',[SchoolController::class,'postCreate'])->name('admin.schools.store');
-    Route::get('admin/school/delete/{id}',[SchoolController::class,'postDelete'])->name('admin.schools.delete');
-    Route::post('admin/school/status',[SchoolController::class,'postStatus'])->name('admin.schools.status');
+    /**ADMIN NORMATIVAS_SCHOOL */
+    Route::get('admin/normativa_school',[SchoolController::class,'normativas'])->name('admin.normativa.list');
+    Route::post('admin/normativa/save',[SchoolController::class,'save'])->name('admin.normativa.save');
+    Route::get('admin/normativa/delete/{id}',[SchoolController::class,'delete'])->name('admin.normativa.delete');
     /**ADMIN COURSES */
     Route::get('admin/courses/{type?}',[CourseController::class,'courses'])->name('admin.courses.list');
     Route::post('admin/course/save',[CourseController::class,'postCreate'])->name('admin.courses.store');

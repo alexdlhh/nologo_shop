@@ -10,58 +10,20 @@ use Illuminate\Http\Request;
 
 class SchoolRepository
 {
-
-    /**
-     * @param array $data
-     * @return array
-     */
-    public function getAll($page=1,$search='')
-    {
-        $schoolMapper = new SchoolMapper();
-        $init = $page==1?0:($page-1)*10;
-        if(!empty($search)) {
-            $schools = DB::table('school')
-                ->where('name', 'like', '%'.$search.'%')
-                ->skip($init)->take(10)->get();
-        } else {
-            $schools = DB::table('school')
-                ->skip($init)->take(10)->get();
-        }
-        $schoolList = $schoolMapper->mapCollection($schools->toArray());
-        return $schoolList;
-    }
-    
-    /**
-     * @param array $filter
-     * @return SchoolEntity
-     */
-    public function getOne($id){
-        $schoolMapper = new SchoolMapper();
-        $school = DB::table('school')
-            ->where('id', $id)
-            ->first();
-        $school = $schoolMapper->map(get_object_vars($school));
-        return $school;
-    }
-    
     /**
      * @param array $data
      * @return bool
      */
-    public function create(Request $request,String $image){
+    public function create(Request $request, String $archivo){
         $schoolMapper = new SchoolMapper();
         $school = $schoolMapper->map($request->all());
-        $id = DB::table('school')->insertGetId([
-            'name' => $school->getName(),
-            'address' => $school->getAddress(),
-            'phone' => $school->getPhone(),
-            'email' => $school->getEmail(),
-            'website' => $school->getWebsite(),
-            'logo' => $image,
-            'description' => $school->getDescription(),
-            'created_at' => $school->getCreatedAt(),
-            'updated_at' => $school->getUpdatedAt(),
-            'status' => $school->getStatus()?1:0
+        $id = DB::table('normativa')->insertGetId([
+            'documento' => $school->getDocumento(),
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d'),
+            'download_pdf' => $archivo,
+            'type' => $school->getType(),
+            'active' => $school->getActive(),
         ]);
         return $id;
     }
@@ -70,20 +32,21 @@ class SchoolRepository
      * @param array $data
      * @return int
      */
-    public function update(Request $request, String $image){
+    public function update(Request $request, String $archivo){
         $schoolMapper = new SchoolMapper();
         $school = $schoolMapper->map($request->all());
-        $id = DB::table('school')->where('id', $school->getId())->update([
-            'name' => $school->getName(),
-            'address' => $school->getAddress(),
-            'phone' => $school->getPhone(),
-            'email' => $school->getEmail(),
-            'website' => $school->getWebsite(),
-            'logo' => $image,
-            'description' => $school->getDescription(),
-            'updated_at' => $school->getUpdatedAt(),
-            'status' => $school->getStatus()?1:0
+        $id = DB::table('normativa')->where('id', $school->getId())->update([
+            'documento' => $school->getDocumento(),
+            'updated_at' => date('Y-m-d'),            
+            'type' => $school->getType(),
+            'active' => $school->getActive(),
         ]);
+
+        if($archivo != ''){
+            $id = DB::table('normativa')->where('id', $school->getId())->update([
+                'download_pdf' => $archivo,
+            ]);
+        }
         return $id;
     }
 
@@ -92,37 +55,44 @@ class SchoolRepository
      * @return bool
      */
     public function delete(int $id){
-        $id = DB::table('school')->where('id', $id)->delete();
+        $id = DB::table('normativa')->where('id', $id)->delete();
         return true;
     }
 
     /**
-     * @param array $data
-     * @return bool
+     * getNormativas
      */
-    public function updateStatus(Request $request){
+    public function getNormativas($type=''){
         $schoolMapper = new SchoolMapper();
-        $school = $schoolMapper->map($request->all());
-        $id = DB::table('school')->where('id', $school->getId())->update([
-            'status' => $school->getStatus()?1:0
-        ]);
-        return true;
+        if($type==''){
+            $normativas = DB::table('normativa')
+                ->where('active', '1')
+                ->get();
+        }else{
+            $normativas = DB::table('normativa')
+                ->where('type', $type)
+                ->where('active', '1')
+                ->get();
+        }
+        $normativas = $schoolMapper->mapCollection($normativas->toArray());
+        return $normativas;
     }
 
     /**
-     * @param array $data
-     * @return bool
+     * getNormativas
      */
-    public function getTotalSchools($search=''){
-        if(!empty($search)) {
-            $total = DB::table('school')
-                ->where('name', 'like', '%'.$search.'%')
-                ->count();
-        } else {
-            $total = DB::table('school')
-                ->count();
+    public function getNormativasAdmin($type=''){
+        $schoolMapper = new SchoolMapper();
+        if($type==''){
+            $normativas = DB::table('normativa')
+                ->get();
+        }else{
+            $normativas = DB::table('normativa')
+                ->where('type', $type)
+                ->get();
         }
-        return $total;
+        $normativas = $schoolMapper->mapCollection($normativas->toArray());
+        return $normativas;
     }
 
 }
