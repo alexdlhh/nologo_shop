@@ -11,6 +11,7 @@ use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\AlbumNewRepository;
 use App\Http\Repository\BannerRepository;
+use App\Http\Repository\EspecialidadesRepository;
 //use App\Http\Helpers\Common;
 
 class NewsController extends Controller
@@ -43,12 +44,12 @@ class NewsController extends Controller
     public function create(){
         $categoryNewRepository = new CategoryNewRepository();
         $categoryNew = $categoryNewRepository->getAll();
-        $tagNewRepository = new TagNewRepository();
-        $tagNew = $tagNewRepository->getAll();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $especialidades = $especialidadesRepository->getAll();
         return view('admin.news.create')->with('admin',[
             'title' => 'Crear Noticia',
             'categoryNew' => $categoryNew,
-            'tagNew' => $tagNew,
+            'tagNew' => $especialidades,
             'section' => 'news',
             'subsection' => 'save'
         ]);
@@ -89,6 +90,8 @@ class NewsController extends Controller
         //obtenemos las categorias relacionadas a la noticia
         $categoryNewRepository = new CategoryNewRepository();
         $albumNewRepository = new AlbumNewRepository();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $especialidades = $especialidadesRepository->getAll();
         $categoryNew = $categoryNewRepository->getAll();
         $categories = $categoryNewRepository->getByNews($id);
         $albumnew = $albumNewRepository->getAllByIdNew($id);
@@ -100,7 +103,6 @@ class NewsController extends Controller
         //obtenemos los tags relacionados a la noticia
         $tagNewRepository = new TagNewRepository();
         $tags = $tagNewRepository->getByNews($id);
-        $tagNew = $tagNewRepository->getAll();
         $array_tags = [];
         foreach($tags as $tag){
             $array_tags[] = $tag->id_tag;
@@ -111,7 +113,7 @@ class NewsController extends Controller
             'news' => $news,
             'albumnew' => $albumnew,
             'categories' => $categoryNew,
-            'tags' => $tagNew,
+            'tags' => $especialidades,
             'array_category' => $array_categories,
             'array_tag' => $array_tags,
             'section' => 'news',
@@ -178,7 +180,7 @@ class NewsController extends Controller
         $newsRepository = new NewsRepository();
         $albumNewRepository = new AlbumNewRepository();
         $id = $request->input('id');
-        $image = $request->file('file');
+        $image = $request->file('image');
         $imageName = time().$image->getClientOriginalName();
         $destinationPath = public_path('/images/news/');
         $image->move($destinationPath, $imageName);

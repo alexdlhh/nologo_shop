@@ -56,6 +56,7 @@ Route::get('rfeg/{menu1?}/{menu2?}',[RFEGController::class, 'frontPage'])->name(
 Route::get('getNewsScroll/{pag?}',[NewsController::class, 'getNewsScroll'])->name('getNewsScroll');
 Route::get('getMediaScroll/{pag}/{especialidad?}',[MediaController::class, 'getMediaScroll'])->name('getMediaScroll');
 Route::get('getMediaScrollGeneral/{pag}/{especialidad?}/{coleccion?}',[MediaController::class, 'scrollComplete'])->name('scrollComplete');
+Route::get('getNewsScrollEspecialidad/{pag}/{especialidad?}',[EspecialidadesController::class, 'getNewsScrollEspecialidad'])->name('getNewsScrollEspecialidad');
 /**
  * HOME
  */

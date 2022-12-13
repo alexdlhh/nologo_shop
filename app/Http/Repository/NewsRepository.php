@@ -317,4 +317,22 @@ class NewsRepository
         $news = $newsMapper->mapCollection($news);
         return $news;
     }
+
+    /**
+     * getNewsByEspecialidad
+     */
+    public function getNewsByEspecialidad($especiadlidad,$pag=0){
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->join('tag_new_rel', 'new.id', '=', 'tag_new_rel.id_new')
+            ->where('tag_new_rel.id_tag', $especiadlidad)
+            ->where('new.status', 1)
+            ->orderBy('new.created_at', 'desc')
+            ->skip($pag)
+            ->take(10)
+            ->get();
+        $news = $newsMapper->mapCollection($news);
+        return $news;
+    }
+    
 }

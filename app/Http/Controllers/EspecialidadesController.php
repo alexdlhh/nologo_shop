@@ -143,12 +143,13 @@ class EspecialidadesController extends Controller
         $sponsorRepository = new SponsorRepository();
         $coleccionRepository = new ColeccionRepository();
         $mediaRepository = new MediaRepository();
-        $news = $newRepository->getNews(5);
+        $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
+        $news = $newRepository->getNewsByEspecialidad($especialidad);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $especialidades = $this->especialidadesRepository->getAll();
-        $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
+        
         $media = $mediaRepository->getMediaScroll(0,$especialidad);
 
         $front = [
@@ -176,5 +177,16 @@ class EspecialidadesController extends Controller
             $aux[] = $order[$i];
         }
         return $aux;
+    }
+
+    public function getNewsScrollEspecialidad($pag=2,$especialidad){
+        $newRepository = new NewsRepository();
+        if($pag<2){
+            $pag = 2;
+        }
+        $pag = ($pag-1)*9;
+        $especialidad = $this->especialidadesRepository->getIdBySlug($especialidad);
+        $news = $newRepository->getNewsByEspecialidad($especialidad,$pag);
+        return response()->json(['news' => $news]);
     }
 }

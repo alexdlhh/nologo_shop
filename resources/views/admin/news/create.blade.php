@@ -59,12 +59,12 @@
                             </div>
                             <div class="input-field col s6">
                                 <select multiple id="tags">
-                                    <option value="">Sin Tag</option>
+                                    <option value="">Sin Especialidad</option>
                                     @foreach($admin['tagNew'] as $tag)
                                         <option value="{{$tag->id}}">{{$tag->name}}</option>
                                     @endforeach
                                 </select>
-                                <label for="tags">Tags</label>
+                                <label for="tags">Especialidad</label>
                             </div>
                             <div class="input-field col s12">
                                 <div class="file-field input-field">
@@ -153,8 +153,8 @@
                                 success: function(data2){
                                     console.log(data2);
                                     if(files.length == i+1){
-                                        //removeSpiner();
-                                        //window.location.href='/admin/news/edit/'+data;
+                                        removeSpiner();
+                                        window.location.href='/admin/news/edit/'+data;
                                     }
                                 }
                             });

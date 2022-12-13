@@ -155,7 +155,7 @@ $header_subtitle_esp = [
         </div>
     @elseif($front['menu2']=='noticias')
         <div class="col s12 m12 l12">
-            <div class="row">
+            <div class="row list-esp-news">
                 @foreach($front['news'] as $new)
                 <div class="col s12 m6 l4">
                     <div class="card">
@@ -247,43 +247,78 @@ $header_subtitle_esp = [
             $(this).addClass('active');
         });
         @if($front['menu2']=='multimedia')
-        //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
-        var page = 1;
-        var loading = false;
-        $(window).scroll(function() {
-            if($(window).scrollTop() > $('body').height()-1700) {
-                if(!loading){
-                    loading = true;
-                    page++;
-                    var html = '<div class="center"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div><div>';
-                    $('.mediaGrid').append(html);
-                    $.ajax({
-                        url: '/getMediaScroll/'+page+'/'+"{{$front['menu1']}}",
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            console.log(data)
-                            console.log(data.media)
-                            if(data.media.length>0){
-                                $.each(data.media, function(index, newItem) {
-                                    console.log(newItem)
-                                    if(newItem.type=='image'){
-                                        var html = '<div class="media_item"><img src="'+newItem.url+'" class="materialboxed" alt="'+newItem.title+'"></div>';
-                                    }else{
-                                        var html = '<div class="media_item"><iframe src="'+newItem.url+'" frameborder="0"></iframe></div>';
-                                    }
-                                    $('.mediaGrid').append(html);
-                                });
-                            }else{
-                                page--;
+            //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
+            var page = 1;
+            var loading = false;
+            $(window).scroll(function() {
+                if($(window).scrollTop() > $('body').height()-1700) {
+                    if(!loading){
+                        loading = true;
+                        page++;
+                        var html = '<div class="center"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div><div>';
+                        $('.mediaGrid').append(html);
+                        $.ajax({
+                            url: '/getMediaScroll/'+page+'/'+"{{$front['menu1']}}",
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(data) {
+                                console.log(data)
+                                console.log(data.media)
+                                if(data.media.length>0){
+                                    $.each(data.media, function(index, newItem) {
+                                        console.log(newItem)
+                                        if(newItem.type=='image'){
+                                            var html = '<div class="media_item"><img src="'+newItem.url+'" class="materialboxed" alt="'+newItem.title+'"></div>';
+                                        }else{
+                                            var html = '<div class="media_item"><iframe src="'+newItem.url+'" frameborder="0"></iframe></div>';
+                                        }
+                                        $('.mediaGrid').append(html);
+                                    });
+                                }else{
+                                    page--;
+                                }
+                                $('.preloader-wrapper').remove();
+                                loading = false;
                             }
-                            $('.preloader-wrapper').remove();
-                            loading = false;
-                        }
-                    });
+                        });
+                    }
                 }
-            }
-        });
+            });
+        @endif
+        @if($front['menu2']=='noticias')
+            //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
+            var page = 1;
+            var loading = false;
+            $(window).scroll(function() {
+                if($(window).scrollTop() > $('body').height()-1700) {
+                    if(!loading){
+                        loading = true;
+                        page++;
+                        var html = '<div class="center"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div><div>';
+                        $('.list-esp-news').append(html);
+                        $.ajax({
+                            url: '/getNewsScrollEspecialidad/'+page+'/'+"{{$front['menu1']}}",
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(data) {
+                                console.log(data)
+                                console.log(data.news)
+                                if(data.news.length>0){
+                                    $.each(data.news, function(index, newItem) {
+                                        console.log(newItem)
+                                        var html = '<div class="col s12 m6 l4"><div class="card"><div class="card-image"><a href="/noticia/{{$front["menu1"]}}/{{$front["menu2"]}}/'+newItem.permantlink+'"><img src="'+newItem.feature_image+'"></a></div><div class="card-content"><p class="new_list_title">'+newItem.title+'</p></div><div class="card-action"><a href="/noticia/{{$front["menu1"]}}/{{$front["menu2"]}}/'+newItem.permantlink+'">Leer más</a></div></div></div>';
+                                        $('.list-esp-news').append(html);
+                                    });
+                                }else{
+                                    page--;
+                                }
+                                $('.preloader-wrapper').remove();
+                                loading = false;
+                            }
+                        });
+                    }
+                }
+            });
         @endif
     });
 </script>

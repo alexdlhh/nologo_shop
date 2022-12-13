@@ -37,12 +37,12 @@
                                         <p class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}">Administrar Categorías de noticias</p>
                                     </a>
                                 </li>
-                                <li>
+                                <!--li>
                                     <a href="/admin/tagsNew" class="{{$admin['subsection'] == 'tag' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'tag' ? 'active' : ''}}"><b>Tags</b></span><span class="child-selector {{$admin['subsection'] == 'tag' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'tag' ? 'active' : ''}}">Administrar tags de noticias</p>
                                     </a>
-                                </li>
+                                </li-->
                             </ul>
                         </div>
                     </li>
