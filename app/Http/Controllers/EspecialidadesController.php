@@ -11,6 +11,7 @@ use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\PagesRepository;
 use App\Http\Repository\ColeccionRepository;
 use App\Http\Repository\MediaRepository;
+use App\Http\Repository\EventoRepository;
 //use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
@@ -143,6 +144,8 @@ class EspecialidadesController extends Controller
         $sponsorRepository = new SponsorRepository();
         $coleccionRepository = new ColeccionRepository();
         $mediaRepository = new MediaRepository();
+        $eventoRepository = new EventoRepository();
+        $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
         $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
         $news = $newRepository->getNewsByEspecialidad($especialidad);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
@@ -163,6 +166,7 @@ class EspecialidadesController extends Controller
             'menu1' => $menu1,
             'menu2' => $menu2,
             'media' => $media,
+            'eventos' => $eventos,
         ];
         return view('pages.especialidades')->with('front',$front);
     }    

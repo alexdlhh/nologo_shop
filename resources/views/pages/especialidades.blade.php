@@ -134,9 +134,10 @@ $header_subtitle_esp = [
                 </ul>
             </div>
         </div>
-        <div id="tabla4">
+        @foreach($front['eventos'] as $evento)
+        <div id="tabla4" class="{{$evento->getNacional()?'nacional':'internacional'}}">
             <div class="container_table">
-                <h4 class="color_violet">Calendario nacional <a href="javascript:;" data-url="/test.pdf" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a></h4>
+                <h4 class="color_violet">Calendario {{$evento->getNacional()?'nacional':'internacional'}} <a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a></h4>
                 <div class="row head_table">
                     <div class="col s4">COMPETICIÓN</div>
                     <div class="col s2">FECHA</div>
@@ -145,14 +146,15 @@ $header_subtitle_esp = [
                     <div class="col s2">SORTEO</div>
                 </div>
                 <div class="row content_table">
-                    <div class="col s4">Control Liga Clubes GR</div>
-                    <div class="col s2">25-26 febrero</div>
-                    <div class="col s2">13 enero</div>
-                    <div class="col s2">26 enero</div>
-                    <div class="col s2">2 febrero</div>
+                    <div class="col s4">{{$evento->getCompeticion()}}</div>
+                    <div class="col s2">{{str_replace('-','/',$evento->getFecha())}}/{{str_replace('-','/',$evento->getFechaFin())}}</div>
+                    <div class="col s2">{{str_replace('-','/',$evento->getLicencia())}}</div>
+                    <div class="col s2">{{str_replace('-','/',$evento->getInscripcion())}}</div>
+                    <div class="col s2">{{str_replace('-','/',$evento->getSorteo())}}</div>
                 </div>
             </div>
         </div>
+        @endforeach
     @elseif($front['menu2']=='noticias')
         <div class="col s12 m12 l12">
             <div class="row list-esp-news">
@@ -320,6 +322,21 @@ $header_subtitle_esp = [
                 }
             });
         @endif
+        $('.team_category').click(function(){
+            var tc = $(this).attr('data-tc');
+            if(tc=='todo'){
+                $('.nacional').show();
+                $('.internacional').show();
+            }
+            if(tc=='nacional'){
+                $('.nacional').show();
+                $('.internacional').hide();
+            }
+            if(tc=='internacional'){
+                $('.nacional').hide();
+                $('.internacional').show();
+            }
+        });
     });
 </script>
 @endsection
