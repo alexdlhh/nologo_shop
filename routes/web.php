@@ -149,6 +149,9 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/rs/save',[RSController::class,'postCreate'])->name('admin.rs.store');
     Route::post('admin/rs/delete',[RSController::class,'postDelete'])->name('admin.rs.delete');
     Route::post('admin/rs/status',[RSController::class,'postStatus'])->name('admin.rs.status');
+
+
+
     /**ADMIN ESPECIALIDADES */
     Route::get('admin/especialidades',[EspecialidadesController::class,'getAll'])->name('admin.especialidades.list');
     Route::get('admin/especialidad/{id}',[EspecialidadesController::class,'getOne'])->name('admin.especialidades.edit');
@@ -163,6 +166,10 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/edit_especialidad/team/new',[EspecialidadController::class,'postTeamNew'])->name('admin.equipo.new');
     Route::post('admin/edit_especialidad/team/edit',[EspecialidadController::class,'postTeamEdit'])->name('admin.equipo.edits');
     Route::post('admin/edit_especialidad/team/delete',[EspecialidadController::class,'postTeamDelete'])->name('admin.equipo.delete');
+    
+    
+    
+    
     /**ADMIN NORMATIVA */
     Route::get('admin/normativas/{especialidad}/{year}',[NormativaController::class,'getAll'])->name('admin.normativas.list');
     Route::get('admin/normativa/{id}',[NormativaController::class,'getOne'])->name('admin.normativas.edit');
@@ -177,12 +184,12 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/edit_especialidad/resultado/new',[ResultadosController::class,'postCreate'])->name('admin.resultados.store');
     Route::post('admin/edit_especialidad/resultado/edit',[ResultadosController::class,'postCreate'])->name('admin.resultados.edits');
     Route::post('admin/resultado/delete',[ResultadosController::class,'postDelete'])->name('admin.resultados.delete');
-    /**ADMIN EN DIRECTO */
+    /**ADMIN EN DIRECTO 
     Route::get('admin/directo/{especialidad}/{year}',[DirectoController::class,'getAll'])->name('admin.directo.list');
     Route::get('admin/directo/{id}',[DirectoController::class,'getOne'])->name('admin.directo.edit');
     Route::get('admin/directo/create',[DirectoController::class,'create'])->name('admin.directo.create');
     Route::post('admin/directo/save',[DirectoController::class,'postCreate'])->name('admin.directo.store');
-    Route::post('admin/directo/delete',[DirectoController::class,'postDelete'])->name('admin.directo.delete');
+    Route::post('admin/directo/delete',[DirectoController::class,'postDelete'])->name('admin.directo.delete');*/
     /**ADMIN CALENDARIO */
     Route::get('admin/calendario/{month?}/{year?}',[CalendarController::class,'getMonth'])->name('admin.calendar.list');
     Route::get('admin/eventos/{id}',[CalendarController::class,'getOne'])->name('admin.evento.edit');
@@ -194,12 +201,12 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/comisiones/create',[ComisionesController::class,'create'])->name('admin.comisiones.create');
     Route::post('admin/comisiones/save',[ComisionesController::class,'postCreate'])->name('admin.comisiones.store');
     Route::post('admin/comisiones/delete',[ComisionesController::class,'postDelete'])->name('admin.comisiones.delete');
-    /**ADMIN INFORMACION */
+    /**ADMIN INFORMACION 
     Route::get('admin/informacion/{especialidad}/{year}',[InformacionController::class,'getAll'])->name('admin.informacion.list');
     Route::get('admin/informacion/{id}',[InformacionController::class,'getOne'])->name('admin.informacion.edit');
     Route::get('admin/informacion/create',[InformacionController::class,'create'])->name('admin.informacion.create');
     Route::post('admin/informacion/save',[InformacionController::class,'postCreate'])->name('admin.informacion.store');
-    Route::post('admin/informacion/delete',[InformacionController::class,'postDelete'])->name('admin.informacion.delete');
+    Route::post('admin/informacion/delete',[InformacionController::class,'postDelete'])->name('admin.informacion.delete');*/
     /**ADMIN RFEG */
     Route::get('admin/rfeg',[RfegController::class,'adminRFEG'])->name('admin.rfeg.section');
     Route::get('admin/rfeg/{section}',[RfegController::class,'adminRFEGSection'])->name('admin.rfeg.list');
@@ -213,7 +220,6 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/rfeg_tabla2/create',[RfegController::class,'createRFEGTable2'])->name('admin.rfeg_tabla2.create');
     Route::post('admin/rfeg_tabla2/edit',[RfegController::class,'updateRFEGTable2'])->name('admin.rfeg_tabla2.edit');
     Route::get('admin/rfeg_tabla2/delete/{id}',[RfegController::class,'deleteRFEGTable2'])->name('admin.rfeg_tabla2.delete');
-    /**ADMIN REGLAMENTOS */
     /**ADMIN EMPLOYEE */
     Route::get('admin/employees/{page?}/{search?}',[EmployeeController::class,'employees'])->name('admin.employees.list');
     Route::get('admin/employee/create/{rfeg_title?}',[EmployeeController::class,'CreateEmployee'])->name('admin.employees.create');

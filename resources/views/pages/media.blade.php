@@ -52,6 +52,7 @@
 @endsection
 @section('scripts')
 <script>
+    $('.materialboxed').materialbox();
      //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
     var page = 1;
     var loading = false;

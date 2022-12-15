@@ -15,7 +15,7 @@ $header_subtitle_esp = [
     'disposiciones' => 'Disposiciones legales',
     'tutelas' => 'Tutelas técnicos',
     'habilitaciones' => 'Habilitaciones',
-    'tecnicos' => 'Técnicos extrangeros',
+    'tecnicos' => 'Técnicos Extranjeros',
 ];
 @endphp
 
@@ -43,7 +43,7 @@ $header_subtitle_esp = [
                 <li><a href="/schools/normativa/disposiciones" class="{{$front['menu2']=='disposiciones' ? 'active':''}}">DISPOSICIONES LEGALES</a></li>
                 <li><a href="/schools/normativa/tutelas" class="{{$front['menu2']=='formacion' ? 'active':''}}">TUTELAS TÉCNICOS</a></li>
                 <li><a href="/schools/normativa/habilitaciones" class="{{$front['menu2']=='jueces' ? 'active':''}}">HABILITACIONES</a></li>
-                <li><a href="/schools/normativa/tecnicos" class="{{$front['menu2']=='jueces_ffaa' ? 'active':''}}">TÉCNICOS EXTRANGEROS</a></li>
+                <li><a href="/schools/normativa/tecnicos" class="{{$front['menu2']=='jueces_ffaa' ? 'active':''}}">TÉCNICOS extranjeros</a></li>
             </ul>
         </div>
     </div>

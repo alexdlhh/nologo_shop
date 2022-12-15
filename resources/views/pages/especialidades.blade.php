@@ -240,6 +240,7 @@ $header_subtitle_esp = [
 <script>
     $(document).ready(function(){
         $('.modal').modal();
+        $('.materialboxed').materialbox();
         $('.modal-trigger').click(function(){
             var url = $(this).attr('data-url');
             $('#modal1 .modal-content').html('<embed src="'+url+'" class="journal_pdf" type="application/pdf">');
@@ -247,6 +248,21 @@ $header_subtitle_esp = [
         $('.team_category').click(function(){
             $('.team_category').removeClass('active');
             $(this).addClass('active');
+        });
+        $('.team_category').click(function(){
+            var tc = $(this).attr('data-tc');
+            if(tc=='todo'){
+                $('.nacional').show();
+                $('.internacional').show();
+            }
+            if(tc=='nacional'){
+                $('.nacional').show();
+                $('.internacional').hide();
+            }
+            if(tc=='internacional'){
+                $('.nacional').hide();
+                $('.internacional').show();
+            }
         });
         @if($front['menu2']=='multimedia')
             //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas
@@ -322,21 +338,7 @@ $header_subtitle_esp = [
                 }
             });
         @endif
-        $('.team_category').click(function(){
-            var tc = $(this).attr('data-tc');
-            if(tc=='todo'){
-                $('.nacional').show();
-                $('.internacional').show();
-            }
-            if(tc=='nacional'){
-                $('.nacional').show();
-                $('.internacional').hide();
-            }
-            if(tc=='internacional'){
-                $('.nacional').hide();
-                $('.internacional').show();
-            }
-        });
+        
     });
 </script>
 @endsection

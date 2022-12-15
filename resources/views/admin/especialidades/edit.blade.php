@@ -114,6 +114,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
+                                            <th>Fecha</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
