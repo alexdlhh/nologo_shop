@@ -15,6 +15,7 @@ use App\Http\Repository\Table2Repository;
 use App\Http\Repository\RFEGTitleRepository;
 use App\Http\Repository\EmployeeRepository;
 use App\Http\Repository\GeneralRepository;
+use App\Http\Repository\EspecialidadesRepository;
 
 class RFEGController extends Controller
 {
@@ -29,8 +30,11 @@ class RFEGController extends Controller
     protected $table1Repository;
     protected $table2Repository;
     protected $rfegTitleRepository;
+    protected $employeeRepository;
+    protected $generalRepository;
+    protected $especialidadesRepository;
 
-    public function __construct(PagesRepository $pagesRepository, NewsRepository $newsRepository, CategoryNewRepository $categoryNewRepository, TagNewRepository $tagNewRepository, RSRepository $rsRepository, SponsorRepository $sponsorRepository, AlbumNewRepository $albumNewRepository, BannerRepository $bannerRepository, Table1Repository $table1Repository, Table2Repository $table2Repository, RFEGTitleRepository $rfegTitleRepository)
+    public function __construct(PagesRepository $pagesRepository, NewsRepository $newsRepository, CategoryNewRepository $categoryNewRepository, TagNewRepository $tagNewRepository, RSRepository $rsRepository, SponsorRepository $sponsorRepository, AlbumNewRepository $albumNewRepository, BannerRepository $bannerRepository, Table1Repository $table1Repository, Table2Repository $table2Repository, RFEGTitleRepository $rfegTitleRepository, EmployeeRepository $employeeRepository, GeneralRepository $generalRepository, EspecialidadesRepository $especialidadesRepository)
     {
         $this->pagesRepository = $pagesRepository;
         $this->newsRepository = $newsRepository;
@@ -43,6 +47,9 @@ class RFEGController extends Controller
         $this->table1Repository = $table1Repository;
         $this->table2Repository = $table2Repository;
         $this->rfegTitleRepository = $rfegTitleRepository;
+        $this->employeeRepository = $employeeRepository;
+        $this->generalRepository = $generalRepository;
+        $this->especialidadesRepository = $especialidadesRepository;
     }
 
     public function frontPage($menu1='rfeg',$menu2='rfeg')
@@ -75,10 +82,7 @@ class RFEGController extends Controller
             $table = 2;            
         }
         if($menu1 != 'gobierno'){
-            $rfeg_title = $this->rfegTitleRepository->getbyType($menu1); 
-            foreach($rfeg_title as $title){
-                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
-            }
+            $rfeg_title = $this->rfegTitleRepository->getbyType($menu1);             
             if($menu1 == 'normativa'){
                 $rfeg_title = $this->rfegTitleRepository->getbyType($menu2);                
             }
@@ -86,6 +90,9 @@ class RFEGController extends Controller
                 foreach($rfeg_title as $title){
                     $content_tables[$title->getId()] = $employeeRepository->getbyRfegTitle($title->getId());
                 }
+            }
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
             }
             $table = 1;            
         }
@@ -143,14 +150,15 @@ class RFEGController extends Controller
         }
         if($seccion != 'gobierno'){
             $rfeg_title = $this->rfegTitleRepository->getbyType($seccion); 
-            foreach($rfeg_title as $title){
-                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
-            }
             if($seccion == 'normativa'){
                 $rfeg_title = $this->rfegTitleRepository->getbyType($subseccion);                
             }
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
+            }            
             $table = 1;            
         }
+        $especialidades = $this->especialidadesRepository->getAll();
 
         $table_content = []; //array de objetos 
         return view('admin.rfeg.list', [
@@ -163,6 +171,7 @@ class RFEGController extends Controller
                 'subseccion' => $subseccion,
                 'rfeg_title' => $rfeg_title,
                 'content_tables' => $content_tables,
+                'especialidades' => $especialidades,
                 ]]);
     }
 

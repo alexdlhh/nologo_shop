@@ -108,4 +108,21 @@ class RFEGTitleRepository
         $rfegTitle = $rfegTitleMapper->mapCollection($rfegTitle->toArray());
         return $rfegTitle;
     }
+
+    /**
+     * getbyEspecialidad
+     * la tabla rfeg_table1 tiene un campo rfeg_title que es el id de rfeg_title
+     * tenemos que evitar repetidos
+     */
+    public function getbyEspecialidad($especialidad){
+        $rfegTitleMapper = new RFEGTitleMapper();
+        $rfegTitle = DB::table('rfeg_title')
+            ->join('rfeg_table1', 'rfeg_title.id', '=', 'rfeg_table1.rfeg_title')
+            ->where('rfeg_table1.especialidad', $especialidad)
+            ->select('rfeg_title.*')
+            ->distinct()
+            ->get();
+        $rfegTitle = $rfegTitleMapper->mapCollection($rfegTitle->toArray());
+        return $rfegTitle;
+    }
 }

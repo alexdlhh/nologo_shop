@@ -14,6 +14,7 @@ class Table1Mapper{
         !empty($data['download_pdf'])?$table1->setDownload_pdf($data['download_pdf']):'';
         !empty($data['rfeg_title'])?$table1->setRfeg_title($data['rfeg_title']):'';
         !empty($data['order'])?$table1->setOrder($data['order']):'';
+        !empty($data['especialidad'])?$table1->setEspecialidad($data['especialidad']):'';
         return $table1;
     }
 

@@ -24,7 +24,7 @@ class JournalController extends Controller
         $albums = $albumRepository->getAll(0,'');
         $pages = ceil($total/10);
 
-        return view('admin.journal.list', ['admin'=>['title'=>'Revistas','albums'=>$albums,'album'=>$album,'journals'=>$journals, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'jorunal','subsection' => 'listjournal']]);
+        return view('admin.journal.list', ['admin'=>['title'=>'Revistas','albums'=>$albums,'album'=>$album,'journals'=>$journals, 'search'=>$search, 'page'=>$page, 'total_pages'=>$total, 'pages'=>$pages,'section' => 'media','subsection' => 'listjournal']]);
     }
     
     /**
@@ -35,7 +35,7 @@ class JournalController extends Controller
     {
         $albumRepository = new AlbumRepository();
         $albums = $albumRepository->getAll(0,'');
-        return view('admin.journal.create', ['admin'=>['title'=>'Crear Revista','albums'=>$albums,'section' => 'journal','subsection' => 'savejournal']]);
+        return view('admin.journal.create', ['admin'=>['title'=>'Crear Revista','albums'=>$albums,'section' => 'media','subsection' => 'savejournal']]);
     }
 
     /**
@@ -48,7 +48,7 @@ class JournalController extends Controller
         $journal = $journalRepository->getById($id);
         $albumRepository = new AlbumRepository();
         $albums = $albumRepository->getAll(0,'');
-        return view('admin.journal.edit', ['admin'=>['title'=>'Editar Revista', 'journal'=>$journal,'albums'=>$albums,'section' => 'journal','subsection' => 'savejournal']]);
+        return view('admin.journal.edit', ['admin'=>['title'=>'Editar Revista', 'journal'=>$journal,'albums'=>$albums,'section' => 'media','subsection' => 'savejournal']]);
     }
 
     /**

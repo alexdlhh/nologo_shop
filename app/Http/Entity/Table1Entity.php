@@ -10,8 +10,9 @@ class Table1Entity{
     public $download_pdf;
     public $rfeg_title;
     public $order;
+    public $especialidad;
 
-    public function __construct($id=0, $documento='', $created_at='', $updated_at='', $download_pdf='', $rfeg_title='', $order='')
+    public function __construct($id=0, $documento='', $created_at='', $updated_at='', $download_pdf='', $rfeg_title='', $order='', $especialidad='')
     {
         $this->id = $id;
         $this->documento = $documento;
@@ -20,6 +21,7 @@ class Table1Entity{
         $this->download_pdf = $download_pdf;
         $this->rfeg_title = $rfeg_title;
         $this->order = $order;
+        $this->especialidad = $especialidad;
     }
 
     public function getId()
@@ -57,6 +59,11 @@ class Table1Entity{
         return $this->order;
     }
 
+    public function getEspecialidad()
+    {
+        return $this->especialidad;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -92,6 +99,11 @@ class Table1Entity{
         $this->order = $order;
     }
 
+    public function setEspecialidad($especialidad)
+    {
+        $this->especialidad = $especialidad;
+    }
+
     public function toArray()
     {
         return [
@@ -102,6 +114,7 @@ class Table1Entity{
             'download_pdf' => $this->download_pdf,
             'rfeg_title' => $this->rfeg_title,
             'order' => $this->order,
+            'especialidad' => $this->especialidad,
         ];
     }
 }

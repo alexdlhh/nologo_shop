@@ -12,6 +12,8 @@ use App\Http\Repository\PagesRepository;
 use App\Http\Repository\ColeccionRepository;
 use App\Http\Repository\MediaRepository;
 use App\Http\Repository\EventoRepository;
+use App\Http\Repository\RFEGTitleRepository;
+use App\Http\Repository\Table1Repository;
 //use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
@@ -47,7 +49,7 @@ class EspecialidadesController extends Controller
         ['admin'=>[
             'title'=>'Especialidades',
             'especialidades'=>$especialidades,
-            'section' => 'rfeg',
+            'section' => 'especialidades',
             'subsection' => 'listespecialidades'
         ]]);
     }
@@ -64,7 +66,7 @@ class EspecialidadesController extends Controller
         ['admin'=>[
             'title'=>$especialidades->getName(),
             'especialidades'=>$especialidades,
-            'section' => 'rfeg',
+            'section' => 'especialidades',
             'team' => $team,
             'subsection' => 'listespecialidades'
         ]]);
@@ -145,15 +147,23 @@ class EspecialidadesController extends Controller
         $coleccionRepository = new ColeccionRepository();
         $mediaRepository = new MediaRepository();
         $eventoRepository = new EventoRepository();
+        $RFEGTitleRepository = new RFEGTitleRepository();
+        $table1Repository = new Table1Repository();
         $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
         $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
         $news = $newRepository->getNewsByEspecialidad($especialidad);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-        $especialidades = $this->especialidadesRepository->getAll();
-        
+        $especialidades = $this->especialidadesRepository->getAll();        
         $media = $mediaRepository->getMediaScroll(0,$especialidad);
+
+        $content_tables = [];
+        $rfeg_title='';
+        $rfeg_title = $RFEGTitleRepository->getbyEspecialidad($especialidad);
+        foreach($rfeg_title as $title){
+            $content_tables[$title->getId()] = $table1Repository->getbyRfegTitleAndEspeciality($title->getId(),$especialidad);
+        }      
 
         $front = [
             'headers' => $headers,
@@ -167,6 +177,8 @@ class EspecialidadesController extends Controller
             'menu2' => $menu2,
             'media' => $media,
             'eventos' => $eventos,
+            'rfeg_title' => $rfeg_title,
+            'content_tables' => $content_tables,
         ];
         return view('pages.especialidades')->with('front',$front);
     }    

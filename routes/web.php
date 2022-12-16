@@ -209,7 +209,7 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/informacion/delete',[InformacionController::class,'postDelete'])->name('admin.informacion.delete');*/
     /**ADMIN RFEG */
     Route::get('admin/rfeg',[RfegController::class,'adminRFEG'])->name('admin.rfeg.section');
-    Route::get('admin/rfeg/{section}',[RfegController::class,'adminRFEGSection'])->name('admin.rfeg.list');
+    Route::get('admin/rfeg/{section}/{subsection?}',[RfegController::class,'adminRFEGSection'])->name('admin.rfeg.list');
     Route::get('admin/rfeg_edit/{id}',[RfegController::class,'adminRFEGEdit'])->name('admin.rfeg.edit');
     Route::post('admin/rfeg_title/create',[RfegController::class,'createRFEGTitle'])->name('admin.rfeg_title.create');
     Route::post('admin/rfeg_title/edit',[RfegController::class,'updateRFEGTitle'])->name('admin.rfeg_title.update');

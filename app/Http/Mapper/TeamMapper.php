@@ -23,6 +23,7 @@ class TeamMapper{
         !empty($data['youtube']) ? $team->setYoutube($data['youtube']) : null;
         !empty($data['tiktok']) ? $team->setTiktok($data['tiktok']) : null;
         !empty($data['twich']) ? $team->setTwich($data['twich']) : null;
+        !empty($data['categoria']) ? $team->setCategoria($data['categoria']) : 0;
 
         return $team;
     }

@@ -194,23 +194,31 @@ $header_subtitle_esp = [
             @endif
         <div>
     @elseif($front['menu2']=='normativa')
+        @if(!empty($front['rfeg_title']))
+        @foreach($front['rfeg_title'] as $key=>$rfeg_title)
         <div id="tabla1">
             <div class="container_table">
-                <h4>Circulares y aclaraciones</h4>
+                <h4>{{$rfeg_title->name}}</h4>
                 <div class="row head_table">
                     <div class="col s6">DOCUMENTO</div>
                     <div class="col s2">FECHA PUBLICACIÓN</div>
                     <div class="col s2">FECHA ACTUALIZACIÓN</div>
                     <div class="col s2">DESCARGAR PDF</div>
                 </div>
+                @if(!empty($front['content_tables'][$rfeg_title->id]))
+                @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
                 <div class="row content_table">
-                    <div class="col s6">Guía de procedimientos RFEG 2022</div>
-                    <div class="col s2">2022</div>
-                    <div class="col s2">-</div>
-                    <div class="col s2"><a href="#modal1" data-url="/test.pdf" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                    <div class="col s6">{{$rfeg_content->documento}}</div>
+                    <div class="col s2">{{$rfeg_content->created_at}}</div>
+                    <div class="col s2">{{$rfeg_content->updated_at}}</div>
+                    <div class="col s2"><a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
                 </div>
+                @endforeach
+                @endif
             </div>
         </div>
+        @endforeach
+        @endif
     @elseif($front['menu2']=='comisiones')
         <div id="players" class="row">
             @for($i=1;$i<=5;$i++)

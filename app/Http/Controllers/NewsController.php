@@ -51,7 +51,7 @@ class NewsController extends Controller
             'categoryNew' => $categoryNew,
             'tagNew' => $especialidades,
             'section' => 'news',
-            'subsection' => 'save'
+            'subsection' => 'list'
         ]);
     }
 

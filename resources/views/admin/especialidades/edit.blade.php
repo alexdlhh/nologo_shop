@@ -103,43 +103,6 @@
     <div class="row"> 
         <div class="col s12 m12"> 
             <div class="subsection">
-                <p><a class="waves-effect waves-light modal-trigger" href="#add_normativa"><i class="small material-icons">add_circle</i></a> Normativa</p>
-            </div>           
-            <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content">                        
-                        <div class="row">
-                            <div class="col s12">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Fecha</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Normativa 1</td>
-                                            <td>Fecha</td>
-                                            <td>
-                                                <a href="#">Ver</a>
-                                                <a href="#">Descargar</a>
-                                                <a href="#">Eliminar</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row"> 
-        <div class="col s12 m12"> 
-            <div class="subsection">
                 <p><a class="waves-effect waves-light modal-trigger" href="#add_result"><i class="small material-icons">add_circle</i></a> Resultados</p>
             </div>           
             <div class="card horizontal">

@@ -64,6 +64,7 @@ $normativa_heads = [
                                                         <a href="#edit_tabla1"
                                                         data-documento="{{$content_table->documento}}"
                                                         data-id="{{$content_table->getId()}}"
+                                                        data-especialidad="{{$content_table->especialidad}}"
                                                         class="modal-trigger edit_tabla1_btn btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">edit</i></a>
                                                         <a href="javascript:;" class="btn-floating btn-small waves-effect waves-light red del_tabla1" data-id="{{$content_table->getId()}}"><i class="material-icons">delete</i></a>
                                                     </td>
@@ -177,6 +178,19 @@ $normativa_heads = [
                     <input class="file-path validate" type="text">
                 </div>
             </div>
+            @if($admin['seccion']=='normativa')
+                <div class="col s12 form-control">
+                    <label for="add_especialidad">Especialidad</label>
+                    <select id="add_especialidad">
+                        <option value="0">Sin especialidad</option>
+                        @foreach($admin['especialidades'] as $especialidad)
+                            <option value="{{$especialidad->id}}">{{$especialidad->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @else
+                <input type="text" id="add_especialidad" value="0" hidden>
+            @endif
         </div>
     </div>
     <div class="modal-footer">
@@ -201,6 +215,19 @@ $normativa_heads = [
                     <input class="file-path validate" type="text">
                 </div>
             </div>
+            @if($admin['seccion']=='normativa')
+                <div class="col s12 form-control">
+                    <label for="edit_especialidad">Especialidad</label>
+                    <select id="edit_especialidad">
+                        <option value="0">Sin especialidad</option>
+                        @foreach($admin['especialidades'] as $especialidad)
+                            <option value="{{$especialidad->id}}">{{$especialidad->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @else
+                <input type="text" id="edit_especialidad" value="0" hidden>
+            @endif
         </div>
     </div>
     <div class="modal-footer">
@@ -272,7 +299,7 @@ $normativa_heads = [
 <script>
     $(document).ready(function(){
         $('.modal').modal();
-
+        $('select').formSelect();
         //borramos rfeg_title
         $('.del_rfeg_title').click(function(){
             var id = $(this).attr('data-id');
@@ -351,15 +378,16 @@ $normativa_heads = [
         //montamos data-rfeg-title en el data-rfeg-title del boton de crear tabla1
         $('.add_tabla1_btn').click(function(){
             var rfeg_title = $(this).attr('data-rfeg-title');
-            var id = $(this).attr('data-id');
+            var id = $(this).attr('data-id');            
             $('.add_tabla1_submit').attr('data-rfeg-title',rfeg_title);
-            $('.add_tabla1_submit').attr('id',id);
+            $('.add_tabla1_submit').attr('id',id);           
         })
         //boton de crear tabla1
         $('.add_tabla1_submit').click(function(){
             var rfeg_title = $(this).attr('data-rfeg-title');
             var documento = $('#add_tabla1_name').val();
             var download_pdf = $('#add_tabla1_doc').prop('files')[0];
+            var especialidad = $('#add_especialidad').val();
             var id = $(this).attr('id');
             var token = "{{@csrf_token()}}";
             //vamos a subir datos y un archivo
@@ -368,6 +396,7 @@ $normativa_heads = [
             formData.append('documento',documento);
             formData.append('download_pdf',download_pdf);
             formData.append('id',id);
+            formData.append('especialidad',especialidad);
             formData.append('_token',token);
             $.ajax({
                 url: '/admin/rfeg_tabla1/create',
@@ -389,19 +418,23 @@ $normativa_heads = [
         $('.edit_tabla1_btn').click(function(){
             var id = $(this).attr('data-id');
             var documento = $(this).attr('data-documento');
+            var especialidad = $(this).attr('data-especialidad');
             $('#edit_tabla1_name').val(documento);
             $('.edit_tabla1_submit').attr('data-id',id);
+            $('#add_especialidad').val(especialidad);
         })
         //boton de editar tabla1
         $('.edit_tabla1_submit').click(function(){
             var documento = $('#edit_tabla1_name').val();
             var download_pdf = $('#edit_tabla1_doc').prop('files')[0];
+            var especialidad = $('#edit_especialidad').val();
             var id = $(this).attr('data-id');
             var token = "{{@csrf_token()}}";
             //vamos a subir datos y un archivo
             var formData = new FormData();
             formData.append('documento',documento);
             formData.append('download_pdf',download_pdf);
+            formData.append('especialidad',especialidad);
             formData.append('id',id);
             formData.append('_token',token);
             $.ajax({

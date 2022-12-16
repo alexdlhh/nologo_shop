@@ -66,6 +66,7 @@ class Table1Repository
                     'updated_at' => date('Y-m-d H:i:s'),
                     'download_pdf' => $file_url,
                     'rfeg_title' => $table1->getRfeg_title(),
+                    'especialidad' => empty($table1->getEspecialidad()) ? 0 : $table1->getEspecialidad(),
                 ]
             );
             $table1->setId($id);
@@ -115,6 +116,20 @@ class Table1Repository
         $table1Mapper = new Table1Mapper();
         $table1 = DB::table('rfeg_table1')
             ->where('rfeg_title', $id)
+            ->orderBy('order', 'desc')
+            ->get();
+        $table1 = $table1Mapper->mapCollection($table1->toArray());
+        return $table1;
+    }
+
+    /**
+     * getbyRfegTitleAndEspeciality
+     */
+    public function getbyRfegTitleAndEspeciality(int $id, int $especialidad){
+        $table1Mapper = new Table1Mapper();
+        $table1 = DB::table('rfeg_table1')
+            ->where('rfeg_title', $id)
+            ->where('especialidad', $especialidad)
             ->orderBy('order', 'desc')
             ->get();
         $table1 = $table1Mapper->mapCollection($table1->toArray());

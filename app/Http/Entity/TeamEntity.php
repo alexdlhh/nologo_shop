@@ -16,8 +16,9 @@ class TeamEntity{
     public $tiktok;
     public $youtube;
     public $twich;
+    public $categoria
 
-    public function __construct($id=0, $name="", $alias="", $image="", $current_season=0, $pos=0, $description="", $olimpico=0, $especialidad=0, $twitter="", $instagram="", $youtube="", $tiktok="", $twich=""){
+    public function __construct($id=0, $name="", $alias="", $image="", $current_season=0, $pos=0, $description="", $olimpico=0, $especialidad=0, $twitter="", $instagram="", $youtube="", $tiktok="", $twich="", $categoria=0){
         $this->id = $id;
         $this->name = $name;
         $this->alias = $alias;
@@ -32,6 +33,7 @@ class TeamEntity{
         $this->yotube = $youtube;
         $this->tiktok = $tiktok;
         $this->twich = $twich;
+        $this->categoria = $categoria;
     }
 
     public function getId(){
@@ -90,6 +92,10 @@ class TeamEntity{
         return $this->twich;
     }
 
+    public function getCategoria(){
+        return $this->categoria;
+    }
+
     public function setId($id){
         $this->id = $id;
     }
@@ -146,6 +152,10 @@ class TeamEntity{
         $this->twich = $twich;
     }
 
+    public function setCategoria($categoria){
+        $this->categoria = $categoria;
+    }
+
     public function toArray(){
         return [
             'id' => $this->id,
@@ -160,7 +170,8 @@ class TeamEntity{
             'twitter' => $this->twitter,
             'instagram' => $this->instagram,
             'tiktok' => $this->tiktok,
-            'twich' => $this->twich
+            'twich' => $this->twich,
+            'categoria' => $this->categoria
         ];
     }
 

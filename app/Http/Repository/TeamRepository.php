@@ -75,6 +75,7 @@ class TeamRepository{
                     'instagram' => $team->getInstagram(),
                     'youtube' => $team->getYoutube(),
                     'tiktok' => $team->getTiktok(),
+                    'categoria' => $team->getCategoria(),
                 ]
             );
         return $id;
@@ -105,6 +106,7 @@ class TeamRepository{
                     'instagram' => $team->getInstagram(),
                     'youtube' => $team->getYoutube(),
                     'tiktok' => $team->getTiktok(),
+                    'categoria' => $team->getCategoria(),
                 ]
             );
         return $id;

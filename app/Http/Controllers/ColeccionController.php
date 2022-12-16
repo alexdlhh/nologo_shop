@@ -29,7 +29,7 @@ class ColeccionController extends Controller
             'colecciones' => $coleccion,
             'media_var' => $media_var,
             'section' => 'media',
-            'subsection' => 'listcolection'
+            'subsection' => 'listmedia'
         ]);
     }
     
@@ -70,7 +70,7 @@ class ColeccionController extends Controller
             'title' => 'Crear Coleccion',
             'coleccion' => $coleccion,
             'section' => 'media',
-            'subsection' => 'savecolection'
+            'subsection' => 'savemedia'
         ]);
     }
 

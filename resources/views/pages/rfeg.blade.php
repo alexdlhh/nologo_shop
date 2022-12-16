@@ -40,7 +40,7 @@ $normativa_heads = [
             <ul>
                 <li><a href="/rfeg/rfeg/" class="{{$front['menu1']=='rfeg' ? 'active':''}}">RFEG</a></li>
                 <li><a href="/rfeg/gobierno/" class="{{$front['menu1']=='gobierno' ? 'active':''}}">GOBIERNO</a></li>
-                <li><a href="/rfeg/normativa/" class="{{$front['menu1']=='normativa' ? 'active':''}}">NORMATIVA</a></li>
+                <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu1']=='normativa' ? 'active':''}}">NORMATIVA</a></li>
                 <li><a href="/rfeg/mujer/" class="{{$front['menu1']=='mujer' ? 'active':''}}">MUJER Y DEPORTE</a></li>
                 <li><a href="/rfeg/comunicados/" class="{{$front['menu1']=='comunicados' ? 'active':''}}">COMUNICADOS</a></li>
                 <li><a href="/rfeg/transparencia/" class="{{$front['menu1']=='transparencia' ? 'active':''}}">LEY DE TRANSPARENCIA</a></li>
@@ -52,10 +52,9 @@ $normativa_heads = [
         @if($front['menu1']=='normativa')
         <div class="lista">
             <ul>
-                <li><a href="/rfeg/normativa/todo" class="{{$front['menu2']=='todo' ? 'active':''}}">TODO</a></li>
                 <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu2']=='reglamentos' ? 'active':''}}">REGLAMENTOS</a></li>
-                <li><a href="/rfeg/normativa/noprmativas" class="{{$front['menu2']=='noprmativas' ? 'active':''}}">NORMATIVAS</a></li>
-                <li><a href="/rfeg/protocolos/" class="{{$front['menu2']=='protocolos' ? 'active':''}}">PROTOCOLOS</a></li>
+                <li><a href="/rfeg/normativa/normativas" class="{{$front['menu2']=='noprmativas' ? 'active':''}}">NORMATIVAS</a></li>
+                <li><a href="/rfeg/normativa/protocolos/" class="{{$front['menu2']=='protocolos' ? 'active':''}}">PROTOCOLOS</a></li>
             </ul>
         </div>
         @endif
