@@ -385,6 +385,7 @@ tr:nth-of-type(5) > td {padding-bottom: 23px;}
 .container {
     width: 87% !important;
     max-width: 2580px !important;
+    height: 450px;
 }
 .overflow_img{
     height: auto;
@@ -524,6 +525,8 @@ h7 a{
 }
 .listado h1{
     color: white;
+    font-weight: 200;
+    font-size: 5rem;
 }
 .lista ul li a{
     color: #596979;
@@ -546,8 +549,10 @@ nav.nav-extended{
     box-shadow: none !important;
 }
 .title-section{
-    padding-left: 0px !important;
+    /* padding-left: 0px !important; */
     margin-left: 0px !important;
+    /* padding-top: 70px !important; */
+    padding: 70px 0px 20px 0px !important;
 }
 .mock img{
     width: 100%;
@@ -896,8 +901,10 @@ h3.especial{
     color: white;
 }
 .container_table h4{
-    color: #69B7D6;
-    margin-left: 20px;    
+    color: #4e0084;
+    margin: 0px 0px 15px 35px;
+    font-size: 44px;
+    font-weight: 200!important;  
 }
 .head_table{
     background-color: #DBDCE0;
@@ -910,7 +917,9 @@ h3.especial{
 }
 .head_table .col{
     color: #616E8A;
-    font-size: 1.5em;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 10px !important;
 }
 .empleado_img {
     max-height: 300px;
@@ -922,9 +931,12 @@ h3.especial{
 .content_table{
     background-color: #F1F2F4;
     border-radius: 3px;
-    border: 1px solid #D3E3E7;
-    font-size: 1.3em;
+    border: 1px solid rgba(78,0,132,.3);
+    font-size: 20px;
+    font-weight: 300;
     margin-bottom: 3px !important;
+    padding: 2px 0px 0px 0px;
+    height: 40px;
 }
 .header_esp {
     padding-bottom: 0px;
