@@ -86,25 +86,24 @@ $header_subtitle_esp = [
         <div id="modalidades">
             <div class="lista_esp">
                 <ul>
-                    <li><a href="javascript:;" data-tc="todo" class="team_category tctodo active">TODO</a></li>
-                    <li><a href="javascript:;" data-tc="infantil" class="team_category tcinfantil">INFANTIL</a></li>
-                    <li><a href="javascript:;" data-tc="juvenil" class="team_category tcjuvenil">JUVENIL</a></li>
-                    <li><a href="javascript:;" data-tc="absoluta" class="team_category tcabsoluta">ABSOLUTA</a></li>
+                    <li><a href="javascript:;" data-tc="0" class="team_category tctodo active">TODO</a></li>
+                    <li><a href="javascript:;" data-tc="3" class="team_category tcinfantil">INFANTIL</a></li>
+                    <li><a href="javascript:;" data-tc="2" class="team_category tcjuvenil">JUVENIL</a></li>
+                    <li><a href="javascript:;" data-tc="1" class="team_category tcabsoluta">ABSOLUTA</a></li>
                 </ul>
             </div>
         </div>
         <div id="players" class="row">
-            @for($i=1;$i<=15;$i++)
-            <div class="player col s3">
+            @foreach($front['team'] as $team)
+            <div class="player player{{$team->categoria}} col s3">
                 <div class="player_img">
-                    <img src="/images/player/{{$front['menu1']}}/player{{$i}}.jpg" alt="">
+                    <img src="{{$team->image}}" alt="">
                 </div>
                 <div class="player_name">
-                    <h4>Nombre Apellido</h4>
-                    <h5>Posición</h5>
+                    <h4>{{$team->name}}</h4>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
     @elseif($front['menu2']=='resultados')
         <div id="tabla3">
@@ -256,6 +255,13 @@ $header_subtitle_esp = [
         $('.team_category').click(function(){
             $('.team_category').removeClass('active');
             $(this).addClass('active');
+            var tc = $(this).attr('data-tc');
+            $('.player').hide();
+            if(tc!=0){
+                $('.player'+tc).show();
+            }else{
+                $('.player').show();
+            }
         });
         $('.team_category').click(function(){
             var tc = $(this).attr('data-tc');

@@ -186,7 +186,7 @@ class EspecialidadesController extends Controller
         $sponsors = $sponsorRepository->getAll();
         $especialidades = $this->especialidadesRepository->getAll();        
         $media = $mediaRepository->getMediaScroll(0,$especialidad);
-
+        $team = $this->teamRepository->getByEspecialityAngYear($especialidad,2022);
         $content_tables = [];
         $rfeg_title='';
         $rfeg_title = $RFEGTitleRepository->getbyEspecialidad($especialidad);
@@ -208,6 +208,7 @@ class EspecialidadesController extends Controller
             'eventos' => $eventos,
             'rfeg_title' => $rfeg_title,
             'content_tables' => $content_tables,
+            'team' => $team,
         ];
         return view('pages.especialidades')->with('front',$front);
     }    
