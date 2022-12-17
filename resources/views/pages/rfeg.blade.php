@@ -60,11 +60,11 @@ $normativa_heads = [
         @endif
     </div>
 </div>
-@if($front['menu1']!='rfeg' && $front['menu1']!='gobierno')
+@if($front['menu1']!='rfeg' && $front['menu1']!='gobierno' && $front['menu1']!='ffaa')
 <div class="rfeg_back"> 
     <div class="section_rfeg">
         <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
-        @if($front['menu1']=='transparencia')<a href="/formularios/solicitud_acceso_informacion" tarjet="_blank">Solicitud de acceso a la información</a>@endif
+        @if($front['menu1']=='transparencia')<a href="/formulario-transparencia" class="btn2 btn-success solicitud_link" target="_blank">Solicitud de acceso a la información</a>@endif
     </div>
     @if(!empty($front['rfeg_title']))
     @foreach($front['rfeg_title'] as $key=>$rfeg_title)
@@ -115,6 +115,51 @@ $normativa_heads = [
                 <div class="col s6">{{$rfeg_content->nombre}}</div>
                 <div class="col s2">{{$rfeg_content->cargo}}</div>
                 <div class="col s4">{{$rfeg_content->especialidad}}</div>
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+    @endforeach
+    @endif
+</div>
+@endif
+@if($front['menu1']=='ffaa')
+<div class="rfeg_back">
+    <div class="section_rfeg">
+        <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
+    </div>
+    @if(!empty($front['rfeg_title']))
+    @foreach($front['rfeg_title'] as $key=>$rfeg_title)
+    <div id="tabla2">
+        <div class="container_table">
+            <h4>{{$rfeg_title->name}}</h4>
+            @if(!empty($front['content_tables'][$rfeg_title->id]))
+            @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
+            <div class="row _ffaa">
+                <div class="col s4">
+                    <img src="{{$rfeg_content->image}}" alt="">
+                </div>
+                <div class="col s8">
+                    @if(!empty($rfeg_content->titulo))
+                    <p><strong>{{$rfeg_content->titulo}}</strong></p>
+                    @endif
+                    @if(!empty($rfeg_content->direccion))
+                    <p><strong>Dirección:</strong> {{$rfeg_content->direccion}}</p>
+                    @endif
+                    @if(!empty($rfeg_content->phone))
+                    <p><strong>Teléfono:</strong> {{$rfeg_content->phone}}</p>
+                    @endif
+                    @if(!empty($rfeg_content->fax))
+                    <p><strong>Fax:</strong> {{$rfeg_content->fax}}</p>
+                    @endif
+                    @if(!empty($rfeg_content->web))
+                    <p><strong>Web:</strong> {{$rfeg_content->web}}</p>
+                    @endif
+                    @if(!empty($rfeg_content->email))
+                    <p><strong>Email:</strong> {{$rfeg_content->email}}</p>
+                    @endif
+                </div>
             </div>
             @endforeach
             @endif

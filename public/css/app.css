@@ -848,7 +848,7 @@ h3.especial{
     width: 100%;
     height: auto;
 }
-#tabla1,#tabla2,#tabla3,#tabla4,#tabla5,#tabla6{
+#tabla1,#tabla2,#tabla3,#tabla4,#tabla5,#tabla6,#tabla7{
     background-color: white;
     border-radius: 5px;
     padding: 20px;
@@ -857,6 +857,27 @@ h3.especial{
     -webkit-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
     -moz-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
     box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+}
+.formulario{
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin:0 auto;
+    max-width: 80%;
+    margin-bottom: 40px;
+    /*sombras*/ 
+    -webkit-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+    -moz-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+    box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+}
+.solicitud_link{
+    color: black !important;
+}
+._ffaa{
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom:20px;
 }
 .linear_title_rfeg{
     width: 65px;

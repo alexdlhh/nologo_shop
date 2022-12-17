@@ -37,6 +37,7 @@ use App\Http\Controllers\CalendarController;
  * AUTH
  */
 Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('formulario-transparencia', [AuthController::class, 'formularioTransparencia'])->name('formularioTransparencia');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
@@ -219,6 +220,9 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/rfeg_tabla2/create',[RfegController::class,'createRFEGTable2'])->name('admin.rfeg_tabla2.create');
     Route::post('admin/rfeg_tabla2/edit',[RfegController::class,'updateRFEGTable2'])->name('admin.rfeg_tabla2.edit');
     Route::get('admin/rfeg_tabla2/delete/{id}',[RfegController::class,'deleteRFEGTable2'])->name('admin.rfeg_tabla2.delete');
+    Route::post('admin/rfeg_tabla7/create',[RfegController::class,'createRFEGTable7'])->name('admin.rfeg_tabla7.create');
+    Route::post('admin/rfeg_tabla7/edit',[RfegController::class,'updateRFEGTable7'])->name('admin.rfeg_tabla7.edit');
+    Route::get('admin/rfeg_tabla7/delete/{id}',[RfegController::class,'deleteRFEGTable7'])->name('admin.rfeg_tabla7.delete');
     /**ADMIN EMPLOYEE */
     Route::get('admin/employees/{page?}/{search?}',[EmployeeController::class,'employees'])->name('admin.employees.list');
     Route::get('admin/employee/create/{rfeg_title?}',[EmployeeController::class,'CreateEmployee'])->name('admin.employees.create');

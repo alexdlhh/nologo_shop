@@ -12,6 +12,7 @@ use App\Http\Repository\AlbumNewRepository;
 use App\Http\Repository\BannerRepository;
 use App\Http\Repository\Table1Repository;
 use App\Http\Repository\Table2Repository;
+use App\Http\Repository\Table7Repository;
 use App\Http\Repository\RFEGTitleRepository;
 use App\Http\Repository\EmployeeRepository;
 use App\Http\Repository\GeneralRepository;
@@ -29,12 +30,13 @@ class RFEGController extends Controller
     protected $bannerRepository;
     protected $table1Repository;
     protected $table2Repository;
+    protected $table7Repository;
     protected $rfegTitleRepository;
     protected $employeeRepository;
     protected $generalRepository;
     protected $especialidadesRepository;
 
-    public function __construct(PagesRepository $pagesRepository, NewsRepository $newsRepository, CategoryNewRepository $categoryNewRepository, TagNewRepository $tagNewRepository, RSRepository $rsRepository, SponsorRepository $sponsorRepository, AlbumNewRepository $albumNewRepository, BannerRepository $bannerRepository, Table1Repository $table1Repository, Table2Repository $table2Repository, RFEGTitleRepository $rfegTitleRepository, EmployeeRepository $employeeRepository, GeneralRepository $generalRepository, EspecialidadesRepository $especialidadesRepository)
+    public function __construct(PagesRepository $pagesRepository, NewsRepository $newsRepository, CategoryNewRepository $categoryNewRepository, TagNewRepository $tagNewRepository, RSRepository $rsRepository, SponsorRepository $sponsorRepository, AlbumNewRepository $albumNewRepository, BannerRepository $bannerRepository, Table1Repository $table1Repository, Table2Repository $table2Repository, RFEGTitleRepository $rfegTitleRepository, EmployeeRepository $employeeRepository, GeneralRepository $generalRepository, EspecialidadesRepository $especialidadesRepository, Table7Repository $table7Repository)
     {
         $this->pagesRepository = $pagesRepository;
         $this->newsRepository = $newsRepository;
@@ -50,6 +52,7 @@ class RFEGController extends Controller
         $this->employeeRepository = $employeeRepository;
         $this->generalRepository = $generalRepository;
         $this->especialidadesRepository = $especialidadesRepository;
+        $this->table7Repository = $table7Repository;
     }
 
     public function frontPage($menu1='rfeg',$menu2='rfeg')
@@ -81,7 +84,14 @@ class RFEGController extends Controller
             }
             $table = 2;            
         }
-        if($menu1 != 'gobierno'){
+        if($menu1 == 'ffaa'){
+            $rfeg_title = $this->rfegTitleRepository->getbyType($menu1);            
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table7Repository->getbyRfegTitle($title->getId());
+            }
+            $table = 7;            
+        }
+        if($menu1 != 'gobierno' && $menu1 != 'ffaa'){
             $rfeg_title = $this->rfegTitleRepository->getbyType($menu1);             
             if($menu1 == 'normativa'){
                 $rfeg_title = $this->rfegTitleRepository->getbyType($menu2);                
@@ -148,7 +158,14 @@ class RFEGController extends Controller
             }
             $table = 2;            
         }
-        if($seccion != 'gobierno'){
+        if($seccion == 'ffaa'){
+            $rfeg_title = $this->rfegTitleRepository->getbyType($seccion);            
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table7Repository->getbyRfegTitle($title->getId());
+            }
+            $table = 7;            
+        }
+        if($seccion != 'gobierno' && $seccion != 'ffaa'){
             $rfeg_title = $this->rfegTitleRepository->getbyType($seccion); 
             if($seccion == 'normativa'){
                 $rfeg_title = $this->rfegTitleRepository->getbyType($subseccion);                
@@ -303,5 +320,51 @@ class RFEGController extends Controller
         $table = $request->input('table');
         $order = $request->input('order');
         $this->rfegTitleRepository->order($table, $order);
+    }
+
+    /**
+     * Esta función permitirá crear un rfeg_table1
+     * @param Request $request
+     * @return type
+     */
+    public function createRFEGTable7(Request $request){
+        $file_url = '';
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $file_name = time().$file->getClientOriginalName();
+            $destinationPath = public_path('/images/ffaa');
+            $file->move($destinationPath, $file_name);
+            $file_url = '/images/ffaa/'.$file_name;
+        }
+        $rfegTable1 = $this->table7Repository->save($request->all(), $file_url);
+        return response()->json($rfegTable1);
+    }
+
+    /**
+     * Esta función permitirá actualizar un rfeg_table1
+     * @param Request $request
+     * @return type
+     */
+    public function updateRFEGTable7(Request $request){
+        $file_url = '';
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $file_name = time().$file->getClientOriginalName();
+            $destinationPath = public_path('/images/ffaa');
+            $file->move($destinationPath, $file_name);
+            $file_url = '/images/ffaa/'.$file_name;
+        }
+        $rfegTable7 = $this->table7Repository->save($request->all(), $file_url);
+        return response()->json($rfegTable7);
+    }
+
+    /**
+     * Esta función permitirá eliminar un rfeg_table1
+     * @param Request $request
+     * @return type
+     */
+    public function deleteRFEGTable7($id){
+        $rfegTable1 = $this->table7Repository->delete($id);
+        return response()->json($rfegTable7);
     }
 }

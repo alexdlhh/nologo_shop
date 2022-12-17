@@ -243,5 +243,17 @@ class AuthController extends Controller
         return 1;
     }
 
+    public function formularioTransparencia(){
+        $pageRepository = new PagesRepository();
+        $RSRepository = new RSRepository();
+        $headers = $pageRepository->getAll('section','=','1');
+        $rs = $RSRepository->getAll();
+        $front = [
+            'headers' => $headers,
+            'section' => 'Dashboard',
+            'rs' => $rs
+        ];
+        return view('transparenciaform')->with('front',$front);
+    }
     
 }
