@@ -20,14 +20,12 @@ class TeamRepository{
             $teamList = DB::table('team')
                 ->where('name', 'like', '%'.$search.'%')
                 ->where('especialidad', $especialidad)
-                ->where('year', $year)
-                ->orderBy('olimpico', 'desc')
+                ->orderBy('pos', 'asc')
                 ->get();
         } else {
             $teamList = DB::table('team')
                 ->where('especialidad', $especialidad)
-                ->where('year', $year)
-                ->orderBy('olimpico', 'desc')
+                ->orderBy('pos', 'asc')
                 ->get();
         }
 
@@ -44,8 +42,7 @@ class TeamRepository{
         $teamList = [];
         $teamList = DB::table('team')
             ->where('especialidad', $especialidad)
-            ->where('current_season', $year)
-            ->orderBy('olimpico', 'desc')
+            ->orderBy('pos', 'asc')
             ->get();
         $teamList = $teamMapper->mapCollection($teamList);
         return $teamList;
@@ -95,8 +92,7 @@ class TeamRepository{
                 [
                     'name' => $team->getName(),
                     'alias' => $team->getAlias(),
-                    'description' => $team->getDescription(),
-                    'image' => $img,
+                    'description' => $team->getDescription(),                    
                     'current_season' => $team->getCurrentSeason(),
                     'pos' => $team->getPos(),
                     'olimpico' => $team->getOlimpico(),
@@ -109,6 +105,15 @@ class TeamRepository{
                     'categoria' => $team->getCategoria(),
                 ]
             );
+        if(!empty($img)){
+            $id = DB::table('team')
+                ->where('id', $team->getId())
+                ->update(
+                    [
+                        'image' => $img,
+                    ]
+                );
+        }
         return $id;
     }
 

@@ -14,6 +14,9 @@ use App\Http\Repository\MediaRepository;
 use App\Http\Repository\EventoRepository;
 use App\Http\Repository\RFEGTitleRepository;
 use App\Http\Repository\Table1Repository;
+use App\Http\Repository\ComisionesTecnicasRepository;
+use App\Http\Repository\ResultadosRepository;
+use App\Http\Repository\ResultadosFileRepository;
 //use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
@@ -60,15 +63,23 @@ class EspecialidadesController extends Controller
      */
     public function getOne($id)
     {
+        $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
+        $resultadosRepository = new ResultadosRepository();
+        $resultadosFileRepository = new ResultadosFileRepository();
+        $resultados = $resultadosRepository->getByEspecialidad($id);
         $especialidades = $this->especialidadesRepository->getOne($id);
         $team = $this->teamRepository->getByEspecialityAngYear($especialidades->getId(),$especialidades->getCurrentSeason());
+        $comisiones_tecnicas = $comisionesTecnicasRepository->getByEspecialidad($id);
         return view('admin.especialidades.edit', 
         ['admin'=>[
             'title'=>$especialidades->getName(),
             'especialidades'=>$especialidades,
             'section' => 'especialidades',
             'team' => $team,
-            'subsection' => 'listespecialidades'
+            'subsection' => 'listespecialidades',
+            'especialidad' => $especialidades->getId(),
+            'comisiones_tecnicas' => $comisiones_tecnicas,
+            'resultados' => $resultados,
         ]]);
     }
 
@@ -106,14 +117,19 @@ class EspecialidadesController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function postTeamNew(Request $request){
-        $image="";
+        $image_url="";
         if($request->hasFile('image')){
             $image = $request->file('image');
-            //upload image
-            $image = $image->store('public/especialidades/team');
-            $image = str_replace("public/","",$image);
+            //prepare image name with title without special characters and spaces
+            $image_name = 'jugador_';
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/team');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/team/'.$imageName;
         }
-        $id = $this->teamRepository->postTeamNew($request,$image);
+        $id = $this->teamRepository->postTeamNew($request,$image_url);
         return response()->json(['id' => $id]);
     }
 
@@ -122,7 +138,19 @@ class EspecialidadesController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function postTeamEdit(Request $request){
-        $id = $this->teamRepository->postTeamEdit($request);
+        $image_url="";
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            //prepare image name with title without special characters and spaces
+            $image_name = 'jugador_';
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/team');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/team/'.$imageName;
+        }
+        $id = $this->teamRepository->postTeamEdit($request,$image_url);
         return response()->json(['id' => $id]);
     }
 
@@ -131,7 +159,8 @@ class EspecialidadesController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function postTeamDelete(Request $request){
-        $id = $this->teamRepository->postTeamDelete($request);
+        $id = $request->input('id');
+        $id = $this->teamRepository->postTeamDelete($id);
         return response()->json(['id' => $id]);
     }
 
@@ -204,5 +233,110 @@ class EspecialidadesController extends Controller
         $especialidad = $this->especialidadesRepository->getIdBySlug($especialidad);
         $news = $newRepository->getNewsByEspecialidad($especialidad,$pag);
         return response()->json(['news' => $news]);
+    }
+
+    public function postReorderComisionesTecnicas(Request $request){
+        $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
+        $id = $comisionesTecnicasRepository->postReorder($request);
+        return response()->json(['id' => $id]);
+    }
+
+    public function postComisionesTecnicasSave(Request $request){
+        $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
+        $image_url = '';
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            //prepare image name with title without special characters and spaces
+            $image_name = 'comisiones_tecnicas_';
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/comisiones_tecnicas');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/comisiones_tecnicas/'.$imageName;
+        }
+        $id = $comisionesTecnicasRepository->postSave($request,$image_url);
+        return response()->json(['id' => $id]);
+    }
+
+    public function postComisionesTecnicasEdit(Request $request){
+        $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
+        $image_url = '';
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            //prepare image name with title without special characters and spaces
+            $image_name = 'comisiones_tecnicas_';
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/comisiones_tecnicas');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/comisiones_tecnicas/'.$imageName;
+        }
+        $id = $comisionesTecnicasRepository->postEdit($request,$image_url);
+        return response()->json(['id' => $id]);
+    }
+
+    public function postComisionesTecnicasDelete(Request $request){
+        $id = $request->input('id');
+        $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
+        $id = $comisionesTecnicasRepository->postDelete($id);
+        return response()->json(['id' => $id]);
+    }
+
+    public function resultadoSave(Request $request){
+        $resultadoRepository = new ResultadosRepository();
+        $id = $resultadoRepository->postSave($request);
+        return response()->json(['id' => $id]);
+    }
+
+    public function resultadoFileSave(Request $request){
+        $resultadoRepository = new ResultadosRepository();
+        $archivo_url = '';
+        if($request->hasFile('documento')){
+            $file = $request->file('documento');
+            //prepare image name with title without special characters and spaces
+            $file_name = 'resultado_';
+            $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $file_name);        
+            $fileName = time().$file_name.'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/files/resultados');
+            $file->move($destinationPath, $fileName);
+            //change $request feature_image content to current location of image
+            $request->merge(['file' => '/files/resultados/'.$fileName]);
+            $archivo_url = '/files/resultados/'.$fileName;
+        }
+        $id = $resultadoRepository->postFileSave($request,$archivo_url);
+        return response()->json(['id' => $id]);
+    }
+
+    public function postEditDocument(Request $request){
+        $resultadoRepository = new ResultadosRepository();
+        $archivo_url = '';
+        if($request->hasFile('documento')){
+            $file = $request->file('documento');
+            //prepare image name with title without special characters and spaces
+            $file_name = 'resultado_';
+            $file_name = preg_replace('/[^A-Za-z0-9\-]/', '', $file_name);        
+            $fileName = time().$file_name.'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/files/resultados');
+            $file->move($destinationPath, $fileName);
+            //change $request feature_image content to current location of image
+            $request->merge(['file' => '/files/resultados/'.$fileName]);
+            $archivo_url = '/files/resultados/'.$fileName;
+        }
+        $id = $resultadoRepository->postFileSave($request,$archivo_url);
+        return response()->json(['id' => $id]);
+    }
+
+    public function resultadoDelete($id){
+        $resultadoRepository = new ResultadosRepository();
+        $id = $resultadoRepository->postDelete($id);
+        return response()->json(['id' => $id]);
+    }
+
+    public function resultadoFileDelete($id){
+        $resultadoRepository = new ResultadosRepository();
+        $id = $resultadoRepository->postFileDelete($id);
+        return response()->json(['id' => $id]);
     }
 }

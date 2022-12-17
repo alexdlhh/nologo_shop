@@ -64,6 +64,7 @@ $normativa_heads = [
 <div class="rfeg_back"> 
     <div class="section_rfeg">
         <h3>{{$front['menu1']=='normativa'?$normativa_heads[$front['menu2']]:$titles[$front['menu1']]}}</h3>
+        @if($front['menu1']=='transparencia')<a href="/formularios/solicitud_acceso_informacion" tarjet="_blank">Solicitud de acceso a la información</a>@endif
     </div>
     @if(!empty($front['rfeg_title']))
     @foreach($front['rfeg_title'] as $key=>$rfeg_title)

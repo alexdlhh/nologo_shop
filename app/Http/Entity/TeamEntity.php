@@ -16,7 +16,7 @@ class TeamEntity{
     public $tiktok;
     public $youtube;
     public $twich;
-    public $categoria
+    public $categoria;
 
     public function __construct($id=0, $name="", $alias="", $image="", $current_season=0, $pos=0, $description="", $olimpico=0, $especialidad=0, $twitter="", $instagram="", $youtube="", $tiktok="", $twich="", $categoria=0){
         $this->id = $id;

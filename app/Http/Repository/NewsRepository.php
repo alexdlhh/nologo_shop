@@ -173,6 +173,41 @@ class NewsRepository
         }
         return $id;
     }
+
+    public function create2($request, String $image_url){
+        $newsMapper = new NewsMapper();
+        $data = $request;
+        $data['feature_image'] = $image_url;
+        $news = $newsMapper->map($data);
+        //guardamos la noticia en la base de datos
+        $id = DB::table('new')
+            ->insertGetId([
+                'title' => $news->getTitle(),
+                'subtitle' => $news->getSubtitle(),
+                'content' => $news->getContent(),
+                'created_at' => $news->getCreatedAt(),
+                'updated_at' => $news->getUpdatedAt(),
+                'feature_image' => $news->getFeatureImage(),
+                'status' => $news->getStatus(),
+                'alias' => $news->getPermantlink()
+            ]);
+        //obtenemos la ultima id creada
+        //creamos las relaciones de la noticia con la categorias en new_cat_rel
+        $data['category'] = explode(',', $data['category']);
+        foreach($data['category'] as $category) {
+            DB::table('cat_new_rel')->insert(
+                ['id_new' => $id, 'id_cat' => $category]
+            );
+        }
+        //creamos las relaciones de la noticia con los tags en new_tag_rel
+        $data['tags'] =  explode(',', $data['tags']);
+        foreach($data['tags'] as $tag) {
+            DB::table('tag_new_rel')->insert(
+                ['id_new' => $id, 'id_tag' => $tag]
+            );
+        }
+        return $id;
+    }
     
     /**
      * @param array $data

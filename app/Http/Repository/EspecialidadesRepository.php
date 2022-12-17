@@ -110,12 +110,12 @@ class EspecialidadesRepository
      * @param array $players array de jugadores [id,pos]
      * @return int $status of the operation
      */
-    public function postReorder($id, $year, $players){
+    public function postReorder(Request $request){
         $status = 0;
+        $players = $request->all()['players'];
         foreach($players as $player){
             $status = DB::table('team')
-                ->where('id', $id)
-                ->where('year', $year)
+                ->where('id', $player['id'])
                 ->update(
                     [
                         'pos' => $player['pos'],

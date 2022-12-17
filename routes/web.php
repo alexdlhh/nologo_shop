@@ -149,27 +149,25 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/rs/save',[RSController::class,'postCreate'])->name('admin.rs.store');
     Route::post('admin/rs/delete',[RSController::class,'postDelete'])->name('admin.rs.delete');
     Route::post('admin/rs/status',[RSController::class,'postStatus'])->name('admin.rs.status');
-
-
-
     /**ADMIN ESPECIALIDADES */
     Route::get('admin/especialidades',[EspecialidadesController::class,'getAll'])->name('admin.especialidades.list');
     Route::get('admin/especialidad/{id}',[EspecialidadesController::class,'getOne'])->name('admin.especialidades.edit');
     Route::post('admin/edit_especialidad/general/',[EspecialidadesController::class,'postEditGeneral'])->name('admin.especialidades.edit.general');
     /**ADMIN EQUIPO */
-    Route::get('admin/equipos/{especialidad}/{year}/{search}',[EspecialidadController::class,'getAll'])->name('admin.equipo.list');
-    Route::get('admin/equipo/{id}',[EspecialidadController::class,'getOne'])->name('admin.equipo.edit');
-    Route::get('admin/equipo/create/{especialidad}',[EspecialidadController::class,'create'])->name('admin.equipo.create');
-    Route::post('admin/equipo/save',[EspecialidadController::class,'postCreate'])->name('admin.equipo.store');
-    Route::post('admin/equipo/delete',[EspecialidadController::class,'postDelete'])->name('admin.equipo.delete');
-    Route::post('admin/edit_especialidad/team/reorder',[EspecialidadController::class,'postReorder'])->name('admin.equipo.reorder');
-    Route::post('admin/edit_especialidad/team/new',[EspecialidadController::class,'postTeamNew'])->name('admin.equipo.new');
-    Route::post('admin/edit_especialidad/team/edit',[EspecialidadController::class,'postTeamEdit'])->name('admin.equipo.edits');
-    Route::post('admin/edit_especialidad/team/delete',[EspecialidadController::class,'postTeamDelete'])->name('admin.equipo.delete');
-    
-    
-    
-    
+    Route::get('admin/equipos/{especialidad}/{year}/{search}',[EspecialidadesController::class,'getAll'])->name('admin.equipo.list');
+    Route::get('admin/equipo/{id}',[EspecialidadesController::class,'getOne'])->name('admin.equipo.edit');
+    Route::get('admin/equipo/create/{especialidad}',[EspecialidadesController::class,'create'])->name('admin.equipo.create');
+    Route::post('admin/equipo/save',[EspecialidadesController::class,'postCreate'])->name('admin.equipo.store');
+    Route::post('admin/equipo/delete',[EspecialidadesController::class,'postDelete'])->name('admin.equipo.delete');
+    Route::post('admin/edit_especialidad/team/reorder',[EspecialidadesController::class,'postReorder'])->name('admin.equipo.reorder');
+    Route::post('admin/edit_especialidad/team/new',[EspecialidadesController::class,'postTeamNew'])->name('admin.equipo.new');
+    Route::post('admin/edit_especialidad/team/edit',[EspecialidadesController::class,'postTeamEdit'])->name('admin.equipo.edits');
+    Route::post('admin/edit_especialidad/team/delete',[EspecialidadesController::class,'postTeamDelete'])->name('admin.equipo.delete');
+    /**ADMIN COMISIONES_TECNICAS ESPECIALIDADES */
+    Route::post('admin/edit_especialidad/comisiones_tecnicas/reorder',[EspecialidadesController::class,'postReorderComisionesTecnicas'])->name('admin.comisiones_tecnicas.reorder');
+    Route::post('admin/edit_especialidad/comisiones_tecnicas/save',[EspecialidadesController::class,'postComisionesTecnicasSave'])->name('admin.comisiones_tecnicas.save');
+    Route::post('admin/edit_especialidad/comisiones_tecnicas/edit',[EspecialidadesController::class,'postComisionesTecnicasEdit'])->name('admin.comisiones_tecnicas.edits');
+    Route::post('admin/edit_especialidad/comisiones_tecnicas/delete',[EspecialidadesController::class,'postComisionesTecnicasDelete'])->name('admin.comisiones_tecnicas.delete');
     /**ADMIN NORMATIVA */
     Route::get('admin/normativas/{especialidad}/{year}',[NormativaController::class,'getAll'])->name('admin.normativas.list');
     Route::get('admin/normativa/{id}',[NormativaController::class,'getOne'])->name('admin.normativas.edit');
@@ -178,12 +176,13 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/edit_especialidad/normativa/edit',[NormativaController::class,'postEdit'])->name('admin.normativas.edits');
     Route::post('admin/normativa/delete',[NormativaController::class,'postDelete'])->name('admin.normativas.delete');
     /**ADMIN RESULTADOS */
-    Route::get('admin/resultados/{especialidad}/{year}',[ResultadosController::class,'getAll'])->name('admin.resultados.list');
-    Route::get('admin/resultado/{id}',[ResultadosController::class,'getOne'])->name('admin.resultados.edit');
-    Route::get('admin/resultado/create/{year}',[ResultadosController::class,'create'])->name('admin.resultados.create');
-    Route::post('admin/edit_especialidad/resultado/new',[ResultadosController::class,'postCreate'])->name('admin.resultados.store');
-    Route::post('admin/edit_especialidad/resultado/edit',[ResultadosController::class,'postCreate'])->name('admin.resultados.edits');
-    Route::post('admin/resultado/delete',[ResultadosController::class,'postDelete'])->name('admin.resultados.delete');
+    Route::post('admin/edit_especialidad/resultado/new',[EspecialidadesController::class,'resultadoSave'])->name('admin.resultados.store');
+    Route::post('admin/edit_especialidad/resultado/edit',[EspecialidadesController::class,'resultadoSave'])->name('admin.resultados.edits');    
+    Route::post('/admin/edit_especialidad/resultadoFile/add',[EspecialidadesController::class,'resultadoFileSave'])->name('admin.resultadosFile.add');
+    Route::post('/admin/edit_especialidad/document/edit/',[EspecialidadesController::class,'postEditDocument'])->name('admin.document.edits3');
+    Route::get('/admin/edit_especialidad/resultados/delete/{id}',[EspecialidadesController::class,'resultadoDelete'])->name('admin.resultados.delete');
+    Route::get('/admin/edit_especialidad/resultadosfile/delete/{id}',[EspecialidadesController::class,'resultadoFileDelete'])->name('admin.resultadosFile.delete');
+
     /**ADMIN EN DIRECTO 
     Route::get('admin/directo/{especialidad}/{year}',[DirectoController::class,'getAll'])->name('admin.directo.list');
     Route::get('admin/directo/{id}',[DirectoController::class,'getOne'])->name('admin.directo.edit');

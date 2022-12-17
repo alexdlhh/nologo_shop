@@ -418,4 +418,33 @@ class NewsController extends Controller
         return $month_name;
     }
 
+    /**
+     * Hemos creado en localhost:1314 un servidor que nos trae un array de noticias, hay que insertarlas y guardar las imagenes, el array tendrá la misma estructura que las noticias de la base de datos
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNewsFromServer(){
+        $noticiasRaw = file_get_contents('http://localhost:1314/noticias');
+        $noticias = json_decode($noticiasRaw);
+        $news=[];
+        foreach($noticias as $noticia){
+            $news['id'][]=$id;
+            $news['old_id'][]=$noticia->id;
+            $noticia->id = 0;
+            $newsRepository = new NewsRepository();
+            //upload image
+            $image = file_get_content($noticia['feature_image']);
+            //prepare image name with title without special characters and spaces
+            $image_name = str_replace(' ', '', $request->input('title'));
+            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/news/');
+            $image->move($destinationPath, $imageName);
+            //change $request feature_image content to current location of image
+            $image_url = '/images/news/'.$imageName;
+            //create news
+            $id = $newsRepository->create($request, $image_url);
+            
+        }
+        return response()->json($news);
+    }
 }
