@@ -513,9 +513,10 @@ h7 a{
 }
 .lista{
     width: 100%;
-    margin:0 auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 0 auto;
+    /* padding-top: 0px; */
+    padding-bottom: 1px;
+    line-height: 1;
 }
 /*listado horizontal*/
 .lista ul li{
@@ -531,7 +532,8 @@ h7 a{
 .lista ul li a{
     color: #596979;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 800 !important;
 }
 .lista ul li a:hover{
     color: #15F0DC;
@@ -941,7 +943,8 @@ h3.especial{
 .header_esp {
     padding-bottom: 0px;
     margin-bottom: 0px;
-    height: 280px;
+    line-height: 0;
+    /* height: 280px; */
 }
 .header_esp img{
     width: 100%;
