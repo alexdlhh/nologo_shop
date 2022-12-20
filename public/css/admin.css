@@ -412,6 +412,9 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .image_doc img{
     margin:0 auto;
 }
+.card-content {
+    min-height: 160px;
+}
 .image_doc p{
     text-align: center;
 }

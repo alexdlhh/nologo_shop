@@ -86,6 +86,7 @@
             var coleccion = $('#coleccion').val();
             var image = $('#image').prop('files');
             var video = $('#video').val();
+            var especialidades = $('#especialidades').val();
             //now datetime sql format
             var date = new Date();
             var created_at = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
@@ -98,6 +99,7 @@
             formData.append('video', video);
             formData.append('id', 0);
             formData.append('image', image[0]);
+            formData.append('especialidad', especialidades);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
             $.ajax({
@@ -108,7 +110,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/media/edit/'+data;
+                    window.location.href="/admin/media_list/"+coleccion;
                 },
                 error: function(data){
                     removeSpiner();

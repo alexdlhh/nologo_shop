@@ -21,7 +21,7 @@
                                 <select name="" id="especialidades">
                                     <option value="" disabled selected>Elige una especialidad</option>
                                     @foreach($admin['especialidades'] as $especialidad)
-                                        <option value="{{$especialidad->id}}">{{$especialidad->name}}</option>
+                                        <option value="{{$especialidad->id}}" {{ $especialidad->id==$admin['media']->getEspecialidad()?'selected':'' }}>{{$especialidad->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -87,6 +87,7 @@
             var coleccion = $('#coleccion').val();
             var image = $('#image').prop('files');
             var video = $('#video').val();
+            var especialidades = $('#especialidades').val();
             var id = $('#id').val();
             //now datetime sql format
             var date = new Date();
@@ -99,6 +100,7 @@
             formData.append('created_at', created_at);
             formData.append('video', video);
             formData.append('id', id);
+            formData.append('especialidad', especialidades);
             formData.append('image', image[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('enctype', 'multipart/form-data');
@@ -110,7 +112,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.href='/admin/journal/edit/'+data;
+                    window.location.href="/admin/media_list/{{$admin['media']->getColeccion()}}";
                 }
             });
         });

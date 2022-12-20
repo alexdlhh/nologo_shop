@@ -158,14 +158,14 @@ class MediaController extends Controller
             if($menu2 == 'todo'){
                 $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo');
             } else {
-                $id_coleccion='all';
+                $id_coleccion='todo';
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
                 $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
             }
         } else {
             if($menu2 == 'todo'){
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
-                $id_especialidad='all';
+                $id_especialidad='todo';
                 $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
             } else {
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
@@ -208,14 +208,14 @@ class MediaController extends Controller
             if($menu1 == 'todo'){
                 $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo',$pag);
             } else {
-                $id_coleccion='all';
+                $id_coleccion='todo';
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu1);
                 $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
             }
         } else {
             if($menu2 == 'todo'){
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu2);
-                $id_especialidad='all';
+                $id_especialidad='todo';
                 $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
             } else {
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu2);

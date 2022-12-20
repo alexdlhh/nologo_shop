@@ -79,6 +79,7 @@
                                     var html = '<div class="media_item"><iframe src="'+newItem.url+'" frameborder="0"></iframe></div>';
                                 }
                                 $('.mediaGrid').append(html);
+                                $('.materialboxed').materialbox();
                             });
                         }else{
                             page--;
