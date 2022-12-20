@@ -421,6 +421,9 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .actions{
     text-align: center;
 }
+.image_doc {
+    min-height: 150px !important;
+}
 /*media query movil*/
 @media only screen and (max-width: 700px) {
     .card.horizontal .card-image {

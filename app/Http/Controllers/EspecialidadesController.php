@@ -178,6 +178,10 @@ class EspecialidadesController extends Controller
         $eventoRepository = new EventoRepository();
         $RFEGTitleRepository = new RFEGTitleRepository();
         $table1Repository = new Table1Repository();
+        $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
+        $resultadosRepository = new ResultadosRepository();
+        $resultadosFileRepository = new ResultadosFileRepository();
+        
         $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
         $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
         $news = $newRepository->getNewsByEspecialidad($especialidad);
@@ -190,6 +194,11 @@ class EspecialidadesController extends Controller
         $content_tables = [];
         $rfeg_title='';
         $rfeg_title = $RFEGTitleRepository->getbyEspecialidad($especialidad);
+        $resultados = $resultadosRepository->getByEspecialidad($especialidad);
+        $especialidades = $this->especialidadesRepository->getOne($especialidad);
+        $team = $this->teamRepository->getByEspecialityAngYear($especialidad,2022);
+        $comisiones_tecnicas = $comisionesTecnicasRepository->getByEspecialidad($especialidad);
+
         foreach($rfeg_title as $title){
             $content_tables[$title->getId()] = $table1Repository->getbyRfegTitleAndEspeciality($title->getId(),$especialidad);
         }      
@@ -209,6 +218,8 @@ class EspecialidadesController extends Controller
             'rfeg_title' => $rfeg_title,
             'content_tables' => $content_tables,
             'team' => $team,
+            'resultados' => $resultados,
+            'comisiones_tecnicas' => $comisiones_tecnicas,
         ];
         return view('pages.especialidades')->with('front',$front);
     }    

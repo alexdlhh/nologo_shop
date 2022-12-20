@@ -108,21 +108,34 @@ $header_subtitle_esp = [
     @elseif($front['menu2']=='resultados')
         <div id="tabla3">
             <div class="container_table">
-                <h4>Comité de jueces</h4>
                 <div class="row head_table">
                     <div class="col s6">COMPETICIÓN</div>
-                    <div class="col s2">FECHA</div>
+                    <div class="col s4">FECHA</div>
                     <div class="col s2">LUGAR</div>
-                    <div class="col s2">DESCARGAR PDF</div>
                 </div>
-                <div class="row content_table">
-                    <div class="col s6">Control Liga Clubes GR</div>
-                    <div class="col s2">23-26 junio 2022</div>
-                    <div class="col s2">Ourense</div>
-                    <div class="col s2"><a href="#modal1" data-url="/test.pdf" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                @foreach($front['resultados']['resultados'] as $resultados)
+                <div class="row content_table opendoc" data-doc="{{$resultados['data']->id}}">
+                    <div class="col s6">{{$resultados['data']->name}}</div>
+                    <div class="col s4">{{str_replace('-','/',$resultados['data']->fecha_inicio)}} al {{str_replace('-','/',$resultados['data']->fecha_fin)}}</div>
+                    <div class="col s2">{{$resultados['data']->lugar}}</div>
                 </div>
-            </div>
-        </div>
+                <div class="documentos documentos_{{$resultados['data']->id}}">
+                    <div class="row">
+                        @foreach($resultados['documentos'] as $documentos)
+                            <div class="col s2">
+                                <div class="image_doc">
+                                    <img src="/icon-pdf.png" alt="">
+                                    <a href="#modal1" data-url="{{$documentos->documento}}" class="modal-trigger openpdf pdf2">                                        
+                                        <p>{{$documentos->nombre}}</p>
+                                    </a>                                    
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endforeach
+            </div>                                
+        </div>        
     @elseif($front['menu2']=='calendarios')
         <div id="modalidades">
             <div class="lista_esp">
@@ -220,17 +233,17 @@ $header_subtitle_esp = [
         @endif
     @elseif($front['menu2']=='comisiones')
         <div id="players" class="row">
-            @for($i=1;$i<=5;$i++)
+            @foreach($front['comisiones_tecnicas'] as $comisiones_tecnicas)
             <div class="player col s3">
                 <div class="player_img">
-                    <img src="/images/player/{{$front['menu1']}}/player{{$i}}.jpg" alt="">
+                    <img src="{{$comisiones_tecnicas->getImage()}}" alt="">
                 </div>
                 <div class="player_name">
-                    <h4>Nombre Apellido</h4>
-                    <h5>Posición</h5>
+                    <h4>{{$comisiones_tecnicas->getName()}}</h4>
+                    <h5>{{$comisiones_tecnicas->getPosicion()}}</h5>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
     @endif
 </div>
@@ -277,6 +290,13 @@ $header_subtitle_esp = [
                 $('.nacional').hide();
                 $('.internacional').show();
             }
+        });
+        $('.documentos').hide();
+        $('.opendoc').click(function(){
+            var id = $(this).attr('data-doc');
+            $('.documentos').hide();
+            //mostramos los demas con un fadein
+            $('.documentos_'+id).fadeIn();
         });
         @if($front['menu2']=='multimedia')
             //cuando lleguemos al final de la lista de noticias cargamos por ajax las siguientes hasta que no haya mas

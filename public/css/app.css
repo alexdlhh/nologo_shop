@@ -579,6 +579,16 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
     position: relative;
     overflow: hidden;
 }
+.pdf2{
+    text-align: center;
+}
+.image_doc{
+    text-align: center;
+}
+.image_doc img{
+    margin:0 auto;
+    width: 50px;
+}
 .media_item img{
     width: 100%;
     height: auto;

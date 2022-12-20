@@ -190,7 +190,7 @@
                                                     </div>
                                                 </div>
                                             @endforeach
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>                                
                             </div>
