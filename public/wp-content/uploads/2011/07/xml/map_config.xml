@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapColors>
+
+<!-- ****** Mouse roll over color ******
+	options: hexadecimal color //-->
+	<rollOverColor value="E37302" />
+	
+<!-- ****** Community enable/disable config ******
+	options: "true" or "false" and hexadecimal color //-->
+	<Galicia status="true" value="4F4F4F" />
+	<Asturias status="true" value="4F4F4F" />
+	<Cantabria status="true" value="4F4F4F" />
+	<Euskadi status="true" value="4F4F4F" />
+	<Navarra status="true" value="4F4F4F" />
+	<Aragon status="true" value="4F4F4F" />
+	<Cataluna status="true" value="4F4F4F" />
+	<Valenciana status="true" value="4F4F4F" />
+	<LaMancha status="true" value="4F4F4F" />
+	<Madrid status="true" value="4F4F4F" />
+	<Castilla_y_Leon status="true" value="4F4F4F" />
+	<La_Rioja status="true" value="4F4F4F" />
+	<Extremadura status="true" value="4F4F4F" />
+	<Andalucia status="true" value="4F4F4F" />
+	<Murcia status="true" value="4F4F4F" />
+	<Islas_Canarias status="true" value="4F4F4F" />
+	<Islas_Baleares status="true" value="4F4F4F" />
+
+	
+<!-- ****** Community gradient rollOver overlay ******
+	options: "on" or "off" and 0 to 100 transparency //-->	
+	<communityGradient status="on" alpha="35" />
+	
+<!-- ****** Community outline color and visibility ******  
+	options: "on" or "off" and hexadecimal color //-->
+	<communityOutlineColor value="6A6A6A" status="on" />	
+
+<!-- ****** Map zoom speed and zoom level ******
+	options: speed numerical value and zoom numerical value  //-->
+	<mapZoom scaleSpeed="5" zoomLevel="290" />		
+	
+<!-- ****** Reposition map x & y speed ******
+	options:  xspeed numerical value and yspeed numerical value  //-->
+	<mapZoom xPos="2.2" yPos="1" />
+
+<!-- ****** Stage background color and visibilty, fade in color ******  
+	options: "on" or "off" and hexadecimal color //-->
+	<backGroundColor status="on" value="242424" fadeIn="666666" />	
+	
+<!-- ****** XML text title color ******
+	options: hexadecimal color //-->
+	<titleColor value="e8e8e8" />	
+	
+<!-- ****** XML text link color ******
+	options: hexadecimal color //-->
+	<linkColor value="E37302" />	
+	
+<!-- ****** Stage outline color ******
+	options:  hexadecimal color //-->
+	<stageOutline value="2D2D2D" />	
+	
+<!-- ****** Disabled community color ******
+	options: hexadecimal color //-->
+	<disableCommunityColor value="464646" />
+		
+<!-- ****** Country drop shadow ******
+	options: "on" or "off" //-->	
+	<countryDropShadow status="on" />
+
+</mapColors>

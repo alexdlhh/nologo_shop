@@ -423,28 +423,40 @@ class NewsController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function getNewsFromServer(){
-        $noticiasRaw = file_get_contents('http://localhost:1314/noticias');
-        $noticias = json_decode($noticiasRaw);
+       /* $noticiasRaw = file_get_contents('http://192.168.1.89:1314/extract.php');        
+        $noticias = json_decode($this->remove_utf8_bom($noticiasRaw));
         $news=[];
-        foreach($noticias as $noticia){
-            $news['id'][]=$id;
-            $news['old_id'][]=$noticia->id;
+        foreach($noticias as $n_id=>$noticia){
+            $image_url='';            
+            $news['old_id'][]=$n_id;
             $noticia->id = 0;
             $newsRepository = new NewsRepository();
+            $image_url = $noticia->feature_image;
             //upload image
-            $image = file_get_content($noticia['feature_image']);
-            //prepare image name with title without special characters and spaces
-            $image_name = str_replace(' ', '', $request->input('title'));
-            $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
-            $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/news/');
-            $image->move($destinationPath, $imageName);
-            //change $request feature_image content to current location of image
-            $image_url = '/images/news/'.$imageName;
+            /*if(!empty($noticia->feature_image) && curl_init($noticia->feature_image) !== false){       
+                try{
+                    $image = file_get_contents($noticia->feature_image);
+                }catch(Exception $e){}
+                //prepare image name with title without special characters and spaces
+                $image_name = str_replace(' ', '', $noticia->title);
+                $image_name = preg_replace('/[^A-Za-z0-9\-]/', '', $image_name);        
+                $imageName = time().$image_name.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/news/');
+                $image->move($destinationPath, $imageName);
+                //change $request feature_image content to current location of image
+                $image_url = '/images/news/'.$imageName;
+            }*/
             //create news
-            $id = $newsRepository->create($request, $image_url);
-            
-        }
-        return response()->json($news);
+            /*$id = $newsRepository->create2($noticia, $image_url);
+            $news['id'][]=$id;*/
+        //}
+        $newsRepository = new NewsRepository();
+        $newsRepository->change();
+    }
+
+    public function remove_utf8_bom($text){
+        $bom = pack('H*','EFBBBF');
+        $text = preg_replace("/^$bom/", '', $text);
+        return $text;
     }
 }

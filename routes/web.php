@@ -36,6 +36,7 @@ use App\Http\Controllers\CalendarController;
 /**
  * AUTH
  */
+Route::get('getNewsFromServer', [NewsController::class, 'getNewsFromServer'])->name('getNewsFromServer');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('formulario-transparencia', [AuthController::class, 'formularioTransparencia'])->name('formularioTransparencia');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 

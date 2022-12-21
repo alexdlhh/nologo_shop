@@ -1,0 +1,7 @@
+[Sep 9, 2016 13:21:34 2-error] [mh8mhz9qzc] Unable to create schedule as wp_schedule_single_event() returned false. A plugin may have prevented it.
+[Sep 9, 2016 13:21:34 2-error] [mh8mhz9qzc] Unable to schedule next cron step. Verify that another plugin is not preventing / conflicting.
+[Sep 9, 2016 13:22:36 2-error] <span class="pb_label pb_label">Important</span> <b>Set an ImportBuddy password on the <a href="http://www.rfegimnasia.es/wp-admin/admin.php?page=pb_backupbuddy_settings">Settings</a> page before attempting to Migrate to a new server.</b> Error Code: 
+[Nov 8, 2016 19:25:24 1-error] [q0zwpbjrvi] Unable to create schedule as wp_schedule_single_event() returned false. A plugin may have prevented it.
+[Nov 8, 2016 19:25:24 1-error] [q0zwpbjrvi] Unable to schedule next cron step. Verify that another plugin is not preventing / conflicting.
+[Nov 8, 2016 19:25:29 1-error] [q0zwpbjrvi] Unable to create schedule as wp_schedule_single_event() returned false. A plugin may have prevented it.
+[Nov 8, 2016 19:25:29 1-error] [q0zwpbjrvi] Unable to schedule next cron step. Verify that another plugin is not preventing / conflicting.

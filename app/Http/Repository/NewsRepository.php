@@ -177,8 +177,8 @@ class NewsRepository
     public function create2($request, String $image_url){
         $newsMapper = new NewsMapper();
         $data = $request;
-        $data['feature_image'] = $image_url;
-        $news = $newsMapper->map($data);
+        $data->feature_image = $image_url;
+        $news = $newsMapper->map(get_object_vars($data));
         //guardamos la noticia en la base de datos
         $id = DB::table('new')
             ->insertGetId([
@@ -192,20 +192,6 @@ class NewsRepository
                 'alias' => $news->getPermantlink()
             ]);
         //obtenemos la ultima id creada
-        //creamos las relaciones de la noticia con la categorias en new_cat_rel
-        $data['category'] = explode(',', $data['category']);
-        foreach($data['category'] as $category) {
-            DB::table('cat_new_rel')->insert(
-                ['id_new' => $id, 'id_cat' => $category]
-            );
-        }
-        //creamos las relaciones de la noticia con los tags en new_tag_rel
-        $data['tags'] =  explode(',', $data['tags']);
-        foreach($data['tags'] as $tag) {
-            DB::table('tag_new_rel')->insert(
-                ['id_new' => $id, 'id_tag' => $tag]
-            );
-        }
         return $id;
     }
     
@@ -368,6 +354,15 @@ class NewsRepository
             ->get();
         $news = $newsMapper->mapCollection($news);
         return $news;
+    }
+
+    public function change(){
+        $news = DB::table('new')->get();
+        foreach($news as $n){
+            DB::table('new')
+                ->where('id', $n->id)
+                ->update(['feature_image' => str_replace('http://www.rfegimnasia.es','',$n->feature_image)]);
+        }
     }
     
 }

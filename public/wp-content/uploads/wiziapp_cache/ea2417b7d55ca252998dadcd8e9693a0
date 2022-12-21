@@ -1,0 +1,19 @@
+s:1078:"<ul data-role="listview">
+		<li class="postDescriptionCellItem general_post cellItem default" data-post-id="post_8158">
+			<a href="nav://post/http%3A%2F%2Fwww.rfegimnasia.es%2F2013%2F03%2F03%2Fgimnasia-artistica-femenina-2013%2F%3Fyear%3D2013%26monthnum%3D3" class="actionURL general_post" data-transition="slide">
+				<div class="attribute imageURL general_post_image" data-image-src="http://www.rfegimnasia.es/?wiziapp/getthumb/8158&type=posts_thumb">
+					<img class="hidden ignore_effect" src="" data-class=""/>
+				</div>
+				<div class="attribute webapp_post_title general_post_title_webapp">Gimnasia Artística Femenina 2013</div>
+				<span class="attribute hidden">“Ante la reciente baja laboral en la Real...</span>
+				<span class="attribute hidden">0</span>
+				<div class="combined_attributes webapp_post_details">
+					<span class="webapp_post_date general_post_date_webapp">3 weeks ago</span>
+					<span class="webapp_post_date hidden"> admin</span>
+				</div>
+				<span class="attribute valign_attribute numOfComments hidden">0</span>
+			</a>
+		</li>
+		
+</ul>
+";
