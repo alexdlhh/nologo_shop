@@ -77,7 +77,7 @@ class EventoRepository
      * saveEvent
      * Guardamos un evento
      */
-    public function saveEvent(Request $request,$archivo=''){
+    public function saveEvent(Request $request,$archivo='',$image=''){
         $eventoMapper = new EventoMapper();
         $evento = $eventoMapper->map($request->all());
         if($evento->getId()==0){
@@ -109,6 +109,13 @@ class EventoRepository
                         'nacional' => !empty($evento->getNacional()) ? $evento->getNacional() : 0,
                         'olimpico' => !empty($evento->getOlimpico()) ? $evento->getOlimpico() : 0,
                         'active' => !empty($evento->getActive()) ? $evento->getActive() : 0,
+                ]);
+            }
+            if(!empty($image)){
+                DB::table('evento')
+                    ->where('id', $id)
+                    ->update([
+                        'image' => $image,
                 ]);
             }
         }else{
@@ -144,7 +151,14 @@ class EventoRepository
                         'olimpico' => !empty($evento->getOlimpico()) ? $evento->getOlimpico() : 0,
                         'active' => !empty($evento->getActive()) ? $evento->getActive() : 0,
                 ]);
-            }            
+            } 
+            if(!empty($image)){
+                DB::table('evento')
+                    ->where('id', $id)
+                    ->update([
+                        'image' => $image,
+                ]);
+            }           
         }
         return $id;
     }

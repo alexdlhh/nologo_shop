@@ -1267,6 +1267,29 @@ h3.especial{
     color: #535E7A;
 }
 
+.pasarela{
+    height: 400px;
+    overflow: hidden;
+}
+.roll{
+    position: relative;
+    width: 99999999px;
+}
+.pasarela-item{
+    height: 300px;
+    display: inline-grid;
+    width: min-content;
+}
+.pasarela_img img{
+    height: 300px;
+    width: auto;
+}
+.pasarela-text{
+    height: 80px;
+    color: white;
+    /*hacemos que el ancho de la caja sea como máximo el de .pasarela_img img*/
+}
+
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){

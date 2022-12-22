@@ -171,7 +171,7 @@
     </div>
 </div>
 <div id="hidden_profile">
-<div class="selector-vertical2">></div> Área Personal de {{Auth::user()->name}}
+    <div class="selector-vertical2">></div> Área Personal de {{Auth::user()->name}}
 </div>
 @endguest
 <div class="row" id="motivadora">
@@ -181,24 +181,37 @@
 <div class="clear-both"></div>
 <div class="row" id="noticias">
     <h2>Noticias</h2>
-    <div class="carousel">
-        @foreach($front['news'] as $new)
-        <a class="carousel-item" href="{{$new->getPermantlink()}}">
-            <div class="overflow_img"><img src="{{$new->getFeatureImage()}}"></div>
-            <p>{{$new->getTitle()}}</p>
-        </a>
-        @endforeach
+    <div class="pasarela pasarela1">
+        <div class="roll r1">
+            @foreach($front['news'] as $new)
+            <a class="pasarela-item" href="{{$new->getPermantlink()}}">
+                <div class="pasarela_img">
+                    <img src="{{$new->getFeatureImage()}}">                    
+                </div>                
+                <div class="pasarela-text">
+                    {{$new->getTitle()}}
+                </div>
+            </a>
+            @endforeach
+        </div>
     </div>
 </div>
 <div class="row" id="eventos">
     <h2>Eventos</h2>
-    <div class="carousel carr2">
-        @foreach($front['news'] as $new)
-        <a class="carousel-item" href="{{$new->getPermantlink()}}">
-            <div class="overflow_img"><img src="{{$new->getFeatureImage()}}"></div>
-            <p>{{$new->getTitle()}}</p>
+    <div class="pasarela pasarela2">
+        <div class="roll r2">
+        @foreach($front['eventos'] as $eventos)
+        @php
+        $fecha = explode('-',$eventos->fecha);
+        @endphp
+        <a class="pasarela-item" href="/admin/calendario/{{$fecha[1]}}/{{$fecha[0]}}">
+            <div class="pasarela_img"><img src="{{$eventos->getImage()}}"></div>
+            <div class="pasarela-text">
+                {{$eventos->getCompeticion()}}
+            </div>
         </a>
         @endforeach
+        </div>
     </div>
 </div>
 <div class="row imgbackground"></div>
@@ -236,45 +249,51 @@
                     $('#profile').fadeIn();
                 }
             })
-            var elem = document.querySelector('.carousel');
-            var instance = M.Carousel.init(elem,{
-                duration: 2000,
-                dist: 0,
-                numVisible: 5,
-                padding:10
-            });
-            //mantenemos el carrusel como fullwidth
-            var stop = false;
-            setInterval(()=>{
-            if(!instance.pressed){
-                instance.next();
-            }
-            },2000)
-            var elem2 = document.querySelector('.carr2');
-            var instance2 = M.Carousel.init(elem2,{
-                duration: 2000,
-                dist: 0,
-                numVisible: 5,
-                padding:10
-            });
-            setInterval(()=>{
-            if(!instance2.pressed){
-                instance2.next();            
-            }
-            },2000)
-            //si estamos sobre ('.carousel') detenemos el carrusel
-            $('.carousel').hover(function(){
-                instance.pressed = true;
-            },function(){
-                instance.pressed = false;
-            });
-            $('.carr2').hover(function(){
-                instance2.pressed = true;
-            },function(){
-                instance2.pressed = false;
-            });
+
+            //ANTIGUO CARROUSEL
+            /*var elem = document.querySelector('.carousel');
+                var instance = M.Carousel.init(elem,{
+                    duration: 2000,
+                    dist: 0,
+                    numVisible: 5,
+                    padding:10
+                });
+                //mantenemos el carrusel como fullwidth
+                var stop = false;
+                setInterval(()=>{
+                if(!instance.pressed){
+                    instance.next();
+                }
+                },2000)
+                var elem2 = document.querySelector('.carr2');
+                var instance2 = M.Carousel.init(elem2,{
+                    duration: 2000,
+                    dist: 0,
+                    numVisible: 5,
+                    padding:10
+                });
+                setInterval(()=>{
+                if(!instance2.pressed){
+                    instance2.next();            
+                }
+                },2000)
+                //si estamos sobre ('.carousel') detenemos el carrusel
+                $('.carousel').hover(function(){
+                    instance.pressed = true;
+                },function(){
+                    instance.pressed = false;
+                });
+                $('.carr2').hover(function(){
+                    instance2.pressed = true;
+                },function(){
+                    instance2.pressed = false;
+                });
+            */
 
             
+            
+
+            //sponsors
             var sponsors = $('.sponsor');
             var sponsors_count = sponsors.length;
             for(var i = 0; i < sponsors_count; i++){
@@ -309,6 +328,49 @@
                 }
                 posicion-=1;
             },20)
+
+            //NUEVO CARROUSEL
+            /**
+             * 
+             */
+            pasarela1_hover = false;
+            pasarela2_hover = false;
+            $('.pasarela1').hover(function(){
+                pasarela1_hover = true;
+            },function(){
+                pasarela1_hover = false;
+            });
+            $('.pasarela2').hover(function(){
+                pasarela2_hover = true;
+            },function(){
+                pasarela2_hover = false;
+            });
+
+            anchoP1 = 0;
+            $('.pasarela1 .pasarela-item').each(function(){
+                anchoP1 += $(this).width();
+            });
+            anchoP2 = 0;
+            $('.pasarela2 .pasarela-item').each(function(){
+                anchoP2 += $(this).width();
+            });
+            
+            setInterval(()=>{
+                let roll = $('.r1').css('left');
+                let roll2 = $('.r2').css('left');
+                if(!pasarela1_hover){
+                    $('.r1').css('left',parseInt(roll)-1+'px');
+                    if(parseInt(roll) < -anchoP1){
+                        $('.r1').css('left','0px');
+                    }
+                }
+                if(!pasarela2_hover){
+                    $('.r2').css('left',parseInt(roll2)-1+'px');
+                    if(parseInt(roll2) < -anchoP2){
+                        $('.r2').css('left','0px');
+                    };
+                }
+            },10);
 
         }); 
     </script>

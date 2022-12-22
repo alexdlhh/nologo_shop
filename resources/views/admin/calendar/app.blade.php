@@ -176,6 +176,15 @@
                     <input class="file-path validate" type="text">
                 </div>
             </div>
+            <div class="file-field col s6 little-fix">
+                <div class="btn">
+                    <span>Imagen</span>
+                    <input type="file" name="image_new" id="image_new">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
             <div class="col s4 form-control">
                 <div class="switch">
                     <label>
@@ -213,7 +222,7 @@
     <div class="modal-content">
         <h4>Editar Evento</h4>
         <div class="row">
-            <div class="col s8">
+            <div class="col s12">
                 <div class="row">
                     <div class="col s6 form-control">
                         <label for="">Competición</label>
@@ -257,6 +266,15 @@
                             <input class="file-path validate" type="text">
                         </div>
                     </div>
+                    <div class="file-field col s6 little-fix">
+                        <div class="btn">
+                            <span>Imagen</span>
+                            <input type="file" name="image_edit" id="image_edit">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
                     <div class="col s4 form-control">
                         <div class="switch">
                             <label>
@@ -285,8 +303,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s6">
                 <embed id="pdf_edit" src="" type="application/pdf" width="100%" height="400px" />
+            </div>
+            <div class="col s6">
+                <img src="" id="preview" alt="">
             </div>
         </div>
     </div>
@@ -337,6 +358,7 @@
             var nacional = $('#nacional_new').prop('checked')?1:0;
             var olimpico = $('#olimpico_new').prop('checked')?1:0;
             var active = $('#active_new').prop('checked')?1:0;
+            var image = $('#image_new').prop('files')[0];
             var formData = new FormData();
             formData.append('competicion', competicion);
             formData.append('especialidad', especialidad);
@@ -349,6 +371,7 @@
             formData.append('nacional', nacional);
             formData.append('olimpico', olimpico);
             formData.append('active', active);
+            formData.append('image', image);
             formData.append('id', 0);
             formData.append('_token', '{{ csrf_token() }}');
             $.ajax({
@@ -389,6 +412,7 @@
             $('#olimpico_edit').prop('checked', json.olimpico);
             $('#active_edit').prop('checked', json.active);
             $('#pdf_edit').attr('src', json.download_pdf);
+            $('#preview').attr('src', json.image);
             $('.delete_evento').attr('data-id', id);
         });
         $('.edit_evento_submit').click(function(){
@@ -404,6 +428,7 @@
             var nacional = $('#nacional_edit').prop('checked')?1:0;
             var olimpico = $('#olimpico_edit').prop('checked')?1:0;
             var active = $('#active_edit').prop('checked')?1:0;
+            var image = $('#image_edit').prop('files')[0];
             var formData = new FormData();
             formData.append('competicion', competicion);
             formData.append('especialidad', especialidad);
@@ -413,6 +438,7 @@
             formData.append('inscripcion', inscripcion);
             formData.append('sorteo', sorteo);
             formData.append('download_pdf', download_pdf);
+            formData.append('image', image);
             formData.append('nacional', nacional);
             formData.append('olimpico', olimpico);
             formData.append('active', active);

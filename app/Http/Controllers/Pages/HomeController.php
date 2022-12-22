@@ -29,7 +29,8 @@ class HomeController extends Controller
         $generalRepository = new GeneralRepository();
         $eventoRepository = new EventoRepository();
         $preferencias = !empty(Auth::user())?Auth::user()->preferences:'{}';
-        $news = $newRepository->getNewsByYearAndMonth(date('Y'),date('m'));
+        $news = $newRepository->getNewsByYearAndMonth(date('Y'),date('m'),0,30);
+        $eventos = $eventoRepository->getEventsByYearAndMonthAndPersonal(date('Y'),date('m'),'["1","2","3","4","5","6","7","8"]');
 
         $areaPersonal = [
             'news' => $newRepository->getNewsByYearAndMonthAndPersonal(date('Y'),date('m'),$preferencias),
@@ -48,7 +49,8 @@ class HomeController extends Controller
             'general' => $general,
             'rs' => $rs,
             'sponsors' => $sponsors,
-            'areaPersonal' => $areaPersonal
+            'areaPersonal' => $areaPersonal,
+            'eventos' => $eventos,
         ];
         return view('pages.home')->with('front',$front);
     }

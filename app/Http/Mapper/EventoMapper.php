@@ -20,6 +20,7 @@ class EventoMapper
         !empty($data['download_pdf'])?$evento->setDownloadPdf($data['download_pdf']):'';
         !empty($data['fecha_fin'])?$evento->setFechaFin($data['fecha_fin']):date('Y-m-d');
         !empty($data['olimpico'])?$evento->setOlimpico($data['olimpico']):0;
+        !empty($data['image'])?$evento->setImage($data['image']):'';
         return $evento;
     }
 

@@ -15,8 +15,9 @@ class EventoEntity{
     public $download_pdf;
     public $fecha_fin;
     public $olimpico;
+    public $image;
 
-    public function __construct($id=0, $competicion='', $fecha='', $licencia='', $inscripcion='', $sorteo='', $especialidad='', $nacional='', $active='', $download_pdf='', $fecha_fin='', $olimpico=''){
+    public function __construct($id=0, $competicion='', $fecha='', $licencia='', $inscripcion='', $sorteo='', $especialidad='', $nacional='', $active='', $download_pdf='', $fecha_fin='', $olimpico='', $image=''){
         $this->id = $id;
         $this->competicion = $competicion;
         $this->fecha = $fecha;
@@ -126,6 +127,14 @@ class EventoEntity{
     {
         return $this->olimpico;
     }
+
+    /**
+     * @return string $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
     
     /**
      * Set the value of id
@@ -222,6 +231,14 @@ class EventoEntity{
     {
         $this->olimpico = $olimpico;
     }
+
+    /**
+     * Set the value of image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
     
     public function getArray(){
         return [
@@ -236,7 +253,8 @@ class EventoEntity{
             'active' => $this->active,
             'download_pdf' => $this->download_pdf,
             'fecha_fin' => $this->fecha_fin,
-            'olimpico' => $this->olimpico
+            'olimpico' => $this->olimpico,
+            'image' => $this->image
         ];
     }
 }

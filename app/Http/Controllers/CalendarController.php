@@ -109,6 +109,7 @@ class CalendarController extends Controller
     public function save(Request $request){
         $eventoRepository = new EventoRepository();
         $archivo = '';
+        $image = '';
         if($request->hasFile('download_pdf')){
             $file = $request->file('download_pdf');
             //hora exacta para que el archivo no se repita
@@ -117,7 +118,15 @@ class CalendarController extends Controller
             $request->merge(['download_pdf' => $name]);
             $archivo = '/files/calendar/pdf/'.$name;
         }
-        $evento = $eventoRepository->saveEvent($request,$archivo);
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            //hora exacta para que el archivo no se repita
+            $name = date('YmdHis').'_'.$file->getClientOriginalName();
+            $file->move(public_path().'/files/calendar/images/', $name);
+            $request->merge(['image' => $name]);
+            $image = '/files/calendar/images/'.$name;
+        }
+        $evento = $eventoRepository->saveEvent($request,$archivo,$image);
         return response()->json($evento);
     }
 
