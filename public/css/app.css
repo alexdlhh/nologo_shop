@@ -517,27 +517,27 @@ h7 a{
 }
 .bocadillo_rfeg {
     left: 16.3%;
-    top: 20%;
+    top: 12%;
 }
 .bocadillo_especialities {
     left: 16.7%;
     width: 415px;
-    top: 20%;    
+    top: 12%;    
 }
 .bocadillo_especialities p{
     text-align: center;
 }
 .bocadillo_media {
     left: 44.3%;
-    top: 20%;
+    top: 12%;
 }
 .bocadillo_calendario {
     left: 36.8%;
-    top: 20%;
+    top: 12%;
 }
 .bocadillo.bocadillo_schools {
     left: 53%;
-    top: 20%;
+    top: 12%;
 }
 .noolimpicas{
     background: #EAEEF1;
@@ -551,8 +551,9 @@ h7 a{
 .lista{
     width: 100%;
     margin:0 auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 1px;
+    line-height: 1;
 }
 /*listado horizontal*/
 .lista ul li{
@@ -562,11 +563,14 @@ h7 a{
 }
 .listado h1{
     color: white;
+    font-weight: 200;
+    font-size: 5rem;
 }
 .lista ul li a{
     color: #596979;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 800 !important;
 }
 .lista ul li a:hover{
     color: #15F0DC;
@@ -584,7 +588,7 @@ nav.nav-extended{
     box-shadow: none !important;
 }
 .title-section{
-    padding-left: 0px !important;
+    padding: 70px 0px 20px 0px !important;
     margin-left: 0px !important;
 }
 .mock img{
@@ -926,8 +930,10 @@ h3.especial{
     color: white;
 }
 .container_table h4{
-    color: #69B7D6;
-    margin-left: 20px;    
+    color: #4e0084;
+    margin: 0px 0px 15px 35px;
+    font-size: 44px;
+    font-weight: 200!important;   
 }
 .head_table{
     background-color: #DBDCE0;
@@ -940,7 +946,9 @@ h3.especial{
 }
 .head_table .col{
     color: #616E8A;
-    font-size: 1.5em;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 10px !important;
 }
 .empleado_img {
     max-height: 300px;
@@ -952,14 +960,17 @@ h3.especial{
 .content_table{
     background-color: #F1F2F4;
     border-radius: 3px;
-    border: 1px solid #D3E3E7;
-    font-size: 1.3em;
+    border: 1px solid rgba(78,0,132,.3);
+    font-size: 20px;
+    font-weight: 300;
     margin-bottom: 3px !important;
+    padding: 2px 0px 0px 0px;
+    min-height: 40px;
 }
 .header_esp {
     padding-bottom: 0px;
     margin-bottom: 0px;
-    height: 280px;
+    line-height: 0;
 }
 .header_esp img{
     width: 100%;
@@ -967,10 +978,7 @@ h3.especial{
 }
 .section_esp{
     background: linear-gradient(135deg, #CA01CC, #4E0185);
-    padding: 5%;
-    padding-left: 6.5% !important;
-    padding-right: 6.5% !important;
-    padding-top: 1%;
+    padding: 2% 6.5% 5% 6.5% !important;
     max-width: 2580px !important;
 }
 #empleados{
@@ -1005,11 +1013,18 @@ h3.especial{
     color: white;
 }
 .linear_title_esp{
-    width: 65px;
+    width: 85px;
     border-bottom: 3px solid #fff;
     display: inline-block;
     margin-bottom: 16px;
     margin-right: 15px;
+}
+.subtitle_esp {
+    text-transform: lowercase;
+    font-weight: 200;
+    font-size: 50px;
+    line-height: 1;
+    margin: 10px 0px 35px 0px;
 }
 .title_line_dark{
     width: 65px;
@@ -1020,6 +1035,8 @@ h3.especial{
 .sub_section_esp h3{
     padding-top: 0px !important;
     margin-top: 0px !important;
+    margin-bottom: 0;
+    font-size: 48px;
 }
 .lista_esp{
     width: 100%;
