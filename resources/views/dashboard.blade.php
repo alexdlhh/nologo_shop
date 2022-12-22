@@ -61,25 +61,25 @@
                     <div class="col s6">
                         <p>
                         <label>
-                            <input type="checkbox" id="artistica-masculina"/>
+                            <input type="checkbox" class="especialidad" value="1"/>
                             <span>Artística Masc.</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" id="artistica-femenina"/>
+                            <input type="checkbox" class="especialidad" value="2"/>
                             <span>Artística Fem.</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" id="ritmica"/>
+                            <input type="checkbox" class="especialidad" value="3"/>
                             <span>Rítmica</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" id="trampolin"/>
+                            <input type="checkbox" class="especialidad" value="4"/>
                             <span>Trampolin</span>
                         </label>
                         </p>
@@ -87,25 +87,25 @@
                     <div class="col s6">
                         <p>
                         <label>
-                            <input type="checkbox" id="aerobica"/>
+                            <input type="checkbox" class="especialidad" value="5"/>
                             <span>Aeróbica</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" id="acrobatica"/>
+                            <input type="checkbox" class="especialidad" value="6"/>
                             <span>Acrobática</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" id="para-todos"/>
+                            <input type="checkbox" class="especialidad" value="7"/>
                             <span>Para Todos</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" id="parkour"/>
+                            <input type="checkbox" class="especialidad" value="8"/>
                             <span>Parkour</span>
                         </label>
                         </p>
@@ -121,4 +121,32 @@
     </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+        $('.save_prefs').click(function(){
+            var preferences = [];
+            $.each($('.especialidad'), function(){
+                if($(this).is(':checked')){
+                    preferences.push($(this).val());
+                }
+            });
+            $.ajax({
+                url: '/updatePreferences',
+                type: 'POST',
+                data: {
+                    preferences: preferences,
+                    _token: '{{csrf_token()}}'
+                },
+                success: function(data){
+                    //mensaje de exito usando toast
+                    M.toast({html: 'Preferencias actualizadas correctamente'});
+                }
+            });
+        });
+    });
+</script>
 @endsection

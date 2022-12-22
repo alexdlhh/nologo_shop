@@ -97,4 +97,17 @@ class RSRepository
             ->delete();
     }
 
+    /**
+     * buscamos en todas las columnas de social
+     */
+    public function search($search){
+        $rsMapper = new RSMapper();
+        $rs = DB::table('social')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('url', 'like', '%'.$search.'%')
+            ->get();
+        $rsList = $rsMapper->mapCollection($rs);
+        return $rsList;
+    }
+
 }

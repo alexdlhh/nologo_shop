@@ -365,4 +365,55 @@ class NewsRepository
         }
     }
     
+    public function getNewsByYearAndMonthAndPersonal($year,$month,$personal){
+        $newsMapper = new NewsMapper();
+        $personal = json_decode($personal);
+        $news = array();
+        foreach($personal as $p){
+            $res = DB::table('new')
+                ->join('tag_new_rel', 'new.id', '=', 'tag_new_rel.id_new')
+                ->where('tag_new_rel.id_tag', $p)
+                ->where('new.status', 1)
+                ->orderBy('new.created_at', 'desc')
+                ->skip(0)
+                ->take(10)
+                ->get();
+            foreach($res as $r){
+                $news[]=$r;
+            }
+        }
+        $news = $newsMapper->mapCollection($news);
+        return $news;
+    }
+
+    /**
+     * buscamos en todas las columnas de new
+     */
+    public function search($search){
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->where('title', 'like', '%'.$search.'%')
+            ->orWhere('content', 'like', '%'.$search.'%')
+            ->orWhere('alias', 'like', '%'.$search.'%')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $news = $newsMapper->mapCollection($news);
+        return $news;
+    }
+
+    /**
+     * buscamos en todas las columnas de new
+     */
+    public function basicsearch($search){
+        $newsMapper = new NewsMapper();
+        $news = DB::table('new')
+            ->where('status', 1)
+            ->where('title', 'like', '%'.$search.'%')
+            ->orWhere('content', 'like', '%'.$search.'%')
+            ->orWhere('alias', 'like', '%'.$search.'%')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $news = $newsMapper->mapCollection($news);
+        return $news;
+    }
 }

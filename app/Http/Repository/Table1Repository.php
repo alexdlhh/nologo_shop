@@ -135,4 +135,16 @@ class Table1Repository
         $table1 = $table1Mapper->mapCollection($table1->toArray());
         return $table1;
     }
+
+    /**
+     * Buscamos en todos los campos de rfeg_table1
+     */
+    public function search($search){
+        $table1Mapper = new Table1Mapper();
+        $table1 = DB::table('rfeg_table1')
+            ->where('documento', 'like', '%'.$search.'%')
+            ->get();
+        $table1 = $table1Mapper->mapCollection($table1->toArray());
+        return $table1;
+    }
 }

@@ -98,4 +98,21 @@ class CategoryNewRepository
             ->get();
         return $categoryNew->toArray();
     }
+
+    /**
+     * Buscamos en todos los campos de category_new
+     * @param string $search
+     * @return array
+     */
+    public function search($search){
+        $categoryNewMapper = new CategoryNewMapper();
+        $categoryNewList = [];
+        $categoryNew = DB::table('category_new')
+            ->where('name', 'like', '%'.$search.'%')
+            ->get();
+        if(!empty($categoryNew->toArray())) {
+            $categoryNewList = $categoryNewMapper->mapCollection($categoryNew->toArray());
+        }
+        return $categoryNewList;
+    }
 }

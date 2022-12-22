@@ -95,15 +95,22 @@ nav ul a:hover {
     position: relative;
     z-index: 1;
 }*/
-#video_header{
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    background-image: url(/GR1C4175_web.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 700px;
+.statica{
+    padding:70px;
+    background-color: white;
+    border-radius: 5px;
+}
+.formulario{
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin:0 auto;
+    max-width: 80%;
+    margin-bottom: 40px;
+    /*sombras*/ 
+    -webkit-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+    -moz-box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
+    box-shadow: 10px 18px 52px 6px rgb(0 0 0 / 41%);
 }
 .fix_video{
     height: 508px;
@@ -127,6 +134,30 @@ nav ul a:hover {
 #profile{
     margin-bottom: 0px !important;
     background: #15c8d5;
+    background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7 22%);
+    background: -webkit-linear-gradient(left, #0A2540 0%,#15c8d5 22%);
+    background: linear-gradient(to right, #0A2540 0%,#15c8d5 22%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#15c8d5',GradientType=2 );
+}
+.cookies {
+    position: fixed;
+    bottom: 0px;
+    background: rgba(0,0,0,0.7);
+    margin: 0 auto;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+#hidden_profile{
+    line-height: 1.2;
+    font-weight: 200;
+    font-size: 27px;
+    padding-top:20px;
+    padding-bottom: 20px;
+    display: none;
+    margin-bottom: 0px !important;
+    background: #15c8d5;
+    color: white;
     background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7 22%);
     background: -webkit-linear-gradient(left, #0A2540 0%,#15c8d5 22%);
     background: linear-gradient(to right, #0A2540 0%,#15c8d5 22%);
@@ -161,7 +192,14 @@ nav ul a:hover {
     float: left;
     margin: 0px 10px 0px 0px;
     font-family: 'Lora';
-    padding: 25px 30px 30px 30px;
+    padding: 0px 30px 30px 30px;
+}
+.selector-vertical2{
+    width: 5%;
+    float: left;
+    margin-left: 0px ;
+    font-family: 'Lora';
+    padding-left: 40px;
 }
 .areapersonal{
     width: 80%;
@@ -1058,6 +1096,11 @@ h3.especial{
 }
 .card-image {
     max-height: 280px;
+    overflow: hidden;
+    min-height: 280px;
+}
+.card-content {
+    min-height: 100px;
 }
 .nobackground{
     background: linear-gradient(135deg, #CA01CC, #4E0185) !important;
@@ -1223,6 +1266,7 @@ h3.especial{
     font-size: 1.5em;
     color: #535E7A;
 }
+
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){

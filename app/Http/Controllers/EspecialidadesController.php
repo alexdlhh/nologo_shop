@@ -17,6 +17,7 @@ use App\Http\Repository\Table1Repository;
 use App\Http\Repository\ComisionesTecnicasRepository;
 use App\Http\Repository\ResultadosRepository;
 use App\Http\Repository\ResultadosFileRepository;
+use App\Http\Repository\GeneralRepository;
 //use App\Http\Helpers\Common;
 
 class EspecialidadesController extends Controller
@@ -70,6 +71,7 @@ class EspecialidadesController extends Controller
         $especialidades = $this->especialidadesRepository->getOne($id);
         $team = $this->teamRepository->getByEspecialityAngYear($especialidades->getId(),$especialidades->getCurrentSeason());
         $comisiones_tecnicas = $comisionesTecnicasRepository->getByEspecialidad($id);
+        
         return view('admin.especialidades.edit', 
         ['admin'=>[
             'title'=>$especialidades->getName(),
@@ -181,7 +183,7 @@ class EspecialidadesController extends Controller
         $comisionesTecnicasRepository = new ComisionesTecnicasRepository();
         $resultadosRepository = new ResultadosRepository();
         $resultadosFileRepository = new ResultadosFileRepository();
-        
+        $generalRepository = new GeneralRepository();
         $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
         $especialidad = $this->especialidadesRepository->getIdBySlug($menu1);
         $news = $newRepository->getNewsByEspecialidad($especialidad);
@@ -198,7 +200,7 @@ class EspecialidadesController extends Controller
         $especialidades = $this->especialidadesRepository->getOne($especialidad);
         $team = $this->teamRepository->getByEspecialityAngYear($especialidad,2022);
         $comisiones_tecnicas = $comisionesTecnicasRepository->getByEspecialidad($especialidad);
-
+        $general = $generalRepository->getConfigGeneral();
         foreach($rfeg_title as $title){
             $content_tables[$title->getId()] = $table1Repository->getbyRfegTitleAndEspeciality($title->getId(),$especialidad);
         }      
@@ -220,6 +222,7 @@ class EspecialidadesController extends Controller
             'team' => $team,
             'resultados' => $resultados,
             'comisiones_tecnicas' => $comisiones_tecnicas,
+            'general' => $general
         ];
         return view('pages.especialidades')->with('front',$front);
     }    

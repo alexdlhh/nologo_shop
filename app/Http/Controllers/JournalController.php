@@ -8,6 +8,7 @@ use App\Http\Repository\AlbumRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\NewsRepository;
+use App\Http\Repository\GeneralRepository;
 
 class JournalController extends Controller
 {
@@ -112,13 +113,14 @@ class JournalController extends Controller
         $sponsorRepository = new SponsorRepository();
         $albumRepository = new AlbumRepository();
         $journalRepository = new JournalRepository();
+        $generalRepository = new GeneralRepository();
         $journals = $journalRepository->getByAlbum($menu1, $menu2);
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $albums = $albumRepository->getAll(0,'');
-
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/media',
@@ -131,6 +133,7 @@ class JournalController extends Controller
             'albums' => $albums,
             'menu1' => $menu1,
             'menu2' => $menu2,
+            'general' => $general
         ];
         return view('pages.revista')->with('front',$front);
     }

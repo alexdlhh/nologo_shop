@@ -14,6 +14,7 @@ use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\AlbumNewRepository;
 use App\Http\Repository\BannerRepository;
 use App\Http\Repository\RFEGTitleRepository;
+use App\Http\Repository\GeneralRepository;
 
 class SchoolController extends Controller
 {
@@ -48,6 +49,7 @@ class SchoolController extends Controller
         $courseRepository = new CourseRepository();    
         $rfegTitleRepository = new RFEGTitleRepository();  
         $schoolRepository = new SchoolRepository();
+        $generalRepository = new GeneralRepository();
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
@@ -68,6 +70,7 @@ class SchoolController extends Controller
             }
             $rfeg_title = $_rfeg_title;
         }
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/schools',
@@ -80,7 +83,8 @@ class SchoolController extends Controller
             'menu2' => $menu2,
             'normativas' => $normativas,
             'courses' => $courses,
-            'rfeg_title' => $rfeg_title
+            'rfeg_title' => $rfeg_title,
+            'general' => $general
         ];
         return view('pages.'.$menu1)->with('front',$front);
     }

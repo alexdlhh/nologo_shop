@@ -119,4 +119,21 @@ class Table7Repository
         $table7 = $table7Mapper->mapCollection($table7->toArray());
         return $table7;
     }
+
+    /**
+     * Buscamos en todos los campos de rfeg_table7
+     */
+    public function search($search){
+        $table7Mapper = new Table7Mapper();
+        $table7 = DB::table('rfeg_table7')
+            ->where('titulo', 'like', '%'.$search.'%')
+            ->orWhere('direccion', 'like', '%'.$search.'%')
+            ->orWhere('phone', 'like', '%'.$search.'%')
+            ->orWhere('fax', 'like', '%'.$search.'%')
+            ->orWhere('web', 'like', '%'.$search.'%')
+            ->orWhere('email', 'like', '%'.$search.'%')
+            ->get();
+        $table7 = $table7Mapper->mapCollection($table7->toArray());
+        return $table7;
+    }
 }

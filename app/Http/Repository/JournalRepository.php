@@ -335,4 +335,19 @@ class JournalRepository
         }
         return $total;
     }
+
+    /**
+     * Buscamos en todos los campos de journal
+     * @param string $search
+     * @return array
+     */
+    public function search(string $search){
+        $journalMapper = new JournalMapper();
+        $journal = DB::table('journal')
+            ->where('title', 'like', '%'.$search.'%')
+            ->orWhere('description', 'like', '%'.$search.'%')
+            ->get();
+        $journal = $journalMapper->mapCollection(get_object_vars($journal));
+        return $journal;
+    }
 }

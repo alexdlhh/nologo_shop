@@ -140,4 +140,31 @@ class CourseRepository
         }  
         return $total;
     }
+
+    /**
+     * Buscamos en todos los campos de course
+     */
+    public function search($search){
+        $courseMapper = new CourseMapper();
+        $courses = DB::table('course')
+            ->where('curso', 'like', '%'.$search.'%')
+            ->orderBy('id', 'desc')
+            ->get();
+        $courses = $courseMapper->mapCollection($courses);
+        return $courses;
+    }
+
+    /**
+     * Buscamos en todos los campos de course
+     */
+    public function basicsearch($search){
+        $courseMapper = new CourseMapper();
+        $courses = DB::table('course')
+            ->where('curso', 'like', '%'.$search.'%')
+            ->where('active', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+        $courses = $courseMapper->mapCollection($courses);
+        return $courses;
+    }
 }

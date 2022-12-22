@@ -27,10 +27,13 @@
         </h1>
     </div>
 </div>
+@guest
+@else
 <div class="row" id="profile">
     <div class="col s1">
-        <div class="vertical-text">
-            <div class="selector-vertical">></div> <div class="areapersonal">Área Personal de<br> Alex</div>
+        <div class="vertical-text">            
+            <div class="areapersonal">Área Personal de<br> {{Auth::user()->name}}</div>
+            <div class="selector-vertical">></div> 
         </div>
     </div>
     <div class="col s11 area_personal_fix">
@@ -45,7 +48,7 @@
                             @php
                                 $count=0;
                             @endphp
-                            @foreach($front['news'] as $new)
+                            @foreach($front['areaPersonal']['news'] as $new)
                             @php
                                 $day = date('d', strtotime($new->getCreatedAt()));
                                 $month = date('M', strtotime($new->getCreatedAt()));
@@ -88,14 +91,14 @@
                             @php
                                 $count=0;
                             @endphp
-                            @foreach($front['news'] as $new)
+                            @foreach($front['areaPersonal']['calendarios'] as $calendarios)
                             @php
-                                $day = date('d', strtotime($new->getCreatedAt()));
-                                $month = date('M', strtotime($new->getCreatedAt()));
+                                $day = date('d', strtotime($calendarios->getFecha()));
+                                $month = date('M', strtotime($calendarios->getFecha()));
                             @endphp
                             <tr>
                                 <td>
-                                    <a class="homenews" href="/noticias/{{$new->getPermantlink()}}">
+                                    <a class="homenews" href="/calendar/todo/{{$calendarios->getId()}}">
                                     <div class="row">
                                         <div class="col s1">
                                             <div class="calendar_day">
@@ -104,7 +107,7 @@
                                             </div>
                                         </div>
                                         <div class="col s11 newshometitle">
-                                            <p>{{$new->getTitle()}}</p>
+                                            <p>{{$calendarios->getCompeticion()}}</p>
                                         </div>
                                     </div>
                                     </a>
@@ -131,14 +134,14 @@
                             @php
                                 $count=0;
                             @endphp
-                            @foreach($front['news'] as $new)
+                            @foreach($front['areaPersonal']['eventos'] as $calendarios)
                             @php
-                                $day = date('d', strtotime($new->getCreatedAt()));
-                                $month = date('M', strtotime($new->getCreatedAt()));
+                                $day = date('d', strtotime($calendarios->getFecha()));
+                                $month = date('M', strtotime($calendarios->getFecha()));
                             @endphp
                             <tr>
                                 <td>
-                                    <a class="homenews" href="/noticias/{{$new->getPermantlink()}}">
+                                    <a class="homenews" href="/calendar/todo/{{$calendarios->getId()}}">
                                     <div class="row">
                                         <div class="col s1">
                                             <div class="calendar_day">
@@ -147,7 +150,7 @@
                                             </div>
                                         </div>
                                         <div class="col s11 newshometitle">
-                                            <p>{{$new->getTitle()}}</p>
+                                            <p>{{$calendarios->getCompeticion()}}</p>
                                         </div>
                                     </div>
                                     </a>
@@ -167,6 +170,10 @@
         </div>
     </div>
 </div>
+<div id="hidden_profile">
+<div class="selector-vertical2">></div> Área Personal de {{Auth::user()->name}}
+</div>
+@endguest
 <div class="row" id="motivadora">
     <div class="frase1">Detrás de cada historia hay personas que son<br>capaces de convertir lo ordinario en excepcional</div>
     <div class="frase2">Más que un deporte, una pasión ___</div>
@@ -210,6 +217,25 @@
     <script> 
         $(document).ready(function() {
             M.updateTextFields();
+            $('.selector-vertical').click(function(){
+                if($('#hidden_profile').css('display')=='none'){
+                    $('#hidden_profile').fadeIn();
+                    $('#profile').fadeOut();
+                }else{
+                    $('#hidden_profile').fadeOut();
+                    $('#profile').fadeIn();
+                }                
+            })
+            $('#hidden_profile').click(function(){
+                console.log('click')
+                if($('#hidden_profile').css('display')=='none'){
+                    $('#hidden_profile').fadeIn();
+                    $('#profile').fadeOut();
+                }else{
+                    $('#hidden_profile').fadeOut();
+                    $('#profile').fadeIn();
+                }
+            })
             var elem = document.querySelector('.carousel');
             var instance = M.Carousel.init(elem,{
                 duration: 2000,

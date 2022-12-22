@@ -77,4 +77,79 @@ class PagesRepository
             ->where($filter)
             ->delete();
     }
+
+    /**
+     * getAllPages
+     */
+    public function getAllPages(){
+        $pagesMapper = new PagesMapper();
+        $pages = DB::table('statics')
+            ->get();
+        return $pages;
+    }
+
+    /**
+     * getOnePage
+     */
+    public function getOnePage($id){
+        $pagesMapper = new PagesMapper();
+        $pages = DB::table('statics')
+            ->where(['id' => $id])
+            ->get();
+        return $pages;
+    }
+
+    /**
+     * savePage
+     */
+    public function savePage(Request $request){
+        $data = $request->all();
+        DB::table('statics')
+        ->where(['id' => $data['id']])
+        ->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'permantlink' => $data['permantlink'],
+        ]);
+        return true;
+    }
+
+    public function getGeneralAdmin(){
+        $pagesMapper = new PagesMapper();
+        $pages = DB::table('general')
+        ->where(['admin' => 1])
+        ->get();
+        return $pages;
+    }
+
+    public function saveGeneral($request,$meta_value){
+        $data = $request->all();
+        DB::table('general')
+        ->where(['meta_key' => $data['meta_key']])
+        ->update([
+            'meta_value' => $meta_value,
+        ]);
+        return true;
+    }
+
+    public function getStaticBySlug($slug){
+        $pagesMapper = new PagesMapper();
+        $pages = DB::table('statics')
+        ->where(['permantlink' => $slug])
+        ->get();
+        return $pages;
+    }
+
+    /**
+     * Buscamos coincidencias en todas las columnas de la tabla pages
+     */
+    public function search($search){
+        $pagesMapper = new PagesMapper();
+        $pages = DB::table('pages')
+        ->where('title', 'like', '%'.$search.'%')
+        ->orWhere('description', 'like', '%'.$search.'%')
+        ->orWhere('url', 'like', '%'.$search.'%')->get();
+        
+        return $pages;
+    }
 }

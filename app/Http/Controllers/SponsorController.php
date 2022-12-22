@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Repository\PagesRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\NewsRepository;
+use App\Http\Repository\GeneralRepository;
 
 class SponsorController extends Controller
 {
@@ -119,6 +120,7 @@ class SponsorController extends Controller
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
+        $generalRepository = new GeneralRepository();
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
@@ -128,6 +130,7 @@ class SponsorController extends Controller
             $_sponsor[$sponsor->type][] = $sponsor;
         }
         $sponsors = $_sponsor;
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/patrocinadores',
@@ -136,7 +139,8 @@ class SponsorController extends Controller
             'sponsors' => $sponsors,
             'subsection' => 'patrocinadores',
             'title'=>'Patrocinadores',
-            'menu1' => $menu1
+            'menu1' => $menu1,
+            'general' => $general
         ];
         return view('pages.patrocinadores')->with('front',$front);
     }

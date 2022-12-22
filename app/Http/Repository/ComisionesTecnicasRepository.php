@@ -108,4 +108,20 @@ class ComisionesTecnicasRepository
             ->delete();
         return $id;
     }
+
+    /**
+     * Buscamos en todos los campos de comisiones tecnicas
+     * @param $search
+     * @return mixed
+     */
+    public function search($search){
+        $comisionesTecnicasMapper = new ComisionesTecnicasMapper();
+        $comisionesTecnicas = DB::table('comisiones_tecnicas')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('posicion', 'like', '%'.$search.'%')
+            ->orWhere('especialidad', 'like', '%'.$search.'%')
+            ->orderBy('order', 'asc')
+            ->get();
+        return $comisionesTecnicasMapper->mapCollection($comisionesTecnicas);
+    }
 }

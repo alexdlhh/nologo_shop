@@ -10,7 +10,7 @@ use App\Http\Repository\NewsRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\EspecialidadesRepository;
-
+use App\Http\Repository\GeneralRepository;
 class MediaController extends Controller
 {
     /**
@@ -154,6 +154,7 @@ class MediaController extends Controller
         $coleccionRepository = new ColeccionRepository();
         $especialidadesRepository = new EspecialidadesRepository();
         $mediaRepository = new MediaRepository();
+        $generalRepository = new GeneralRepository();
         if($menu1 == 'todo'){
             if($menu2 == 'todo'){
                 $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo');
@@ -178,7 +179,7 @@ class MediaController extends Controller
         $colecciones=$coleccionRepository->getAll();
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/media',
@@ -191,7 +192,8 @@ class MediaController extends Controller
             'especialidades' => $especialidades,
             'menu1' => $menu1,
             'menu2' => $menu2,
-            'media' => $media
+            'media' => $media,
+            'general' => $general
         ];
         return view('pages.media')->with('front',$front);
     }

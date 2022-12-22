@@ -11,6 +11,7 @@ use App\Http\Repository\RSRepository;
 use App\Http\Repository\SponsorRepository;
 use App\Http\Repository\AlbumNewRepository;
 use App\Http\Repository\BannerRepository;
+use App\Http\Repository\GeneralRepository;
 use App\Http\Repository\EspecialidadesRepository;
 //use App\Http\Helpers\Common;
 
@@ -210,6 +211,7 @@ class NewsController extends Controller
         $bannerRepository = new BannerRepository();
         $categoryNewRepository = new CategoryNewRepository();
         $albumNewRepository = new AlbumNewRepository();
+        $generalRepository = new GeneralRepository();
         $categoryNew = $categoryNewRepository->getAll();
         $new = $newRepository->getNewsByPermantlink($alias);
         $menu2 = empty($menu2)?date('m'):$this->getNumberOfMonth($menu2);
@@ -221,7 +223,7 @@ class NewsController extends Controller
         $banners = $bannerRepository->getOne('news_detail');
         $albumnew = $albumNewRepository->getAllByIdNew($new->id);
         $menu2 = $this->getMonthName($menu2);
-
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/noticias',
@@ -237,6 +239,7 @@ class NewsController extends Controller
             'menu1' => $menu1,
             'banners' => $banners,
             'menu2' => $menu2,
+            'general' => $general
         ];
         return view('pages.news')->with('front',$front);
     }
@@ -252,6 +255,7 @@ class NewsController extends Controller
         $sponsorRepository = new SponsorRepository();
         $bannerRepository = new BannerRepository();
         $categoryNewRepository = new CategoryNewRepository();
+        $generalRepository = new GeneralRepository();
         $categoryNew = $categoryNewRepository->getAll();
         $menu2 = empty($menu2)?'':$this->getNumberOfMonth($menu2);
         $news = $newRepository->getNewsByYearAndMonth($menu1,$menu2);
@@ -260,6 +264,7 @@ class NewsController extends Controller
         $sponsors = $sponsorRepository->getAll();
         $banners = $bannerRepository->getOne('news_detail');
         $menu2 = $menu2!=''?$this->getMonthName($menu2):'';
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/noticias',
@@ -272,6 +277,7 @@ class NewsController extends Controller
             'menu1' => $menu1,
             'banners' => $banners,
             'menu2' => $menu2,
+            'general' => $general
         ];
         return view('pages.news_list')->with('front',$front);
     }
@@ -299,12 +305,13 @@ class NewsController extends Controller
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
         $RSRepository = new RSRepository();
-        $sponsorRepository = new SponsorRepository();        
+        $sponsorRepository = new SponsorRepository();     
+        $generalRepository = new GeneralRepository();   
         $news = $newRepository->getNews(5);
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-        
+        $general = $generalRepository->getConfigGeneral();
 
         $front = [
             'headers' => $headers,
@@ -316,6 +323,7 @@ class NewsController extends Controller
             'title'=>'Escuela',
             'menu1' => $menu1,
             'menu2' => $menu2,
+            'general' => $general,
         ];
         return view('pages.'.$menu1)->with('front',$front);
     }

@@ -124,4 +124,22 @@ class AlbumRepository
         }
         return $count;
     }
+
+    /**
+     * Buscamos en todos los campos de album
+     * @param string $search
+     * @return array
+     */
+    public function search($search){
+        $albumMapper = new AlbumMapper();
+        $albumList = [];
+        $album = DB::table('album')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orderBy('name', 'desc')
+            ->get();
+        if(!empty($album->toArray())) {
+            $albumList = $albumMapper->mapCollection($album->toArray());
+        }
+        return $albumList;
+    }
 }

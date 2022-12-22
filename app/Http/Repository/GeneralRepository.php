@@ -37,4 +37,26 @@ class GeneralRepository
         }
     }
 
+    public function getConfigGeneral(){
+        $general = DB::table('general')->where(['admin' => 1])->get();
+        $return = [];
+        foreach($general as $gen){
+            $return[$gen->meta_key] = $gen->meta_value;
+        }
+        return $return;
+    }
+
+    public function search($search){
+        $general = DB::table('general')
+        ->where('meta_key','like','%'.$search.'%')
+        ->orWhere('meta_value','like','%'.$search.'%')
+        ->orWhere('title','like','%'.$search.'%')
+        ->get();
+        $return = [];
+        foreach($general as $gen){
+            $return[$gen->meta_key] = $gen->meta_value;
+        }
+        return $return;
+    }
+
 }

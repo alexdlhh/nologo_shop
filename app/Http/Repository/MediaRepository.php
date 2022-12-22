@@ -208,4 +208,19 @@ class MediaRepository
         $mediaList = $mediaMapper->mapCollection($media);
         return $mediaList;
     }
+
+    /**
+     * Buscamos en todos los campos de media
+     * @param $search
+     * @return array
+     */
+    public function search($search){
+        $mediaMapper = new MediaMapper();
+        $media = DB::table('media')
+            ->where('title', 'like', '%'.$search.'%')
+            ->orWhere('description', 'like', '%'.$search.'%')
+            ->get();
+        $mediaList = $mediaMapper->mapCollection($media);
+        return $mediaList;
+    }
 }

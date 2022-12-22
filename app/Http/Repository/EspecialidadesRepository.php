@@ -137,4 +137,23 @@ class EspecialidadesRepository
         empty($id) ? $id = 0 : $id = $id[0]->id;
         return $id;
     }
+
+    /**
+     * Buscamos en todos los campos de especialidades
+     * @param string $search
+     * @return array
+     */
+    public function search($search){
+        $especialidadesMapper = new EspecialidadesMapper();
+        $especialidadesList = [];
+        $especialidades = DB::table('especialidades')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('alias', 'like', '%'.$search.'%')
+            ->orWhere('acronimo', 'like', '%'.$search.'%')
+            ->get();
+        if(!empty($especialidades)) {
+            $especialidadesList = $especialidadesMapper->mapCollection($especialidades->toArray());
+        }
+        return $especialidadesList;
+    }
 }

@@ -125,4 +125,18 @@ class RFEGTitleRepository
         $rfegTitle = $rfegTitleMapper->mapCollection($rfegTitle->toArray());
         return $rfegTitle;
     }
+
+
+    /**
+     * Buscamos en todos los campos de rfeg_title
+     */
+    public function search($search){
+        $rfegTitleMapper = new RFEGTitleMapper();
+        $rfegTitle = DB::table('rfeg_title')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('type', 'like', '%'.$search.'%')
+            ->get();
+        $rfegTitle = $rfegTitleMapper->mapCollection($rfegTitle->toArray());
+        return $rfegTitle;
+    }
 }

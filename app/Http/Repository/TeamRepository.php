@@ -127,4 +127,27 @@ class TeamRepository{
             ->delete();
         return $id;
     }
+
+    /**
+     * Buscamos en todos los campos de team
+     * @param string $search
+     * @return array
+     */
+    public function search($search){
+        $teamMapper = new TeamMapper();
+        $teamList = [];
+        $teamList = DB::table('team')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('alias', 'like', '%'.$search.'%')
+            ->orWhere('description', 'like', '%'.$search.'%')
+            ->orWhere('current_season', 'like', '%'.$search.'%')
+            ->orWhere('twitter', 'like', '%'.$search.'%')
+            ->orWhere('twich', 'like', '%'.$search.'%')
+            ->orWhere('instagram', 'like', '%'.$search.'%')
+            ->orWhere('youtube', 'like', '%'.$search.'%')
+            ->orWhere('tiktok', 'like', '%'.$search.'%')
+            ->get();
+        $teamList = $teamMapper->mapCollection($teamList);
+        return $teamList;
+    }
 }

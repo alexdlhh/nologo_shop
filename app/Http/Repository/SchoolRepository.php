@@ -95,4 +95,33 @@ class SchoolRepository
         return $normativas;
     }
 
+    /**
+     * buscamos en todas las columnas de normativa
+     */
+    public function search($search){
+        $schoolMapper = new SchoolMapper();
+        $normativas = DB::table('normativa')
+            ->where('documento', 'like', '%'.$search.'%')
+            ->orWhere('type', 'like', '%'.$search.'%')
+            ->orWhere('active', 'like', '%'.$search.'%')
+            ->get();
+        $normativas = $schoolMapper->mapCollection($normativas->toArray());
+        return $normativas;
+    }
+
+    /**
+     * buscamos en todas las columnas de normativa
+     */
+    public function basicsearch($search){
+        $schoolMapper = new SchoolMapper();
+        $normativas = DB::table('normativa')
+            ->where('active', '1')
+            ->where('documento', 'like', '%'.$search.'%')
+            ->orWhere('type', 'like', '%'.$search.'%')
+            ->orWhere('active', 'like', '%'.$search.'%')
+            ->get();
+        $normativas = $schoolMapper->mapCollection($normativas->toArray());
+        return $normativas;
+    }
+
 }

@@ -124,4 +124,22 @@ class ColeccionRepository
             ->where('id', $id)
             ->delete();
     }
+
+    /**
+     * Buscamos en todos los campos de coleccion
+     * @param $search
+     * @return array
+     */
+    public function search($search){
+        $coleccionMapper = new ColeccionMapper();
+        $coleccionList = [];
+        $coleccion = DB::table('coleccion')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orderBy('name', 'desc')
+            ->get();
+        if(!empty($coleccion->toArray())) {
+            $coleccionList = $coleccionMapper->mapCollection($coleccion->toArray());
+        }
+        return $coleccionList;
+    }
 }

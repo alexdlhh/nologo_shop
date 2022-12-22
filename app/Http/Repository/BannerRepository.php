@@ -132,4 +132,35 @@ class BannerRepository
             ->update(['active' => $active]);
         return $banner;
     }
+
+    /**
+     * Buscamos en todos los campos de al banner
+     * @param $search
+     * @return array
+     */
+    public function search($search){
+        $bannerMapper = new BannerMapper();
+        $banner = DB::table('banner')
+            ->where('place', 'like', '%'.$search.'%')
+            ->orWhere('url', 'like', '%'.$search.'%')            
+            ->get();
+        $banner = $bannerMapper->mapCollection($banner->toArray());
+        return $banner;
+    }
+
+    /**
+     * Buscamos en todos los campos de al banner
+     * @param $search
+     * @return array
+     */
+    public function basicsearch($search){
+        $bannerMapper = new BannerMapper();
+        $banner = DB::table('banner')
+            ->where('active',1)
+            ->where('place', 'like', '%'.$search.'%')
+            ->orWhere('url', 'like', '%'.$search.'%')            
+            ->get();
+        $banner = $bannerMapper->mapCollection($banner->toArray());
+        return $banner;
+    }
 }

@@ -13,6 +13,7 @@ use App\Http\Repository\AlbumNewRepository;
 use App\Http\Repository\BannerRepository;
 use App\Http\Repository\EventoRepository;
 use App\Http\Repository\EspecialidadesRepository;
+use App\Http\Repository\GeneralRepository;
 
 class CalendarController extends Controller
 {
@@ -26,6 +27,7 @@ class CalendarController extends Controller
         $RSRepository = new RSRepository();
         $sponsorRepository = new SponsorRepository();
         $eventoRepository = new EventoRepository();
+        $generalRepository = new GeneralRepository();
         $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
         $aux=[];
         foreach($eventos as $evento){
@@ -46,7 +48,7 @@ class CalendarController extends Controller
         $headers = $this->header_order($pageRepository->getAll('section','=','1'));
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
-
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => '/calendario',
@@ -56,6 +58,7 @@ class CalendarController extends Controller
             'subsection' => 'especialidades',
             'title'=>'Calendario',
             'menu1' => $menu1,
+            'general' => $general,
             'menu2' => $menu2,
             'eventos' => $eventos,
         ];

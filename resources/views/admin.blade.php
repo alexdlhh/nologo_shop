@@ -258,6 +258,32 @@
                             </ul>
                         </div>
                     </li>
+                    <li>
+                        <div class="collapsible-header {{$admin['section'] == 'estaticas' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'estaticas' ? 'active' : ''}}">web</i>Páginas</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'estaticas' ? 'display: block;' : ''}}">
+                            <ul class="list-child">
+                                <li>
+                                    <a href="/admin/page_list" class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}"><b>Listar Páginas</b></span><span class="child-selector {{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">Listado de páginas simples y estáticas (solo texto)</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header {{$admin['section'] == 'general' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'general' ? 'active' : ''}}">settings_applications</i>Configuración</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'general' ? 'display: block;' : ''}}">
+                            <ul class="list-child">
+                                <li>
+                                    <a href="/admin/general_list" class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">Listado de configuraciones, imagen principal de la web, pie de página, logo, email, etc.</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="col s12 m10 offset-m2" id="panel_stuff">
@@ -266,6 +292,7 @@
                         <i class="material-icons prefix">search</i>
                         <input id="search" type="search" class="validate">
                         <label id="searchlabel" for="search">Buscar</label>
+                        <div class="resultados_search"></div>
                     </div>
                     <div class="col s6">
                         <nav>
@@ -307,6 +334,222 @@
         <script>
             $(document).ready(function(){
                 $('.collapsible').collapsible();
+                $('.resultados_search').hide();
+                $('#search').on('keyup', function(){
+                    var value = $(this).val().toLowerCase();
+                    if(value !='' && value.length > 3){
+                        $('.resultados_search').show();
+                        $('.resultados_search').html('');
+                        $('.resultados_search').append(`<div class="preloader-wrapper big active center">
+                            <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                            </div>
+                        </div>`);
+                        $.ajax({
+                            type: 'get',
+                            url: '/prosearch/'+value,
+                            dataType: 'json',
+                            success: function(data){     
+                                $('.resultados_search').html('');   
+                                var html ='<div class="row">';                        
+                                if(data.news.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Noticias</b><br>';
+                                    $.each(data.news, function(index, value){
+                                        html += '<a href="/admin/news/edit/'+value.id+'">'+value.title.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.rs.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Redes Sociales</b><br>';
+                                    $.each(data.rs, function(index, value){
+                                        html += '<a href="/admin/rs/edit/'+value.id+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.sponsors.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Patrocinadores</b><br>';
+                                    $.each(data.sponsors, function(index, value){
+                                        html += '<a href="/admin/sponsor/edit/'+value.id+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.rfeg_title.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Titulos RFEG</b><br>';
+                                    $.each(data.rfeg_titles, function(index, value){
+                                        html += '<a href="/admin/rfeg/'+value.type+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.courses.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Cursos</b><br>';
+                                    $.each(data.courses, function(index, value){
+                                        html += '<a href="/admin/courses">'+value.curso.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.normativas.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Normativas</b><br>';
+                                    $.each(data.normativas, function(index, value){
+                                        html += '<a href="/admin/normativa_school">'+value.documento.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.events.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Eventos</b><br>';
+                                    $.each(data.events, function(index, value){
+                                        //obtenemos mes y año del campo fecha
+                                        var fecha = value.fecha.split('-');
+                                        html += '<a href="/admin/calendario/'+fecha[1]+'/'+fecha[0]+'">'+value.competicion.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.albums.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Albums</b><br>';
+                                    $.each(data.albums, function(index, value){
+                                        html += '<a href="/admin/album/edit/'+value.id+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.journals.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Revistas</b><br>';
+                                    $.each(data.journals, function(index, value){
+                                        html += '<a href="/admin/journal/edit/'+value.id+'">'+value.title.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.banners.length > 0){
+                                    html += '<div class="col s4">';
+                                    html += '<b>Banners</b><br>';
+                                    $.each(data.banners, function(index, value){
+                                        html += '<a href="/admin/banner/edit/'+value.id+'">'+value.place.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.categories.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Categorias</b><br>';
+                                    $.each(data.categories, function(index, value){
+                                        html += '<a href="/admin/categoriesNew">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.table1.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Tabla 1</b><br>';
+                                    $.each(data.tabla1, function(index, value){
+                                        html += '<a href="/admin/rfeg/">'+value.documento.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.table2.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Tabla 2</b><br>';
+                                    $.each(data.tabla2, function(index, value){
+                                        html += '<a href="/admin/rfeg/">'+value.nombre.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.table7.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Tabla 7</b><br>';
+                                    $.each(data.tabla7, function(index, value){
+                                        html += '<a href="/admin/rfeg/">'+value.titulo.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.employees.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Empleados</b><br>';
+                                    $.each(data.employees, function(index, value){
+                                        html += '<a href="/admin/employee/edit/'+value.id+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.especialidades.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Especialidades</b><br>';
+                                    $.each(data.especialidades, function(index, value){
+                                        html += '<a href="/admin/especialidad/'+value.id+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.page.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Paginas</b><br>';
+                                    $.each(data.pages, function(index, value){
+                                        html += '<a href="'+value.url+'" target="_blank">'+value.title.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.general.length > 0){
+                                    html += '<div class="col s4">';
+                                    html += '<b>General</b><br>';                                    
+                                    $.each(data.general, function(index, value){
+                                        html += '<a href="/admin/general_list">'+value.title.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.teams.length > 0){                                   
+                                    html += '<div class="col s4">';
+                                    html += '<b>Equipos</b><br>';
+                                    $.each(data.teams, function(index, value){
+                                        html += '<a href="/admin/especialidad/'+value.especialidad+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.medias.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Medios</b><br>';
+                                    $.each(data.medias, function(index, value){
+                                        html += '<a href="/admin/media/edit/'+value.id+'">'+value.title.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.comisionesTecnicas.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Comisiones Tecnicas</b><br>';
+                                    $.each(data.comisionesTecnicas, function(index, value){
+                                        html += '<a href="/admin/especialidad/'+value.especialidad+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.colecciones.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Colecciones</b><br>';
+                                    $.each(data.colecciones, function(index, value){
+                                        html += '<a href="/admin/coleccion/edit/'+value.id+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                if(data.resultados.length > 0){                                    
+                                    html += '<div class="col s4">';
+                                    html += '<b>Resultados</b><br>';
+                                    $.each(data.resultados, function(index, value){
+                                        html += '<a href="/admin/especialidad/'+value.especialidad+'">'+value.name.substr(0,40)+'...</a><br>';
+                                    });
+                                    html += '</div>';
+                                }
+                                console.log(html)
+                                $('.resultados_search').append(html);
+                            }                             
+                        });
+                    }
+                });
             });
             var bPreguntar = true;
  

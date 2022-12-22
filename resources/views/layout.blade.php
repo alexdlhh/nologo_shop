@@ -6,6 +6,18 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         @yield('css')
+        <style>
+            #video_header{
+                width: 100%;
+                position: relative;
+                z-index: 1;
+                background-image: url({{$front['general']['img_pral']}});
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                height: 700px;
+            }
+        </style>
     </head>
     <body> 
         <!--BARA DE CARGA DE LA WEB, debe ser una línea blanca que se valla rellenando de azul conforme termina de cargar la web-->
@@ -16,7 +28,7 @@
         <nav class="nav-extended">
             <div class="nav-wrapper">
             <a href="/" class="brand-logo">
-                <img src="/blanco.png" alt="rfeg">
+                <img src="{{$front['general']['logo']}}" alt="rfeg">
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="center-box hide-on-med-and-down">
@@ -32,9 +44,7 @@
                         <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
                     </li>
                 @else
-                    <li><a href=""><i class="material-icons">notifications</i> <div class="badge">4</div></a></li>
-                    <li class="avatar_fix"><a href="/dashboard"><div class="rounded_img"><img src="{{Auth::user()->avatar}}" alt=""></div></a></li>
-                    <li><a href=""><i class="material-icons">settings</i></a></li>
+                    <li class="avatar_fix"><a href="/dashboard"><div class="rounded_img"><img src="{{Auth::user()->avatar}}" alt=""></div></a></li>                    
                 @endguest
             </ul>
             </div>            
@@ -138,6 +148,17 @@
                 setTimeout(function(){
                     $('.sidenav').sidenav();
                 }, 500);
+                /**
+                 * Creamos un pop-up de aceptacion de cookies a no ser que exista una cookie llamada cookies con valor 1
+                 */
+                if (document.cookie.indexOf('cookies=1') == -1) {
+                    var html = '<div class="cookies"><div class="row"><div class="col s12"><p>Este sitio web utiliza cookies propias y de terceros para mejorar la experiencia de navegación, y ofrecer contenidos y publicidad de interés. Al continuar con la navegación entendemos que se acepta nuestra <a href="/pagina/cookies">política de cookies</a>. <a href="#" class="btn btn-aceptar">Aceptar</a></p></div></div></div>';
+                    $('body').append(html);
+                    $('.btn-aceptar').on('click', function(){
+                        document.cookie = "cookies=1; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+                        $('.cookies').remove();
+                    });
+                }
                 $(".header-link").on("mouseover", function () {
                     var seccion = $(this).attr('data-id');
                     $(".bocadillo").hide();
@@ -166,7 +187,7 @@
                 <div class="col l6 s12">
                     <div class="row">
                         <div class="col s4">
-                            <img src="/blanco.png" alt="rfeg" class="fotter_img">
+                            <img src="{{$front['general']['logo_f']}}" alt="rfeg" class="fotter_img">
                         </div>
                         <div class="col s8">
                             <div id="rrss">
@@ -176,12 +197,12 @@
                             </div>
                             <div class="location">
                                 <i class="material-icons">location_on</i><br>
-                                <p>Ferraz, 16.7º Dcha.</p>
-                                <p>28008 Madrid</p>
-                                <p>España</p>
+                                <p>{{$front['general']['direccion']}}</p>
+                                <p>{{$front['general']['direccion2']}}</p>
+                                <p>{{$front['general']['direccion3']}}</p>
                                 <br>
-                                <p><a href="tel:+34915401078" class="whitelink">+34 915 40 10 78</a></p>
-                                <p><a href="mailto:rfeg@rfegimnasia.es" class="whitelink">rfeg@rfegimnasia.es</a></p>
+                                <p><a href="tel:+34{{$front['general']['telefono']}}" class="whitelink">{{$front['general']['telefono']}}</a></p>
+                                <p><a href="mailto:{{$front['general']['email_g']}}" class="whitelink">{{$front['general']['email_g']}}</a></p>
                             </div>
                         </div>
                     </div>
@@ -191,51 +212,50 @@
                     <div class="col s6">
                             <h7 class="white-text">RFEG</h7>
                             <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Presentación</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Quiénes Somos</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Organo de gobierno</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Normativa</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Ley de Transparencia</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Estatutos</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Elecciones</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/comunicados">Presentación</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/rfeg">Quiénes Somos</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/gobierno">Organo de gobierno</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/normativa/reglamentos">Normativa</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/transparencia">Ley de Transparencia</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/estatutos">Estatutos</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/rfeg/elecciones">Elecciones</a></li>                                                    
                             </ul>
                             <h7 class="white-text">ESPECIALIDADES</h7>
                             <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Artística masculina</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Artística femenina</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Ritmica</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Trampolin</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Aeróbica</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Para Todos</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="#!">Parkour</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-masculina/">Artística masculina</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/ritmica/">Ritmica</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/trampolin/">Trampolin</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/aerobica/">Aeróbica</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/para-todos/">Para Todos</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/especialidades/parkour/">Parkour</a></li>                                                    
                             </ul>
                             <h7 class="white-text">MULTIMEDIA</h7>
                             <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Fotos y vídeos</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Revistas</a></li>                                                   
+                                <li><a class="grey-text text-lighten-3" href="/media">Fotos y vídeos</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/revistas">Revistas</a></li>                                                   
                             </ul>
                         </div>
                         <div class="col s6">
-                            <h7><a href="#!">NOTICIAS</a></h7>
+                            <h7><a href="/noticias">NOTICIAS</a></h7>
                             <div class="br"> </div>
                             <h7 class="white-text">CALENDARIO</h7>
                             <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Competiciones Nacionales</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Competiciones Internacionales</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>                                                    
                             </ul>
                             <h7 class="white-text">ESCUELA NACIONAL</h7>
                             <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Cursos</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Normativa</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/schools">Cursos</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/normativa">Normativa</a></li>                                                    
                             </ul>
                             <h7 class="white-text">INFORMACION LEGAL</h7>
                             <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Contacto</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Aviso Legal</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Política de Cookies</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Configuración de Cookies</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Política de Privacidad</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Mapa</a></li>                                                    
+                                <li><a class="grey-text text-lighten-3" href="/contacto">Contacto</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/pagina/legal">Aviso Legal</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/pagina/cookies">Política de Cookies</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/pagina/privacidad">Política de Privacidad</a></li>
+                                <li><a class="grey-text text-lighten-3" href="/mapa">Mapa</a></li>                                                    
                             </ul>
                         </div>
                     </div>

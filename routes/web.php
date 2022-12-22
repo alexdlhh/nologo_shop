@@ -21,6 +21,7 @@ use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\RFEGController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ProsearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +37,14 @@ use App\Http\Controllers\CalendarController;
 /**
  * AUTH
  */
-Route::get('getNewsFromServer', [NewsController::class, 'getNewsFromServer'])->name('getNewsFromServer');
+//Route::get('getNewsFromServer', [NewsController::class, 'getNewsFromServer'])->name('getNewsFromServer');
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('formulario-transparencia', [AuthController::class, 'formularioTransparencia'])->name('formularioTransparencia');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
+Route::post('updatePreferences', [AuthController::class, 'updatePreferences'])->name('updatePreferences');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('especialidades/{menu1?}/{menu2?}',[EspecialidadesController::class, 'frontPage'])->name('front.especialidades');
@@ -59,6 +61,9 @@ Route::get('getNewsScroll/{pag?}',[NewsController::class, 'getNewsScroll'])->nam
 Route::get('getMediaScroll/{pag}/{especialidad?}',[MediaController::class, 'getMediaScroll'])->name('getMediaScroll');
 Route::get('getMediaScrollGeneral/{pag}/{especialidad?}/{coleccion?}',[MediaController::class, 'scrollComplete'])->name('scrollComplete');
 Route::get('getNewsScrollEspecialidad/{pag}/{especialidad?}',[EspecialidadesController::class, 'getNewsScrollEspecialidad'])->name('getNewsScrollEspecialidad');
+Route::get('contacto',[AuthController::class, 'contacto'])->name('contacto');
+Route::get('mapa',[AuthController::class, 'mapa'])->name('mapa');
+Route::get('pagina/{alias}',[PageController::class, 'frontPage'])->name('front.page');
 /**
  * HOME
  */
@@ -185,12 +190,6 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('/admin/edit_especialidad/resultados/delete/{id}',[EspecialidadesController::class,'resultadoDelete'])->name('admin.resultados.delete');
     Route::get('/admin/edit_especialidad/resultadosfile/delete/{id}',[EspecialidadesController::class,'resultadoFileDelete'])->name('admin.resultadosFile.delete');
 
-    /**ADMIN EN DIRECTO 
-    Route::get('admin/directo/{especialidad}/{year}',[DirectoController::class,'getAll'])->name('admin.directo.list');
-    Route::get('admin/directo/{id}',[DirectoController::class,'getOne'])->name('admin.directo.edit');
-    Route::get('admin/directo/create',[DirectoController::class,'create'])->name('admin.directo.create');
-    Route::post('admin/directo/save',[DirectoController::class,'postCreate'])->name('admin.directo.store');
-    Route::post('admin/directo/delete',[DirectoController::class,'postDelete'])->name('admin.directo.delete');*/
     /**ADMIN CALENDARIO */
     Route::get('admin/calendario/{month?}/{year?}',[CalendarController::class,'getMonth'])->name('admin.calendar.list');
     Route::get('admin/eventos/{id}',[CalendarController::class,'getOne'])->name('admin.evento.edit');
@@ -203,11 +202,6 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/comisiones/save',[ComisionesController::class,'postCreate'])->name('admin.comisiones.store');
     Route::post('admin/comisiones/delete',[ComisionesController::class,'postDelete'])->name('admin.comisiones.delete');
     /**ADMIN INFORMACION 
-    Route::get('admin/informacion/{especialidad}/{year}',[InformacionController::class,'getAll'])->name('admin.informacion.list');
-    Route::get('admin/informacion/{id}',[InformacionController::class,'getOne'])->name('admin.informacion.edit');
-    Route::get('admin/informacion/create',[InformacionController::class,'create'])->name('admin.informacion.create');
-    Route::post('admin/informacion/save',[InformacionController::class,'postCreate'])->name('admin.informacion.store');
-    Route::post('admin/informacion/delete',[InformacionController::class,'postDelete'])->name('admin.informacion.delete');*/
     /**ADMIN RFEG */
     Route::get('admin/rfeg',[RfegController::class,'adminRFEG'])->name('admin.rfeg.section');
     Route::get('admin/rfeg/{section}/{subsection?}',[RfegController::class,'adminRFEGSection'])->name('admin.rfeg.list');
@@ -231,4 +225,13 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/employees/save',[EmployeeController::class,'postCreate'])->name('admin.employees.store');
     Route::get('admin/employee/delete/{id}',[EmployeeController::class,'delete'])->name('admin.employees.delete');
     Route::post('admin/employee/general',[EmployeeController::class,'postGeneral'])->name('admin.employees.general');
+    /**ADMIN STATICS */
+    Route::get('admin/page_list/{search?}',[PageController::class,'adminPage'])->name('admin.page.section');
+    Route::get('admin/page_edit/{id}',[PageController::class,'adminPageEdit'])->name('admin.page.edit');
+    Route::post('admin/page/save',[PageController::class,'save'])->name('admin.page.store');
+    /**ADMIN GENERAL */
+    Route::get('admin/general_list/{search?}',[PageController::class,'adminGeneral'])->name('admin.general.section');
+    Route::post('admin/general/save',[PageController::class,'saveGeneral'])->name('admin.general.store');
+    /**PROSEARCH */
+    Route::get('prosearch/{search}',[ProsearchController::class,'prosearch'])->name('prosearch');
 });

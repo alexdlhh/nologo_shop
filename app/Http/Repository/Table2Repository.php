@@ -104,4 +104,18 @@ class Table2Repository
         $table2 = $table2Mapper->mapCollection($table2->toArray());
         return $table2;
     }
+
+    /**
+     * Buscamos en todos los campos de rfeg_table2
+     */
+    public function search($search){
+        $table2Mapper = new Table2Mapper();
+        $table2 = DB::table('rfeg_table2')
+            ->where('nombre', 'like', '%'.$search.'%')
+            ->orWhere('cargo', 'like', '%'.$search.'%')
+            ->orWhere('especialidad', 'like', '%'.$search.'%')
+            ->get();
+        $table2 = $table2Mapper->mapCollection($table2->toArray());
+        return $table2;
+    }
 }

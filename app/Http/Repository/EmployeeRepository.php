@@ -127,4 +127,20 @@ class EmployeeRepository
         $employee = $employeeMapper->mapCollection($employee->toArray());
         return $employee;
     }
+
+    /**
+     * Buscamos en todos los campos de employee
+     */
+    public function search($search){
+        $employeeMapper = new EmployeeMapper();
+        $employee = DB::table('employee')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('email', 'like', '%'.$search.'%')
+            ->orWhere('phone', 'like', '%'.$search.'%')
+            ->orWhere('charge', 'like', '%'.$search.'%')
+            ->orWhere('twitter', 'like', '%'.$search.'%')
+            ->get();
+        $employee = $employeeMapper->mapCollection($employee->toArray());
+        return $employee;
+    }
 }

@@ -112,4 +112,33 @@ class ResultadosRepository{
     {
         DB::table('resultados_file')->where('id', '=', $id)->delete();
     }
+
+    /**
+     * Buscamos en todos los campos de la tabla resultados
+     * @param $search
+     * @return array
+     */
+    public function search($search){
+        $resultados = DB::table('resultados')
+            ->where('resultados.name', 'like', '%'.$search.'%')
+            ->orWhere('resultados.lugar', 'like', '%'.$search.'%')
+            ->get();
+        $resultadosMapper = new ResultadosMapper();
+        $resultados = $resultadosMapper->mapCollection($resultados);
+        return $resultados;
+    }
+
+    /**
+     * Buscamos en todos los campos de la tabla resultados_file
+     * @param $search
+     * @return array
+     */
+    public function searchFile($search){
+        $resultadosFile = DB::table('resultados_file')
+            ->where('resultados_file.nombre', 'like', '%'.$search.'%')
+            ->get();
+        $resultadosFileMapper = new ResultadosFileMapper();
+        $resultadosFile = $resultadosFileMapper->mapCollection($resultadosFile);
+        return $resultadosFile;
+    }
 }

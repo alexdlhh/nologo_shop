@@ -9,7 +9,7 @@ use App\Models\User;
 use Hash;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\PagesRepository;
-
+use App\Http\Repository\GeneralRepository;
 class AuthController extends Controller
 {
     /**
@@ -21,18 +21,19 @@ class AuthController extends Controller
     public function index(){
         $pageRepository = new PagesRepository();
         $RSRepository = new RSRepository();
+        $generalRepository = new GeneralRepository();
         $headers = $pageRepository->getAll('section','=','1');
         $rs = $RSRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => 'Login',
-            'rs' => $rs
+            'rs' => $rs,
+            'general' => $general
         ];
         return view('auth.login')->with('front',$front);
 
     }  
-
-      
 
     /**
      * Write code on Method
@@ -43,18 +44,19 @@ class AuthController extends Controller
     public function registration(){
         $pageRepository = new PagesRepository();
         $RSRepository = new RSRepository();
+        $generalRepository = new GeneralRepository();
         $headers = $pageRepository->getAll('section','=','1');
         $rs = $RSRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => 'Login',
-            'rs' => $rs
+            'rs' => $rs,
+            'general' => $general
         ];
         return view('auth.registration')->with('front',$front);
 
     }
-
-      
 
     /**
      * Write code on Method
@@ -78,8 +80,6 @@ class AuthController extends Controller
         return redirect("login")->withSuccess('Oppes! Parece que tu contraseña o usuario son incorrectos');
 
     }
-
-      
 
     /**
      * Write code on Method
@@ -119,8 +119,6 @@ class AuthController extends Controller
         return $check;
     }
 
-    
-
     /**
      * Write code on Method
      *
@@ -130,12 +128,15 @@ class AuthController extends Controller
     public function dashboard(){
         $pageRepository = new PagesRepository();
         $RSRepository = new RSRepository();
+        $generalRepository = new GeneralRepository();
         $headers = $pageRepository->getAll('section','=','1');
         $rs = $RSRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => 'Dashboard',
-            'rs' => $rs
+            'rs' => $rs,
+            'general' => $general
         ];
         $admin = ['title' => 'Dashboard','section'=>'users','subsection'=>'listusers'];
         if(Auth::check()){
@@ -145,8 +146,6 @@ class AuthController extends Controller
         return redirect("login")->withSuccess('Opps! No tienes acceso');
 
     }
-
-    
 
     /**
      * Write code on Method
@@ -164,9 +163,7 @@ class AuthController extends Controller
       ]);
 
     }
-
-    
-
+     
     /**
      * Write code on Method
      *
@@ -232,6 +229,16 @@ class AuthController extends Controller
     }
 
     /**
+     * Actualizamos preferencias de usuario
+     */
+    public function updatePreferences(Request $request){
+        $user = User::find(Auth::user()->id);
+        $user->preferences = json_encode($request->preferences);
+        $user->save();
+        return 1;
+    }
+
+    /**
      * Delete user
      * @param  int $id
      * @return int status
@@ -246,14 +253,49 @@ class AuthController extends Controller
     public function formularioTransparencia(){
         $pageRepository = new PagesRepository();
         $RSRepository = new RSRepository();
+        $generalRepository = new GeneralRepository();
         $headers = $pageRepository->getAll('section','=','1');
         $rs = $RSRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,
             'section' => 'Dashboard',
-            'rs' => $rs
+            'rs' => $rs,
+            'general' => $general
         ];
         return view('transparenciaform')->with('front',$front);
+    }
+
+    public function contacto(){
+        $pageRepository = new PagesRepository();
+        $RSRepository = new RSRepository();
+        $generalRepository = new GeneralRepository();
+        $headers = $pageRepository->getAll('section','=','1');
+        $rs = $RSRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
+        $front = [
+            'headers' => $headers,
+            'section' => 'Contacto',
+            'rs' => $rs,
+            'general' => $general
+        ];
+        return view('contacto')->with('front',$front);
+    }
+
+    public function mapa(){
+        $pageRepository = new PagesRepository();
+        $RSRepository = new RSRepository();
+        $generalRepository = new GeneralRepository();
+        $headers = $pageRepository->getAll('section','=','1');
+        $rs = $RSRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
+        $front = [
+            'headers' => $headers,
+            'section' => 'mapa',
+            'rs' => $rs,
+            'general' => $general
+        ];
+        return view('mapa')->with('front',$front);
     }
     
 }

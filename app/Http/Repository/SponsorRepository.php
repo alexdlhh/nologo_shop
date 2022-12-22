@@ -108,4 +108,19 @@ class SponsorRepository
             ->delete();
         return true;
     }
+
+    /**
+     * buscamos en todas las columnas de sponsor
+     */
+    public function search($search){
+        $sponsorMapper = new SponsorMapper();
+        $sponsors = DB::table('sponsor')
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('description', 'like', '%'.$search.'%')
+            ->orWhere('url', 'like', '%'.$search.'%')
+            ->orWhere('subtitle', 'like', '%'.$search.'%')
+            ->get();
+        $sponsorList = $sponsorMapper->mapCollection($sponsors);
+        return $sponsorList;
+    }
 }
