@@ -59,27 +59,30 @@
             <div class="prefs">
                 <div class="row">
                     <div class="col s6">
+                        @php
+                        $personalPrefs = json_decode(Auth::user()->preferences,true);
+                        @endphp
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="1"/>
+                            <input type="checkbox" class="especialidad" value="1" {{in_array(1,$personalPrefs)?"checked":''}}/>
                             <span>Artística Masc.</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="2"/>
+                            <input type="checkbox" class="especialidad" value="2" {{in_array(2,$personalPrefs)?"checked":''}}/>
                             <span>Artística Fem.</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="3"/>
+                            <input type="checkbox" class="especialidad" value="3" {{in_array(3,$personalPrefs)?"checked":''}}/>
                             <span>Rítmica</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="4"/>
+                            <input type="checkbox" class="especialidad" value="4" {{in_array(4,$personalPrefs)?"checked":''}}/>
                             <span>Trampolin</span>
                         </label>
                         </p>
@@ -87,25 +90,25 @@
                     <div class="col s6">
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="5"/>
+                            <input type="checkbox" class="especialidad" value="5" {{in_array(5,$personalPrefs)?"checked":''}}/>
                             <span>Aeróbica</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="6"/>
+                            <input type="checkbox" class="especialidad" value="6" {{in_array(6,$personalPrefs)?"checked":''}}/>
                             <span>Acrobática</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="7"/>
+                            <input type="checkbox" class="especialidad" value="7" {{in_array(7,$personalPrefs)?"checked":''}}/>
                             <span>Para Todos</span>
                         </label>
                         </p>
                         <p>
                         <label>
-                            <input type="checkbox" class="especialidad" value="8"/>
+                            <input type="checkbox" class="especialidad" value="8" {{in_array(8,$personalPrefs)?"checked":''}}/>
                             <span>Parkour</span>
                         </label>
                         </p>

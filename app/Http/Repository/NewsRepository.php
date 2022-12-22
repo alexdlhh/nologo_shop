@@ -369,17 +369,19 @@ class NewsRepository
         $newsMapper = new NewsMapper();
         $personal = json_decode($personal);
         $news = array();
-        foreach($personal as $p){
-            $res = DB::table('new')
-                ->join('tag_new_rel', 'new.id', '=', 'tag_new_rel.id_new')
-                ->where('tag_new_rel.id_tag', $p)
-                ->where('new.status', 1)
-                ->orderBy('new.created_at', 'desc')
-                ->skip(0)
-                ->take(10)
-                ->get();
-            foreach($res as $r){
-                $news[]=$r;
+        if(!empty($personal)){
+            foreach($personal as $p){
+                $res = DB::table('new')
+                    ->join('tag_new_rel', 'new.id', '=', 'tag_new_rel.id_new')
+                    ->where('tag_new_rel.id_tag', $p)
+                    ->where('new.status', 1)
+                    ->orderBy('new.created_at', 'desc')
+                    ->skip(0)
+                    ->take(10)
+                    ->get();
+                foreach($res as $r){
+                    $news[]=$r;
+                }
             }
         }
         $news = $newsMapper->mapCollection($news);

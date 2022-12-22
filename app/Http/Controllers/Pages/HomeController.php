@@ -28,7 +28,7 @@ class HomeController extends Controller
         $sponsorRepository = new SponsorRepository();
         $generalRepository = new GeneralRepository();
         $eventoRepository = new EventoRepository();
-        $preferencias = Auth::user()->preferences;
+        $preferencias = !empty(Auth::user())?Auth::user()->preferences:'{}';
         $news = $newRepository->getNewsByYearAndMonth(date('Y'),date('m'));
 
         $areaPersonal = [
