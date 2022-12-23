@@ -133,7 +133,7 @@
                 <div class="flecha"></div>
                 <ul>
                     <li><img width="20" src="/icon.png" alt=""><a href="/schools">Cursos</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/normativa">Normativa</a></li>
+                    <li><img width="20" src="/icon.png" alt=""><a href="/schools/normativa/">Normativa</a></li>
                 </ul>
             </div>            
         </div>

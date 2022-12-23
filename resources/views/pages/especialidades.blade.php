@@ -124,7 +124,7 @@ $header_subtitle_esp = [
                         @foreach($resultados['documentos'] as $documentos)
                             <div class="col s2">
                                 <div class="image_doc">
-                                    <img src="/icon-pdf.png" alt="">
+                                    <a href="{{$documentos->documento}}" download><img src="/icon-pdf.png" alt=""></a>
                                     <a href="#modal1" data-url="{{$documentos->documento}}" class="modal-trigger openpdf pdf2">                                        
                                         <p>{{$documentos->nombre}}</p>
                                     </a>                                    

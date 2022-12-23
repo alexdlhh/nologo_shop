@@ -202,7 +202,9 @@
         </div>
     </div> 
 </div>
-
+<div class="leftf">
+    <a href="/especialidades/{{$admin['especialidades']->getAlias()}}/" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+</div>
 <!-- Modal Structure -->
 <div id="add_team" class="modal">
     <div class="modal-content">

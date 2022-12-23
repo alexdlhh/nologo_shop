@@ -83,7 +83,10 @@ $normativa_heads = [
                 <div class="col s6">{{$rfeg_content->documento}}</div>
                 <div class="col s2">{{$rfeg_content->created_at}}</div>
                 <div class="col s2">{{$rfeg_content->updated_at}}</div>
-                <div class="col s2"><a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                <div class="col s2">
+                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
+                    <a href="{{$rfeg_content->download_pdf}}" download class=""><i class="material-icons">file_download</i></a>
+                </div>
             </div>
             @endforeach
             @endif

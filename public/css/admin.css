@@ -152,6 +152,16 @@ li a p{
     right: 30px;
     position: fixed;
 }
+.leftf{
+    float: left;
+    bottom: 30px;
+    left: 30px;
+    position: fixed;
+}
+.home_admin{
+    height: 250px;
+    padding: 10px;
+}
 #filtros{
     padding-bottom: 0px;
     margin-bottom: 0px;

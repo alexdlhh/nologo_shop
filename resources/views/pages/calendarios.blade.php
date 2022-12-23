@@ -65,7 +65,7 @@ $header_subtitle_esp = [
         @if(($front['menu2']=='todo' || $front['menu2']=='nacional') && $evento->getNacional()==1)
         <div id="tabla4">
             <div class="container_table">
-                <h4 class="color_violet">Calendario nacional @if(!empty($evento->getDownloadPdf())) <a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a>@endif</h4>
+                <h4 class="color_violet">Calendario nacional @if(!empty($evento->getDownloadPdf())) <a href="{{$evento->getDownloadPdf()}}" download class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a>@endif</h4>
                 <div class="row head_table">
                     <div class="col s4">COMPETICIÓN</div>
                     <div class="col s2">FECHA</div>

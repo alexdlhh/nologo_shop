@@ -67,8 +67,9 @@
             </div>
         </div>
     </div>
-    <div class="rightf">
+    <div class="leftf">
         <a href="/admin/album/create" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a href="/revistas" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
     </div>
 </div>
 @endsection

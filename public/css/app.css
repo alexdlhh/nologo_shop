@@ -1300,6 +1300,8 @@ h3.especial{
 .pasarela_img img{
     height: 300px;
     width: auto;
+    border-radius: 5px;
+    margin: 0px 5px;
 }
 .pasarela-text{
     height: 80px;

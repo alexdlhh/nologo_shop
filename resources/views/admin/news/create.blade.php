@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div class="rightf">
+    <div class="leftf">
         <a href="javascript:void(0);" id="del" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
         <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
     </div>
@@ -154,14 +154,14 @@
                                     console.log(data2);
                                     if(files.length == i+1){
                                         removeSpiner();
-                                        window.location.href='/admin/news/edit/'+data;
+                                        window.location.href='/admin/news';
                                     }
                                 }
                             });
                         }
                     }else{
                         removeSpiner();
-                        window.location.href='/admin/news/edit/'+data;
+                        window.location.href='/admin/news';
                     }
                 }
             });

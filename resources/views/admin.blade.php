@@ -12,7 +12,7 @@
         <div class="row" id="admin_page">
             <div class="col s12 m2" id="sidebar_admin">
                 <div id="adminlogo">
-                    <img src="/logon.png" alt="">
+                    <a href="/dashboard"><img src="/logon.png" alt=""></a>
                 </div>
                 <ul class="collapsible">
                     <li>
@@ -112,18 +112,6 @@
                                         <p class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Administrar conjunto de revistas</p>
                                     </a>
                                 </li>
-                                <!--li>
-                                    <a href="/admin/album/create" class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}"><b>Crear Album</b></span><span class="child-selector {{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'savealbum' ? 'active' : ''}}">Crear nuevo conjunto de revistas</p>
-                                    </a>
-                                </li-->
-                                <!--li>
-                                    <a href="/admin/journals" class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}"><b>Listar Revistas</b></span><span class="child-selector {{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listjournal' ? 'active' : ''}}">Listado de Revistas</p>
-                                    </a>
-                                </li-->
                                 <li>
                                     <a href="/admin/journal/create" class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savejournal' ? 'active' : ''}}"><b>Añadir Revista</b></span><span class="child-selector {{$admin['subsection'] == 'savejournal' ? 'active' : ''}}">></span>
@@ -199,12 +187,6 @@
                                         <p class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">Normativa de escuelas y cursos RFEG</p>
                                     </a>
                                 </li>
-                                <!--li>
-                                    <a href="/admin/school/create" class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}"><b>Añadir Escuela</b></span><span class="child-selector {{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'saveschool' ? 'active' : ''}}">Añadir nueva escuela</p>
-                                    </a>
-                                </li-->
                                 <li>
                                     <a href="/admin/courses" class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}"><b>Listar Cursos</b></span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
@@ -316,7 +298,7 @@
                                             <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons {{(!empty($current_url[2]) && !empty($current_url[4]) && $current_url[2]=='users' && $current_url[4]==Auth::user()->id) ? 'active' : ''}}">person</i></a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="/admin/eventos"><i class="material-icons">notifications</i></a>
+                                            <a class="nav-link" href="/"><i class="material-icons">open_in_new</i></a>
                                         </li>
                                     @endguest
                             </ul>
@@ -551,9 +533,19 @@
                     }
                 });
             });
-            var bPreguntar = true;
- 
-            //window.onbeforeunload = preguntarAntesDeSalir;
+            var bPreguntar = false;
+
+            $('input').change(function(){
+                bPreguntar = true;
+            });
+            $('textarea').change(function(){
+                bPreguntar = true;
+            });
+            $('select').change(function(){
+                bPreguntar = true;
+            });
+            
+            window.onbeforeunload = preguntarAntesDeSalir;
         
             function preguntarAntesDeSalir () {
                 var respuesta;

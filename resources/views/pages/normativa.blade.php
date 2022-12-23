@@ -71,7 +71,10 @@ $header_subtitle_esp = [
                 <div class="col s6">{{$normativas->getDocumento()}}</div>
                 <div class="col s2">{{str_replace('-','/',$normativas->getCreatedAt())}}</div>
                 <div class="col s2">{{str_replace('-','/',$normativas->getUpdatedAt())}}</div>
-                <div class="col s2"><a href="#modal1" data-url="{{$normativas->getDownloadPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                <div class="col s2">
+                    <a href="#modal1" data-url="{{$normativas->getDownloadPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
+                    <a href="{{$normativas->getDownloadPdf()}}" download class=""><i class="material-icons">file_download</i></a>
+                </div>
             </div>
             @endif
             @endforeach

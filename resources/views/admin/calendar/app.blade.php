@@ -118,6 +118,9 @@
             </div>
         </div>
     </div>
+    <div class="leftf">
+        <a href="/calendar" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+    </div>
     <div class="rightf">
         @php
         $nextMonth = $admin['month'] == 12 ? 1 : $admin['month'] + 1;
@@ -384,7 +387,11 @@
                     if(data!=0){
                         M.toast({html: 'Evento creado correctamente'});
                         $('#add_evento').modal('close');
-                        location.reload();
+                        if(confirm('¿Desea añadir una noticia?')){
+                            window.location.href = '/admin/news/create';
+                        }else{
+                            location.reload();
+                        }
                     }else{
                         M.toast({html: 'Error al crear el evento'});
                     }

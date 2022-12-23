@@ -54,6 +54,9 @@
         </div>
     </div>
 </div>
+<div class="leftf">
+    <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+</div>
 @endsection
 
 @section('scripts')

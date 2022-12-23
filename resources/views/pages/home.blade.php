@@ -354,23 +354,37 @@
             $('.pasarela2 .pasarela-item').each(function(){
                 anchoP2 += $(this).width();
             });
-            
+            let slow = 30;
+            let slow2 = 30;
             setInterval(()=>{
                 let roll = $('.r1').css('left');
                 let roll2 = $('.r2').css('left');
+                
                 if(!pasarela1_hover){
-                    $('.r1').css('left',parseInt(roll)-1+'px');
+                    $('.r1').css('left',parseInt(roll)-2+'px');
                     if(parseInt(roll) < -anchoP1){
                         $('.r1').css('left','0px');
                     }
+                    slow = 30;
+                }else{
+                    if(slow > 0){
+                        slow--;
+                        $('.r1').css('left',parseInt(roll)-1+'px');
+                    }                    
                 }
                 if(!pasarela2_hover){
-                    $('.r2').css('left',parseInt(roll2)-1+'px');
+                    $('.r2').css('left',parseInt(roll2)-2+'px');
                     if(parseInt(roll2) < -anchoP2){
                         $('.r2').css('left','0px');
                     };
+                    slow2 = 30;
+                }else{
+                    if(slow2 > 0){
+                        slow2--;
+                        $('.r2').css('left',parseInt(roll2)-1+'px');
+                    }
                 }
-            },10);
+            },20);
 
         }); 
     </script>

@@ -49,19 +49,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <button class="btn waves-effect waves-light save" type="submit" name="action">Guardar
-                                        <i class="material-icons right">send</i>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="leftf">
+    <button class="btn waves-effect waves-light save" type="submit" name="action">Guardar
+        <i class="material-icons right">send</i>
+    </button>
+    <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
 </div>
 @endsection
 
@@ -85,7 +84,7 @@
                     contentType: false,
                     success: function (data) {
                         if(data!=''){
-                            window.location.href = '/admin/banner/edit/'+data;
+                            window.location.href = '/admin/banners';
                         }
                     }
                 });

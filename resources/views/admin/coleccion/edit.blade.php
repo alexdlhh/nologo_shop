@@ -24,10 +24,11 @@
             </div>
         </div>
     </div>
-    <div class="rightf">
+    <div class="leftf">
         <a href="javascript:void(0);" id="del" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
         <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
         <a href="/admin/media_list/{{ $admin['coleccion']->id }}" id="save" class="btn-floating btn-large waves-effect waves-light yellow"><i class="material-icons">remove_red_eye</i></a>
+        <a href="/media/{{ $admin['coleccion']->getName()}}" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
     </div>
 </div>
 @endsection
@@ -50,7 +51,7 @@
                 contentType: false,
                 success: function(data){
                     removeSpiner();
-                    window.location.reload();
+                    window.location.href='/admin/colecciones';
                 }
             });
         });

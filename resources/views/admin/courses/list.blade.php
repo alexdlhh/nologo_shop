@@ -76,6 +76,9 @@
         </div>
     </div>
 </div>
+<div class="leftf">
+    <a href="/schools" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+</div>
 <div id="edit_rfeg_title" class="modal">
     <div class="modal-content">
         <h4>Editar Tabla</h4>

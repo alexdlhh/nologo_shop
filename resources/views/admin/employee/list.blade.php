@@ -122,8 +122,9 @@ $normativa_heads = [
             </div>
         </div>
     </div>
-    <div class="rightf">
+    <div class="leftf">
         <a href="#add_rfeg_title" class="modal-trigger btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a href="/rfeg/rfeg" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
     </div>
 </div>
 <div id="add_rfeg_title" class="modal">
