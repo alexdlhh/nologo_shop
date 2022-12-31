@@ -52,10 +52,11 @@
                             @php
                                 $day = date('d', strtotime($new->getCreatedAt()));
                                 $month = date('M', strtotime($new->getCreatedAt()));
+                                $year = date('Y', strtotime($new->getCreatedAt()));
                             @endphp
                             <tr>
                                 <td>
-                                    <a class="homenews" href="/noticias/{{$new->getPermantlink()}}">
+                                    <a class="homenews" href="/noticias/{{$year}}/{{$month}}/{{$new->getPermantlink()}}">
                                     <div class="row">
                                         <div class="col s1">
                                             <div class="calendar_day">
@@ -179,12 +180,19 @@
     <div class="frase2">Más que un deporte, una pasión ___</div>
 </div>
 <div class="clear-both"></div>
-<div class="row" id="noticias">
-    <h2>Noticias</h2>
+<div class="row container n1">
+    <h2><a href="/noticias">Noticias</a></h2>
+</div>
+<div class="row" id="noticias">    
     <div class="pasarela pasarela1">
         <div class="roll r1">
             @foreach($front['news'] as $new)
-            <a class="pasarela-item" href="{{$new->getPermantlink()}}">
+            @php
+                $day = date('d', strtotime($new->getCreatedAt()));
+                $month = date('M', strtotime($new->getCreatedAt()));
+                $year = date('Y', strtotime($new->getCreatedAt()));
+            @endphp
+            <a class="pasarela-item" href="/noticias/{{$year}}/{{$month}}/{{$new->getPermantlink()}}">
                 <div class="pasarela_img">
                     <img src="{{$new->getFeatureImage()}}">                    
                 </div>                
@@ -196,8 +204,10 @@
         </div>
     </div>
 </div>
-<div class="row" id="eventos">
-    <h2>Eventos</h2>
+<div class="row container e1">
+    <h2><a href="/calendar">Eventos</a></h2>
+</div>
+<div class="row" id="eventos">    
     <div class="pasarela pasarela2">
         <div class="roll r2">
         @foreach($front['eventos'] as $eventos)
@@ -232,11 +242,15 @@
             M.updateTextFields();
             $('.selector-vertical').click(function(){
                 if($('#hidden_profile').css('display')=='none'){
-                    $('#hidden_profile').fadeIn();
-                    $('#profile').fadeOut();
+
+                    $('#profile').fadeOut(100);
+                    $('#hidden_profile').fadeIn(200);
+                    
                 }else{
-                    $('#hidden_profile').fadeOut();
-                    $('#profile').fadeIn();
+                    
+                    $('#hidden_profile').fadeOut(100);    
+                    $('#profile').fadeIn(200);
+
                 }                
             })
             $('#hidden_profile').click(function(){

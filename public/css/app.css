@@ -299,15 +299,37 @@ nav ul a:hover {
     background: linear-gradient(to right, #0A2540 0%,#15c8d5);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#15c8d5',GradientType=2 );
 }
+.n1 h2{
+    color: white;
+    font-weight: 200;
+}
+.a1{
+    background-color: #0A2540;
+    color: white;
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+.e1 h2{
+    color: white;
+    font-weight: 200;
+}
+.n1 h2 a{
+    color: white;
+    font-weight: 200;
+}
+.e1 h2 a{
+    color: white;
+    font-weight: 200;
+}
 #noticias h2{
     color: white;
     padding-left:40px;
-    font-weight: 300;
+    font-weight: 200;
 }
 #eventos h2{
     color: white;
     padding-left:40px;
-    font-weight: 300;
+    font-weight: 200;
 }
 .newzone .carousel{
     padding-top: 20px;
@@ -480,7 +502,7 @@ h7 a{
     padding-top: 13px;
 }
 .bocadillo{
-    width: 200px;
+    width: 210px;
     position: absolute;
     background: white;
     padding-top: 20px;
@@ -514,30 +536,39 @@ h7 a{
     font-weight: bold;
     position: relative;
     top: -4px;
+    padding-left: 10px;
 }
 .bocadillo_rfeg {
-    left: 16.3%;
-    top: 12%;
+    left: 17.3%;
+    top: 9%;
+}
+.bocadillo_rfeg .flecha {
+    position: absolute;
+    left: 65px;
 }
 .bocadillo_especialities {
-    left: 16.7%;
-    width: 415px;
-    top: 12%;    
+    left: 17.3%;
+    width: 440px;
+    top: 9%;    
+}
+.bocadillo_especialities .flecha {
+    position: absolute;
+    left: 175px;
 }
 .bocadillo_especialities p{
     text-align: center;
 }
 .bocadillo_media {
     left: 44.3%;
-    top: 12%;
+    top: 9%;
 }
 .bocadillo_calendario {
     left: 36.8%;
-    top: 12%;
+    top: 9%;
 }
 .bocadillo.bocadillo_schools {
     left: 53%;
-    top: 12%;
+    top: 9%;
 }
 .noolimpicas{
     background: #EAEEF1;
