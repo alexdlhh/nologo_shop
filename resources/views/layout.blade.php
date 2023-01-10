@@ -41,7 +41,7 @@
             <ul class="right hide-on-med-and-down">
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                        <a class="nav-link modal-trigger" href="#login_modal">Iniciar Sesión</a>
                     </li>
                 @else
                     <li class="avatar_fix"><a href="/dashboard"><div class="rounded_img"><img src="{{Auth::user()->avatar}}" alt=""></div></a></li>                    
@@ -56,7 +56,7 @@
             @endforeach
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                    <a class="nav-link modal-trigger" href="#login_modal">Iniciar Sesión</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
@@ -72,13 +72,13 @@
             <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/comunicados">Presentación</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/rfeg">Quiénes Somos</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/gobierno">Organo de gobierno</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/normativa/reglamentos">Normativa</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/estatutos">Estatutos</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_presentacion.svg" alt=""><a href="/rfeg/comunicados">Presentación</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><a href="/rfeg/rfeg">Quiénes Somos</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><a href="/rfeg/gobierno">Organo de gobierno</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/normativa/reglamentos">Normativa</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_estatutos.svg" alt=""><a href="/rfeg/estatutos">Estatutos</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_elecciones.svg" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_especialities" data-id="especialidades">
@@ -118,33 +118,79 @@
             <div class="bocadillo bocadillo_media" data-id="multimedia">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/media">Fotos y vídeos</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/revistas">Revistas</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_fotos.svg" alt=""><a href="/media">Fotos y vídeos</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_revistas.svg" alt=""><a href="/revistas">Revistas</a></li>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_calendario" data-id="calendario">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_calnacional.svg" alt=""><a href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_calinternacional.svg" alt=""><a href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_schools" data-id="school">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/schools">Cursos</a></li>
-                    <li><img width="20" src="/icon.png" alt=""><a href="/schools/normativa/">Normativa</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><a href="/schools">Cursos</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/schools/normativa/">Normativa</a></li>
                 </ul>
             </div>            
         </div>
           
 
+        <!-- Modal Structure -->
+        <div id="login_modal" class="modal">
+            <div class="modal-content">
+            <form class="col s12" action="{{ route('login.post') }}" method="POST">
+                <div class="card-content">            
+                    @csrf
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div>
+                                <input type="email" id="email_address" class="validate" name="email" required autofocus>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+                            <label for="email_address" class="active">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div>
+                                <input type="password" id="password" class="validate" name="password" required>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
+                            </div>
+                            <label for="password" class="active">Contraseña</label>
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn3 btn-primary">
+                        Inicia Sesión
+                    </button> 
+                    <span> o </span> 
+                    <a class="btn4" href="/registration">
+                        Registrate
+                    </a>                     
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
 
         @yield('content')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script>
             $(document).ready(function(){
+                $('.modal').modal();
                 setTimeout(function(){
                     $('.sidenav').sidenav();
                 }, 500);
@@ -196,7 +242,7 @@
                                 @endforeach
                             </div>
                             <div class="location">
-                                <i class="material-icons">location_on</i><br>
+                                <img src="/icons/rfeg_ico_localizacion.svg" width="20" alt=""><br>
                                 <p>{{$front['general']['direccion']}}</p>
                                 <p>{{$front['general']['direccion2']}}</p>
                                 <p>{{$front['general']['direccion3']}}</p>

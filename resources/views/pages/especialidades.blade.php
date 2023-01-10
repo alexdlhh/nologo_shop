@@ -4,6 +4,10 @@
 @endsection
 
 @php
+function date_format_esp($date){
+    $date = new DateTime($date);
+    return $date->format('d/m/Y');
+}
 $header_esp=[
     'artistica-femenina' => '/images/2_GAF.jpg',
     'artistica-masculina' => '/images/1_GAM.jpg',
@@ -36,7 +40,7 @@ $header_subtitle_esp = [
 @endphp
 
 @section('content')
-<div class="container">
+<div class="container minheight">
     <div class="big_block"></div>
     <div class="listado">
         <div class="row">
@@ -149,7 +153,7 @@ $header_subtitle_esp = [
         @foreach($front['eventos'] as $evento)
         <div id="tabla4" class="{{$evento->getNacional()?'nacional':'internacional'}}">
             <div class="container_table">
-                <h4 class="color_violet">Calendario {{$evento->getNacional()?'nacional':'internacional'}} <a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icon-pdf.png" alt=""> DESCARGAR PDF</a></h4>
+                <h4 class="color_violet">Calendario {{$evento->getNacional()?'nacional':'internacional'}} <a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icons/rfeg_ico_pdfdownload.svg" alt=""> DESCARGAR PDF</a></h4>
                 <div class="row head_table">
                     <div class="col s4">COMPETICIÓN</div>
                     <div class="col s2">FECHA</div>
@@ -159,10 +163,10 @@ $header_subtitle_esp = [
                 </div>
                 <div class="row content_table">
                     <div class="col s4">{{$evento->getCompeticion()}}</div>
-                    <div class="col s2">{{str_replace('-','/',$evento->getFecha())}}/{{str_replace('-','/',$evento->getFechaFin())}}</div>
-                    <div class="col s2">{{str_replace('-','/',$evento->getLicencia())}}</div>
-                    <div class="col s2">{{str_replace('-','/',$evento->getInscripcion())}}</div>
-                    <div class="col s2">{{str_replace('-','/',$evento->getSorteo())}}</div>
+                    <div class="col s2">{{date_format_esp($evento->getFecha())}} - {{date_format_esp($evento->getFechaFin())}}</div>
+                    <div class="col s2">{{date_format_esp($evento->getLicencia())}}</div>
+                    <div class="col s2">{{date_format_esp($evento->getInscripcion())}}</div>
+                    <div class="col s2">{{date_format_esp($evento->getSorteo())}}</div>
                 </div>
             </div>
         </div>
@@ -223,7 +227,7 @@ $header_subtitle_esp = [
                     <div class="col s6">{{$rfeg_content->documento}}</div>
                     <div class="col s2">{{$rfeg_content->created_at}}</div>
                     <div class="col s2">{{$rfeg_content->updated_at}}</div>
-                    <div class="col s2"><a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a></div>
+                    <div class="col s2"><a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icons/rfeg_ico_pdfdownload.svg" alt=""></a></div>
                 </div>
                 @endforeach
                 @endif

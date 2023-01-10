@@ -4,6 +4,13 @@ Real Federación Española de Gimnasia
 @endsection
 
 @php
+/**
+* funcion que recoge un datetime y lo pasa a Formato de fechas: DD/MM/AAAA, sin horas
+*/
+function date_format_esp($date){
+    $date = new DateTime($date);
+    return $date->format('d/m/Y');
+}
 $titles = [
     'rfeg' => 'RFEG',
     'gobierno' => 'Gobierno',
@@ -25,7 +32,7 @@ $normativa_heads = [
 @endphp
 
 @section('content')
-<div class="container">
+<div class="container minheight">
     <div class="big_block"></div>
     <div class="listado">
         <div class="row">
@@ -75,17 +82,17 @@ $normativa_heads = [
                 <div class="col s6">DOCUMENTO</div>
                 <div class="col s2">FECHA PUBLICACIÓN</div>
                 <div class="col s2">FECHA ACTUALIZACIÓN</div>
-                <div class="col s2">DESCARGAR PDF</div>
+                <div class="col s2">VER/DESCARGAR PDF</div>
             </div>
             @if(!empty($front['content_tables'][$rfeg_title->id]))
             @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
             <div class="row content_table">
                 <div class="col s6">{{$rfeg_content->documento}}</div>
-                <div class="col s2">{{$rfeg_content->created_at}}</div>
-                <div class="col s2">{{$rfeg_content->updated_at}}</div>
+                <div class="col s2">{{date_format_esp($rfeg_content->created_at)}}</div>
+                <div class="col s2">{{date_format_esp($rfeg_content->updated_at)}}</div>
                 <div class="col s2">
-                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
-                    <a href="{{$rfeg_content->download_pdf}}" download class=""><i class="material-icons">file_download</i></a>
+                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icons/rfeg_ico_pdfview.svg" alt=""></a>
+                    <a href="{{$rfeg_content->download_pdf}}" download class=""><img width="30" src="/icons/rfeg_ico_pdfdownload.svg" alt=""></a>
                 </div>
             </div>
             @endforeach
@@ -196,7 +203,6 @@ $normativa_heads = [
             </div>
         </div>
     </div>
-
     <div id="empleados">
         @foreach($front['rfeg_title'] as $key=>$rfeg_title)
         <div class="bandejaemp">

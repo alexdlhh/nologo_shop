@@ -100,9 +100,10 @@ class RFEGController extends Controller
                 foreach($rfeg_title as $title){
                     $content_tables[$title->getId()] = $employeeRepository->getbyRfegTitle($title->getId());
                 }
-            }
-            foreach($rfeg_title as $title){
-                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
+            }else{
+                foreach($rfeg_title as $title){
+                    $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
+                }
             }
             $table = 1;            
         }

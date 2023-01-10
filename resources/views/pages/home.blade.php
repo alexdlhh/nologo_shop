@@ -26,6 +26,9 @@
             de Gimnasia
         </h1>
     </div>
+    <div class="home_mundial">
+        <img src="/FINAL-Logo_FIG_RGB_Horizontal.png" alt="">
+    </div>
 </div>
 @guest
 @else
@@ -56,7 +59,7 @@
                             @endphp
                             <tr>
                                 <td>
-                                    <a class="homenews" href="/noticias/{{$year}}/{{$month}}/{{$new->getPermantlink()}}">
+                                    <a class="homenews" href="/noticia/{{$year}}/{{$month}}/{{$new->getPermantlink()}}">
                                     <div class="row">
                                         <div class="col s1">
                                             <div class="calendar_day">
@@ -192,7 +195,7 @@
                 $month = date('M', strtotime($new->getCreatedAt()));
                 $year = date('Y', strtotime($new->getCreatedAt()));
             @endphp
-            <a class="pasarela-item" href="/noticias/{{$year}}/{{$month}}/{{$new->getPermantlink()}}">
+            <a class="pasarela-item" href="/noticia/{{$year}}/{{$month}}/{{$new->getPermantlink()}}">
                 <div class="pasarela_img">
                     <img src="{{$new->getFeatureImage()}}">                    
                 </div>                

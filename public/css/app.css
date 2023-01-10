@@ -540,16 +540,16 @@ h7 a{
 }
 .bocadillo_rfeg {
     left: 17.3%;
-    top: 9%;
+    top: 11%;
 }
 .bocadillo_rfeg .flecha {
     position: absolute;
     left: 65px;
 }
 .bocadillo_especialities {
-    left: 17.3%;
+    left: 18.3%;
     width: 440px;
-    top: 9%;    
+    top: 11%;    
 }
 .bocadillo_especialities .flecha {
     position: absolute;
@@ -560,15 +560,15 @@ h7 a{
 }
 .bocadillo_media {
     left: 44.3%;
-    top: 9%;
+    top: 11%;
 }
 .bocadillo_calendario {
     left: 36.8%;
-    top: 9%;
+    top: 11%;
 }
 .bocadillo.bocadillo_schools {
     left: 53%;
-    top: 9%;
+    top: 11%;
 }
 .noolimpicas{
     background: #EAEEF1;
@@ -660,6 +660,7 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
 }
 .image_doc{
     text-align: center;
+    height: 120px;
 }
 .image_doc img{
     margin:0 auto;
@@ -960,11 +961,17 @@ h3.especial{
     font-size: 3em;
     color: white;
 }
-.container_table h4{
-    color: #4e0084;
+.rfeg_back .container_table h4{
+    color: #3899BF;
     margin: 0px 0px 15px 35px;
     font-size: 44px;
     font-weight: 200!important;   
+}
+.section_esp #tabla1 > div > h4{
+    color: #CA01CC !important;
+}
+.section_esp #tabla4 > div > h4{
+    color: #4A4E69 !important;
 }
 .head_table{
     background-color: #DBDCE0;
@@ -979,7 +986,19 @@ h3.especial{
     color: #616E8A;
     font-size: 17px;
     font-weight: 800;
-    padding: 10px !important;
+    padding: 10px !important;    
+}
+.head_table > div.col.s6 {
+    padding-left:35px !important;
+    width: 48% !important;
+}
+.content_table .col:nth-child(1){
+    padding-left:35px !important;
+    width: 48% !important;
+}
+#tabla4 .content_table .col:nth-child(1){
+    padding-left:35px !important;
+    width: 33.3333% !important;
 }
 .empleado_img {
     max-height: 300px;
@@ -1219,7 +1238,7 @@ h3.especial{
 }
 .btn2{
     text-decoration: none;
-    color: #fff;
+    color: #0c0c0c;
     background-color: #F1F2F4 !important;
     text-align: center;
     letter-spacing: .5px;
@@ -1339,7 +1358,24 @@ h3.especial{
     color: white;
     /*hacemos que el ancho de la caja sea como máximo el de .pasarela_img img*/
 }
-
+.home_mundial{
+    width: 350px;
+    position: absolute;
+    right:50px;
+    top: 400px;
+    z-index: 9;
+}
+.home_mundial img{
+    width: 100%;
+    height: auto;
+}
+.minheight{
+    min-height: 700px;
+    display: grid;
+}
+.listado {
+    margin-top: 180px;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){

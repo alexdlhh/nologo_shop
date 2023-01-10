@@ -3,7 +3,7 @@
     Revistas
 @endsection
 @section('content')
-<div class="container">
+<div class="container minheight">
     <div class="big_block"></div>
     <div class="listado">
         <div class="row">

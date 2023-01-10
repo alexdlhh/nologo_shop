@@ -20,7 +20,7 @@ $header_subtitle_esp = [
 @endphp
 
 @section('content')
-<div class="container">
+<div class="container minheight">
     <div class="big_block"></div>
     <div class="listado">
         <div class="row">
@@ -63,7 +63,7 @@ $header_subtitle_esp = [
                 <div class="col s6">DOCUMENTO</div>
                 <div class="col s2">FECHA PUBLICACIÓN</div>
                 <div class="col s2">FECHA ACTUALIZACIÓN</div>
-                <div class="col s2">DESCARGAR PDF</div>
+                <div class="col s2">VER/DESCARGAR PDF</div>
             </div>
             @foreach($front['normativas'] as $normativas)
             @if($normativas->getType()==$rfeg_title->type)
@@ -72,8 +72,8 @@ $header_subtitle_esp = [
                 <div class="col s2">{{str_replace('-','/',$normativas->getCreatedAt())}}</div>
                 <div class="col s2">{{str_replace('-','/',$normativas->getUpdatedAt())}}</div>
                 <div class="col s2">
-                    <a href="#modal1" data-url="{{$normativas->getDownloadPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
-                    <a href="{{$normativas->getDownloadPdf()}}" download class=""><i class="material-icons">file_download</i></a>
+                    <a href="#modal1" data-url="{{$normativas->getDownloadPdf()}}" class="openpdf modal-trigger"><img src="/icons/rfeg_ico_pdfview.svg" alt=""></a>
+                    <a href="{{$normativas->getDownloadPdf()}}" download class=""><img width="30" src="/icons/rfeg_ico_pdfdownload.svg" alt=""></a>
                 </div>
             </div>
             @endif

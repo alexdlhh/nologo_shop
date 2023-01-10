@@ -58,6 +58,10 @@ body{
     background-color: #F0F5F9;
     padding:0px !important;
     margin:0px !important;
+    position: fixed;
+    z-index: 9;
+    width: 80%;
+    top: 0px;
 }
 #sidebar_admin{
     background-color: #F0F5F9;
@@ -65,6 +69,7 @@ body{
     height: 99%;
     max-height: 900px;
     position:fixed;
+    width: 300px;
 }
 #adminlogo {
     padding-left: 1rem;
@@ -154,9 +159,10 @@ li a p{
 }
 .leftf{
     float: left;
-    bottom: 30px;
-    left: 30px;
+    top: 30px;
+    right: 60px;
     position: fixed;
+    z-index: 10;
 }
 .home_admin{
     height: 250px;
@@ -253,6 +259,12 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     border-radius: 5px;
     border: 1px solid #445668;
     margin: 10px;
+}
+.card_admin h4 {
+    font-size: 24px;
+    line-height: 110%;
+    margin: 0 0 15px 0px;
+    font-weight: 600!important;
 }
 .sub_section{
     font-weight: bold;
@@ -440,6 +452,11 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .card-content {
     min-height: 160px;
 }
+.card-content h4 {
+    font-size: 2.28rem;
+    line-height: 110%;
+    margin: 0 0 15px 25px;
+}
 .image_doc p{
     text-align: center;
 }
@@ -501,7 +518,33 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     font-weight: 500;
     line-height: 1.5em;
 } */
-
+.nav-wrapper {
+    width: 78%;
+}
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    display: block;
+    font-size: 26px;
+    margin-top: 20px;
+    height: 56px;
+    line-height: 56px;
+}
+.btn-floating.btn-large {
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0;
+}
+.btn-large {
+    height: 36px;
+    line-height: 36px !important;
+    font-size: 15px;
+    padding: 0 28px;
+}
+.btn-floating.btn-large i {
+    line-height: 39px !important;
+}
+.btn-large i {
+    font-size: 1.3rem !important;
+}
 @keyframes rotation{
     from{
         transform: rotate(0deg);
