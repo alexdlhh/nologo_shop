@@ -1371,11 +1371,11 @@ h3.especial{
     height: auto;
 }
 .minheight{
-    min-height: 700px;
+    min-height: 550px;
     display: grid;
 }
 .listado {
-    margin-top: 180px;
+    margin-top: 30px;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
