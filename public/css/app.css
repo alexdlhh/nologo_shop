@@ -473,6 +473,10 @@ h7 a{
 .page-footer .container{
     padding-top: 40px !important;
 }
+.copyright{
+    opacity: 0.5;
+    display: inline-block;
+}
 .whitelink{
     color: white;
     text-decoration: none;

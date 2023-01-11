@@ -325,7 +325,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    © 2022 - {{date('Y')}} Real Federación Española de Gimnasia. Todos los derechos reservados. 
+                    <br>
+                    <br>
+                    <br>
+                    <p class="copyright">© 2022 - {{date('Y')}} Real Federación Española de Gimnasia. Todos los derechos reservados.</p>
                     <a class="azul_rfeg text-lighten-4" href="nologo.es">Diseño y Programación web: nologo.es</a>
                 </div>
             </div>
