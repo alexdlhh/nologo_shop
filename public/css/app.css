@@ -1402,6 +1402,13 @@ h3.especial{
     padding-left: 6.5%;
     font-weight: 200;
 }
+.img_content{
+    text-align: center;
+}
+.img_content img{
+    width: 85%;
+    height: auto;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){

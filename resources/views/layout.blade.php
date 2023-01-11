@@ -230,88 +230,103 @@
         <footer class="page-footer">
             <div class="container">
                 <div class="row">
-                <div class="col l6 s12">
-                    <div class="row">
-                        <div class="col s4">
-                            <img src="{{$front['general']['logo_f']}}" alt="rfeg" class="fotter_img">
-                        </div>
-                        <div class="col s8">
-                            <div id="rrss">
-                                @foreach($front['rs'] as $rrss)
-                                    <a href="{{$rrss->getUrl()}}" target="_blank"><img src="{{$rrss->getIcon()}}" alt="" width="20"></a>
-                                @endforeach
+                    <div class="col l5 s12">
+                        <div class="row">
+                            <div class="col s4">
+                                <img src="{{$front['general']['logo_f']}}" alt="rfeg" class="fotter_img">
                             </div>
-                            <div class="location">
-                                <img src="/icons/rfeg_ico_localizacion.svg" width="20" alt=""><br>
-                                <p>{{$front['general']['direccion']}}</p>
-                                <p>{{$front['general']['direccion2']}}</p>
-                                <p>{{$front['general']['direccion3']}}</p>
-                                <br>
-                                <p><a href="tel:+34{{$front['general']['telefono']}}" class="whitelink">{{$front['general']['telefono']}}</a></p>
-                                <p><a href="mailto:{{$front['general']['email_g']}}" class="whitelink">{{$front['general']['email_g']}}</a></p>
+                            <div class="col s8">
+                                <div id="rrss">
+                                    @foreach($front['rs'] as $rrss)
+                                        <a href="{{$rrss->getUrl()}}" target="_blank"><img src="{{$rrss->getIcon()}}" alt="" width="20"></a>
+                                    @endforeach
+                                </div>
+                                <div class="location">
+                                    <img src="/icons/rfeg_ico_localizacion.svg" width="20" alt=""><br>
+                                    <p>{{$front['general']['direccion']}}</p>
+                                    <p>{{$front['general']['direccion2']}}</p>
+                                    <p>{{$front['general']['direccion3']}}</p>
+                                    <br>
+                                    <p><a href="tel:+34{{$front['general']['telefono']}}" class="whitelink">{{$front['general']['telefono']}}</a></p>
+                                    <p><a href="mailto:{{$front['general']['email_g']}}" class="whitelink">{{$front['general']['email_g']}}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l5 s12">
+                        <div class="row">
+                            <div class="col s6">
+                                <h7 class="white-text">RFEG</h7>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/comunicados">Presentación</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/rfeg">Quiénes Somos</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/gobierno">Organo de gobierno</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/normativa/reglamentos">Normativa</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/transparencia">Ley de Transparencia</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/estatutos">Estatutos</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/rfeg/elecciones">Elecciones</a></li>                                                    
+                                </ul>
+                                <h7 class="white-text">ESPECIALIDADES</h7>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-masculina/">Artística masculina</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/ritmica/">Ritmica</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/trampolin/">Trampolin</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/aerobica/">Aeróbica</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/para-todos/">Para Todos</a></li>                                                    
+                                    <li><a class="grey-text text-lighten-3" href="/especialidades/parkour/">Parkour</a></li>                                                    
+                                </ul>
+                                <h7 class="white-text">MULTIMEDIA</h7>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="/media">Fotos y vídeos</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/revistas">Revistas</a></li>                                                   
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <h7><a href="/noticias">NOTICIAS</a></h7>
+                                <div class="br"> </div>
+                                <h7 class="white-text">CALENDARIO</h7>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>                                                    
+                                </ul>
+                                <h7 class="white-text">ESCUELA NACIONAL</h7>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="/schools">Cursos</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/normativa">Normativa</a></li>                                                    
+                                </ul>
+                                <h7 class="white-text">INFORMACION LEGAL</h7>
+                                <ul>
+                                    <li><a class="grey-text text-lighten-3" href="/contacto">Contacto</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/pagina/legal">Aviso Legal</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/pagina/cookies">Política de Cookies</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/pagina/privacidad">Política de Privacidad</a></li>
+                                    <li><a class="grey-text text-lighten-3" href="/mapa">Mapa</a></li>                                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l2 s12">
+                        <div class="row">
+                            <div class="col s12 img_content">
+                                <img src="/rfeg_ico_logo_csd.svg" alt="">
+                            </div>
+                            <div class="col s6 img_content">
+                                <img src="/rfeg_ico_logo_ado.svg" alt="">
+                            </div>
+                            <div class="col s6 img_content">
+                                <img src="/rfeg_ico_logo_coe.svg" alt="">
+                            </div>
+                            <div class="col s12 img_content">
+                                <img src="/rfeg_ico_logo_mujerydeporte.svg" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col l4 offset-l2 s12">
-                    <div class="row">
-                    <div class="col s6">
-                            <h7 class="white-text">RFEG</h7>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/comunicados">Presentación</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/rfeg">Quiénes Somos</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/gobierno">Organo de gobierno</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/normativa/reglamentos">Normativa</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/transparencia">Ley de Transparencia</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/estatutos">Estatutos</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/rfeg/elecciones">Elecciones</a></li>                                                    
-                            </ul>
-                            <h7 class="white-text">ESPECIALIDADES</h7>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-masculina/">Artística masculina</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-femenina/">Artística femenina</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/ritmica/">Ritmica</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/trampolin/">Trampolin</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/aerobica/">Aeróbica</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/para-todos/">Para Todos</a></li>                                                    
-                                <li><a class="grey-text text-lighten-3" href="/especialidades/parkour/">Parkour</a></li>                                                    
-                            </ul>
-                            <h7 class="white-text">MULTIMEDIA</h7>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="/media">Fotos y vídeos</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/revistas">Revistas</a></li>                                                   
-                            </ul>
-                        </div>
-                        <div class="col s6">
-                            <h7><a href="/noticias">NOTICIAS</a></h7>
-                            <div class="br"> </div>
-                            <h7 class="white-text">CALENDARIO</h7>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>                                                    
-                            </ul>
-                            <h7 class="white-text">ESCUELA NACIONAL</h7>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="/schools">Cursos</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/normativa">Normativa</a></li>                                                    
-                            </ul>
-                            <h7 class="white-text">INFORMACION LEGAL</h7>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="/contacto">Contacto</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/pagina/legal">Aviso Legal</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/pagina/cookies">Política de Cookies</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/pagina/privacidad">Política de Privacidad</a></li>
-                                <li><a class="grey-text text-lighten-3" href="/mapa">Mapa</a></li>                                                    
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                © 2022 Copyright Nologo
-                <a class="grey-text text-lighten-4 right" href="nologo.es">Nologo.es</a>
+                <div class="footer-copyright">
+                    <div class="container">
+                    © 2022 Copyright Nologo
+                    <a class="grey-text text-lighten-4 right" href="nologo.es">Nologo.es</a>
                 </div>
             </div>
         </footer>
