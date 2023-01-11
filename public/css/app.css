@@ -1420,6 +1420,9 @@ h3.especial{
 .logos_special{
     padding-left: 0px !important;
 }
+.grey-text{
+    color: #9DAEC6;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
