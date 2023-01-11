@@ -806,12 +806,14 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
     font-size: 16px;
     font-weight: 400;
     font-family: 'Merriweather', serif;
+    padding-right: 30px;
 }
 /* todos los elementos dentro de .text_new*/
 .text_new > *{
     font-size: 16px;
     font-weight: 400;
     font-family: 'Merriweather', serif;
+    padding-right: 30px;
 }
 #new_detail > div > div > div:nth-child(1) > p:nth-child(2){
     /*font-size: 2.4em;*/
