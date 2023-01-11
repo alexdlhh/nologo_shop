@@ -470,6 +470,9 @@ h7 a{
 .fotter_img{
     width: 85%;
 }
+.page-footer .container{
+    padding-top: 40px !important;
+}
 .whitelink{
     color: white;
     text-decoration: none;
