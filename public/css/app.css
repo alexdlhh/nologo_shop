@@ -1472,7 +1472,7 @@ h3.especial{
         height: 391px;
     }
     #video_header{
-        height: 582px;
+        height: 582px !important;
     }
     .areapersonal{
         top: -90%;
