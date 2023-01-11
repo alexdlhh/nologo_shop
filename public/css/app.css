@@ -165,7 +165,7 @@ nav ul a:hover {
 }
 .row #profile .col.s1 {
     height:330px;
-    width:5%;
+    width:5% !important;
 }
 .fix_video{
     padding-bottom: 6.85%;
