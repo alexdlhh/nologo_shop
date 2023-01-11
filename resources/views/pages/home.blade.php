@@ -327,9 +327,9 @@
             setInterval(()=>{
                 for(var i = 0; i < sponsors_count; i++){
                     if(i > actual && i <= actual+5){
-                        sponsors.eq(i).show();
+                        sponsors.eq(i).show('slow');
                     }else{
-                        sponsors.eq(i).hide();
+                        sponsors.eq(i).hide('slow');
                     }
                     posicion = 100;
                 }
@@ -391,7 +391,7 @@
             },15);
             setInterval(()=>{
                 let roll2 = $('.r2').css('left');
-                
+
                 if(!pasarela2_hover){
                     $('.r2').css('left',parseInt(roll2)-1+'px');
                     if(parseInt(roll2) < -anchoP2){

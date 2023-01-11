@@ -372,7 +372,9 @@ hr{
 #patrocinadores_home{
     background: white;
     padding-top: 1%;
-    padding-bottom: 8%;
+    padding-bottom: 0% !important;
+    margin-bottom: 0% !important;
+    min-height: 350px;
     max-width: 2580px !important;
 }
 #patrocinadores h2{
@@ -1408,6 +1410,9 @@ h3.especial{
 .img_content img{
     width: 85%;
     height: auto;
+}
+.page-footer{
+    z-index: 999;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
