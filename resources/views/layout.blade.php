@@ -242,7 +242,7 @@
                                     @endforeach
                                 </div>
                                 <div class="location">
-                                    <img src="/rfeg_ico_localizacion_blue.svg" width="20" alt=""><br>
+                                    <img src="/rfeg_ico_localizacion_blue.svg" width="30" alt=""><br>
                                     <p>
                                         {{$front['general']['direccion']}}<br>
                                         {{$front['general']['direccion2']}}<br>
