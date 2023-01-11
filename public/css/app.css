@@ -1350,14 +1350,15 @@ h3.especial{
     width: min-content;
 }
 .pasarela_img img{
-    height: 300px;
+    height: 340px;
     width: auto;
     border-radius: 5px;
     margin: 0px 5px;
 }
 .pasarela-text{
-    height: 80px;
-    color: white;
+    height: 100px;
+    color: #9DAEC6;
+    padding: 10px 20px;
     /*hacemos que el ancho de la caja sea como máximo el de .pasarela_img img*/
 }
 .home_mundial{
