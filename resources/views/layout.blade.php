@@ -248,7 +248,6 @@
                                         {{$front['general']['direccion2']}}<br>
                                         {{$front['general']['direccion3']}}
                                     </p>
-                                    <br>
                                     <p><a href="tel:+34{{$front['general']['telefono']}}" class="whitelink">{{$front['general']['telefono']}}</a><br>
                                     <a href="mailto:{{$front['general']['email_g']}}" class="whitelink">{{$front['general']['email_g']}}</a></p>
                                 </div>
