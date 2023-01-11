@@ -1387,6 +1387,16 @@ h3.especial{
     width: 30%;
     height: auto;
 }
+.last_news .row{
+    margin-bottom: 0px !important;
+}
+.last_news .row .number_list{
+    font-size: 24px;
+    padding-top: 7px !important;
+}
+.newzone_title{
+    padding-right: 30px;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
