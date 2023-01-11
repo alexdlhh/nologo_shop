@@ -313,11 +313,11 @@
                                 <img src="/rfeg_ico_logo_csd.svg" alt="">
                             </div>
                             <div class="col s6 img_content">
-                                <img src="/rfeg_ico_logo_ado.svg" alt="">
-                            </div>
-                            <div class="col s6 img_content">
                                 <img src="/rfeg_ico_logo_coe.svg" alt="">
                             </div>
+                            <div class="col s6 img_content">
+                                <img src="/rfeg_ico_logo_ado.svg" alt="">
+                            </div>                            
                             <div class="col s12 img_content">
                                 <img src="/rfeg_ico_logo_mujerydeporte.svg" alt="">
                             </div>
@@ -325,9 +325,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <br>
-                    <br>
-                    <br>
                     <p class="copyright">© 2022 - {{date('Y')}} Real Federación Española de Gimnasia. Todos los derechos reservados.</p>
                     <a class="azul_rfeg text-lighten-4" href="nologo.es">Diseño y Programación web: nologo.es</a>
                 </div>

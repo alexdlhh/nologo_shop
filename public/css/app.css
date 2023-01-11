@@ -476,6 +476,7 @@ h7 a{
 .copyright{
     opacity: 0.5;
     display: inline-block;
+    margin-right:20px;
 }
 .whitelink{
     color: white;
@@ -1421,9 +1422,25 @@ h3.especial{
 .img_content{
     text-align: center;
 }
+
 .img_content img{
     width: 85%;
     height: auto;
+}
+
+.img_content:nth-child(1) img{
+    padding-top:20px;
+    padding-bottom:20px;
+    width: 90% !important;
+}
+.img_content:nth-child(2) img{
+    width: 44% !important;
+}
+.img_content:nth-child(3) img{
+    width: 51% !important;
+}
+.img_content:nth-child(4) img{
+    width: 65% !important;
 }
 .page-footer{
     z-index: 999;
