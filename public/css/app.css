@@ -378,7 +378,7 @@ hr{
 #patrocinadores h2{
     color: #0A2540;
     padding-left:40px;
-    font-weight: 300;
+    font-weight: 200;
 }
 .floatingbox{
     position:fixed !important;
@@ -1012,7 +1012,7 @@ h3.especial{
     border-radius: 3px;
     border: 1px solid rgba(78,0,132,.3);
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 200;
     margin-bottom: 3px !important;
     padding: 2px 0px 0px 0px;
     min-height: 40px;
@@ -1087,6 +1087,7 @@ h3.especial{
     margin-top: 0px !important;
     margin-bottom: 0;
     font-size: 48px;
+    font-weight: 400;
 }
 .lista_esp{
     width: 100%;
