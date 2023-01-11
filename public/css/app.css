@@ -465,7 +465,7 @@ h7 a{
     text-decoration: none;
 }
 .br{
-    margin:63px;
+    margin:40px;
 }
 .fotter_img{
     width: 85%;
@@ -480,6 +480,9 @@ h7 a{
 #rrss{
     padding-top: 40px;
     padding-bottom: 40px;
+}
+#rrss a img{
+    height: 30px;
 }
 .rounded_img{
     width: 30px;

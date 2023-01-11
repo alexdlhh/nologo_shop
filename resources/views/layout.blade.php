@@ -238,7 +238,7 @@
                             <div class="col s8">
                                 <div id="rrss">
                                     @foreach($front['rs'] as $rrss)
-                                        <a href="{{$rrss->getUrl()}}" target="_blank"><img src="{{$rrss->getIcon()}}" alt="" width="20"></a>
+                                        <a href="{{$rrss->getUrl()}}" target="_blank"><img src="{{$rrss->getIcon()}}" alt=""></a>
                                     @endforeach
                                 </div>
                                 <div class="location">
