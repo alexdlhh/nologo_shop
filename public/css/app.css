@@ -1398,6 +1398,9 @@ h3.especial{
 .newzone_title{
     padding-right: 30px;
 }
+#patrocinadores_home h2{
+    padding-left: 6.5%;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
