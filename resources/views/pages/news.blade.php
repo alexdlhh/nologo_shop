@@ -47,8 +47,8 @@
     </div>
 </div>
 <div class="row newzone" id="noticias">
-    <h2>{{$front['menu1']}}</h2>
-    <h2><div class="linea"></div>{{$front['menu2']}}</h2>
+    <!--h2>{{$front['menu1']}}</h2-->
+    <!--h2><div class="linea"></div>{{$front['menu2']}}</h2-->
     <!--div class="carousel">
         @foreach($front['news'] as $new)
         <a class="carousel-item" href="/noticia/{{$front['menu1']}}/{{$front['menu2']}}/{{$new->getPermantlink()}}">
@@ -57,7 +57,6 @@
         </a>
         @endforeach
     </div-->
-    <hr>
 </div>
 <div id="new_detail" class="row">
     <div class="col s12 new_card">
