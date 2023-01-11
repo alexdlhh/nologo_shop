@@ -841,10 +841,9 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
     font-size: 0.8em;
 }
 .line_title{
-    width: 65px;
+    width: 200px;
     border-bottom: 3px solid;
     margin-top: 56px;
-    margin-left: -10px;
     margin-right: 10px;
     float: left;
 }
@@ -1377,6 +1376,15 @@ h3.especial{
 }
 .listado {
     margin-top: 30px;
+}
+.center_img{
+    padding-top: 20px;
+    margin-left: 75px;
+    float: right;
+}
+.center_img img{
+    width: 30%;
+    height: auto;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/

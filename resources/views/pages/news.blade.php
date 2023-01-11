@@ -83,6 +83,9 @@
                     <img src="{{$front['banners']->getImg()}}" alt="">
                 </div>
                 <div class="last_news">
+                    <div class="center_img">
+                        <img src="/logo.svg" alt="">
+                    </div>
                     <div class="line_title"></div><h3 class="especial">Otras noticias</h3>
                     <div class="clear-both"></div>
                     @php
