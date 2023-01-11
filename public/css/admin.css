@@ -66,8 +66,8 @@ body{
 #sidebar_admin{
     background-color: #F0F5F9;
     color: #445668 !important;
-    height: 99%;
-    max-height: 900px;
+    height: 100vh;
+    max-height: 100vh;
     position:fixed;
     width: 300px;
 }
