@@ -242,13 +242,15 @@
                                     @endforeach
                                 </div>
                                 <div class="location">
-                                    <img src="/icons/rfeg_ico_localizacion.svg" width="20" alt=""><br>
-                                    <p>{{$front['general']['direccion']}}</p>
-                                    <p>{{$front['general']['direccion2']}}</p>
-                                    <p>{{$front['general']['direccion3']}}</p>
+                                    <img src="/rfeg_ico_localizacion_blue.svg" width="20" alt=""><br>
+                                    <p>
+                                        {{$front['general']['direccion']}}<br>
+                                        {{$front['general']['direccion2']}}<br>
+                                        {{$front['general']['direccion3']}}
+                                    </p>
                                     <br>
-                                    <p><a href="tel:+34{{$front['general']['telefono']}}" class="whitelink">{{$front['general']['telefono']}}</a></p>
-                                    <p><a href="mailto:{{$front['general']['email_g']}}" class="whitelink">{{$front['general']['email_g']}}</a></p>
+                                    <p><a href="tel:+34{{$front['general']['telefono']}}" class="whitelink">{{$front['general']['telefono']}}</a><br>
+                                    <a href="mailto:{{$front['general']['email_g']}}" class="whitelink">{{$front['general']['email_g']}}</a></p>
                                 </div>
                             </div>
                         </div>
