@@ -1422,6 +1422,11 @@ h3.especial{
 }
 .grey-text{
     color: #9DAEC6 !important;
+    font-weight: bold;
+}
+.white-text a{
+    color: white !important;
+    font-weight: bold;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/

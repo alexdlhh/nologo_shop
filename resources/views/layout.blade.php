@@ -260,50 +260,50 @@
                             <div class="col s6">
                                 <h7 class="white-text">RFEG</h7>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/comunicados">Presentación</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/rfeg">Quiénes Somos</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/gobierno">Organo de gobierno</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/normativa/reglamentos">Normativa</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/transparencia">Ley de Transparencia</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/estatutos">Estatutos</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/rfeg/elecciones">Elecciones</a></li>                                                    
+                                    <li><a class="grey-text" href="/rfeg/comunicados">Presentación</a></li>
+                                    <li><a class="grey-text" href="/rfeg/rfeg">Quiénes Somos</a></li>                                                    
+                                    <li><a class="grey-text" href="/rfeg/gobierno">Organo de gobierno</a></li>                                                    
+                                    <li><a class="grey-text" href="/rfeg/normativa/reglamentos">Normativa</a></li>                                                    
+                                    <li><a class="grey-text" href="/rfeg/transparencia">Ley de Transparencia</a></li>                                                    
+                                    <li><a class="grey-text" href="/rfeg/estatutos">Estatutos</a></li>                                                    
+                                    <li><a class="grey-text" href="/rfeg/elecciones">Elecciones</a></li>                                                    
                                 </ul>
                                 <h7 class="white-text">ESPECIALIDADES</h7>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-masculina/">Artística masculina</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/artistica-femenina/">Artística femenina</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/ritmica/">Ritmica</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/trampolin/">Trampolin</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/aerobica/">Aeróbica</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/para-todos/">Para Todos</a></li>                                                    
-                                    <li><a class="grey-text text-lighten-3" href="/especialidades/parkour/">Parkour</a></li>                                                    
+                                    <li><a class="grey-text" href="/especialidades/artistica-masculina/">Artística masculina</a></li>
+                                    <li><a class="grey-text" href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                                    <li><a class="grey-text" href="/especialidades/ritmica/">Ritmica</a></li>
+                                    <li><a class="grey-text" href="/especialidades/trampolin/">Trampolin</a></li>
+                                    <li><a class="grey-text" href="/especialidades/aerobica/">Aeróbica</a></li>                                                    
+                                    <li><a class="grey-text" href="/especialidades/para-todos/">Para Todos</a></li>                                                    
+                                    <li><a class="grey-text" href="/especialidades/parkour/">Parkour</a></li>                                                    
                                 </ul>
                                 <h7 class="white-text">MULTIMEDIA</h7>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="/media">Fotos y vídeos</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/revistas">Revistas</a></li>                                                   
+                                    <li><a class="grey-text" href="/media">Fotos y vídeos</a></li>
+                                    <li><a class="grey-text" href="/revistas">Revistas</a></li>                                                   
                                 </ul>
                             </div>
                             <div class="col s6">
-                                <h7><a href="/noticias">NOTICIAS</a></h7>
+                                <h7 class="white-text"><a href="/noticias">NOTICIAS</a></h7>
                                 <div class="br"> </div>
                                 <h7 class="white-text">CALENDARIO</h7>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>                                                    
+                                    <li><a class="grey-text" href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
+                                    <li><a class="grey-text" href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>                                                    
                                 </ul>
                                 <h7 class="white-text">ESCUELA NACIONAL</h7>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="/schools">Cursos</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/normativa">Normativa</a></li>                                                    
+                                    <li><a class="grey-text" href="/schools">Cursos</a></li>
+                                    <li><a class="grey-text" href="/normativa">Normativa</a></li>                                                    
                                 </ul>
                                 <h7 class="white-text">INFORMACION LEGAL</h7>
                                 <ul>
-                                    <li><a class="grey-text text-lighten-3" href="/contacto">Contacto</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/pagina/legal">Aviso Legal</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/pagina/cookies">Política de Cookies</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/pagina/privacidad">Política de Privacidad</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="/mapa">Mapa</a></li>                                                    
+                                    <li><a class="grey-text" href="/contacto">Contacto</a></li>
+                                    <li><a class="grey-text" href="/pagina/legal">Aviso Legal</a></li>
+                                    <li><a class="grey-text" href="/pagina/cookies">Política de Cookies</a></li>
+                                    <li><a class="grey-text" href="/pagina/privacidad">Política de Privacidad</a></li>
+                                    <li><a class="grey-text" href="/mapa">Mapa</a></li>                                                    
                                 </ul>
                             </div>
                         </div>
