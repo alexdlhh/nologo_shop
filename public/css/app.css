@@ -843,14 +843,15 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
 .line_title{
     width: 200px;
     border-bottom: 3px solid;
-    margin-top: 56px;
+    margin-top: 10px;
     margin-right: 10px;
     float: left;
 }
 h3.especial{
     float: right;
-    font-size: 4em;
+    font-size: 3em;
     width: 80%;
+    margin-top: 15px !important;
 }
 .number_list{
     color: #7ABEE2;
@@ -1379,7 +1380,7 @@ h3.especial{
 }
 .center_img{
     padding-top: 20px;
-    margin-left: 75px;
+    margin-left: 58px;
     float: right;
 }
 .center_img img{
