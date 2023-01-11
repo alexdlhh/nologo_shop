@@ -275,17 +275,17 @@ nav ul a:hover {
 }
 .frase1{
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 40px;
     line-height: 1.3em;
     color: white;
-    font-family: 'Scope One';
+    font-family: 'Lora';
 }
 .frase2{
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 40px;
     padding-left: 30%;
     color: #0A2540;
-    font-family: 'Scope One';
+    font-family: 'Lora';
 }
 
 #motivadora{
