@@ -478,6 +478,9 @@ h7 a{
     text-decoration: none;
     font-weight: 600;
 }
+.location p{
+    font-weight: 600;
+}
 #rrss{
     padding-top: 40px;
     padding-bottom: 40px;
