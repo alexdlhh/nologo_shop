@@ -344,7 +344,7 @@
                     sponsors.eq(i).css('top',posicion+'px');                    
                 }
                 posicion-=1;
-            },20)
+            },40)
 
             //NUEVO CARROUSEL
             /**
