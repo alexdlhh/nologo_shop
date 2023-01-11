@@ -62,7 +62,7 @@
                 </li>
             @else
                 <li><a href=""><i class="material-icons">notifications</i> <div class="badge">4</div></a></li>
-                <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="/user.png" alt=""></div></a></li>
+                <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="/icons/rfeg_ico_user.svg" alt=""></div></a></li>
                 <li><a href=""><i class="material-icons">settings</i></a></li>
             @endguest
         </ul>

@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
                                         <div class="col s11 newshometitle">
-                                            <p>{{$new->getTitle()}}</p>
+                                            <p>{{substr($new->getTitle(),0,50)}}</p>
                                         </div>
                                     </div>
                                     </a>
@@ -111,7 +111,7 @@
                                             </div>
                                         </div>
                                         <div class="col s11 newshometitle">
-                                            <p>{{$calendarios->getCompeticion()}}</p>
+                                            <p>{{substr($calendarios->getCompeticion(),0,50)}}</p>
                                         </div>
                                     </div>
                                     </a>
@@ -154,7 +154,7 @@
                                             </div>
                                         </div>
                                         <div class="col s11 newshometitle">
-                                            <p>{{$calendarios->getCompeticion()}}</p>
+                                            <p>{{substr($calendarios->getCompeticion(),0,50)}}</p>
                                         </div>
                                     </div>
                                     </a>
