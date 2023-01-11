@@ -177,7 +177,7 @@
     </div>
 </div>
 <div id="hidden_profile">
-    <div class="selector-vertical2">></div> Área Personal de {{Auth::user()->name}}
+    <div class="selector-vertical2"><img src="/rfeg_ico_arrow_white.svg" width="18" height="18" alt=""></div> Área Personal de {{Auth::user()->name}}
 </div>
 @endguest
 <div class="row" id="motivadora">
