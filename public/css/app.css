@@ -193,6 +193,7 @@ nav ul a:hover {
     margin: 0px 10px 0px 0px;
     font-family: 'Lora';
     padding: 0px 30px 30px 30px;
+    cursor: pointer;
 }
 .selector-vertical2{
     width: 5%;
@@ -200,6 +201,7 @@ nav ul a:hover {
     margin-left: 0px ;
     font-family: 'Lora';
     padding-left: 40px;
+    cursor: pointer;
 }
 .areapersonal{
     width: 80%;
