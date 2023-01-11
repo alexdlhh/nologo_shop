@@ -232,7 +232,7 @@
                 <div class="row">
                     <div class="col l5 s12">
                         <div class="row">
-                            <div class="col s4">
+                            <div class="col s4 logos_special">
                                 <img src="{{$front['general']['logo_f']}}" alt="rfeg" class="fotter_img">
                             </div>
                             <div class="col s8">

@@ -1414,6 +1414,9 @@ h3.especial{
 .page-footer{
     z-index: 999;
 }
+.logos_special{
+    padding-left: 0px !important;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
