@@ -1422,7 +1422,7 @@ h3.especial{
 }
 .grey-text{
     color: #9DAEC6 !important;
-    font-weight: bold;
+    font-weight: 600;
 }
 .white-text a{
     color: white !important;
