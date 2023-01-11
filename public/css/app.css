@@ -1421,7 +1421,7 @@ h3.especial{
     padding-left: 0px !important;
 }
 .grey-text{
-    color: #9DAEC6;
+    color: #9DAEC6 !important;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
