@@ -1469,7 +1469,7 @@ h3.especial{
         font-size: 4.2rem !important;
     }
     .fix_video {
-        height: 391px;
+        height: 391px !important;
     }
     #video_header{
         height: 582px !important;
