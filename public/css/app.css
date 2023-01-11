@@ -803,13 +803,13 @@ div.row.new_list > div > div.row > div > div.card > div.card-image{
     font-family: 'Merriweather', serif;
 }
 .text_new{
-    font-size: 1.4em;
+    font-size: 16px;
     font-weight: 400;
     font-family: 'Merriweather', serif;
 }
 /* todos los elementos dentro de .text_new*/
 .text_new > *{
-    font-size: 1.4em;
+    font-size: 16px;
     font-weight: 400;
     font-family: 'Merriweather', serif;
 }
