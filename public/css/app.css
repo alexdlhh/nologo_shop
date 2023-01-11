@@ -188,11 +188,10 @@ nav ul a:hover {
     width: 94%;
 }
 .selector-vertical{
-    width: 10%;
+    width: 8%;
     float: left;
-    margin: 0px 10px 0px 0px;
-    font-family: 'Lora';
-    padding: 0px 30px 30px 30px;
+    margin: 0px 0px 0px 0px;
+    padding: 22px 25px 28px 7px;
     cursor: pointer;
 }
 .selector-vertical2{
@@ -204,17 +203,17 @@ nav ul a:hover {
     cursor: pointer;
 }
 .areapersonal{
-    width: 80%;
+    width: 88%;
     float: left;
     font-family: 'Manrope';
     line-height: 1.2;
     font-weight: 200;
     font-size: 27px;
     text-align: left;
-    padding-top: 20px;
+    padding-top: 25px;
     position: relative;
     top: -20%;
-    padding-left: 32px;
+    padding-left: 17px;
 }
 .calendar_day{
     background-color: #0A2540;
