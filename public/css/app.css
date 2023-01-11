@@ -274,7 +274,7 @@ nav ul a:hover {
     padding-left: 30px !important;
 }
 .frase1{
-    text-align: center;
+    text-align: left;
     font-size: 40px;
     line-height: 1.3em;
     color: white;
@@ -291,8 +291,8 @@ nav ul a:hover {
 #motivadora{
     padding-top: 40px;
     padding-bottom: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 6.5%;
+    padding-right: 6.5%;
     font-family: 'Lora';
     background: #15c8d5;
     background: -moz-linear-gradient(left, #0A2540 0%, #13E5D7);
