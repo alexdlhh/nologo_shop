@@ -33,7 +33,7 @@
 @guest
 @else
 <div class="row" id="profile">
-    <div class="col s1">
+    <div class="col s1 s1especial">
         <div class="vertical-text">  
             <div class="selector-vertical">
                 <img src="/rfeg_ico_arrow_white.svg" width="18" height="18" alt="">

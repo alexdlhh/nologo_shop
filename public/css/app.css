@@ -163,10 +163,7 @@ nav ul a:hover {
     background: linear-gradient(to right, #0A2540 0%,#15c8d5 22%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#15c8d5',GradientType=2 );
 }
-.row #profile .col.s1 {
-    height:330px;
-    width:5% !important;
-}
+
 .fix_video{
     padding-bottom: 6.85%;
 }
@@ -1462,6 +1459,10 @@ h3.especial{
 }
 #video_header{
     height: 700px;
+}
+.s1especial {
+    height:330px;
+    width:5% !important;
 }
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
