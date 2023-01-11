@@ -1459,6 +1459,9 @@ h3.especial{
     color: white !important;
     font-weight: bold;
 }
+#video_header{
+    height: 700px;
+}
 /*RESPONSIVE*/
 /*Media query 1560px ancho*/
 @media only screen and (max-width: 1560px){
@@ -1472,7 +1475,7 @@ h3.especial{
         height: 391px !important;
     }
     #video_header{
-        height: 582px !important;
+        height: 584px !important;
     }
     .areapersonal{
         top: -90%;

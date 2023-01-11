@@ -15,7 +15,6 @@
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: cover;
-                height: 700px;
             }
         </style>
     </head>
