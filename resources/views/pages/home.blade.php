@@ -36,7 +36,9 @@
     <div class="col s1">
         <div class="vertical-text">            
             <div class="areapersonal">Área Personal de<br> {{Auth::user()->name}}</div>
-            <div class="selector-vertical">></div> 
+            <div class="selector-vertical">
+                <img src="/rfeg_ico_arrow_white.svg" width="18" height="18" alt="">
+            </div> 
         </div>
     </div>
     <div class="col s11 area_personal_fix">
