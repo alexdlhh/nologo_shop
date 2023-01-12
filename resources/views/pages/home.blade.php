@@ -288,7 +288,7 @@
                 var interval2 = setInterval(function(){
                     var height = $('#profile').height();
                     console.log(height);
-                    if(height != height_profile){
+                    if(height < height_profile){
                         $('#profile').height(height+10);
                     }else{
                         clearInterval(interval2);
