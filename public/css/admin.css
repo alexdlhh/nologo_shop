@@ -261,9 +261,9 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     margin: 10px;
 }
 .card_admin h4 {
-    font-size: 24px;
+    font-size: 20px!important;
     line-height: 110%;
-    margin: 0 0 15px 0px;
+    margin: 15px 0px 10px 20px !important;
     font-weight: 600!important;
 }
 .sub_section{
@@ -452,11 +452,6 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .card-content {
     min-height: 160px;
 }
-.card-content h4 {
-    font-size: 2.28rem;
-    line-height: 110%;
-    margin: 0 0 15px 25px;
-}
 .image_doc p{
     text-align: center;
 }
@@ -544,6 +539,31 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 .btn-large i {
     font-size: 1.3rem !important;
+}
+.card-content h4 {
+    font-size: 24px;
+    line-height: 110%;
+    margin: 0 0 15px 20px;
+}
+.card-content.h4 {
+    font-size: 24px;
+    line-height: 110%;
+    margin: 0 0 15px 20px;
+}
+.empleado_admin{
+    /* border-bottom: none; */
+    padding: 20px !important;
+    border-radius: 5px;
+    border: 1px solid #e6ebf1 !important;
+    margin: 6px !important;
+    background: white;
+    width: 48% !important;
+}
+.empleado_admin >td.nombre {
+    font-weight: 600 !important;
+}
+.empleado_admin>td .material-placeholder {
+    padding-left: 14px !important;
 }
 @keyframes rotation{
     from{

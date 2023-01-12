@@ -100,7 +100,7 @@ $normativa_heads = [
 
                                         <tbody>
                                         @foreach($admin['employees'][$rfeg_title->id] as $employee)
-                                            <tr>
+                                            <tr class="empleado_admin">
                                                 <td><img src="{{ $employee->getFeaturedImage() }}" class="materialboxed" width="80px" alt=""></td>
                                                 <td>{{ $employee->getName() }}</td>
                                                 <td>

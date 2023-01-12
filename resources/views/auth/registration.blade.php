@@ -8,7 +8,7 @@
         <div class="col s12 m6 offset-m3">
             <h4 class="header">Registro</h4>
             <div class="card horizontal">
-                <form class="col s12" action="{{ route('register.post') }}" method="POST">
+                <form id="singin" class="col s12" action="{{ route('register.post') }}" method="POST">
                     <div class="card-stacked">
                         <div class="card-content">
                             @csrf
@@ -65,16 +65,12 @@
 @section('scripts')
     <script> 
         $(document).ready(function() {
-            if($('#password').val() != $('#password_confirm').val()) {
-                $('#register').prop('disabled', true);
-            }
-            $('#password_confirm').change(function(){
+            $('#singin').submit(function(e){
                 if($('#password').val() != $('#password_confirm').val()) {
-                    $('#register').prop('disabled', true);
-                } else {
-                    $('#register').prop('disabled', false);
+                    e.preventDefault();
+                    alert('las contraseñas no coinciden');
                 }
-            });
+            }
         }); 
     </script>
 @endsection
