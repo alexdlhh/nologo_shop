@@ -36,7 +36,7 @@ $normativa_heads = [
     <div class="big_block"></div>
     <div class="listado">
         <div class="row">
-            <div class="col s6 title-section">
+            <div class="col s6 title-section2">
                 <h1>Real Federación<br>Española de Gimnasia</h1>
             </div>
             <div class="col s6 mundial">
