@@ -637,6 +637,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 .headAdmin .col{
     margin-left: 27px !important;
+    margin-top: 30px;
 }
 @keyframes rotation{
     from{
