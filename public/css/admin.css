@@ -90,7 +90,7 @@ label.active {
     
 }
 .filter_header{
-    border: #e6ebf1 1px solid;
+    border: #e6ebf1 1px solid !important;
 }
 .filter_header img{
     margin-right: 20px;
@@ -585,7 +585,8 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     padding-left: 14px !important;
 }
 .img_admin{
-    margin-right: 20px;
+    margin-left: 4px !important;
+    margin-top: 6px !important;
 }
 .get_down{
     margin-top:100px;
@@ -628,8 +629,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 .rfeg_admin_zone {
     position: absolute;
-    padding-left: 12px;
-    padding-top: 8px;
+   
 }
 .headAdmin .col{
     margin-left: 27px !important;

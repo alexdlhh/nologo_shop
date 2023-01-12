@@ -301,7 +301,7 @@
                 <div class="row headAdmin">
                     <div class="input-field col s6">
                         <div class="rfeg_admin_zone">
-                            <img src="/icons/rfeg_ico_buscar.svg" class="img_admin" width="26">                            
+                            <img src="/icons/rfeg_ico_buscar.svg" class="img_admin" width="16">                            
                         </div>
                         <input id="search" type="search" class="validate">
                         <label id="searchlabel" for="search">Buscar</label>
