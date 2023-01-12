@@ -271,7 +271,9 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     
 }
 .div_border{
-    border-bottom: 1px solid #676767;
+    border-bottom: 1px solid #e6ebf1;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 .sub_section{
     font-weight: bold;
