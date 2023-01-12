@@ -69,7 +69,7 @@ $header_subtitle_esp = [
             @foreach($front['courses'] as $courses)
             @if($courses->getType()==$rfeg_title->type)
             <div class="row content_table">
-                <div class="col s3">{{$courses->getCurso()}}</div>
+                <div class="col s3 curso_tabla">{{$courses->getCurso()}}</div>
                 <div class="col s2">{{str_replace('-','/',$courses->getFecha())}} al {{str_replace('-','/',$courses->getFechaFin())}}</div>
                 <div class="col s1">{{$courses->getLugar()}}</div>
                 <div class="col s2">

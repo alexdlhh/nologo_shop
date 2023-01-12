@@ -1012,9 +1012,8 @@ h3.especial{
     padding-left:35px !important;
     width: 48% !important;
 }
-.content_table .col:nth-child(1){
-    padding-left:35px !important;
-    width: 48% !important;
+.curso_tabla{
+    width: 25% !important;
 }
 #tabla4 .content_table .col:nth-child(1){
     padding-left:35px !important;
