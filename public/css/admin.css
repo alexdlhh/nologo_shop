@@ -565,6 +565,9 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 .empleado_admin>td .material-placeholder {
     padding-left: 14px !important;
 }
+.img_admin{
+    margin-right: 10px;
+}
 @keyframes rotation{
     from{
         transform: rotate(0deg);
