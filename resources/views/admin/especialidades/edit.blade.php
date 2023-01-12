@@ -184,7 +184,7 @@
                                                         <p>{{$documentos->nombre}}</p>
                                                     </div>
                                                     <div class="actions">
-                                                        <a href="#seePdf" data-file="{{$documentos->documento}}" class="modal-trigger btn-floating btn-small waves-effect waves-light see_pdf" ><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
+                                                        <a href="#seePdf" data-file="{{$documentos->documento}}" class="modal-trigger btn-floating btn-small waves-effect waves-light see_pdf" ><img src="/icons/rfeg_ico_pdfview.png" width="24"></a>
                                                         <a href="#editResultadoFile" data-id="{{$resultados['data']->id}}" data-json="{{json_encode($documentos)}}" target="_blank" class="modal-trigger btn-floating btn-small waves-effect waves-light edit_document" ><img src="/icons/rfeg_ico_guardar.svg" width="24"></a>
                                                         <a href="javascript:;" data-id="{{$documentos->id}}" class="btn-floating btn-small waves-effect waves-light del_documentos"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                                     </div>

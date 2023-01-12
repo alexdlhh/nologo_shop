@@ -81,17 +81,17 @@ $normativa_heads = [
             <div class="row head_table">
                 <div class="col s6">DOCUMENTO</div>
                 <div class="col s2">FECHA PUBLICACIÓN</div>
-                <div class="col s2">FECHA ACTUALIZACIÓN</div>
+                <div class="col s2">ACTUALIZACIÓN</div>
                 <div class="col s2">VER/DESCARGAR PDF</div>
             </div>
             @if(!empty($front['content_tables'][$rfeg_title->id]))
             @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
             <div class="row content_table">
-                <div class="col s6">{{$rfeg_content->documento}}</div>
+                <div class="col s6 text_manual">{{$rfeg_content->documento}}</div>
                 <div class="col s2">{{date_format_esp($rfeg_content->created_at)}}</div>
                 <div class="col s2">{{date_format_esp($rfeg_content->updated_at)}}</div>
                 <div class="col s2">
-                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icons/rfeg_ico_pdfview.svg" alt=""></a>
+                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icons/rfeg_ico_pdfview.png" alt=""></a>
                     <a href="{{$rfeg_content->download_pdf}}" download class=""><img width="30" src="/icons/rfeg_ico_pdfdownload.svg" alt=""></a>
                 </div>
             </div>

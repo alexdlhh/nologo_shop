@@ -38,7 +38,7 @@
                                                 <td>{{str_replace('-','/',$normativa->getCreatedAt())}}</td>
                                                 <td>{{str_replace('-','/',$normativa->getUpdatedAt())}}</td>
                                                 <td>
-                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$normativa->getDownloadPdf()}}"><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
+                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$normativa->getDownloadPdf()}}"><img src="/icons/rfeg_ico_pdfview.png" width="24"></a>
                                                 </td>
                                                 <td>
                                                     <a href="#edit_normativa" data-id="{{$normativa->getId()}}" data-documento="{{$normativa->getDocumento()}}" data-download-pdf="{{$normativa->getDownloadPdf()}}" data-active="{{$normativa->getActive()}}" data-rfeg-title="{{$normativa->getType()}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_normativa"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>

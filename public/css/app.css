@@ -766,6 +766,9 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
     width: 100%;
     height: auto;
 }
+.text_manual{
+    padding-left: 34px !important;
+}
 .date{
     margin-top: 0px;
     padding-top: 0px;

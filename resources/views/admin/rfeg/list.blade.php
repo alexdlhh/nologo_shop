@@ -60,7 +60,7 @@ $normativa_heads = [
                                                     <td>{{$content_table->created_at}}</td>
                                                     <td>{{$content_table->updated_at}}</td>
                                                     <td>
-                                                        <a href="#see_pdf" data-file="{{$content_table->download_pdf}}" class="modal-trigger btn-floating btn-small waves-effect waves-light see_pdf"><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
+                                                        <a href="#see_pdf" data-file="{{$content_table->download_pdf}}" class="modal-trigger btn-floating btn-small waves-effect waves-light see_pdf"><img src="/icons/rfeg_ico_pdfview.png" width="24"></a>
                                                         <a href="#edit_tabla1"
                                                         data-documento="{{$content_table->documento}}"
                                                         data-id="{{$content_table->getId()}}"
