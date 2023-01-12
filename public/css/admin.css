@@ -87,6 +87,13 @@ label.active {
 .collapsible-header {
     background-color: transparent !important;
     border-bottom: 0px solid #ddd !important;
+    
+}
+.filter_header{
+    border: #e6ebf1 1px solid;
+}
+.filter_header img{
+    margin-right: 20px;
 }
 .collapsible {
     border-top: 0px solid #ddd !important;

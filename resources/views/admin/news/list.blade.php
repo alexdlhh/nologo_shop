@@ -17,7 +17,7 @@ function date_format_esp($date){
         <div class="col s12 m12">    
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="24">Filtros</div>
+                    <div class="collapsible-header filter_header"><img src="/icons/rfeg_ico_filtros.svg" width="24">Filtros</div>
                     <div class="collapsible-body">        
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">

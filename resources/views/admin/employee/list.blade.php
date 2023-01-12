@@ -29,7 +29,7 @@ $normativa_heads = [
         <div class="col s12 m12">
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="24">Cuerpo de sección</div>
+                    <div class="collapsible-header filter_header"><img src="/icons/rfeg_ico_filtros.svg" width="24">Cuerpo de sección</div>
                     <div class="collapsible-body">            
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
