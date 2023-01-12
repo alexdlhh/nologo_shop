@@ -86,14 +86,14 @@
                         <p>OLIMPICAS</p>
                         <div class="col s6">
                             <ul>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_gam.png" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_gaf.png" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
                             </ul>
                         </div>
                         <div class="col s6">
                             <ul>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_gr.png" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_tram.png" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
                             </ul>
                         </div>
                     </div>
@@ -101,14 +101,14 @@
                         <p>NO OLIMPICAS</p>
                         <div class="col s6">
                             <ul>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_aero.png" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_acro.png" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
                             </ul>
                         </div>
                         <div class="col s6">
                             <ul>                                
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
-                                <li><img width="20" src="/icon.png" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_todos.png" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
+                                <li><img width="20" src="/icons/rfeg_ico_park.png" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
                             </ul>
                         </div>
                     </div>
