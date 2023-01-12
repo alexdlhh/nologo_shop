@@ -40,7 +40,7 @@ $normativa_heads = [
                                         <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
                                         <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                     </h4>
-                                    <table class="striped">
+                                    <table class="">
                                         <thead>
                                             <tr>
                                                 <th>Documento</th>
@@ -85,7 +85,7 @@ $normativa_heads = [
                                         <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
                                         <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                     </h4>
-                                    <table class="striped">
+                                    <table class="">
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
@@ -130,7 +130,7 @@ $normativa_heads = [
                                         <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
                                         <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                     </h4>
-                                    <table class="striped">
+                                    <table class="">
                                         <thead>
                                             <tr>
                                                 <th>Imagen</th>

@@ -154,7 +154,7 @@
                                         <a href="#edit_resultado" data-json="{{json_encode($resultados['data'])}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_resultados_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
                                         <a href="javascript:;" data-id="{{$resultados['data']->id}}" class="btn-floating btn-small waves-effect waves-light del_resultados"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                     </h4>
-                                    <table class="striped">
+                                    <table class="">
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>

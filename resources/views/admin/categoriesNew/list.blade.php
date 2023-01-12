@@ -10,7 +10,7 @@
                 <div class="card-stacked">
                     <div class="card-content">
                         <div class="row" id="tabla">   
-                            <table class="striped">
+                            <table class="">
                                 <thead>
                                     <tr>
                                         <td>ID</td>

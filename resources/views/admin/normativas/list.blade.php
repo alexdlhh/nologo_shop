@@ -16,7 +16,7 @@
                                     <h4>{{$rfeg_title->name}}                     
                                         <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
                                     </h4>
-                                    <table class="striped">
+                                    <table class="">
                                         <thead>
                                         <tr>
                                             <th>Documento</th>
