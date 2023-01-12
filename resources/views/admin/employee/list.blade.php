@@ -29,7 +29,7 @@ $normativa_heads = [
         <div class="col s12 m12">
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">filter_list</i>Cuerpo de sección</div>
+                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="18">Cuerpo de sección</div>
                     <div class="collapsible-body">            
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
@@ -84,8 +84,8 @@ $normativa_heads = [
                             <div class="row">
                                 <div class="col s12 card_admin">
                                     <h4>{{$rfeg_title->name}}                        
-                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_rfeg_title_btn"><i class="material-icons">edit</i></a>
-                                        <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light red del_rfeg_title"><i class="material-icons">delete</i></a>
+                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                        <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light red del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                     </h4>
                                     <table class="striped">
                                         <thead>
@@ -94,7 +94,7 @@ $normativa_heads = [
                                             <th>Nombre</th>
                                             <th>Email</th>
                                             <th><a href="/admin/employee/create/{{$rfeg_title->id}}" 
-                                                class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light green"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a></th>
                                         </tr>
                                         </thead>
 
@@ -107,8 +107,8 @@ $normativa_heads = [
                                                     {{ $employee->getEmail() }}
                                                 </td>
                                                 <td>
-                                                    <a href="/admin/employee/edit/{{$employee->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">edit</i></a>
-                                                    <a href="javascript:void(0);" data-id="{{$employee->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                                    <a href="/admin/employee/edit/{{$employee->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                                    <a href="javascript:void(0);" data-id="{{$employee->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -123,8 +123,8 @@ $normativa_heads = [
         </div>
     </div>
     <div class="leftf">
-        <a href="#add_rfeg_title" class="modal-trigger btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-        <a href="/rfeg/rfeg" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+        <a href="#add_rfeg_title" class="modal-trigger btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
+        <a href="/rfeg/rfeg" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 <div id="add_rfeg_title" class="modal">

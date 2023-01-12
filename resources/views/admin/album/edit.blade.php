@@ -25,10 +25,10 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="admin/albums/" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
-        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
-        <a href="/admin/journals/{{ $admin['album']->getId()}}" id="save" class="btn-floating btn-large waves-effect waves-light yellow"><i class="material-icons">remove_red_eye</i></a>
-        <a href="/revistas/{{ $admin['album']->getName()}}" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+        <a href="admin/albums/" class="btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_cancelar.svg" width="18"></a>
+        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><img src="/icons/rfeg_ico_guardar.svg" width ="18"></a>
+        <a href="/admin/journals/{{ $admin['album']->getId()}}" id="save" class="btn-floating btn-large waves-effect waves-light yellow"><img src="/icons/rfeg_ico_pdfview.svg" width="18"></a>
+        <a href="/revistas/{{ $admin['album']->getName()}}" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 @endsection

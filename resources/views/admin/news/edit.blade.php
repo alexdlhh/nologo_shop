@@ -83,7 +83,7 @@
                                     @foreach($admin['albumnew'] as $image)
                                     <div class="col s3">
                                         <img src="{{ $image->url }}" alt="galeria" class="materialboxed galery_news_img">
-                                        <a href="#!" data-id="{{$image->id}}" class="delalbum btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                        <a href="#!" data-id="{{$image->id}}" class="delalbum btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                     </div>
                                     @endforeach
                                 @endif
@@ -95,9 +95,9 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/news" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
-        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
-        <a href="/noticias/todo/todo/{{ $admin['news']->getPermantlink() }}" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+        <a href="/admin/news" class="btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_cancelar.svg" width="18"></a>
+        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><img src="/icons/rfeg_ico_guardar.svg" width ="18"></a>
+        <a href="/noticias/todo/todo/{{ $admin['news']->getPermantlink() }}" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 @endsection

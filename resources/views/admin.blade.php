@@ -16,7 +16,7 @@
                 </div>
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'news' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'news' ? 'active' : ''}}">public</i>Actualidad</div>
+                        <div class="collapsible-header {{$admin['section'] == 'news' ? 'active' : ''}}"><img src="/icons/rfeg_ico_actualidad.svg" width="18">Actualidad</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'news' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -47,7 +47,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'rfeg' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'rfef' ? 'active' : ''}}">account_balance</i>RFEG</div>
+                        <div class="collapsible-header {{$admin['section'] == 'rfeg' ? 'active' : ''}}"><img src="/icons/rfeg_ico_rfeg.svg" width="18">RFEG</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'rfeg' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -72,7 +72,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'especialidades' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'especialidades' ? 'active' : ''}}">directions_run</i>Especialidades</div>
+                        <div class="collapsible-header {{$admin['section'] == 'especialidades' ? 'active' : ''}}"><img src="/icons/rfeg_ico_especialidades.svg" width="18">Especialidades</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'especialidades' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -91,7 +91,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'media' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'media' ? 'active' : ''}}">collections</i>Media</div>
+                        <div class="collapsible-header {{$admin['section'] == 'media' ? 'active' : ''}}"><img src="/icons/rfeg_ico_media.svg" width="18">Media</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'media' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -122,7 +122,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'sponsor' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'sponsor' ? 'active' : ''}}">local_atm</i>Patrocinadores</div>
+                        <div class="collapsible-header {{$admin['section'] == 'sponsor' ? 'active' : ''}}"><img src="/icons/rfeg_ico_patrocinadores.svg" width="18">Patrocinadores</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'sponsor' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -178,7 +178,7 @@
                         </div>
                     </li-->
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'school' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'school' ? 'active' : ''}}">school</i>Escuela Nacional</div>
+                        <div class="collapsible-header {{$admin['section'] == 'school' ? 'active' : ''}}"><img src="/icons/rfeg_ico_eng.svg" width="18">Escuela Nacional</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'school' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -203,7 +203,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'users' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'users' ? 'active' : ''}}">contacts</i>Usuarios</div>
+                        <div class="collapsible-header {{$admin['section'] == 'users' ? 'active' : ''}}"><img src="/icons/rfeg_ico_users.svg" width="18">Usuarios</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'users' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -222,7 +222,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'rs' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'rs' ? 'active' : ''}}">rss_feed</i>Redes Sociales</div>
+                        <div class="collapsible-header {{$admin['section'] == 'rs' ? 'active' : ''}}"><img src="/icons/rfeg_ico_twitter.svg" width="18">Redes Sociales</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'rs' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -241,7 +241,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'estaticas' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'estaticas' ? 'active' : ''}}">web</i>Páginas</div>
+                        <div class="collapsible-header {{$admin['section'] == 'estaticas' ? 'active' : ''}}"><img src="/icons/rfeg_ico_addpages.svg" width="18">Páginas</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'estaticas' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -254,7 +254,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'general' ? 'active' : ''}}"><i class="material-icons {{$admin['section'] == 'general' ? 'active' : ''}}">settings_applications</i>Configuración</div>
+                        <div class="collapsible-header {{$admin['section'] == 'general' ? 'active' : ''}}"><img src="/icons/rfeg_ico_config.svg" width="18">Configuración</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'general' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
@@ -271,7 +271,7 @@
             <div class="col s12 m10 offset-m2" id="panel_stuff">
                 <div class="row headAdmin">
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">search</i>
+                        <img src="/icons/rfeg_ico_buscar.svg" width="18">
                         <input id="search" type="search" class="validate">
                         <label id="searchlabel" for="search">Buscar</label>
                         <div class="resultados_search"></div>

@@ -14,7 +14,7 @@
                             <div class="col s12 card_admin">
                                 <div class="row" id="tabla">   
                                     <h4>{{$rfeg_title->name}}                     
-                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_rfeg_title_btn"><i class="material-icons">edit</i></a>
+                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
                                     </h4>
                                     <table class="striped">
                                         <thead>
@@ -26,7 +26,7 @@
                                             <th><a href="#add_normativa" 
                                                 data-id = "0"
                                                 data-rfeg-title="{{$rfeg_title->getType()}}"
-                                                class="btn-floating btn-small waves-effect waves-light green modal-trigger add_normativa"><i class="material-icons">add</i></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light green modal-trigger add_normativa"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a></th>
                                         </tr>
                                         </thead>
 
@@ -38,11 +38,11 @@
                                                 <td>{{str_replace('-','/',$normativa->getCreatedAt())}}</td>
                                                 <td>{{str_replace('-','/',$normativa->getUpdatedAt())}}</td>
                                                 <td>
-                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$normativa->getDownloadPdf()}}"><i class="material-icons">remove_red_eye</i></a>
+                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$normativa->getDownloadPdf()}}"><img src="/icons/rfeg_ico_pdfview.svg" width="18"></a>
                                                 </td>
                                                 <td>
-                                                    <a href="#edit_normativa" data-id="{{$normativa->getId()}}" data-documento="{{$normativa->getDocumento()}}" data-download-pdf="{{$normativa->getDownloadPdf()}}" data-active="{{$normativa->getActive()}}" data-rfeg-title="{{$normativa->getType()}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_normativa"><i class="material-icons">edit</i></a>
-                                                    <a href="javascript:;" data-id="{{$normativa->getId()}}" class="btn-floating btn-small waves-effect waves-light red modal-trigger delete_normativa"><i class="material-icons">delete</i></a>
+                                                    <a href="#edit_normativa" data-id="{{$normativa->getId()}}" data-documento="{{$normativa->getDocumento()}}" data-download-pdf="{{$normativa->getDownloadPdf()}}" data-active="{{$normativa->getActive()}}" data-rfeg-title="{{$normativa->getType()}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_normativa"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                                    <a href="javascript:;" data-id="{{$normativa->getId()}}" class="btn-floating btn-small waves-effect waves-light red modal-trigger delete_normativa"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                                 </td>
                                             </tr>
                                             @endif
@@ -60,7 +60,7 @@
     </div>
 </div>
 <div class="leftf">
-    <a href="/normativa" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
+    <a href="/normativa" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
 </div>
 <div id="edit_rfeg_title" class="modal">
     <div class="modal-content">

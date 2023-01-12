@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="rightf">
-        <a href="javascript:;" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">disk</i></a>
+        <a href="javascript:;" class="btn-floating btn-large waves-effect waves-light green"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
     </div>
 </div>
 @endsection
