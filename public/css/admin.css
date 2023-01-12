@@ -220,10 +220,10 @@ input#fecha_search {
     width: calc(95% - 3rem);
 }
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-    color: #515DE1 !important;
+    color: #039be5 !important;
 }
 .pagination li.active {
-    background-color: #515DE1 !important;
+    background-color: #039be5 !important;
 }
 .pagination li a {
     color: white !important;
@@ -232,10 +232,10 @@ ul.pagination {
     text-align: center;
 }
 .list-child li a p:hover{
-    color: #515DE1 !important;
+    color: #039be5 !important;
 }
 .list-child li a span:hover{
-    color: #515DE1 !important;
+    color: #039be5 !important;
 }
 .input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
     margin-left: 1.6rem !important;
@@ -259,7 +259,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     color: #445668 !important;
 }
 .box-link:hover{
-    color: #515DE1 !important;
+    color: #039be5 !important;
 }
 .olimpic{
     margin-top:20px !important;
@@ -345,7 +345,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     padding: 2px;
 }
 .e_fecha{
-    background-color: #515DE1;
+    background-color: #039be5;
     border: 1px solid #ffffff;
 }
 .e_fecha a{
@@ -354,10 +354,10 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .e_fecha:hover{
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
     background-color: #ffffff;
-    border: 1px solid #515DE1;
+    border: 1px solid #039be5;
 }
 .e_fecha:hover a{
-    color: #515DE1;
+    color: #039be5;
 }
 .e_inscripcion{
     background-color: #dbb405;
@@ -424,10 +424,10 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     border-bottom: 1px solid #ddd;
 }
 .tab a{
-    color: #515DE1;
+    color: #039be5;
 }
 .tab:hover{
-    background-color: #515DE1;
+    background-color: #039be5;
     border-radius: 5px;
     transition: 0.5s;
 }
