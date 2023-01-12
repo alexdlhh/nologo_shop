@@ -261,6 +261,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     border-radius: 5px;
     border: 1px solid #445668;
     margin: 10px;
+    background: #f6f9fc;
 }
 .card_admin h4 {
     font-size: 20px!important;
