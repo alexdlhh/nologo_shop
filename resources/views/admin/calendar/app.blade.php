@@ -119,7 +119,7 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/calendar" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/calendar" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
     </div>
     <div class="rightf">
         @php

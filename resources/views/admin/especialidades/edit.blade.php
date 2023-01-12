@@ -151,8 +151,8 @@
                             <div class="row">
                                 <div class="col s12 card_admin">
                                     <h4>{{$resultados['data']->name}}                        
-                                        <a href="#edit_resultado" data-json="{{json_encode($resultados['data'])}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_resultados_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                        <a href="javascript:;" data-id="{{$resultados['data']->id}}" class="btn-floating btn-small waves-effect waves-light del_resultados"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                        <a href="#edit_resultado" data-json="{{json_encode($resultados['data'])}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_resultados_btn"><img src="/icons/rfeg_ico_editar.svg" width="28"></a>
+                                        <a href="javascript:;" data-id="{{$resultados['data']->id}}" class="btn-floating btn-small waves-effect waves-light del_resultados"><img src="/icons/rfeg_ico_borrar.svg" width="28"></a>
                                     </h4>
                                     <table class="striped">
                                         <thead>
@@ -184,9 +184,9 @@
                                                         <p>{{$documentos->nombre}}</p>
                                                     </div>
                                                     <div class="actions">
-                                                        <a href="#seePdf" data-file="{{$documentos->documento}}" class="modal-trigger btn-floating btn-small waves-effect waves-light see_pdf" ><img src="/icons/rfeg_ico_pdfview.svg" width="18"></a>
-                                                        <a href="#editResultadoFile" data-id="{{$resultados['data']->id}}" data-json="{{json_encode($documentos)}}" target="_blank" class="modal-trigger btn-floating btn-small waves-effect waves-light edit_document" ><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-                                                        <a href="javascript:;" data-id="{{$documentos->id}}" class="btn-floating btn-small waves-effect waves-light del_documentos"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                                        <a href="#seePdf" data-file="{{$documentos->documento}}" class="modal-trigger btn-floating btn-small waves-effect waves-light see_pdf" ><img src="/icons/rfeg_ico_pdfview.svg" width="28"></a>
+                                                        <a href="#editResultadoFile" data-id="{{$resultados['data']->id}}" data-json="{{json_encode($documentos)}}" target="_blank" class="modal-trigger btn-floating btn-small waves-effect waves-light edit_document" ><img src="/icons/rfeg_ico_guardar.svg" width="28"></a>
+                                                        <a href="javascript:;" data-id="{{$documentos->id}}" class="btn-floating btn-small waves-effect waves-light del_documentos"><img src="/icons/rfeg_ico_borrar.svg" width="28"></a>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -203,7 +203,7 @@
     </div> 
 </div>
 <div class="leftf">
-    <a href="/especialidades/{{$admin['especialidades']->getAlias()}}/" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+    <a href="/especialidades/{{$admin['especialidades']->getAlias()}}/" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
 </div>
 <!-- Modal Structure -->
 <div id="add_team" class="modal">

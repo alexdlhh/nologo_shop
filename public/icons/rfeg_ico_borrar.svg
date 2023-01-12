@@ -4,16 +4,20 @@
     <style>
       .cls-1 {
         fill: none;
-        stroke: #2f384c;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 1.5px;
       }
 
+      .cls-1, .cls-2 {
+        stroke: #b62a2a;
+      }
+
       .cls-2 {
-        fill: #2f384c;
+        fill: #b62a2a;
         isolation: isolate;
         opacity: .12;
+        stroke-miterlimit: 10;
       }
     </style>
   </defs>

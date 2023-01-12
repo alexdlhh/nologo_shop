@@ -8,7 +8,7 @@
         <div class="col s12 m12"> 
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="18">Filtros</div>
+                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="28">Filtros</div>
                     <div class="collapsible-body">           
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
@@ -45,8 +45,8 @@
                                         <td>{{ $sponsor->getName() }}</td>
                                         <td>{{ $sponsor->getType() }}</td>
                                         <td>
-                                            <a href="/admin/sponsor/edit/{{$sponsor->getId()}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                            <a href="javascript:void(0);" data-id="{{$sponsor->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                            <a href="/admin/sponsor/edit/{{$sponsor->getId()}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="28"></a>
+                                            <a href="javascript:void(0);" data-id="{{$sponsor->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="28"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -59,8 +59,8 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/sponsor/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-        <a href="/patrocinadores" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/admin/sponsor/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="28"></a>
+        <a href="/patrocinadores" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
     </div>
 </div>
 @endsection

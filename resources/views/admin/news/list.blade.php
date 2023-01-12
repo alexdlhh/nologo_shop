@@ -2,13 +2,22 @@
 @section('title')
     Panel de Control
 @endsection
+@php
+/**
+* funcion que recoge un datetime y lo pasa a Formato de fechas: DD/MM/AAAA, sin horas
+*/
+function date_format_esp($date){
+    $date = new DateTime($date);
+    return $date->format('d/m/Y');
+}
+@endphp
 @section('content')
 <div class="container_admin">
     <div class="row">        
         <div class="col s12 m12">    
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="18">Filtros</div>
+                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="28">Filtros</div>
                     <div class="collapsible-body">        
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
@@ -53,6 +62,7 @@
                                 <tr>
                                     <th>Portada</th>
                                     <th>Titulo</th>
+                                    <th>Fecha</th>
                                     <th>Publicado</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -62,7 +72,8 @@
                                 @foreach($admin['news'] as $new)
                                     <tr>
                                         <td><img src="{{ $new->feature_image }}" class="materialboxed" width="80px" alt=""></td>
-                                        <td>{{ $new->title }}</td>
+                                        <td class="table_title">{{ $new->title }}</td>
+                                        <td>{{ date_format_esp($new->created_at) }}</td>
                                         <td>
                                             <p>
                                             <label>
@@ -70,10 +81,10 @@
                                                 <span></span>
                                             </label>
                                             </p>
-                                        </td>
+                                        </td>                                        
                                         <td>
-                                            <a href="/admin/news/edit/{{$new->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                            <a href="javascript:void(0);" data-id="{{$new->id}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                            <a href="/admin/news/edit/{{$new->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="28"></a>
+                                            <a href="javascript:void(0);" data-id="{{$new->id}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="28"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -93,8 +104,8 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/news/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-        <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/admin/news/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="28"></a>
+        <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
     </div>
 </div>
 @endsection

@@ -138,6 +138,7 @@ nav ul a:hover {
     background: -webkit-linear-gradient(left, #0A2540 0%,#15c8d5 22%);
     background: linear-gradient(to right, #0A2540 0%,#15c8d5 22%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0A2540', endColorstr='#15c8d5',GradientType=2 );
+    overflow: hidden;
 }
 .cookies {
     position: fixed;

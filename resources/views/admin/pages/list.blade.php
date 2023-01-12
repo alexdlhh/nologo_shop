@@ -8,7 +8,7 @@
         <div class="col s12 m12">    
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="18">Filtros</div>
+                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="28">Filtros</div>
                     <div class="collapsible-body">        
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
@@ -50,7 +50,7 @@
                                     <tr>
                                         <td>{{ $pages->title }}</td>
                                         <td>
-                                            <a href="/admin/page_edit/{{$pages->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                            <a href="/admin/page_edit/{{$pages->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="28"></a>
                                         </td>
                                     </tr>
                                 @endforeach

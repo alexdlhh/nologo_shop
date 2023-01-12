@@ -36,7 +36,7 @@
     <div class="col s1 s1especial">
         <div class="vertical-text">  
             <div class="selector-vertical">
-                <img src="/rfeg_ico_arrow_white.svg" width="18" height="18" alt="">
+                <img src="/rfeg_ico_arrow_white.svg" width="28" height="18" alt="">
             </div>           
             <div class="areapersonal">Área Personal de<br> {{Auth::user()->name}}</div>            
         </div>
@@ -177,7 +177,7 @@
     </div>
 </div>
 <div id="hidden_profile">
-    <div class="selector-vertical2"><img src="/rfeg_ico_arrow_white.svg" width="18" height="18" alt=""></div> Área Personal de {{Auth::user()->name}}
+    <div class="selector-vertical2"><img src="/rfeg_ico_arrow_white.svg" width="28" height="18" alt=""></div> Área Personal de {{Auth::user()->name}}
 </div>
 @endguest
 <div class="row" id="motivadora">
@@ -245,14 +245,18 @@
     <script> 
         $(document).ready(function() {
             M.updateTextFields();
+            //obtenemos el height de #profile
+            var height_profile = parseInt($('#profile').height());
+            console.log(height_profile);
             $('.selector-vertical').click(function(){
                 if($('#hidden_profile').css('display')=='none'){
 
                     //creamos un intervalo que se ejecute cada 20 ms durante 2 segundos despues parará el intervalo, en cada ejecucion de este intervalo reducimos el height
                     var interval = setInterval(function(){
-                        var height = $('#hidden_profile').height();
+                        var height = $('#profile').height();
+                        console.log(height);
                         if(height > 0){
-                            $('#hidden_profile').height(height-1);
+                            $('#profile').height(height-10);
                         }else{
                             clearInterval(interval);
                         }
@@ -262,21 +266,34 @@
                     $('#hidden_profile').fadeIn(200);
                     
                 }else{
-                    
+                    console.log('click')
                     $('#hidden_profile').fadeOut(100);    
-                    $('#profile').fadeIn(200);
+                    //creamos un intervalo que se ejecute cada 20 ms durante 2 segundos despues parará el intervalo, en cada ejecucion de este intervalo reducimos el height
+                    var interval2 = setInterval(function(){
+                        var height = $('#profile').height();
+                        console.log(height);
+                        if(height != height_profile){
+                            $('#profile').height(height+10);
+                        }else{
+                            clearInterval(interval2);
+                        }
+                    },20);
 
                 }                
             })
             $('#hidden_profile').click(function(){
                 console.log('click')
-                if($('#hidden_profile').css('display')=='none'){
-                    $('#hidden_profile').fadeIn();
-                    $('#profile').fadeOut();
-                }else{
-                    $('#hidden_profile').fadeOut();
-                    $('#profile').fadeIn();
-                }
+                $('#hidden_profile').fadeOut(100);    
+                //creamos un intervalo que se ejecute cada 20 ms durante 2 segundos despues parará el intervalo, en cada ejecucion de este intervalo reducimos el height
+                var interval2 = setInterval(function(){
+                    var height = $('#profile').height();
+                    console.log(height);
+                    if(height != height_profile){
+                        $('#profile').height(height+10);
+                    }else{
+                        clearInterval(interval2);
+                    }
+                },20);
             })
 
             //ANTIGUO CARROUSEL
