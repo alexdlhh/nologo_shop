@@ -71,7 +71,7 @@ function date_format_esp($date){
                                 <tbody>
                                 @foreach($admin['news'] as $new)
                                     <tr>
-                                        <td><img src="{{ $new->feature_image }}" class="materialboxed" width="80px" alt=""></td>
+                                        <td class="table_image"><img src="{{ $new->feature_image }}" class="materialboxed" width="80px" alt=""></td>
                                         <td class="table_title">{{ $new->title }}</td>
                                         <td>{{ date_format_esp($new->created_at) }}</td>
                                         <td>
