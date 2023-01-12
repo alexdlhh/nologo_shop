@@ -284,7 +284,10 @@ nav ul a:hover {
     color: #0A2540;
     font-family: 'Lora';
 }
-
+.espfont{
+    font-family: 'Scope One' !important;
+    display: inline-block;
+}
 #motivadora{
     padding-top: 40px;
     padding-bottom: 40px;

@@ -182,7 +182,7 @@
 @endguest
 <div class="row" id="motivadora">
     <div class="frase1">Detrás de cada historia hay personas que son<br>capaces de convertir lo ordinario en excepcional</div>
-    <div class="frase2">Más que un deporte, una pasión ___</div>
+    <div class="frase2">Más que un deporte, una pasión <p class="espfont">___</p></div>
 </div>
 <div class="clear-both"></div>
 <div class="row container n1">
