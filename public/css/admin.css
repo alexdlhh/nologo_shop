@@ -626,6 +626,14 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 .box-image img {
     height: 120px !important;
 }
+.rfeg_admin_zone {
+    position: absolute;
+    padding-left: 12px;
+    padding-top: 8px;
+}
+.headAdmin .col{
+    margin-left: 27px !important;
+}
 @keyframes rotation{
     from{
         transform: rotate(0deg);
