@@ -585,8 +585,7 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     padding-left: 14px !important;
 }
 .img_admin{
-    margin-left: 4px !important;
-    margin-top: 6px !important;
+    margin-right: 20px;
 }
 .get_down{
     margin-top:100px;
@@ -629,7 +628,12 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 .rfeg_admin_zone {
     position: absolute;
-   
+    margin-left: 4px !important;
+    margin-top: 6px !important;
+}
+.rfeg_admin_zone img{
+    margin-left: 4px !important;
+    margin-top: 6px !important;
 }
 .headAdmin .col{
     margin-left: 27px !important;
