@@ -13,6 +13,35 @@
             <div class="col s12 m2" id="sidebar_admin">
                 <div id="adminlogo">
                     <a href="/dashboard"><img src="/logon.png" alt=""></a>
+                    <div class="col s12 esp_nav_admin_head">
+                        <nav class="esp_nav_admin">
+                            <div class="nav-wrapper">
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                    @guest
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i></a>
+                                        </li>
+                                        <li>
+                                            @php
+                                                $current_url = explode('/',$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+                                            @endphp
+                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons {{(!empty($current_url[2]) && !empty($current_url[4]) && $current_url[2]=='users' && $current_url[4]==Auth::user()->id) ? 'active' : ''}}">person</i></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="/"><i class="material-icons">open_in_new</i></a>
+                                        </li>
+                                    @endguest
+                            </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
                 <ul class="collapsible">
                     <li>
@@ -271,40 +300,13 @@
             <div class="col s12 m10 offset-m2" id="panel_stuff">
                 <div class="row headAdmin">
                     <div class="input-field col s6">
-                        <img src="/icons/rfeg_ico_buscar.svg" class="img_admin" width="26">
+                        <div class="rfeg_admin_zone">
+                            <img src="/icons/rfeg_ico_buscar.svg" class="img_admin" width="26">                            
+                        </div>
                         <input id="search" type="search" class="validate">
                         <label id="searchlabel" for="search">Buscar</label>
                         <div class="resultados_search"></div>
-                    </div>
-                    <div class="col s6">
-                        <nav>
-                            <div class="nav-wrapper">
-                            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                    @guest
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('logout') }}"><i class="material-icons">power_settings_new</i></a>
-                                        </li>
-                                        <li>
-                                            @php
-                                                $current_url = explode('/',$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-                                            @endphp
-                                            <a class="nav-link" href="/admin/users/edit/{{Auth::user()->id}}"><i class="material-icons {{(!empty($current_url[2]) && !empty($current_url[4]) && $current_url[2]=='users' && $current_url[4]==Auth::user()->id) ? 'active' : ''}}">person</i></a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" href="/"><i class="material-icons">open_in_new</i></a>
-                                        </li>
-                                    @endguest
-                            </ul>
-                            </div>
-                        </nav>
-                    </div>
+                    </div>                    
                 </div>
                 @yield('content')
             </div>

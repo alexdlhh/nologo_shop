@@ -589,6 +589,21 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 .table_opciones{
     width: 10%;
 }
+.esp_nav_admin{
+    background-color: rgba(0,0,0,0);
+    width: 67%;
+}
+.esp_nav_admin .nav-wrapper #nav-mobile > li > a > i{
+    height: 30px !important;
+    line-height: 25px !important;
+}
+.esp_nav_admin .nav-wrapper #nav-mobile > li > a{
+    padding: 0px !important;
+    margin-right: 18px !important;
+}
+.esp_nav_admin_head{
+    padding: 0px !important;
+}
 @keyframes rotation{
     from{
         transform: rotate(0deg);
