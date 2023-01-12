@@ -8,7 +8,7 @@
         <div class="col s12 m12">     
             <ul class="collapsible">
                 <li>
-                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="28">Filtros</div>
+                    <div class="collapsible-header"><img src="/icons/rfeg_ico_filtros.svg" width="24">Filtros</div>
                     <div class="collapsible-body">       
                         <div class="card horizontal filtro_content">
                             <div class="card-stacked">
@@ -77,8 +77,8 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/journal/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="28"></a>
-        <a href="/revistas" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
+        <a href="/admin/journal/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a>
+        <a href="/revistas" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="24"></a>
     </div>
 </div>
 @endsection

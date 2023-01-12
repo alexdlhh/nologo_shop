@@ -25,10 +25,10 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="admin/albums/" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_cancelar.svg" width="28"></a>
-        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="28"></a>
-        <a href="/admin/journals/{{ $admin['album']->getId()}}" id="save" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_pdfview.svg" width="28"></a>
-        <a href="/revistas/{{ $admin['album']->getName()}}" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
+        <a href="admin/albums/" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_cancelar.svg" width="24"></a>
+        <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a>
+        <a href="/admin/journals/{{ $admin['album']->getId()}}" id="save" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
+        <a href="/revistas/{{ $admin['album']->getName()}}" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="24"></a>
     </div>
 </div>
 @endsection

@@ -74,15 +74,15 @@ $header_subtitle_esp = [
                 <div class="col s1">{{$courses->getLugar()}}</div>
                 <div class="col s2">
                     <a href="#modal1" data-url="{{$courses->getConvocatoriaPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
-                    <a href="{{$courses->getConvocatoriaPdf()}}" download class=""><img src="/icons/rfeg_ico_pdfdownload.svg" width="28"></a>
+                    <a href="{{$courses->getConvocatoriaPdf()}}" download class=""><img src="/icons/rfeg_ico_pdfdownload.svg" width="24"></a>
                 </div>                
                 <div class="col s2">
                     <a href="#modal1" data-url="{{$courses->getInscripcionPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
-                    <a href="{{$courses->getInscripcionPdf()}}" download class=""><img src="/icons/rfeg_ico_pdfdownload.svg" width="28"></a>
+                    <a href="{{$courses->getInscripcionPdf()}}" download class=""><img src="/icons/rfeg_ico_pdfdownload.svg" width="24"></a>
                 </div>                
                 <div class="col s2">
                     <a href="#modal1" data-url="{{$courses->getFormulariosPdf()}}" class="openpdf modal-trigger"><img src="/icon-pdf.png" alt=""></a>
-                    <a href="{{$courses->getFormulariosPdf()}}" download class=""><img src="/icons/rfeg_ico_pdfdownload.svg" width="28"></a>
+                    <a href="{{$courses->getFormulariosPdf()}}" download class=""><img src="/icons/rfeg_ico_pdfdownload.svg" width="24"></a>
                 </div>
                 
             </div>

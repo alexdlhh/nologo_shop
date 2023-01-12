@@ -70,8 +70,8 @@
     </div>
 </div>
 <div class="leftf">
-    <a href="/admin/banners" id="save" class="btn-floating btn-large waves-effect waves-light save green"><img src="/icons/rfeg_ico_guardar.svg" width="28"></a>
-    <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="28"></a>
+    <a href="/admin/banners" id="save" class="btn-floating btn-large waves-effect waves-light save green"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a>
+    <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="24"></a>
 </div>
 @endsection
 

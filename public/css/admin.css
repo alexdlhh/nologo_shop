@@ -572,6 +572,21 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 .get_down{
     margin-top:100px;
 }
+.table_image{
+    width: 10%;
+}
+.table_std{
+    width: 10%;
+}
+.table_title{
+    width: 60%;
+}
+.table_check{
+    width: 10%;
+}
+.table_opciones{
+    width: 10%;
+}
 @keyframes rotation{
     from{
         transform: rotate(0deg);

@@ -36,7 +36,7 @@
     <div class="col s1 s1especial">
         <div class="vertical-text">  
             <div class="selector-vertical">
-                <img src="/rfeg_ico_arrow_white.svg" width="28" height="18" alt="">
+                <img src="/rfeg_ico_arrow_white.svg" width="24" height="18" alt="">
             </div>           
             <div class="areapersonal">Área Personal de<br> {{Auth::user()->name}}</div>            
         </div>
@@ -177,7 +177,7 @@
     </div>
 </div>
 <div id="hidden_profile">
-    <div class="selector-vertical2"><img src="/rfeg_ico_arrow_white.svg" width="28" height="18" alt=""></div> Área Personal de {{Auth::user()->name}}
+    <div class="selector-vertical2"><img src="/rfeg_ico_arrow_white.svg" width="24" height="18" alt=""></div> Área Personal de {{Auth::user()->name}}
 </div>
 @endguest
 <div class="row" id="motivadora">
