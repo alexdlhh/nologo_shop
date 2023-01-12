@@ -256,7 +256,7 @@
                         var height = $('#profile').height();
                         console.log(height);
                         if(height > 0){
-                            $('#profile').height(height-10);
+                            $('#profile').height(height-25);
                         }else{
                             clearInterval(interval);
                         }
@@ -273,7 +273,7 @@
                         var height = $('#profile').height();
                         console.log(height);
                         if(height != height_profile){
-                            $('#profile').height(height+10);
+                            $('#profile').height(height+25);
                         }else{
                             clearInterval(interval2);
                         }
@@ -289,7 +289,7 @@
                     var height = $('#profile').height();
                     console.log(height);
                     if(height < height_profile){
-                        $('#profile').height(height+10);
+                        $('#profile').height(height+25);
                     }else{
                         clearInterval(interval2);
                     }
