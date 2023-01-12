@@ -122,7 +122,7 @@ $normativa_heads = [
             @if(!empty($front['content_tables'][$rfeg_title->id]))
             @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
             <div class="row content_table">
-                <div class="col s6">{{$rfeg_content->nombre}}</div>
+                <div class="col s6 text_manual">{{$rfeg_content->nombre}}</div>
                 <div class="col s2">{{$rfeg_content->cargo}}</div>
                 <div class="col s4">{{$rfeg_content->especialidad}}</div>
             </div>
