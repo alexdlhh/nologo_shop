@@ -1010,7 +1010,7 @@ h3.especial{
     color: #616E8A;
     font-size: 17px;
     font-weight: 800;
-    padding: 10px;    
+    padding: 10px !important;    
 }
 .head_table > div.col.s6 {
     padding-left:35px !important;
@@ -1422,6 +1422,10 @@ h3.especial{
 }
 .newzone_title{
     padding-right: 30px;
+}
+.col.s2.text_manual {
+    padding-left: 16px;
+    margin-left: 32px;
 }
 #patrocinadores_home h2{
     padding-left: 6.5%;
