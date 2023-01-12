@@ -56,7 +56,7 @@
         </div>
     </div>
     <div class="rightf">
-        <a href="javascript:void(0);" id="del" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
+        <a href="/admin/sponsors" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">cancel</i></a>
         <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">save</i></a>
     </div>
 </div>

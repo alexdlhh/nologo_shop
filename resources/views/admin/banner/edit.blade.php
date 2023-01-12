@@ -70,9 +70,7 @@
     </div>
 </div>
 <div class="leftf">
-    <button class="btn waves-effect waves-light save" type="submit" name="action">Guardar
-        <i class="material-icons right">send</i>
-    </button>
+    <a href="/admin/banners" id="save" class="btn-floating btn-large waves-effect waves-light save green"><i class="material-icons">save</i></a>
     <a href="/noticias" id="" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">screen_share</i></a>
 </div>
 @endsection
