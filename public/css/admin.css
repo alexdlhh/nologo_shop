@@ -62,7 +62,7 @@ body{
 }
 #sidebar_admin{
     background-color: #F0F5F9;
-    color: #445668 !important;
+    color: #e6ebf1 !important;
     height: 100vh;
     max-height: 100vh;
     position:fixed;
@@ -81,7 +81,7 @@ label.active {
     top: 12px !important;
 }
 #sidebar_admin ul .collapsible-header{
-    color: #445668;
+    color: #e6ebf1;
     font-weight: 600;
 }
 .collapsible-header {
@@ -99,7 +99,7 @@ label.active {
 }
 #panel_stuff nav{
     background-color: #F0F5F9;
-    color: #445668;
+    color: #e6ebf1;
 }
 .container_admin{
     width: 95%;
@@ -122,20 +122,20 @@ ul:not(.browser-default) {
     margin-left: 15px;
 }
 .child-selector{
-    color: #445668 !important;
+    color: #e6ebf1 !important;
 }
 .child-selector {
     float: right;
 }
 li a{
-    color: #445668 !important;    
+    color: #e6ebf1 !important;    
 }
 li a span{
-    color: #445668 !important; 
+    color: #e6ebf1 !important; 
     font-weight: bold;
 }
 li a p{
-    color: #445668 !important;
+    color: #e6ebf1 !important;
     margin:0px;
     font-size: 0.7em;
 }
@@ -192,7 +192,7 @@ input[type=search]:not(.browser-default){
     padding-left: 3.1rem !important;
 }
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), textarea.materialize-textarea{
-    border: 1px solid #445668 !important;
+    border: 1px solid #e6ebf1 !important;
     box-shadow: 0px 0px 0px 0px #c5d0d8 !important;
     border-radius: 5px !important;
     height: 3rem;
@@ -247,7 +247,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     text-align: center;
 }
 .box-link{
-    color: #445668 !important;
+    color: #e6ebf1 !important;
 }
 .box-link:hover{
     color: #515DE1 !important;
@@ -259,7 +259,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
 .card_admin{
     padding: 20px;
     border-radius: 5px;
-    border: 1px solid #445668;
+    border: 1px solid #e6ebf1;
     margin: 10px;
     background: #f6f9fc;
 }
@@ -273,7 +273,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     font-weight: bold;
     padding-top:10px;
     padding-bottom:10px;
-    border-bottom: #445668 1px solid;
+    border-bottom: #e6ebf1 1px solid;
 }
 /*textedit plugin ajuste en modales*/
 #add_team > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1){
