@@ -766,9 +766,7 @@ la clase .mediaGrid la cual ocupara todo el ancho de pantalla va a contener vari
     width: 100%;
     height: auto;
 }
-.text_manual{
-    padding-left: 34px !important;
-}
+
 .date{
     margin-top: 0px;
     padding-top: 0px;
@@ -1012,7 +1010,7 @@ h3.especial{
     color: #616E8A;
     font-size: 17px;
     font-weight: 800;
-    padding: 10px !important;    
+    padding: 10px;    
 }
 .head_table > div.col.s6 {
     padding-left:35px !important;
@@ -1354,6 +1352,9 @@ h3.especial{
 .sponsor_name{
     color: #535E7A;
     font-size: 2.3em;
+}
+.text_manual{
+    padding-left: 34px !important;
 }
 .subtitle{
     font-size: 1.5em;
