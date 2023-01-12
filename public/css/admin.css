@@ -432,7 +432,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     transition: 0.5s;
 }
 .tab.active{
-    background-color: #515DE1;
+    background-color: #039be5;
     border-radius: 5px;
     transition: 0.5s;
 }
