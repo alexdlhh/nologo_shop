@@ -257,7 +257,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     margin-bottom:20px !important;
 }
 .card_admin{
-    padding: 20px !important;
+    padding: 10px 10px 20px 10px  !important;
     border-radius: 5px;
     border: 1px solid #e6ebf1;
     margin: 10px;
@@ -268,6 +268,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     line-height: 110%;
     margin: 15px 0px 10px 20px !important;
     font-weight: 600!important;
+    border-bottom: 1px solid #676767;
 }
 .sub_section{
     font-weight: bold;
