@@ -291,7 +291,6 @@ nav ul a:hover {
 }
 #motivadora{
     padding-top: 40px;
-    padding-bottom: 40px;
     padding-left: 15%;
     padding-right: 6.5%;
     font-family: 'Lora';
@@ -639,6 +638,10 @@ nav.nav-extended{
 }
 .title-section{
     padding: 70px 0px 20px 0px !important;
+    margin-left: 0px !important;
+}
+.title-section2{
+    padding: 0px 0px 20px 0px !important;
     margin-left: 0px !important;
 }
 .mock img{
