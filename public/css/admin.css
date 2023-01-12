@@ -62,7 +62,7 @@ body{
 }
 #sidebar_admin{
     background-color: #F0F5F9;
-    color: #e6ebf1 !important;
+    color: #445668 !important;
     height: 100vh;
     max-height: 100vh;
     position:fixed;
@@ -81,7 +81,7 @@ label.active {
     top: 12px !important;
 }
 #sidebar_admin ul .collapsible-header{
-    color: #e6ebf1;
+    color: #445668;
     font-weight: 600;
 }
 .collapsible-header {
@@ -99,7 +99,7 @@ label.active {
 }
 #panel_stuff nav{
     background-color: #F0F5F9;
-    color: #e6ebf1;
+    color: #445668;
 }
 .container_admin{
     width: 95%;
@@ -122,20 +122,20 @@ ul:not(.browser-default) {
     margin-left: 15px;
 }
 .child-selector{
-    color: #e6ebf1 !important;
+    color: #445668 !important;
 }
 .child-selector {
     float: right;
 }
 li a{
-    color: #e6ebf1 !important;    
+    color: #445668 !important;    
 }
 li a span{
-    color: #e6ebf1 !important; 
+    color: #445668 !important; 
     font-weight: bold;
 }
 li a p{
-    color: #e6ebf1 !important;
+    color: #445668 !important;
     margin:0px;
     font-size: 0.7em;
 }
@@ -247,7 +247,7 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     text-align: center;
 }
 .box-link{
-    color: #e6ebf1 !important;
+    color: #445668 !important;
 }
 .box-link:hover{
     color: #515DE1 !important;
