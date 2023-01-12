@@ -103,6 +103,8 @@ label.active {
 }
 #panel_stuff{
     padding: 0px;
+    z-index: 9999;
+    position: relative;
 }
 #panel_stuff nav{
     background-color: #F0F5F9;
