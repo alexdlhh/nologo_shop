@@ -237,6 +237,7 @@ ul.pagination {
 .list-child li a span:hover{
     color: #039be5 !important;
 }
+
 .input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
     margin-left: 1.6rem !important;
     width: 92%;
@@ -621,6 +622,9 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 .esp_nav_admin_head{
     padding: 0px !important;
+}
+.box-image img {
+    height: 120px !important;
 }
 @keyframes rotation{
     from{
