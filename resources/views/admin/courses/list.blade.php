@@ -27,7 +27,7 @@
                                             <th><a href="#add_course" 
                                                 data-id = "0"
                                                 data-rfeg-title="{{$rfeg_title->getType()}}"
-                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_course"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_course"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
                                         </tr>
                                         </thead>
 
@@ -58,7 +58,7 @@
                                                     data-formularios="{{$course->getFormulariosPdf()}}"
                                                     data-activo="{{$course->getActive()}}"
                                                     data-rfeg-title="{{$course->getType()}}"
-                                                    class="btn-floating btn-small waves-effect waves-light edit_curso_btn orange"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
+                                                    class="btn-floating btn-small waves-effect waves-light edit_curso_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
                                                     <a href="javascript:void(0);" data-id="{{$course->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                                 </td>
                                             </tr>

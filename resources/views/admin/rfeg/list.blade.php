@@ -49,7 +49,7 @@ $normativa_heads = [
                                                 <th><a href="#add_tabla{{$admin['table']}}" 
                                                 data-id = "0"
                                                 data-rfeg-title="{{$rfeg_title->id}}"
-                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_tabla{{$admin['table']}}_btn"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_tabla{{$admin['table']}}_btn"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,7 +91,7 @@ $normativa_heads = [
                                                 <th>Nombre</th>
                                                 <th>Cargo</th>
                                                 <th>Especialidad</th>
-                                                <th><a href="#add_tabla{{$admin['table']}}" data-rfeg-title="{{$rfeg_title->id}}" data-seccion="{{$admin['seccion']=='normativa'?$admin['subseccion']:$admin['seccion']}}" class="modal-trigger btn-floating btn-small waves-effect waves-light add_tabla{{$admin['table']}}_btn"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a></th>
+                                                <th><a href="#add_tabla{{$admin['table']}}" data-rfeg-title="{{$rfeg_title->id}}" data-seccion="{{$admin['seccion']=='normativa'?$admin['subseccion']:$admin['seccion']}}" class="modal-trigger btn-floating btn-small waves-effect waves-light add_tabla{{$admin['table']}}_btn"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -138,7 +138,7 @@ $normativa_heads = [
                                                 <th><a href="#add_tabla7" 
                                                 data-id = "0"
                                                 data-rfeg-title="{{$rfeg_title->id}}"
-                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_tabla7_btn"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_tabla7_btn"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
                                             </tr>
                                         </thead>
                                         <tbody>

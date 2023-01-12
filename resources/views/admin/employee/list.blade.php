@@ -94,7 +94,7 @@ $normativa_heads = [
                                             <th>Nombre</th>
                                             <th>Email</th>
                                             <th><a href="/admin/employee/create/{{$rfeg_title->id}}" 
-                                                class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
                                         </tr>
                                         </thead>
 

@@ -26,7 +26,7 @@
                                             <th><a href="#add_normativa" 
                                                 data-id = "0"
                                                 data-rfeg-title="{{$rfeg_title->getType()}}"
-                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_normativa"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_normativa"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
                                         </tr>
                                         </thead>
 
