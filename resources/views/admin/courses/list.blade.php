@@ -14,7 +14,7 @@
                             <div class="col s12 card_admin">
                                 <div class="row" id="tabla">   
                                     <h4>{{$rfeg_title->name}}                     
-                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
                                     </h4>
                                     <table class="striped">
                                         <thead>
@@ -27,7 +27,7 @@
                                             <th><a href="#add_course" 
                                                 data-id = "0"
                                                 data-rfeg-title="{{$rfeg_title->getType()}}"
-                                                class="btn-floating btn-small waves-effect waves-light green modal-trigger add_course"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_course"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a></th>
                                         </tr>
                                         </thead>
 
@@ -59,7 +59,7 @@
                                                     data-activo="{{$course->getActive()}}"
                                                     data-rfeg-title="{{$course->getType()}}"
                                                     class="btn-floating btn-small waves-effect waves-light edit_curso_btn orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                                    <a href="javascript:void(0);" data-id="{{$course->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                                    <a href="javascript:void(0);" data-id="{{$course->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                                 </td>
                                             </tr>
                                             @endif
@@ -77,7 +77,7 @@
     </div>
 </div>
 <div class="leftf">
-    <a href="/schools" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+    <a href="/schools" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
 </div>
 <div id="edit_rfeg_title" class="modal">
     <div class="modal-content">

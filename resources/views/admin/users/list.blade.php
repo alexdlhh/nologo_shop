@@ -63,8 +63,8 @@
                                             {{ $users->role==1?'Admin':'Usuario' }}
                                         </td>
                                         <td>
-                                            <a href="/admin/users/edit/{{$users->id}}" class="btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                            <a href="javascript:void(0);" data-id="{{$users->id}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                            <a href="/admin/users/edit/{{$users->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                            <a href="javascript:void(0);" data-id="{{$users->id}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="rightf">
-        <a href="/admin/users/create" class="btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
+        <a href="/admin/users/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
     </div>
 </div>
 @endsection

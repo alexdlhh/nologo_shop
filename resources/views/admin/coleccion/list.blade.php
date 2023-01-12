@@ -62,8 +62,8 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/coleccion/create" class="btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-        <a href="/media" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/admin/coleccion/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
+        <a href="/media" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 @endsection

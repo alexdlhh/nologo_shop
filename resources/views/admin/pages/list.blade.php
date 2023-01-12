@@ -50,7 +50,7 @@
                                     <tr>
                                         <td>{{ $pages->title }}</td>
                                         <td>
-                                            <a href="/admin/page_edit/{{$pages->id}}" class="btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                            <a href="/admin/page_edit/{{$pages->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
                                         </td>
                                     </tr>
                                 @endforeach

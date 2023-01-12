@@ -47,8 +47,8 @@
                                     <tr>
                                         <td>{{ $album->getName() }}</td>
                                         <td>
-                                            <a href="/admin/album/edit/{{$album->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                            <a href="javascript:void(0);" data-id="{{$album->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                            <a href="/admin/album/edit/{{$album->getId()}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                            <a href="javascript:void(0);" data-id="{{$album->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -68,8 +68,8 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/album/create" class="btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-        <a href="/revistas" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/admin/album/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
+        <a href="/revistas" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 @endsection

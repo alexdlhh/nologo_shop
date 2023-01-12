@@ -25,8 +25,8 @@
                                         <td><img src="{{ $rs->getIcon() }}" class="materialboxed" width="80px" alt=""></td>
                                         <td>{{ $rs->getName() }}</td>
                                         <td>
-                                            <a href="/admin/rs/edit/{{$rs->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                            <a href="javascript:void(0);" data-id="{{$rs->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                            <a href="/admin/rs/edit/{{$rs->getId()}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                            <a href="javascript:void(0);" data-id="{{$rs->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -39,8 +39,8 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/admin/rs/create" class="btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-        <a href="/" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/admin/rs/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
+        <a href="/" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 @endsection

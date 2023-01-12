@@ -119,7 +119,7 @@
         </div>
     </div>
     <div class="leftf">
-        <a href="/calendar" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="/calendar" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
     <div class="rightf">
         @php
@@ -129,9 +129,9 @@
         $prevYear = $admin['month'] == 1 ? $admin['year'] - 1 : $admin['year'];        
         @endphp
         
-        <a href="/admin/calendario/{{$prevMonth}}/{{$prevYear}}" id="save" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">arrow_back</i></a>
-        <a href="/admin/calendario/{{date('m')}}/{{date('Y')}}" id="save" class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">date_range</i></a>
-        <a href="/admin/calendario/{{$nextMonth}}/{{$nextYear}}" id="save" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">arrow_forward</i></a>
+        <a href="/admin/calendario/{{$prevMonth}}/{{$prevYear}}" id="save" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_back</i></a>
+        <a href="/admin/calendario/{{date('m')}}/{{date('Y')}}" id="save" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">date_range</i></a>
+        <a href="/admin/calendario/{{$nextMonth}}/{{$nextYear}}" id="save" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">arrow_forward</i></a>
     </div>
 </div>
 <div id="add_evento" class="modal">

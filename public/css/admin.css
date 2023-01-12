@@ -105,7 +105,10 @@ label.active {
 }
 .container_admin{
     width: 95%;
-    margin:0 auto;    
+    margin:90px auto;    
+}
+.btn-floating {
+    background-color: rgba(0,0,0,0) !important;
 }
 .card-stacked{
     box-shadow: 1px 1px 7px 1px #c5d0d8 !important;
@@ -567,6 +570,9 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 .img_admin{
     margin-right: 10px;
+}
+.get_down{
+    margin-top:100px;
 }
 @keyframes rotation{
     from{

@@ -24,8 +24,8 @@
                                         <td>{{$tag->id}}</td>
                                         <td>{{$tag->name}}</td>
                                         <td>
-                                            <a href="javascript:void(0)" data-name="{{$tag->name}}" data-id="{{$tag->id}}" class="edit btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                            <a href="javascript:void(0)" data-id="{{$tag->id}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                            <a href="javascript:void(0)" data-name="{{$tag->name}}" data-id="{{$tag->id}}" class="edit btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                            <a href="javascript:void(0)" data-id="{{$tag->id}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                         </td>
                                     @endforeach
                                 </tbody>
@@ -45,7 +45,7 @@
                                 <label for="name">Tag</label>
                             </div>
                             <div class="col s12 input-field">
-                                <a href="javascript:void(0);" data-id="0" id="save" class="btn-floating btn-large waves-effect waves-light green"><img src="/icons/rfeg_ico_guardar.svg" width ="18"></a>
+                                <a href="javascript:void(0);" data-id="0" id="save" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width ="18"></a>
                             </div>
                         </div>
                     </div>

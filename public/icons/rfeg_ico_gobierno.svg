@@ -1,31 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.5 21.5">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-        stroke: #2f384c;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 1.5px;
-      }
-
-      .cls-2 {
-        opacity: .12;
-      }
-
-      .cls-3 {
-        fill: #2f384c;
-      }
-    </style>
-  </defs>
-  <g id="Capa_1-2" data-name="Capa 1">
-    <g>
-      <g class="cls-2">
-        <path class="cls-3" d="m.75,16.78c0-3.29,2.15-5.96,4.8-5.96h4.4c2.65,0,4.8,2.67,4.8,5.96,0,2.19-1.43,3.97-3.2,3.97H3.95c-1.77,0-3.2-1.78-3.2-3.97Z"/>
-        <path class="cls-3" d="m11.75,4.75c0,2.21-1.79,4-4,4s-4-1.79-4-4S5.54.75,7.75.75s4,1.79,4,4Z"/>
-      </g>
-      <path class="cls-1" d="m11.75,4.75c0,2.21-1.79,4-4,4s-4-1.79-4-4S5.54.75,7.75.75s4,1.79,4,4ZM3.95,20.75h7.6c1.77,0,3.2-1.78,3.2-3.97h0c0-3.29-2.15-5.96-4.8-5.96h-4.4c-2.65,0-4.8,2.67-4.8,5.96h0c0,2.19,1.43,3.97,3.2,3.97Zm3.23-9.52c.28.41.48.87.57,1.36m0,0c.1-.5.3-.97.59-1.39m-.59,3.23c-.45,1.57-.89,4.07-.89,4.07h1.77l-.88-4.07Z"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_2_00000088830424420801487410000001936176687371522197_"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+	 style="enable-background:new 0 0 20 20;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.12;}
+	.st1{fill:#2F384C;}
+	.st2{fill:none;stroke:#2F384C;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<g id="Capa_1-2">
+	<g>
+		<g class="st0">
+			<path class="st1" d="M3.5,15.6c0-3.1,2-5.5,4.5-5.5H12c2.5,0,4.5,2.5,4.5,5.5c0,2-1.3,3.7-3,3.7H6.5C4.8,19.3,3.5,17.6,3.5,15.6
+				L3.5,15.6z"/>
+			<path class="st1" d="M13.7,4.4c0,2.1-1.7,3.7-3.7,3.7S6.3,6.5,6.3,4.4S7.9,0.7,10,0.7S13.7,2.4,13.7,4.4z"/>
+		</g>
+		<path class="st2" d="M13.7,4.4c0,2.1-1.7,3.7-3.7,3.7S6.3,6.5,6.3,4.4S7.9,0.7,10,0.7S13.7,2.4,13.7,4.4z M6.5,19.3h7.1
+			c1.6,0,3-1.6,3-3.7l0,0c0-3.1-2-5.5-4.5-5.5H8c-2.5,0-4.5,2.5-4.5,5.5l0,0C3.5,17.6,4.8,19.3,6.5,19.3L6.5,19.3z M9.5,10.4
+			c0.3,0.4,0.4,0.8,0.5,1.3 M10,11.7c0.1-0.5,0.3-0.9,0.6-1.3 M10,13.4c-0.4,1.5-0.8,3.8-0.8,3.8h1.6C10.8,17.2,10,13.4,10,13.4z"/>
+	</g>
+</g>
 </svg>

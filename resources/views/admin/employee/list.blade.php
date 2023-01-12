@@ -84,8 +84,8 @@ $normativa_heads = [
                             <div class="row">
                                 <div class="col s12 card_admin">
                                     <h4>{{$rfeg_title->name}}                        
-                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light blue modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                        <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light red del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->id}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                        <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                     </h4>
                                     <table class="striped">
                                         <thead>
@@ -94,7 +94,7 @@ $normativa_heads = [
                                             <th>Nombre</th>
                                             <th>Email</th>
                                             <th><a href="/admin/employee/create/{{$rfeg_title->id}}" 
-                                                class="btn-floating btn-small waves-effect waves-light green"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a></th>
+                                                class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a></th>
                                         </tr>
                                         </thead>
 
@@ -107,8 +107,8 @@ $normativa_heads = [
                                                     {{ $employee->getEmail() }}
                                                 </td>
                                                 <td>
-                                                    <a href="/admin/employee/edit/{{$employee->getId()}}" class="btn-floating btn-small waves-effect waves-light orange"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
-                                                    <a href="javascript:void(0);" data-id="{{$employee->getId()}}" class="del btn-floating btn-small waves-effect waves-light red"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
+                                                    <a href="/admin/employee/edit/{{$employee->getId()}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="18"></a>
+                                                    <a href="javascript:void(0);" data-id="{{$employee->getId()}}" class="del btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_borrar.svg" width="18"></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -123,8 +123,8 @@ $normativa_heads = [
         </div>
     </div>
     <div class="leftf">
-        <a href="#add_rfeg_title" class="modal-trigger btn-floating btn-large waves-effect waves-light red"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
-        <a href="/rfeg/rfeg" id="" class="btn-floating btn-large waves-effect waves-light blue"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
+        <a href="#add_rfeg_title" class="modal-trigger btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="18"></a>
+        <a href="/rfeg/rfeg" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="18"></a>
     </div>
 </div>
 <div id="add_rfeg_title" class="modal">
