@@ -107,6 +107,7 @@ label.active {
 }
 .btn-floating {
     background-color: rgba(0,0,0,0) !important;
+    border-radius: 0px !important;
 }
 .card-stacked{
     box-shadow: 1px 1px 7px 1px #c5d0d8 !important;
