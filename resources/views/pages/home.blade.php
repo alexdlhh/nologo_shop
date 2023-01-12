@@ -248,7 +248,17 @@
             $('.selector-vertical').click(function(){
                 if($('#hidden_profile').css('display')=='none'){
 
-                    $('#profile').fadeOut(100);
+                    //creamos un intervalo que se ejecute cada 20 ms durante 2 segundos despues parará el intervalo, en cada ejecucion de este intervalo reducimos el height
+                    var interval = setInterval(function(){
+                        var height = $('#hidden_profile').height();
+                        if(height > 0){
+                            $('#hidden_profile').height(height-1);
+                        }else{
+                            clearInterval(interval);
+                        }
+                    },20);
+
+                    
                     $('#hidden_profile').fadeIn(200);
                     
                 }else{

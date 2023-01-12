@@ -82,7 +82,7 @@ label.active {
 }
 #sidebar_admin ul .collapsible-header{
     color: #445668;
-    width: 600px;
+    font-weight: 600;
 }
 .collapsible-header {
     background-color: transparent !important;
