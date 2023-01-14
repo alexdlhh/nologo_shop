@@ -22,6 +22,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\RFEGController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProsearchController;
+use App\Http\Controllers\MundialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::get('getNewsScrollEspecialidad/{pag}/{especialidad?}',[EspecialidadesCont
 Route::get('contacto',[AuthController::class, 'contacto'])->name('contacto');
 Route::get('mapa',[AuthController::class, 'mapa'])->name('mapa');
 Route::get('pagina/{alias}',[PageController::class, 'frontPage'])->name('front.page');
+Route::get('mundial',[MundialController::class, 'mundial'])->name('mundial');
 /**
  * HOME
  */
@@ -235,3 +237,4 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     /**PROSEARCH */
     Route::get('prosearch/{search}',[ProsearchController::class,'prosearch'])->name('prosearch');
 });
+

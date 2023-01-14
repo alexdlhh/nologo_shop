@@ -295,6 +295,19 @@
                             </ul>
                         </div>
                     </li>
+                    <li>
+                        <div class="collapsible-header {{$admin['section'] == 'mundial' ? 'active' : ''}}"><img src="/icons/rfeg_ico_config.svg" class="img_admin" width="26">Mundial</div>
+                        <div class="collapsible-body" style="{{$admin['section'] == 'mundial' ? 'display: block;' : ''}}">
+                            <ul class="list-child">
+                                <li>
+                                    <a href="/admin/mundial" class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'mundial' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">Listado de configuraciones del Mundial</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="col s12 m10 offset-m2" id="panel_stuff">
