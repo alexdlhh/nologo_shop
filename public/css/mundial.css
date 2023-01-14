@@ -252,6 +252,18 @@ nav{
     text-align: center;
     font-weight: 300;
 }
+.white_t4{
+    color: #B62A29;
+}
+.white_t5{
+    color: #A26C09;
+}
+.white_t6{
+    color: #A53381;
+}
+.white_t7{
+    color: #60308F;
+}
 .text-decolored5{
     color: #A26C09;
     font-size: 55px;
@@ -272,6 +284,31 @@ nav{
     width: 100%;
     text-align: center;
     font-weight: 300;
+}
+.text-decolored9{
+    background-image: linear-gradient(to right, #5A278B 0%, #D6667A 50%, #B92E32 70%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 55px;
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    text-align: left;
+}
+.uptext{
+    font-size: 20px;
+    font-weight: 300;
+    color: #5A278B;
+    top: -17px;
+    position: relative;
+}
+.logo_mundial_mini{
+    text-align: right;
+}
+.logo_mundial_mini img{
+    width: 60%;
 }
 .text-whitline{
     width: 100%;
@@ -389,11 +426,74 @@ nav{
 .valencia_box1 {
     background: #E6E2E3;
 }
-
-
-
-
-
+.modal{
+    width: 88% !important;
+}
+.texto_accesos p{
+    padding: 1% 13% 2% 13%;
+    text-align: left;
+    color: #38153F;
+    font-family: 'Lora' !important;
+    font-size: 29px;
+    font-weight: 600;
+}
+.plano img{
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.title_acceso{
+    font-size: 35px;
+    color: #B62A2A;
+    margin-bottom: 0px;
+}
+.data_accesso{
+    font-size: 25px;
+    color: #1D1D1B;
+    padding-left: 10px;
+}
+.data_accesso2{
+    font-size: 25px;
+    color: #1D1D1B;
+    padding-left: 10px;
+    margin: 0px !important;
+}
+.title_acceso2{
+    text-align: center;
+}
+.mapa{
+    text-align: center;
+}
+.mapa img{
+    width: 70%;
+}
+.title_acceso2 h3{
+    font-size: 35px;
+    color: #B62A2A !important;
+    text-align: center;
+}
+.img_galery{
+    overflow: hidden;
+}
+.img_galery img{
+    width: 100%;
+}
+.white_t{
+    color: white !important;
+}
+.rrss_box{
+    width: 80%;
+    margin: 0 auto;
+}
+.rrss_item img{
+    height: 120px;
+}
+.rrss_item a{
+    font-size: 45px;
+    top: -45px;
+    position: relative;
+    left: 89px;
+}
 
 
 
