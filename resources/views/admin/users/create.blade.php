@@ -26,6 +26,7 @@
                                     <option value="">Selecciona Rol</option>
                                     <option value="1">Administrador</option>
                                     <option value="2">Usuario</option>
+                                    <option value="3">Delegación</option>
                                 </select>
                             </div>
                             <div class="col s6 input-field">
@@ -42,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="rightf">
+    <div class="leftf">
         <a href="/admin/users" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_cancelar.svg" width="24"></a>
         <a href="javascript:void(0);" id="save" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a>
     </div>

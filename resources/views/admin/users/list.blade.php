@@ -26,6 +26,7 @@
                                                 <option value="">Todos</option>
                                                 <option value="1">Administrador</option>
                                                 <option value="2">Usuario</option>
+                                                <option value="3">Delegación</option>
                                             </select>
                                         </div>
                                     </div>
@@ -60,7 +61,7 @@
                                         <td>{{ $users->name }}</td>
                                         <td>{{ $users->email }}</td>
                                         <td>
-                                            {{ $users->role==1?'Admin':'Usuario' }}
+                                            {{ $users->role==1?'Admin':($users->role==2?'Usuario':'Delegación') }}
                                         </td>
                                         <td>
                                             <a href="/admin/users/edit/{{$users->id}}" class="btn-floating btn-small waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
@@ -76,7 +77,7 @@
             </div>
         </div>
     </div>
-    <div class="rightf">
+    <div class="leftf">
         <a href="/admin/users/create" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_guardar.svg" width="24"></a>
     </div>
 </div>
