@@ -219,7 +219,7 @@
         @php
         $fecha = explode('-',$eventos->fecha);
         @endphp
-        <a class="pasarela-item" href="/admin/calendario/{{$fecha[1]}}/{{$fecha[0]}}">
+        <a class="pasarela-item" href="/calendar">
             <div class="pasarela_img"><img src="{{$eventos->getImage()}}"></div>
             <div class="pasarela-text">
                 {{$eventos->getCompeticion()}}

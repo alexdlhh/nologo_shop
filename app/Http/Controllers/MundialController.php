@@ -8,6 +8,7 @@ use App\Http\Repository\PagesRepository;
 use App\Http\Repository\RSRepository;
 use App\Http\Repository\NewsRepository;
 use App\Http\Repository\GeneralRepository;
+use App\Http\Repository\MundialRepository;
 
 class MundialController extends Controller
 {
@@ -20,6 +21,8 @@ class MundialController extends Controller
     {
         $generalRepository = new GeneralRepository();
         $general = $generalRepository->getConfigGeneral();
+        $mundialRepository = new MundialRepository();
+        $mundial = $mundialRepository->getConfigMundial();
         $sponsorRepository = new SponsorRepository();
         $sponsors = $sponsorRepository->getAll();
         $RSRepository = new RSRepository();
@@ -38,5 +41,51 @@ class MundialController extends Controller
             'rs' => $rs,
         ]);
     }   
+
+    public function adminMundialGeneral(){
+        $mundialRepository = new MundialRepository();
+        $mundial = $mundialRepository->getConfigMundial();
+        return view('admin.mundial.general', ['admin'=>[
+            'title'=>'Mundial',
+            'mundial'=>$mundial,
+            'id'=>1,
+            'section' => 'mundial',
+            'subsection' => 'general']]);
+    }
+    public function adminMundialMundial(){
+        $mundialRepository = new MundialRepository();
+        $mundial = $mundialRepository->getConfigMundial();
+        return view('admin.mundial.mundial', ['admin'=>[
+            'title'=>'Mundial',
+            'mundial'=>$mundial,
+            'id'=>1,
+            'section' => 'mundial',
+            'subsection' => 'mundial']]);
+    }
+    public function adminMundialValencia(){
+        $mundialRepository = new MundialRepository();
+        $mundial = $mundialRepository->getConfigMundial();
+        return view('admin.mundial.valencia', ['admin'=>[
+            'title'=>'Mundial',
+            'mundial'=>$mundial,
+            'id'=>1,
+            'section' => 'mundial',
+            'subsection' => 'valencia']]);
+    }
+
+    public function saveMundial(Request $request){
+        $mundialRepository = new MundialRepository();
+        if($request->input('type')=='img'){
+            $file = $request->file('content');
+            $name = date('Ymdhis').'_'.$file->getClientOriginalName();
+            $file->move(public_path().'/mundial/', $name);
+            $content = '/mundial/'.$name;
+        }else{
+            $content = $request->input('content');
+        }
+        $id = $request->input('id');
+        $mundialRepository->update($id,$content);
+        return response()->json(['msg' => 'ok']);
+    }
    
 }

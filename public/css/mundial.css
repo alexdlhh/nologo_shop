@@ -264,6 +264,9 @@ nav{
 .white_t7{
     color: #60308F;
 }
+.modal-content a img{
+    width: 100%;
+}
 .text-decolored5{
     color: #A26C09;
     font-size: 55px;
@@ -277,6 +280,21 @@ nav{
     width: 100%;
     text-align: center;
     font-weight: 300;
+}
+.tickets{
+    text-align: center;
+    background-color: #E6E2E3;
+    border-radius: 10px;
+    width: 98%;
+    margin: 0 auto !important;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    margin-bottom: 100px !important;
+}
+.tickets .texto{
+    animation: color 4s linear infinite;
+    background-size: 500%;
+    cursor: pointer;
 }
 .text-decolored7{
     color: #60308F;
@@ -460,6 +478,8 @@ nav{
 }
 .title_acceso2{
     text-align: center;
+    color: #B62A2A !important;
+    font-size: 35px;
 }
 .mapa{
     text-align: center;

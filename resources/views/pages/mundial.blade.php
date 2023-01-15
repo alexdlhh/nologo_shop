@@ -97,7 +97,9 @@
     <div class="streaming tab1">
         <div class="row">
             <div class="col s6 center-content">
-                <div class="text-decolored">Streaming y resultados</div>
+                <a href="#streaming" class="modal-trigger white_t">
+                    <div class="text-decolored">Streaming y resultados</div>
+                </a>
             </div>
             <div class="col s6 fit-content">
                 <a href="#streaming" class="modal-trigger white_t">
@@ -164,7 +166,9 @@
     <div class="puntos_interes tab2">
         <div class="row">
             <div class="col s6 center-content">
-                <div class="text-decolored">Puntos de interés</div>
+                <a href="#puntos" class="modal-trigger white_t">
+                    <div class="text-decolored">Puntos de interés</div>
+                </a>
             </div>
             <div class="col s6 fit-content">
                 <a href="#puntos" class="modal-trigger white_t">
@@ -226,6 +230,16 @@
                             <div class="text-decolored7">Inscripciones</div>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tickets_count tab3">
+        <div class="row">
+            <div class="col m12">
+                <div class="tickets">
+                    <h2 class="texto">Entradas Restantes</h3>
+                    <h1 class="texto">500</h3>
                 </div>
             </div>
         </div>

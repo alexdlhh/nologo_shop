@@ -300,9 +300,21 @@
                         <div class="collapsible-body" style="{{$admin['section'] == 'mundial' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
-                                    <a href="/admin/mundial" class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'mundial' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">Listado de configuraciones del Mundial</p>
+                                    <a href="/admin/mundial/general" class="{{$admin['subsection'] == 'general' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'general' ? 'active' : ''}}"><b>Ajustes Generales</b></span><span class="child-selector {{$admin['subsection'] == 'general' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'general' ? 'active' : ''}}">Listado de configuraciones Generales del Mundial</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/mundial/mundial" class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}"><b>Sección Campeonato</b></span><span class="child-selector {{$admin['subsection'] == 'mundial' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">Sección Campeonato del Mundial</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/mundial/valencia" class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}"><b>Sección Valencia</b></span><span class="child-selector {{$admin['subsection'] == 'valencia' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}">Sección Valencia</p>
                                     </a>
                                 </li>
                             </ul>

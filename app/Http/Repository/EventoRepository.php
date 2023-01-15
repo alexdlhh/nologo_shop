@@ -179,7 +179,7 @@ class EventoRepository
             ->select('evento.*')
             ->where('especialidades.alias', '=', $alias)
             ->where('evento.active', '=', 1)
-            ->orderBy('evento.fecha', 'asc')
+            ->orderBy('evento.fecha', 'desc')
             ->get();
         $eventoMapper = new EventoMapper();
         return $eventoMapper->mapCollection($eventos);
@@ -217,15 +217,20 @@ class EventoRepository
                 }
                 //buscamos eventos cuya fecha actual este entre los campos fecha y fecha_fin
                 $res = DB::table('evento')
-                    ->where('fecha', '<=', $year.'-'.$month.'-31')
                     ->where('fecha_fin', '>=', $year.'-'.$month.'-01')
-                    ->orderBy('fecha', 'asc')
-                    ->get();
+                    ->orderBy('id', 'desc')->get();
                 foreach($res as $r){
                     if($r->especialidad == $esp){
                         $eventos[]=$r;
                     }
                 }
+            }
+        }else{
+            $res = DB::table('evento')
+                ->where('fecha_fin', '>=', $year.'-'.$month.'-'.date('d'))
+                ->orderBy('fecha', 'desc')->get();
+            foreach($res as $r){
+                $eventos[]=$r;
             }
         }
         return $eventoMapper->mapCollection($eventos);
@@ -266,11 +271,49 @@ class EventoRepository
                     ->where('evento.active', '=', 1)
                     ->where('evento.licencia', '>=', date('Y-m-d'))
                     ->orWhere('evento.inscripcion', '>=', date('Y-m-d'))
-                    ->orWhere('evento.sorteo', '>=', date('Y-m-d'))->get();
+                    ->orWhere('evento.sorteo', '>=', date('Y-m-d'))
+                    ->orWhere('evento.fecha_fin', '>=', date('Y-m-d'))
+                    ->orderBy('evento.fecha', 'desc')->get();
                 foreach($res as $r){
                     if($r->especialidad == $esp){
                         $eventos[]=$r;
                     }
+                }
+            }
+        }else{
+            foreach($personal as $p){
+                if($p == 1){
+                    $esp = 'GAM';
+                }
+                if($p == 2){
+                    $esp = 'GAF';
+                }
+                if($p == 3){
+                    $esp = 'GR';
+                }
+                if($p == 4){
+                    $esp = 'TRAM';
+                }
+                if($p == 5){
+                    $esp = 'AERO';
+                }
+                if($p == 6){
+                    $esp = 'ACRO';
+                }
+                if($p == 7){
+                    $esp = 'PT';
+                }
+                if($p == 8){
+                    $esp = 'PK';
+                }
+                //buscamos eventos de la especialidad $p cuyos campos licencia, inscripcion o sorteo sean cercanos a la fecha actual
+                $res = DB::table('evento')
+                    ->where('evento.active', '=', 1)
+                    ->where('evento.licencia', '>=', date('Y-m-d'))
+                    ->orWhere('evento.inscripcion', '>=', date('Y-m-d'))
+                    ->orWhere('evento.sorteo', '>=', date('Y-m-d'))->orderBy('evento.fecha', 'desc')->get();
+                foreach($res as $r){
+                    $eventos[]=$r;
                 }
             }
         }
@@ -281,7 +324,7 @@ class EventoRepository
         $eventoMapper = new EventoMapper();
         $eventos = DB::table('evento')
             ->where('evento.competicion', 'like', '%'.$search.'%')
-            ->orderBy('evento.fecha', 'asc')
+            ->orderBy('evento.fecha', 'desc')
             ->get();
         return $eventoMapper->mapCollection($eventos);
     }
@@ -291,7 +334,7 @@ class EventoRepository
         $eventos = DB::table('evento')
             ->where('evento.active', '=', 1)
             ->where('evento.competicion', 'like', '%'.$search.'%')
-            ->orderBy('evento.fecha', 'asc')
+            ->orderBy('evento.fecha', 'desc')
             ->get();
         return $eventoMapper->mapCollection($eventos);
     }

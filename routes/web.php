@@ -236,5 +236,9 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/general/save',[PageController::class,'saveGeneral'])->name('admin.general.store');
     /**PROSEARCH */
     Route::get('prosearch/{search}',[ProsearchController::class,'prosearch'])->name('prosearch');
+    /**MUNDIAL */
+    Route::get('admin/mundial/general',[MundialController::class,'adminMundialGeneral'])->name('adminMundialGeneral');
+    Route::get('admin/mundial/mundial',[MundialController::class,'adminMundialMundial'])->name('adminMundialMundial');
+    Route::get('admin/mundial/valencia',[MundialController::class,'adminMundialValencia'])->name('adminMundialValencia');
 });
 
