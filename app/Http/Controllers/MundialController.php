@@ -37,6 +37,7 @@ class MundialController extends Controller
             'sponsors' => $sponsors,
             'section' => 'mundial',
             'subsection' => 'mundial',
+            'mundial' => $mundial,
             'general' => $general,
             'rs' => $rs,
         ]);

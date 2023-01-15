@@ -97,7 +97,7 @@ h2 {
     top: 0px;
     width: 50%;
     overflow: hidden;
-    height: 879px;
+    height: 839px;
     z-index: 8;
 }
 .img_degradada img{
@@ -109,7 +109,7 @@ h2 {
     top: 0px;
     width: 50%;
     overflow: hidden;
-    height: 879px;
+    height: 839px;
     background: -webkit-linear-gradient(328.6deg, #fff 35%, transparent 90%);
     z-index: 9;
 }
@@ -514,8 +514,16 @@ nav{
     position: relative;
     left: 89px;
 }
-
-
+.fit-content video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.full-width-video video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 
 nav{

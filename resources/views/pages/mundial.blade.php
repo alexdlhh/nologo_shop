@@ -2,6 +2,12 @@
 @section('title')
     Mundial
 @endsection
+@php
+$general=$front['mundial']['general'];
+$mundial=$front['mundial']['mundial'];
+$entradas=$front['mundial']['entradas'];
+$valencia=$front['mundial']['valencia'];
+@endphp
 @section('content')
 <div class="container minheight">
     <div class="row">
@@ -17,25 +23,31 @@
     </div>        
     <div class="lista">
         <ul>
+            <li><a href="javascript:;" class="texto colored_border" id="tab3">VENTA DE ENTRADAS</a></li>
             <li><a href="javascript:;" class="texto" id="tab1">CAMPEONATO DEL MUNDO</a></li>
-            <li><a href="javascript:;" class="texto" id="tab2">VALENCIA</a></li>
-            <li><a href="javascript:;" class="texto" id="tab3">INSCRIP. Y RESERVAS</a></li>
+            <li><a href="javascript:;" class="texto">NOTICIAS</a></li>
+            <li><a href="javascript:;" class="texto" id="tab2">VALENCIA</a></li>            
+            <li><a href="#streaming" class="modal-trigger texto">STREAMING</a></li>
             <li><a href="javascript:;" class="texto" id="tab4">DELEGACIONES</a></li>
+            <li><a href="javascript:;" class="texto" id="tab5">PATROCINADORES</a></li>
         </ul>
     </div>
     <div class="img_degradada">
-        <img src="/GR1C4175_web.jpg" alt="">
+        <img src="{{$general['img_pral'][0]->content}}" alt="">
     </div>
     <div class="degradacion"></div>
 </div>
 <div id="mundial_box">
+    @if($general['banner_img_1'][0])
     <div class="banner_img tab1">
-        <img src="/mundial_banner.png" alt="">
+        <img src="{{$mundial['general']['banner_img'][0]->content}}" alt="">
     </div>
+    @endif
+    @if($general['accesos'][0])
     <div class="accesos tab1">        
         <div class="row">
             <div class="col s6 fit-content">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tj7ug0IAqjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <video controls autoplay muted src="{{$mundial['accesos']['video'][0]->content}}"></video>
             </div>
             <div class="col s6 fit-content img_accesos">
                 <a href="#accesos" class="modal-trigger">
@@ -44,6 +56,8 @@
             </div>
         </div>        
     </div>
+    @endif
+    @if($general['pabellon1'][0])
     <div class="pabellon1 tab1">
         <div class="row">
             <div class="col s6 center-content">
@@ -55,14 +69,16 @@
                 </a>
             </div>
             <div class="col s6 fit-content">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tj7ug0IAqjQ" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <video controls loop src="{{$mundial['pabellon1']['video'][0]->content}}"></video>
             </div>
         </div>
     </div>
+    @endif
+    @if($general['pabellon2'][0])
     <div class="pabellon2 tab1">
         <div class="row">
             <div class="col s6 fit-content">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tj7ug0IAqjQ" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <video controls loop src="{{$mundial['pabellon2']['video'][0]->content}}"></video>
             </div>
             <div class="col s6 center-content">
                 <a href="#pabellon2" class="modal-trigger white_t">
@@ -74,6 +90,8 @@
             </div>            
         </div>
     </div>
+    @endif
+    @if($general['campeonato'][0])
     <div class="campeonato tab1">
         <div class="row">
             <div class="col s6 center-content">
@@ -84,6 +102,8 @@
             </div>            
         </div>
     </div>
+    @endif
+    @if($general['calendario'][0])
     <div class="calendario tab1">
         <div class="row">
             <div class="col s6 fit-content">
@@ -94,7 +114,9 @@
             </div>            
         </div>
     </div>
-    <div class="streaming tab1">
+    @endif
+    @if($general['streaming'][0])
+    <div class="streaming disabled">
         <div class="row">
             <div class="col s6 center-content">
                 <a href="#streaming" class="modal-trigger white_t">
@@ -108,9 +130,13 @@
             </div>            
         </div>
     </div>
+    @endif
+    @if($general['banner_img_2'][0])
     <div class="banner_img tab2">
-        <img src="/valencia_banner.png" alt="">
+        <img src="{{$valencia['general']['banner_img'][0]->content}}" alt="">
     </div>
+    @endif
+    @if($general['valencia'][0])
     <div class="valencia_box1 tab2">
         <div class="row">
             <div class="col s6 center-content">
@@ -120,14 +146,16 @@
                 </div>
             </div>
             <div class="col s6 fit-content">
-                <img src="/valencia_valencia.png" alt="">
+                <img src="{{$valencia['valencia']['valencia_img'][0]->content}}" alt="">
             </div>
         </div>
     </div>
+    @endif
+    @if($general['como_llegar'][0])
     <div class="como_llegar tab2">
         <div class="row">
             <div class="col s6 fit-content">
-                <img src="/valencia_llegar.png" alt="">
+                <img src="{{$valencia['comollegar']['valencia_llegar_img'][0]->content}}" alt="">
             </div>
             <div class="col s6 center-content">
                 <a href="#como_llegar" class="modal-trigger white_t">
@@ -139,6 +167,8 @@
             </div>            
         </div>
     </div>
+    @endif
+    @if($general['alojamiento'][0])
     <div class="alojamiento tab2">
         <div class="row">
             <div class="col s6 center-content">
@@ -147,14 +177,16 @@
                 </a>
             </div>
             <div class="col s6 fit-content">
-                <img src="/valencia_alojamiento.png" alt="">
+                <img src="{{$valencia['alojamiento']['valencia_alojamiento'][0]->content}}" alt="">
             </div>            
         </div>
     </div>
+    @endif
+    @if($general['restauracion'][0])
     <div class="restauracion tab2">
         <div class="row">
             <div class="col s6 fit-content">
-                <img src="/valencia_restaurantes.png" alt="">
+                <img src="{{$valencia['restauracion']['valencia_alojamiento'][0]->content}}" alt="">
             </div>
             <div class="col s6 center-content-color">
                 <a href="#restauracion" class="modal-trigger texto">
@@ -163,6 +195,8 @@
             </div>                        
         </div>
     </div>
+    @endif
+    @if($general['puntos'][0])
     <div class="puntos_interes tab2">
         <div class="row">
             <div class="col s6 center-content">
@@ -172,11 +206,13 @@
             </div>
             <div class="col s6 fit-content">
                 <a href="#puntos" class="modal-trigger white_t">
-                    <img src="/valencia_puntos.png" alt="">
+                    <img src="{{$valencia['puntos']['valencia_puntos'][0]->content}}" alt="">
                 </a>
             </div>            
         </div>
     </div>
+    @endif
+    @if($general['entradas'][0])
     <div class="banner_img tab3">
         <div class="row">
             <div class="col s12 inscripcion">
@@ -185,9 +221,9 @@
             <div class="col m3">
                 <div class="entrada">
                     <div class="logo_mundial_small"><img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt=""></div>
-                    <div class="img_mundial_entrada"><img src="logo_mundial_entrada_1.png" alt=""></div>
+                    <div class="img_mundial_entrada"><img src="{{$entradas['img_mundial_entrada'][0]->content}}" alt=""></div>
                     <div class="tipo_entrada">
-                        <a href="#!" class="modal-trigger white_t4">
+                        <a href="{{$entradas['link_mundial_entrada'][0]->content}}" class="modal-trigger white_t4">
                             <div class="text-decolored4">Entradas</div>
                             <div class="text-whitline4">
                                 <div class="linea4"></div>general
@@ -199,9 +235,9 @@
             <div class="col m3">
                 <div class="entrada">
                     <div class="logo_mundial_small"><img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt=""></div>
-                    <div class="img_mundial_entrada"><img src="logo_mundial_entrada_2.png" alt=""></div>
+                    <div class="img_mundial_entrada"><img src="{{$entradas['img_mundial_entrada'][1]->content}}" alt=""></div>
                     <div class="tipo_entrada">
-                        <a href="#!" class="modal-trigger white_t5">
+                        <a href="{{$entradas['link_mundial_entrada'][1]->content}}" class="modal-trigger white_t5">
                             <div class="text-decolored5">Entradas</div>
                             <div class="text-whitline5">
                                 <div class="linea5"></div>premium
@@ -213,9 +249,9 @@
             <div class="col m3">
                 <div class="entrada">
                     <div class="logo_mundial_small"><img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt=""></div>
-                    <div class="img_mundial_entrada"><img src="logo_mundial_entrada_3.png" alt=""></div>
+                    <div class="img_mundial_entrada"><img src="{{$entradas['img_mundial_entrada'][2]->content}}" alt=""></div>
                     <div class="tipo_entrada">
-                        <a href="#!" class="modal-trigger white_t6">
+                        <a href="{{$entradas['link_mundial_entrada'][2]->content}}" class="modal-trigger white_t6">
                             <div class="text-decolored6">Acreditaciones</div>
                         </a>
                     </div>
@@ -224,9 +260,9 @@
             <div class="col m3">
                 <div class="entrada">
                     <div class="logo_mundial_small"><img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt=""></div>
-                    <div class="img_mundial_entrada"><img src="logo_mundial_entrada_4.png" alt=""></div>
+                    <div class="img_mundial_entrada"><img src="{{$entradas['img_mundial_entrada'][3]->content}}" alt=""></div>
                     <div class="tipo_entrada">
-                        <a href="#!" class="modal-trigger white_t7">
+                        <a href="{{$entradas['link_mundial_entrada'][3]->content}}" class="modal-trigger white_t7">
                             <div class="text-decolored7">Inscripciones</div>
                         </a>
                     </div>
@@ -234,16 +270,20 @@
             </div>
         </div>
     </div>
+    @endif
+    @if($general['cuenta'][0])
     <div class="tickets_count tab3">
         <div class="row">
             <div class="col m12">
                 <div class="tickets">
                     <h2 class="texto">Entradas Restantes</h3>
-                    <h1 class="texto">500</h3>
+                    <h1 class="texto">{{$entradas['restantes'][0]->content}}</h3>
                 </div>
             </div>
         </div>
     </div>
+    @endif
+    @if($general['acceso_delegaciones'][0])
     <div class="acceso_delegaciones tab4">
         <div class="row">
             <div class="col s12 inscripcion">
@@ -262,6 +302,8 @@
             </div>
         </div>
     </div>
+    @endif
+    @if($general['rrss'][0])
     <div class="rrss">
         <div class="row">
             <div class="col s6 s6 fit-content">
@@ -276,7 +318,9 @@
             </div>            
         </div>
     </div>
-    <div class="row mundial_patrocinadores">
+    @endif
+    @if($general['patrocinadores'][0])
+    <div class="row mundial_patrocinadores tab5">
         <div class="sub_section_esp2">
             <h3 class="texto">Patrocinadores y  colaboradores</h3>
         </div>
@@ -381,6 +425,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 
  <!-- Modal Structure -->
@@ -398,54 +443,63 @@
             </div>
             <div class="col s12 texto_accesos">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste iure accusantium nisi libero a omnis modi, 
-                    impedit eaque qui id, est fugit possimus. Facilis libero dolor deleniti magnam hic! Accusamus?
-                    Quod deleniti hic saepe reiciendis adipisci fugit ea sint aperiam in assumenda ratione, qui quo 
+                    {{$mundial['accesos']['texto_accesos'][0]->content}} 
                 </p>
             </div>
         </div>
         <div class="row body-color">
             <div class="col s12 full-width-video">
-                <iframe width="100%" height="500px" src="https://www.youtube.com/embed/6ZfuNTqbHE8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video controls src="{{$mundial['accesos']['full-width-video'][0]->content}}"></video>
             </div>
         </div>
         <div class="row acceso_detail">
             <div class="col s6">
-                <p class="title_acceso">Superficie</p>
-                <p class="data_accesso2">11.600 m2</p>
-                <p class="title_acceso">Aforo</p>
-                <p class="data_accesso2">6.870 personas</p>
-                <p class="title_acceso">Uso</p>
-                <p class="data_accesso2">Público general</p>
-                <p class="data_accesso2">Tapiz principal de competiciones</p>
-                <p class="data_accesso2">Cafeterías y restauración</p>
-                <p class="data_accesso2">Tiendas</p>
-                <p class="title_acceso">Horario</p>
-                <p class="data_accesso2">Público general: 8:30 h. - 22:00 h.</p>
+                <p class="title_acceso">{{$mundial['accesos']['title_acceso'][0]->content}}</p>
+                @foreach($mundial['accesos']['data_accesso2'] as $data)
+                    @if($data->dad==$mundial['accesos']['title_acceso'][0]->id)
+                        <p class="data_accesso2">{{$data->content}}</p>
+                    @endif
+                @endforeach
+                <p class="title_acceso">{{$mundial['accesos']['title_acceso'][1]->content}}</p>
+                @foreach($mundial['accesos']['data_accesso2'] as $data)
+                    @if($data->dad==$mundial['accesos']['title_acceso'][1]->id)
+                        <p class="data_accesso2">{{$data->content}}</p>
+                    @endif
+                @endforeach
+                <p class="title_acceso">{{$mundial['accesos']['title_acceso'][2]->content}}</p>
+                @foreach($mundial['accesos']['data_accesso2'] as $data)
+                    @if($data->dad==$mundial['accesos']['title_acceso'][2]->id)
+                        <p class="data_accesso2">{{$data->content}}</p>
+                    @endif
+                @endforeach
+                <p class="title_acceso">{{$mundial['accesos']['title_acceso'][3]->content}}</p>
+                @foreach($mundial['accesos']['data_accesso2'] as $data)
+                    @if($data->dad==$mundial['accesos']['title_acceso'][3]->id)
+                        <p class="data_accesso2">{{$data->content}}</p>
+                    @endif
+                @endforeach
             </div>
             <div class="col s6">
-                <p class="title_acceso">Accesos</p>
-                <p class="data_accesso"><b>En coche</b>: Lorem impedit eaque qui id, est fugit possimus. Facilis libero dolor deleniti magnam hic! Accusamus? Quod deleniti hic saepe reiciendis adipisci fugit ea sint aperiam in assumenda ratione, qui quo </p>
-                <p class="data_accesso"><b>En autobús</b>: Lorem impedit eaque qui id, est fugit possimus. Facilis libero dolor deleniti magnam hic! Accusamus? Quod deleniti hic saepe reiciendis adipisci fugit ea sint aperiam in assumenda ratione, qui quo </p>
-                <p class="data_accesso"><b>Metro</b>: Lorem impedit eaque qui id, est fugit possimus. Facilis libero dolor deleniti magnam hic! Accusamus? Quod deleniti hic saepe reiciendis adipisci fugit ea sint aperiam in assumenda ratione, qui quo </p>
-                <p class="data_accesso"><b>Tranvía</b>: Lorem impedit eaque qui id, est fugit possimus. Facilis libero dolor deleniti magnam hic! Accusamus? Quod deleniti hic saepe reiciendis adipisci fugit ea sint aperiam in assumenda ratione, qui quo </p>
+                <p class="title_acceso">{{$mundial['accesos']['title_acceso'][4]->content}}</p>
+                @foreach($mundial['accesos']['data_accesso'] as $data)
+                    @if($data->dad==$mundial['accesos']['title_acceso'][4]->id)
+                        <p class="data_accesso2">{!!$data->content!!}</p>
+                    @endif
+                @endforeach
             </div>
         </div>
         <div class="row plano">
             <h3 class="title_acceso2">Plano de ubicación</h3>
-            <img src="/plano_acceso.png" alt="">
+            <a href="{{$mundial['accesos']['link_acceso'][0]->content}}" tarjet="_blank"><img src="{{$mundial['accesos']['title_acceso'][0]->content}}" alt=""></a>
         </div>
         <div class="row plano">
             <h3 class="title_acceso2">Plano general de accesos</h3>
-            <img src="/plano_acceso2.png" alt="">
+            <img src="{{$mundial['accesos']['plano_general_acceso'][0]->content}}" alt="">
         </div>
         <div class="row galery">
-            <div class="col s4 img_galery"><img src="/plano_acceso2.png" alt=""></div>
-            <div class="col s4 img_galery"><img src="/plano_acceso2.png" alt=""></div>
-            <div class="col s4 img_galery"><img src="/plano_acceso2.png" alt=""></div>
-            <div class="col s4 img_galery"><img src="/plano_acceso2.png" alt=""></div>
-            <div class="col s4 img_galery"><img src="/plano_acceso2.png" alt=""></div>
-            <div class="col s4 img_galery"><img src="/plano_acceso2.png" alt=""></div>
+            @foreach($mundial['accesos']['img_galery'] as $img_galery)
+                <div class="col s4 img_galery"><img src="{{$img_galery->content}}" alt=""></div>
+            @endforeach
         </div>
         <div class="row acesos_parking">
             <div class="col s6">
@@ -490,7 +544,7 @@
         </div>
         <div class="row body-color">
             <div class="col s12 full-width-video">
-                <iframe width="100%" height="500px" src="https://www.youtube.com/embed/6ZfuNTqbHE8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video controls src="{{$mundial['pabellon1']['full-width-video'][0]->content}}"></video>
             </div>
         </div>
         <div class="row acceso_detail">
@@ -550,7 +604,7 @@
         </div>
         <div class="row body-color">
             <div class="col s12 full-width-video">
-                <iframe width="100%" height="500px" src="https://www.youtube.com/embed/6ZfuNTqbHE8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video controls src="{{$mundial['pabellon2']['full-width-video'][0]->content}}"></video>
             </div>
         </div>
         <div class="row acceso_detail">
@@ -589,8 +643,8 @@
     </div>
 </div>
 <div id="streaming" class="modal">
-    <div class="modal-content">
-        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/6ZfuNTqbHE8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="modal-content fit-content">
+        <video controls src="{{$mundial['streaming']['video'][0]->content}}"></video>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
@@ -738,12 +792,15 @@
             $('.tab2').hide();
             $('.tab3').hide();
             $('.tab4').hide();
+            $('.tab5').hide();
+            $('.disabled').hide();
             $('#tab1').click(function(){
                 console.log('tab1');
                 $('.tab1').show();
                 $('.tab2').hide();
                 $('.tab3').hide();
                 $('.tab4').hide();
+                $('.tab5').hide();
             });
             $('#tab2').click(function(){
                 console.log('tab2');
@@ -751,6 +808,7 @@
                 $('.tab2').show();
                 $('.tab3').hide();
                 $('.tab4').hide();
+                $('.tab5').hide();
             });
             $('#tab3').click(function(){
                 console.log('tab3');
@@ -758,6 +816,7 @@
                 $('.tab2').hide();
                 $('.tab3').show();
                 $('.tab4').hide();
+                $('.tab5').hide();
             });
             $('#tab4').click(function(){
                 console.log('tab4');
@@ -765,6 +824,15 @@
                 $('.tab2').hide();
                 $('.tab3').hide();
                 $('.tab4').show();
+                $('.tab5').hide();
+            });
+            $('#tab5').click(function(){
+                console.log('tab5');
+                $('.tab1').hide();
+                $('.tab2').hide();
+                $('.tab3').hide();
+                $('.tab4').hide();
+                $('.tab5').show();
             });
             $('.delegacion_access').click(function(){
                 var username = $('#username').val();
