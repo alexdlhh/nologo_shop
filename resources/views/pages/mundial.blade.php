@@ -23,7 +23,7 @@ $valencia=$front['mundial']['valencia'];
                 <h2 class="texto">CAMPEONATO MUNDIAL</h3>
                 <h1 class="texto">GIMNASIA RÍTMICA</h2>
                 <div class="linea_title"></div>
-                <h2 class="texto">Valencia 2013</h3>
+                <h2 class="texto">Valencia 2023</h3>
             </div>            
         </div> 
     </div>
