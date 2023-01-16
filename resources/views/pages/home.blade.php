@@ -27,7 +27,7 @@
         </h1>
     </div>
     <div class="home_mundial">
-        <img src="/FINAL-Logo_FIG_RGB_Horizontal.png" alt="">
+        <img src="/FINAL-Logo_FIG_RGB_Horizontal.svg" alt="">
     </div>
 </div>
 @guest
@@ -53,6 +53,7 @@
                             @php
                                 $count=0;
                             @endphp
+                            @if(!empty($front['areaPersonal']['news']))
                             @foreach($front['areaPersonal']['news'] as $new)
                             @php
                                 $day = date('d', strtotime($new->getCreatedAt()));
@@ -83,6 +84,17 @@
                                 }
                             @endphp
                             @endforeach
+                            @else
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 newshometitle">
+                                            <p>No hay noticias</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
                         </table>
                     </div>
                 </div>
@@ -97,6 +109,7 @@
                             @php
                                 $count=0;
                             @endphp
+                            @if(!empty($front['areaPersonal']['calendarios'])
                             @foreach($front['areaPersonal']['calendarios'] as $calendarios)
                             @php
                                 $day = date('d', strtotime($calendarios->getFecha()));
@@ -126,6 +139,17 @@
                                 }
                             @endphp
                             @endforeach
+                            @else
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 newshometitle">
+                                            <p>No hay calendario</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
                         </table>
                     </div>
                 </div>
@@ -140,6 +164,7 @@
                             @php
                                 $count=0;
                             @endphp
+                            @if(!empty($front['areaPersonal']['eventos'])
                             @foreach($front['areaPersonal']['eventos'] as $calendarios)
                             @php
                                 $day = date('d', strtotime($calendarios->getFecha()));
@@ -169,6 +194,17 @@
                                 }
                             @endphp
                             @endforeach
+                            @else
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 newshometitle">
+                                            <p>No hay eventos</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
                         </table>
                     </div>
                 </div>

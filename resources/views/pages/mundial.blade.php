@@ -9,33 +9,24 @@ $entradas=$front['mundial']['entradas'];
 $valencia=$front['mundial']['valencia'];
 @endphp
 @section('content')
-<div class="container minheight">
-    <div class="row">
-        <div class="col s12 mundial">
-            <img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt="">
-        </div>
-        <div class="col s12 title-section">
-            <h2 class="texto">CAMPEONATO MUNDIAL</h3>
-            <h1 class="texto">GIMNASIA RÍTMICA</h2>
-            <div class="linea_title"></div>
-            <h2 class="texto">Valencia 2013</h3>
-        </div>            
-    </div>        
-    <div class="lista">
-        <ul>
-            <li><a href="javascript:;" class="texto colored_border" id="tab3">VENTA DE ENTRADAS</a></li>
-            <li><a href="javascript:;" class="texto" id="tab1">CAMPEONATO DEL MUNDO</a></li>
-            <li><a href="javascript:;" class="texto">NOTICIAS</a></li>
-            <li><a href="javascript:;" class="texto" id="tab2">VALENCIA</a></li>            
-            <li><a href="#streaming" class="modal-trigger texto">STREAMING</a></li>
-            <li><a href="javascript:;" class="texto" id="tab4">DELEGACIONES</a></li>
-            <li><a href="javascript:;" class="texto" id="tab5">PATROCINADORES</a></li>
-        </ul>
+<div class="minheight" style="background-image: url({{$general['img_pral'][0]->content}});background-size: cover; /* para que la imagen ocupe toda el área del div */
+    background-position: center center; /* para centrar la imagen */
+    background-repeat: no-repeat; /* para que la imagen no se repita */
+    width: 100%; /* para que el div ocupe todo el ancho del contenedor */
+    height: 100%; ">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 mundial">
+                <img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt="">
+            </div>
+            <div class="col s12 title-section">
+                <h2 class="texto">CAMPEONATO MUNDIAL</h3>
+                <h1 class="texto">GIMNASIA RÍTMICA</h2>
+                <div class="linea_title"></div>
+                <h2 class="texto">Valencia 2013</h3>
+            </div>            
+        </div> 
     </div>
-    <div class="img_degradada">
-        <img src="{{$general['img_pral'][0]->content}}" alt="">
-    </div>
-    <div class="degradacion"></div>
 </div>
 <div id="mundial_box">
     @if($general['banner_img_1'][0])
@@ -788,6 +779,7 @@ $valencia=$front['mundial']['valencia'];
 @section('scripts')
     <script>
         $(document).ready(function(){
+            
             $('.collapsible').collapsible();
             $('.tab2').hide();
             $('.tab3').hide();

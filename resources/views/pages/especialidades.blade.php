@@ -48,7 +48,7 @@ $header_subtitle_esp = [
                 <h1>Especialidades</h1>
             </div>
             <div class="col s6 mundial">
-                <img src="/FINAL-Logo_FIG_RGB_Horizontal.png" alt="">
+                <img src="/FINAL-Logo_FIG_RGB_Horizontal.svg" alt="">
             </div>
         </div>        
         <div class="lista">

@@ -441,6 +441,7 @@ tr:nth-of-type(5) > td {padding-bottom: 23px;}
     box-shadow: 6px 7px 13px -4px rgb(0 0 0 / 50%);
     border-radius: 6px 6px 6px 6px;
     margin: 0 !important;
+    height: 264px;
 }
 .clear-both{
     clear: both;
@@ -1051,7 +1052,7 @@ h3.especial{
     height: 100%;
 }
 .section_esp{
-    background: linear-gradient(135deg, #CA01CC, #4E0185);
+    background: linear-gradient(98deg, #01292a, #007374, #2b2d39);
     padding: 2% 6.5% 5% 6.5% !important;
     max-width: 2580px !important;
 }

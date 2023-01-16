@@ -29,8 +29,27 @@
             <div class="nav-wrapper">
             <a href="/" class="brand-logo">
                 <img src="{{$front['general']['logo_mundial']}}" alt="rfeg">
-            </a>         
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="center-box hide-on-med-and-down">
+                <li class="tmn"><a href="javascript:;" class="texto colored_border" id="tab3">VENTA DE ENTRADAS</a></li>
+                <li class="tmn"><a href="javascript:;" class="texto" id="tab1">CAMPEONATO DEL MUNDO</a></li>
+                <li class="tmn"><a href="javascript:;" class="texto">NOTICIAS</a></li>
+                <li class="tmn"><a href="javascript:;" class="texto" id="tab2">VALENCIA</a></li>            
+                <li class="tmn"><a href="#streaming" class="modal-trigger texto">STREAMING</a></li>
+                <li class="tmn"><a href="javascript:;" class="texto" id="tab4">DELEGACIONES</a></li>
+                <li class="tmn"><a href="javascript:;" class="texto" id="tab5">PATROCINADORES</a></li>
+            </ul>      
         </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li class="tmn"><a href="javascript:;" class="texto colored_border" id="tab3">VENTA DE ENTRADAS</a></li>
+            <li class="tmn"><a href="javascript:;" class="texto" id="tab1">CAMPEONATO DEL MUNDO</a></li>
+            <li class="tmn"><a href="javascript:;" class="texto">NOTICIAS</a></li>
+            <li class="tmn"><a href="javascript:;" class="texto" id="tab2">VALENCIA</a></li>            
+            <li class="tmn"><a href="#streaming" class="modal-trigger texto">STREAMING</a></li>
+            <li class="tmn"><a href="javascript:;" class="texto" id="tab4">DELEGACIONES</a></li>
+            <li class="tmn"><a href="javascript:;" class="texto" id="tab5">PATROCINADORES</a></li>
+        </ul>
 
         @yield('content')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -38,6 +57,9 @@
         <script>
             $(document).ready(function(){
                 $('.modal').modal();
+                setTimeout(function(){
+                    $('.sidenav').sidenav();
+                }, 500);
                 /**
                  * Creamos un pop-up de aceptacion de cookies a no ser que exista una cookie llamada cookies con valor 1
                  */

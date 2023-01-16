@@ -37,6 +37,13 @@ body{
    /* animation: color 4s linear infinite;    */   
     
 }
+.colored_border{
+    border: 5px solid; /* tamaño del borde */
+    border-image: linear-gradient(to right, #5A278B 0%, #D6667A 50%, #B92E32 70%) 1 round; 
+}
+.tmn{
+    line-height: 44px !important;
+}
 .texto:hover{
     animation: color 4s linear infinite;
     background-size: 500%;
@@ -68,7 +75,7 @@ body{
     margin-left: -10%;
 }
 h1 {
-    font-size: 86px !important;
+    font-size: 80px !important;
     font-weight: 200 !important;
     padding-top: 0px !important;
     margin-top: 0px !important;
@@ -78,7 +85,7 @@ h2 {
     padding-bottom: 0px !important;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
-    font-size: 66px !important;
+    font-size: 60px !important;
     font-weight: 200 !important;
 }
 .mundial{
@@ -90,6 +97,12 @@ h2 {
 .title-section{
     padding: 0px 0px 20px 0px !important;
     margin-left: 0px !important;
+}
+.title-section h1{
+    letter-spacing: -5px;
+}
+.title-section h2{
+    letter-spacing: -5px;
 }
 .img_degradada{
     position: absolute;
@@ -116,9 +129,10 @@ h2 {
 .minheight{
     min-height: 800px;
     display: grid;
+    
 }
 .nav-extended, .nav-wrapper {
-    height: 64px !important;
+    height: 100px !important;
     background: -webkit-linear-gradient(180.6deg, #fff 30%, transparent 90%);
     z-index: 10;
 }
@@ -206,6 +220,9 @@ nav{
 }
 .fit-content img{
     height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
 }
 .fit-content{
     height: 548px;

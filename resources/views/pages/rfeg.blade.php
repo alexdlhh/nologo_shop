@@ -40,7 +40,7 @@ $normativa_heads = [
                 <h1>Real Federación<br>Española de Gimnasia</h1>
             </div>
             <div class="col s6 mundial">
-                <img src="/FINAL-Logo_FIG_RGB_Horizontal.png" alt="">
+                <img src="/FINAL-Logo_FIG_RGB_Horizontal.svg" alt="">
             </div>
         </div>        
         <div class="lista">
