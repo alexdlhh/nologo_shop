@@ -109,8 +109,8 @@
                             @php
                                 $count=0;
                             @endphp
-                            @if(!empty($front['areaPersonal']['calendarios'])
-                            @foreach($front['areaPersonal']['calendarios'] as $calendarios)
+                            @if(!empty($front['areaPersonal']['calendarios']))
+                            @foreach($front['areaPersonal']['calendarios'] as $calendarios))
                             @php
                                 $day = date('d', strtotime($calendarios->getFecha()));
                                 $month = date('M', strtotime($calendarios->getFecha()));
@@ -164,8 +164,8 @@
                             @php
                                 $count=0;
                             @endphp
-                            @if(!empty($front['areaPersonal']['eventos'])
-                            @foreach($front['areaPersonal']['eventos'] as $calendarios)
+                            @if(!empty($front['areaPersonal']['eventos']))
+                            @foreach($front['areaPersonal']['eventos'] as $calendarios))
                             @php
                                 $day = date('d', strtotime($calendarios->getFecha()));
                                 $month = date('M', strtotime($calendarios->getFecha()));
