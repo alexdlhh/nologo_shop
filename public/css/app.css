@@ -544,8 +544,8 @@ h7 a{
     background: white;
 }
 .bocadillo ul li{
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 40px;
+    padding: 0 20px 10px 20px;
 }
 .bocadillo ul li:hover{
     background: #EAEEF1;
@@ -567,8 +567,18 @@ h7 a{
 }
 .bocadillo_especialities {
     left: 18.3%;
-    width: 440px;
+    width: 690px;
     top: 11%;    
+}
+.icon_esp {
+    height: 90px;
+    max-width: 100%;
+}
+.esp_bocadi a {
+    padding-left: 0px !important;
+}
+.esp_bocadi{
+    text-align: center;
 }
 .bocadillo_especialities .flecha {
     position: absolute;
@@ -589,10 +599,11 @@ h7 a{
     left: 53%;
     top: 11%;
 }
-.noolimpicas{
+.noolimpicas {
     background: #EAEEF1;
     margin-bottom: 0px !important;
     border-radius: 0px 0px 4px 4px;
+    padding-top: 15px;
 }
 .big_block{
     height: 100px;

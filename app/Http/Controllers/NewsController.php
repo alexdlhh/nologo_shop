@@ -263,7 +263,7 @@ class NewsController extends Controller
         $rs = $RSRepository->getAll();
         $sponsors = $sponsorRepository->getAll();
         $banners = $bannerRepository->getOne('news_detail');
-        $menu2 = $menu2!=''?$this->getMonthName($menu2):'';
+        $menu2 = $menu2!=''?$this->getMonthName($menu2):$this->getMonthName(date('m'));
         $general = $generalRepository->getConfigGeneral();
         $front = [
             'headers' => $headers,

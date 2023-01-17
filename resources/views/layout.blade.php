@@ -82,31 +82,49 @@
                 <div class="flecha"></div>
                     <div class="row">
                         <p>OLIMPICAS</p>
-                        <div class="col s6">
+                        <hr>
+                        <div class="col s3 esp_bocadi">
                             <ul>
-                                <li><img width="20" src="/rfeg_ico_gam.png" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
-                                <li><img width="20" src="/rfeg_ico_gaf.png" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
                             </ul>
                         </div>
-                        <div class="col s6">
+                        <div class="col s3 esp_bocadi">
                             <ul>
-                                <li><img width="20" src="/rfeg_ico_gr.png" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
-                                <li><img width="20" src="/rfeg_ico_tram.png" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s3 esp_bocadi">
+                            <ul>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s3 esp_bocadi">
+                            <ul>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="row noolimpicas">
                         <p>NO OLIMPICAS</p>
-                        <div class="col s6">
+                        <hr>
+                        <div class="col s3 esp_bocadi">
                             <ul>
-                                <li><img width="20" src="/rfeg_ico_aero.png" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
-                                <li><img width="20" src="/rfeg_ico_acro.png" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
                             </ul>
                         </div>
-                        <div class="col s6">
+                        <div class="col s3 esp_bocadi">
+                            <ul>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s3 esp_bocadi">
                             <ul>                                
-                                <li><img width="20" src="/rfeg_ico_todos.png" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
-                                <li><img width="20" src="/rfeg_ico_park.png" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s3 esp_bocadi">
+                            <ul> 
+                                <li><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
                             </ul>
                         </div>
                     </div>
