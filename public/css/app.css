@@ -567,11 +567,11 @@ h7 a{
 }
 .bocadillo_especialities {
     left: 18.3%;
-    width: 690px;
+    width: 570px;
     top: 11%;    
 }
 .icon_esp {
-    height: 90px;
+    height: 50px;
     max-width: 100%;
 }
 .esp_bocadi a {
@@ -579,6 +579,7 @@ h7 a{
 }
 .esp_bocadi{
     text-align: center;
+    height: 130px;
 }
 .bocadillo_especialities .flecha {
     position: absolute;
