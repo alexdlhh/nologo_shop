@@ -60,7 +60,7 @@ $normativa_heads = [
         <div class="lista">
             <ul>
                 <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu2']=='reglamentos' ? 'active':''}}">REGLAMENTOS</a></li>
-                <li><a href="/rfeg/normativa/normativas" class="{{$front['menu2']=='noprmativas' ? 'active':''}}">NORMATIVAS</a></li>
+                <li><a href="/rfeg/normativa/normativas" class="{{$front['menu2']=='normativas' ? 'active':''}}">NORMATIVAS</a></li>
                 <li><a href="/rfeg/normativa/protocolos/" class="{{$front['menu2']=='protocolos' ? 'active':''}}">PROTOCOLOS</a></li>
             </ul>
         </div>
