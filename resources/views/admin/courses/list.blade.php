@@ -38,13 +38,13 @@
                                                 <td>{{ $course->getCurso() }}</td>
                                                 <td>{{ $course->getLugar() }}</td>
                                                 <td>
-                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getConvocatoriaPdf()}}"><img src="/icons/rfeg_ico_pdfview.png" width="24"></a>
+                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getConvocatoriaPdf()}}"><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
                                                 </td>
                                                 <td>
-                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getInscripcionPdf()}}"><img src="/icons/rfeg_ico_pdfview.png" width="24"></a>
+                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getInscripcionPdf()}}"><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
                                                 </td>
                                                 <td>
-                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getFormulariosPdf()}}"><img src="/icons/rfeg_ico_pdfview.png" width="24"></a>
+                                                    <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getFormulariosPdf()}}"><img src="/icons/rfeg_ico_pdfview.svg" width="24"></a>
                                                 </td>
                                                 <td>
                                                     <a href="#edit_course" 
