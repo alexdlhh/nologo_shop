@@ -571,7 +571,15 @@
             $('select').change(function(){
                 bPreguntar = true;
             });
-            
+            $('button').click(function(){
+                bPreguntar = false;
+            });
+            $('form').submit(function(){
+                bPreguntar = false;
+            });
+            $('a.waves-effect').click(function(){
+                bPreguntar = false;
+            });
             window.onbeforeunload = preguntarAntesDeSalir;
         
             function preguntarAntesDeSalir () {
