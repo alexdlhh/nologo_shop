@@ -69,13 +69,17 @@
             <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icons/rfeg_ico_presentacion.svg" alt=""><a href="/rfeg/comunicados">Presentación</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><a href="/rfeg/rfeg">Quiénes Somos</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><a href="/rfeg/gobierno">Organo de gobierno</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/normativa/reglamentos">Normativa</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><a href="/rfeg/rfeg">Conócenos</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><a href="/rfeg/gobierno">Organos de gobierno</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/normativa/reglamentos">Reglamentos y normativas</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/mujer/">Igualdad</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/comunicados/">Comunicados y Circulares</a></li>
                     <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_estatutos.svg" alt=""><a href="/rfeg/estatutos">Estatutos</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="javascript:;">Compliance</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/ffaa/">FFAA</a></li>
+                    @if(!empty(Auth::user()) && Auth::user()->role==1)
                     <li><img width="20" src="/icons/rfeg_ico_elecciones.svg" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
+                    @endif
                 </ul>
             </div>
             <div class="bocadillo bocadillo_especialities" data-id="especialidades">
@@ -147,8 +151,8 @@
             <div class="bocadillo bocadillo_schools" data-id="school">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><a href="/schools">Cursos</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/schools/normativa/">Normativa</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><a href="/schools">Cursos RFEG</a></li>
+                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/schools/normativa/">Cursos FFAA</a></li>
                 </ul>
             </div>            
         </div>

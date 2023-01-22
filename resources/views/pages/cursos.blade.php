@@ -24,7 +24,7 @@ $header_subtitle_esp = [
     <div class="listado">
         <div class="row">
             <div class="col s6 title-section2">
-                <h1>Escuela Nacional<br>de Gimnasia</h1>
+                <h1>Actividades Formativas</h1>
             </div>
             <div class="col s6 mundial">
                 <img src="/FINAL-Logo_FIG_RGB_Horizontal.svg" alt="">
@@ -32,18 +32,9 @@ $header_subtitle_esp = [
         </div>        
         <div class="lista">
             <ul>
-                <li><a href="/schools/cursos/" class="{{$front['menu1']=='cursos' ? 'active':''}}">CURSOS</a></li>
-                <li><a href="/schools/normativa/" class="{{$front['menu1']=='normativa' ? 'active':''}}">NORMATIVA</a></li>
-        </div>
-        <div class="lista">
-            <ul>
-                <li><a href="/schools/cursos/todo" class="{{$front['menu2']=='todo' ? 'active':''}}">TODO</a></li>
-                <li><a href="/schools/cursos/entrenadores" class="{{$front['menu2']=='entrenadores' ? 'active':''}}">ENTRENADORES RFEG</a></li>
-                <li><a href="/schools/cursos/courses_ffaa" class="{{$front['menu2']=='courses_ffaa' ? 'active':''}}">ENTRENADORES FFAA</a></li>
-                <li><a href="/schools/cursos/formacion" class="{{$front['menu2']=='formacion' ? 'active':''}}">FORMACION CONTÍNUA</a></li>
-                <li><a href="/schools/cursos/jueces_rfeg" class="{{$front['menu2']=='jueces_rfeg' ? 'active':''}}">JUECES RFEG</a></li>
-                <li><a href="/schools/cursos/jueces_ffaa" class="{{$front['menu2']=='jueces_ffaa' ? 'active':''}}">JUECES FFAA</a></li>
-            </ul>
+                <li><a href="/schools/cursos/" class="{{$front['menu1']=='cursos' ? 'active':''}}">CURSOS RFEG</a></li>
+                <li><a href="/schools/cursos/" class="{{$front['menu1']=='cursosffaa' ? 'active':''}}">CURSOS FFAA</a></li>
+                <!--li><a href="/schools/normativa/" class="{{$front['menu1']=='normativa' ? 'active':''}}">NORMATIVA</a></li-->
         </div>
     </div>
 </div>
