@@ -60,7 +60,7 @@ $normativa_heads = [
         <div class="lista">
             <ul>
                 <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu2']=='reglamentos' ? 'active':''}}">REGLAMENTOS</a></li>
-                <li><a href="/rfeg/normativa/normativas" class="{{$front['menu2']=='noprmativas' ? 'active':''}}">NORMATIVAS</a></li>
+                <li><a href="/rfeg/normativa/normativas" class="{{$front['menu2']=='normativas' ? 'active':''}}">NORMATIVAS</a></li>
                 <li><a href="/rfeg/normativa/protocolos/" class="{{$front['menu2']=='protocolos' ? 'active':''}}">PROTOCOLOS</a></li>
             </ul>
         </div>
@@ -91,7 +91,7 @@ $normativa_heads = [
                 <div class="col s2">{{date_format_esp($rfeg_content->created_at)}}</div>
                 <div class="col s2">{{date_format_esp($rfeg_content->updated_at)}}</div>
                 <div class="col s2">
-                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/icons/rfeg_ico_pdfview.png" alt=""></a>
+                    <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/rfeg_ico_pdfview.png" alt=""></a>
                     <a href="{{$rfeg_content->download_pdf}}" download class=""><img width="30" src="/icons/rfeg_ico_pdfdownload.svg" alt=""></a>
                 </div>
             </div>

@@ -16,3 +16,6 @@ yarn-error.log
 docker-compose.yml
 /docker-compose/*
 public/wp-content/*
+public/files/*
+public/formularioss/course/*
+public/inscripcions/course/*
