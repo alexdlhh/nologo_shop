@@ -99,7 +99,7 @@ $header_subtitle_esp = [
         </div>
         <div id="players" class="row">
             @foreach($front['team'] as $team)
-            <div class="player player{{$team->categoria}} col s3">
+            <div class="player player{{$team->categoria}} col s6 m3">
                 <div class="player_img">
                     <img src="{{$team->image}}" alt="">
                 </div>

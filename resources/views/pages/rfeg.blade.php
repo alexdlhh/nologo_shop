@@ -209,7 +209,7 @@ $normativa_heads = [
             <h3 class="bandeja_rfeg">{{$rfeg_title->name}}</h3>
             <div class="row">
                 @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
-                <div class="col s3 empp">
+                <div class="col s12 m3 empp">
                     <div class="empleado">
                         <div class="empleado_img">
                             <img src="{{$rfeg_content->featuredImage}}" alt="">

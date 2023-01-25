@@ -14,7 +14,6 @@ use App\Http\Repository\Table1Repository;
 use App\Http\Repository\Table2Repository;
 use App\Http\Repository\Table7Repository;
 use App\Http\Repository\RFEGTitleRepository;
-use App\Http\Repository\RFEGRepository;
 use App\Http\Repository\EmployeeRepository;
 use App\Http\Repository\GeneralRepository;
 use App\Http\Repository\EspecialidadesRepository;
@@ -33,12 +32,11 @@ class RFEGController extends Controller
     protected $table2Repository;
     protected $table7Repository;
     protected $rfegTitleRepository;
-    protected $rfegRepository;
     protected $employeeRepository;
     protected $generalRepository;
     protected $especialidadesRepository;
 
-    public function __construct(PagesRepository $pagesRepository, NewsRepository $newsRepository, CategoryNewRepository $categoryNewRepository, TagNewRepository $tagNewRepository, RSRepository $rsRepository, SponsorRepository $sponsorRepository, AlbumNewRepository $albumNewRepository, BannerRepository $bannerRepository, Table1Repository $table1Repository, Table2Repository $table2Repository, RFEGTitleRepository $rfegTitleRepository, EmployeeRepository $employeeRepository, GeneralRepository $generalRepository, EspecialidadesRepository $especialidadesRepository, Table7Repository $table7Repository, RFEGRepository $rfegRepository)
+    public function __construct(PagesRepository $pagesRepository, NewsRepository $newsRepository, CategoryNewRepository $categoryNewRepository, TagNewRepository $tagNewRepository, RSRepository $rsRepository, SponsorRepository $sponsorRepository, AlbumNewRepository $albumNewRepository, BannerRepository $bannerRepository, Table1Repository $table1Repository, Table2Repository $table2Repository, RFEGTitleRepository $rfegTitleRepository, EmployeeRepository $employeeRepository, GeneralRepository $generalRepository, EspecialidadesRepository $especialidadesRepository, Table7Repository $table7Repository)
     {
         $this->pagesRepository = $pagesRepository;
         $this->newsRepository = $newsRepository;
@@ -55,7 +53,6 @@ class RFEGController extends Controller
         $this->generalRepository = $generalRepository;
         $this->especialidadesRepository = $especialidadesRepository;
         $this->table7Repository = $table7Repository;
-        $this->rfegRepository = $rfegRepository;
     }
 
     public function frontPage($menu1='rfeg',$menu2='rfeg')
@@ -155,19 +152,29 @@ class RFEGController extends Controller
         $table = '';
         $rfeg_title='';
         $content_tables = [];
-        
+        if($seccion == 'gobierno'){
+            $rfeg_title = $this->rfegTitleRepository->getbyType($seccion);            
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table2Repository->getbyRfegTitle($title->getId());
+            }
+            $table = 2;            
+        }
         if($seccion == 'ffaa'){
             $rfeg_title = $this->rfegTitleRepository->getbyType($seccion);            
             foreach($rfeg_title as $title){
                 $content_tables[$title->getId()] = $this->table7Repository->getbyRfegTitle($title->getId());
             }
             $table = 7;            
-        }else{
-            $rfeg_title = $this->rfegRepository->getRFEGTablesByType($seccion);
-            foreach($rfeg_title as $title){
-                $content_tables[$title->id] = $this->rfegRepository->getRFEGContentByRFEGTableId($title->id);
+        }
+        if($seccion != 'gobierno' && $seccion != 'ffaa'){
+            $rfeg_title = $this->rfegTitleRepository->getbyType($seccion); 
+            if($seccion == 'normativa'){
+                $rfeg_title = $this->rfegTitleRepository->getbyType($subseccion);                
             }
-            $table = 6;
+            foreach($rfeg_title as $title){
+                $content_tables[$title->getId()] = $this->table1Repository->getbyRfegTitle($title->getId());
+            }            
+            $table = 1;            
         }
         $especialidades = $this->especialidadesRepository->getAll();
 
@@ -228,6 +235,82 @@ class RFEGController extends Controller
     public function deleteRFEGTitle($id){
         $rfegTitle = $this->rfegTitleRepository->delete($id);
         return response()->json($rfegTitle);
+    }
+
+    /**
+     * Esta función permitirá crear un rfeg_table1
+     * @param Request $request
+     * @return type
+     */
+    public function createRFEGTable1(Request $request){
+        $file_url = '';
+        if($request->hasFile('download_pdf')){
+            $file = $request->file('download_pdf');
+            $file_name = time().$file->getClientOriginalName();
+            $destinationPath = public_path('/files/rfeg/');
+            $file->move($destinationPath, $file_name);
+            $file_url = '/files/rfeg/'.$file_name;
+        }
+        $rfegTable1 = $this->table1Repository->save($request->all(), $file_url);
+        return response()->json($rfegTable1);
+    }
+
+    /**
+     * Esta función permitirá actualizar un rfeg_table1
+     * @param Request $request
+     * @return type
+     */
+    public function updateRFEGTable1(Request $request){
+        $file_url = '';
+        if($request->hasFile('download_pdf')){
+            $file = $request->file('download_pdf');
+            $file_name = time().$file->getClientOriginalName();
+            $destinationPath = public_path('/files/rfeg/');
+            $file->move($destinationPath, $file_name);
+            $file_url = '/files/rfeg/'.$file_name;
+        }
+        $rfegTable1 = $this->table1Repository->save($request->all(), $file_url);
+        return response()->json($rfegTable1);
+    }
+
+    /**
+     * Esta función permitirá eliminar un rfeg_table1
+     * @param Request $request
+     * @return type
+     */
+    public function deleteRFEGTable1($id){
+        $rfegTable1 = $this->table1Repository->delete($id);
+        return response()->json($rfegTable1);
+    }
+
+    /**
+     * Esta función permitirá crear un rfeg_table2
+     * @param Request $request
+     * @return type
+     */
+    public function createRFEGTable2(Request $request){
+        $rfegTable2 = $this->table2Repository->save($request->all());
+        return response()->json($rfegTable2);
+    }
+
+    /**
+     * Esta función permitirá actualizar un rfeg_table2
+     * @param Request $request
+     * @return type
+     */
+    public function updateRFEGTable2(Request $request){
+        $rfegTable2 = $this->table2Repository->save($request->all());
+        return response()->json($rfegTable2);
+    }
+
+    /**
+     * Esta función permitirá eliminar un rfeg_table2
+     * @param Request $request
+     * @return type
+     */
+    public function deleteRFEGTable2($id){
+        $rfegTable2 = $this->table2Repository->delete($id);
+        return response()->json($rfegTable2);
     }
 
     /**

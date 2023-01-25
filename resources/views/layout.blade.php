@@ -50,9 +50,38 @@
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            @foreach($front['headers'] as $header)
-                <li class="nav-item {{$front['section']==$header->getTitle()?'active':''}}"><a href="{{$header->getUrl()}}">{{ $header->getTitle() }}</a></li>
-            @endforeach
+                <li><a href="javascript:;">RFEG</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><a href="/rfeg/rfeg">Conócenos</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><a href="/rfeg/gobierno">Organos de gobierno</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/normativa/reglamentos">Reglamentos y normativas</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/mujer/">Igualdad</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/comunicados/">Comunicados y Circulares</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="javascript:;">Compliance</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/ffaa/">FFAA</a></li>
+                @if(!empty(Auth::user()) && Auth::user()->role==1)
+                <li><img width="20" src="/icons/rfeg_ico_elecciones.svg" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
+                @endif
+                <li><a href="javascript:;">ESPECIALIDADES</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
+                <li><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
+                <li><a href="/noticias">NOTICIAS</a></li>
+                <li><a href="javascript:;">CALENDARIO</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_calnacional.svg" alt=""><a href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_calinternacional.svg" alt=""><a href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>
+                <li><a href="javascript:;">MULTIMEDIA</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_fotos.svg" alt=""><a href="/media">Fotos y vídeos</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_revistas.svg" alt=""><a href="/revistas">Revistas</a></li>
+                <li><a href="javascript:;">FORMACIÓN</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><a href="/schools">Cursos RFEG</a></li>
+                <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/schools/normativa/">Cursos FFAA</a></li>
+                <li><a href="/patrocinadores">PATROCINADORES</a></li>
             @guest
                 <li class="nav-item">
                     <a class="nav-link modal-trigger" href="#login_modal">Iniciar Sesión</a>
@@ -61,7 +90,7 @@
                     <a class="nav-link" href="{{ route('register') }}">Regístrate</a>
                 </li>
             @else
-                <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="/icons/rfeg_ico_user.svg" alt=""></div></a></li>
+                <li class="avatar_fix"><a href=""><div class="rounded_img"><img src="{{Auth::user()->avatar}}" alt=""></div></a></li>                
             @endguest
         </ul>
 
@@ -84,55 +113,54 @@
             </div>
             <div class="bocadillo bocadillo_especialities" data-id="especialidades">
                 <div class="flecha"></div>
-                    <div class="row">
-                        <p>OLIMPICAS</p>
-                        <hr>
-                        <div class="col s3 esp_bocadi">
-                            <ul>
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s3 esp_bocadi">
-                            <ul>
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s3 esp_bocadi">
-                            <ul>
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s3 esp_bocadi">
-                            <ul>
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
-                            </ul>
-                        </div>
+                <div class="row">
+                    <p>OLIMPICAS</p>
+                    <hr>
+                    <div class="col s3 esp_bocadi">
+                        <ul>
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
+                        </ul>
                     </div>
-                    <div class="row noolimpicas">
-                        <p>NO OLIMPICAS</p>
-                        <hr>
-                        <div class="col s3 esp_bocadi">
-                            <ul>
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s3 esp_bocadi">
-                            <ul>
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s3 esp_bocadi">
-                            <ul>                                
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s3 esp_bocadi">
-                            <ul> 
-                                <li><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
-                            </ul>
-                        </div>
+                    <div class="col s3 esp_bocadi">
+                        <ul>
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
+                        </ul>
                     </div>
-                </div>                
+                    <div class="col s3 esp_bocadi">
+                        <ul>
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s3 esp_bocadi">
+                        <ul>
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row noolimpicas">
+                    <p>NO OLIMPICAS</p>
+                    <hr>
+                    <div class="col s3 esp_bocadi">
+                        <ul>
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s3 esp_bocadi">
+                        <ul>
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s3 esp_bocadi">
+                        <ul>                                
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s3 esp_bocadi">
+                        <ul> 
+                            <li><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
+                        </ul>
+                    </div>
+                </div>             
             </div>
             <div class="bocadillo bocadillo_media" data-id="multimedia">
                 <div class="flecha"></div>
