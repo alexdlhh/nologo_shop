@@ -533,6 +533,62 @@ h7 a{
     margin-top: -25px;
     background: white;
 }
+.bocadillo ul li{
+    height: 40px;
+    padding: 0 20px 10px 20px;
+}
+.bocadillo ul li:hover{
+    background: #EAEEF1;
+}
+.bocadillo ul li a{
+    color: #0A2540;
+    font-weight: bold;
+    position: relative;
+    top: -4px;
+    padding-left: 10px;
+}
+.bocadillo_rfeg {
+    left: 17.3%;
+    top: 11%;
+}
+.bocadillo_rfeg .flecha {
+    position: absolute;
+    left: 65px;
+}
+.bocadillo_especialities {
+    left: 18.3%;
+    width: 690px;
+    top: 11%;    
+}
+.icon_esp {
+    height: 90px;
+    max-width: 100%;
+}
+.esp_bocadi a {
+    padding-left: 0px !important;
+}
+.esp_bocadi{
+    text-align: center;
+}
+.bocadillo_especialities .flecha {
+    position: absolute;
+    left: 175px;
+}
+.bocadillo_especialities p{
+    text-align: center;
+}
+.bocadillo_media {
+    left: 44.3%;
+    top: 11%;
+}
+.bocadillo_calendario {
+    left: 36.8%;
+    top: 11%;
+}
+.bocadillo.bocadillo_schools {
+    left: 53%;
+    top: 11%;
+}
 .noolimpicas {
     background: #EAEEF1;
     margin-bottom: 0px !important;
