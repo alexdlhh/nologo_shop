@@ -142,4 +142,73 @@ class ColeccionRepository
         }
         return $coleccionList;
     }
+
+    /**
+     * Creamos subalbum
+     * 
+     * @param $data
+     * @return bool
+     */
+    public function createSubalbum($album, $titulo, $imagen){
+        DB::table('subalbum')
+            ->insert(
+                [
+                    'album' => $album,
+                    'title' => $titulo,
+                    'imagen' => $imagen,
+                ]
+            );
+    }
+
+    /**
+     * Actualizamos subalbum
+     * 
+     * @param $data
+     * @return bool
+     */
+    public function updateSubalbum($id, $album, $titulo, $imagen){
+        if(!empty($imagen)) {
+            DB::table('subalbum')
+                ->where('id', $id)
+                ->update(
+                    [
+                        'titulo' => $titulo,
+                        'imagen' => $imagen,
+                    ]
+                );
+        } else {
+            DB::table('subalbum')
+                ->where('id', $id)
+                ->update(
+                    [
+                        'titulo' => $titulo,
+                    ]
+                );
+        }
+    }
+
+    /**
+     * Eliminamos subalbum
+     * 
+     * @param $data
+     * @return bool
+     */
+    public function deleteSubalbum($id){
+        DB::table('subalbum')
+            ->where('id', $id)
+            ->delete();
+    }
+
+    /**
+     * obtenemos subalbums a partir del album
+     * 
+     */
+    public function getSubalbums($album){
+        $subalbum = DB::table('subalbum')
+            ->where('album', $album)
+            ->orderBy('id', 'desc')
+            ->get();
+        
+        return $subalbum;
+    }
 }

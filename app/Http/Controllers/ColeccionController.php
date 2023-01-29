@@ -80,11 +80,59 @@ class ColeccionController extends Controller
     public function edit($id){
         $coleccionRepository = new ColeccionRepository();
         $coleccion=$coleccionRepository->getById($id);
+        $subalbums = $coleccionRepository->getSubalbums($id);
         return view('admin.coleccion.edit')->with('admin',[
             'title' => 'Editar Coleccion',
             'coleccion' => $coleccion,
+            'subalbums' => $subalbums,
             'section' => 'media',
             'subsection' => 'savecolection'
         ]);
+    }
+
+    /**
+     * 
+     */
+    public function createSubAlbum(Request $request){
+        //hay un campo imagen en request que debemos subir
+        $ruta_imagen = '';
+        if($request->hasFile('imagen')){
+            $image = $request->file('imagen');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/subalbum');
+            $image->move($destinationPath, $name);
+            $type = 'image';
+            $ruta_imagen = '/images/subalbum/'.$name;
+        }
+        $coleccionRepository = new ColeccionRepository();
+        $coleccionRepository->createSubAlbum($request->input('album'),$request->input('title'),$ruta_imagen);
+        return true;
+    }
+
+    /**
+     * 
+     */
+    public function deleteSubAlbum($id){
+        $coleccionRepository = new ColeccionRepository();
+        $coleccionRepository->deleteSubAlbum($id);
+        return true;
+    }
+
+    /**
+     * 
+     */
+    public function editSubAlbum(Request $request){
+        $ruta_imagen = '';
+        if($request->hasFile('imagen')){
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/subalbum');
+            $image->move($destinationPath, $name);
+            $type = 'image';
+            $ruta_imagen = '/images/subalbum/'.$name;
+        }
+        $coleccionRepository = new ColeccionRepository();
+        $coleccionRepository->updateSubalbum($request->input('id'),$request->input('album'),$request->input('title'),$ruta_imagen);
+        return true;
     }
 }
