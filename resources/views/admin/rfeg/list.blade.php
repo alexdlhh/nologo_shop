@@ -171,7 +171,7 @@ $normativa_heads = [
         </div>
     </div>
     <div class="leftf">
-        <a href="#add_rfeg_title" id="" class="btn-floating btn-large modal-trigger waves-effect waves-light"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
+        <a href="#add_rfeg_title" id="" class="btn-floating btn-large modal-trigger waves-effect waves-light"><img src="/icons/rfeg_ico_crear.svg" width="24"></a>
         <a href="/rfeg/{{ $admin['seccion'] }}" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="24"></a>
     </div>
 </div>
