@@ -338,4 +338,14 @@ class EventoRepository
             ->get();
         return $eventoMapper->mapCollection($eventos);
     }
+
+    public function uploadFiles($archivos,$evento){
+        foreach($archivos as $archivo){
+            $id = DB::table('evento')
+                    ->insertGetId([
+                        'evento' => $evento,
+                        'archivo' => $archivo
+                ]);
+        }
+    }
 }

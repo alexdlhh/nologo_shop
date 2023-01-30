@@ -108,15 +108,19 @@ class CalendarController extends Controller
      */
     public function save(Request $request){
         $eventoRepository = new EventoRepository();
-        $archivo = '';
+        $archivos = [];
         $image = '';
         if($request->hasFile('download_pdf')){
-            $file = $request->file('download_pdf');
-            //hora exacta para que el archivo no se repita
-            $name = date('YmdHis').'_'.$file->getClientOriginalName();
-            $file->move(public_path().'/files/calendar/pdf/', $name);
-            $request->merge(['download_pdf' => $name]);
-            $archivo = '/files/calendar/pdf/'.$name;
+            $files = $request->file('download_pdf');
+            $archivos = [];
+            
+            foreach($files as $file){
+                //hora exacta para que el archivo no se repita
+                $name = date('YmdHis').'_'.$file->getClientOriginalName();
+                $file->move(public_path().'/files/calendar/pdf/', $name);
+                $request->merge(['download_pdf' => $name]);
+                $archivos[] = '/files/calendar/pdf/'.$name;
+            }
         }
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -126,7 +130,10 @@ class CalendarController extends Controller
             $request->merge(['image' => $name]);
             $image = '/files/calendar/images/'.$name;
         }
-        $evento = $eventoRepository->saveEvent($request,$archivo,$image);
+        $evento = $eventoRepository->saveEvent($request,'',$image);
+        if(!empty($archivos)){
+            $eventoRepository->uploadFiles($archivos,$evento);
+        }
         return response()->json($evento);
     }
 

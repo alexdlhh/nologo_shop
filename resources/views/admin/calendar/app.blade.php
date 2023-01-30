@@ -262,8 +262,8 @@
                     </div>
                     <div class="file-field col s6 little-fix">
                         <div class="btn">
-                            <span>Archivo</span>
-                            <input type="file" name="download_pdf_edit" id="download_pdf_edit">
+                            <span>Archivos</span>
+                            <input type="file" multiple name="download_pdf_edit" id="download_pdf_edit">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
@@ -307,7 +307,24 @@
                 </div>
             </div>
             <div class="col s6">
-                <embed id="pdf_edit" src="" type="application/pdf" width="100%" height="400px" />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Archivos</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="files_edit">
+                        <tr>
+                            <td>Archivos</td>
+                            <td>
+                                <a href="javascript:;" data-id="" class="delete_file"><i class="material-icons">delete</i></a>
+                                <a href="javascript:;" data-archivo="" class="download_file"><i class="material-icons">file_download</i></a>
+                                <a href="javascript:;" data-archivo="" class="copy_url"><i class="material-icons">content_copy</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="col s6">
                 <img src="" id="preview" alt="">

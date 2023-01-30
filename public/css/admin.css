@@ -547,6 +547,12 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     height: 36px !important;
     padding: 0;
 }
+#preview{
+    width: 100%;
+}
+#preview img{
+    width: 100%;
+}
 .btn-large {
     height: 36px;
     line-height: 36px !important;
