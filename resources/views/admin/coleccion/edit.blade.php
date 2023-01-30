@@ -27,13 +27,13 @@
                                         <div class="col s4">
                                             <div class="card">
                                                 <div class="card-image">
-                                                <img src="{{$subalbum->imagen}}">
-                                                <span class="card-title">{{$subalbum->title}}</span>
+                                                    <img src="{{$subalbum->imagen}}">
+                                                    <span class="card-title">{{$subalbum->title}}</span>
                                                 </div>
                                                 <div class="card-action">
-                                                <a href="/admin/media_list/{{$subalbum->id}}">Ir a contenido</a>
-                                                <a href="#edit_subalbum" class="modal-trigger">Editar</a>
-                                                <a href="/admin/media_list/{{$subalbum->id}}">Eliminar</a>
+                                                    <a href="/admin/media_list/{{$subalbum->id}}">Ir a contenido</a>
+                                                    <a href="#edit_subalbum" data-json={{json_encode($subalbum)}} class="modal-trigger edit_subalbum">Editar</a>
+                                                    <a href="javascript:;" class="del_subalbum" data-id="{{{{$subalbum->id}}}}">Eliminar</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,6 +100,7 @@
                         <input class="file-path validate" type="text">
                     </div>
                 </div>
+                <img src="" class="preview_img_subalbum" width="150" alt="">
             </div>
         </div>
     </div>
@@ -114,6 +115,7 @@
 <script>
     $(document).ready(function(){
         $('.modal').modal();
+
         $('#save').click(function(){
             spiner();
             var name = $('#name').val();
@@ -133,6 +135,7 @@
                 }
             });
         });
+
         $('.new_subalbum').click(function(){
             var $new_subalbum = $('#new_subalbum').val();
             var $new_album_id = $('#new_album_id').val();
@@ -154,6 +157,26 @@
                 }
             });
         });
+
+        $('.del_subalbum').click(function(){
+            var id = $(this).data('id');
+            if(confirm('¿Estas seguro de eliminar este sub album?')){
+                $.ajax({
+                    url: '/admin/subalbum/delete/'+id,
+                    type: 'GET',
+                    success: function(data){
+                        window.location.reload();
+                    }
+                });
+            }
+        })
+
+        $('.edit_subalbum').click(function(){
+            var data = JSON.parse($(this).attr('data-json'));
+            $('#edit_subalbum').val(data.title);
+            $('#edit_album_id').val(data.album);
+            $('.preview_img_subalbum').attr('src', data.imagen);
+        })
     });
 </script>
 @endsection
