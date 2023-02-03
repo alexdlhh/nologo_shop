@@ -32,8 +32,8 @@
                                                 </div>
                                                 <div class="card-action">
                                                     <a href="/admin/media_list/{{$subalbum->id}}">Ir a contenido</a>
-                                                    <a href="#edit_subalbum" data-json={{json_encode($subalbum)}} class="modal-trigger edit_subalbum">Editar</a>
-                                                    <a href="javascript:;" class="del_subalbum" data-id="{{{{$subalbum->id}}}}">Eliminar</a>
+                                                    <a href="#edit_subalbum" data-json='{{json_encode($subalbum)}}' class="modal-trigger edit_subalbum">Editar</a>
+                                                    <a href="javascript:;" class="del_subalbum" data-id="{{$subalbum->id}}">Eliminar</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,8 +86,8 @@
         <h4>Nuevo Sub Album</h4>
         <div class="row">
             <div class="col s12 form-control">
-                <label for="edit_subalbum">Nombre del Sub Album</label>
-                <input type="text" id="edit_subalbum">
+                <label for="edit_subalbum_name">Nombre del Sub Album</label>
+                <input type="text" id="edit_subalbum_name">
             </div>
             <input type="text" id="edit_album_id" value="{{$admin['coleccion']->id}}" hidden>
             <div class="col s12">
@@ -105,7 +105,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat edit_subalbum" data-id="">Guardar</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat update_subalbum" data-id="">Guardar</a>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
 </div>
@@ -173,9 +173,35 @@
 
         $('.edit_subalbum').click(function(){
             var data = JSON.parse($(this).attr('data-json'));
-            $('#edit_subalbum').val(data.title);
+            console.log(data);
+            $('#edit_subalbum_name').val(data.title);
             $('#edit_album_id').val(data.album);
             $('.preview_img_subalbum').attr('src', data.imagen);
+            $('.update_subalbum').attr('data-id', data.id);
+        })
+
+        $('.update_subalbum').click(function(){
+            var edit_subalbum = $('#edit_subalbum_name').val();
+            var edit_album_id = $('#edit_album_id').val();
+            var edit_subalbum_imagen = $('#edit_subalbum_imagen')[0].files[0];
+            var id = $(this).attr('data-id');
+            var formData = new FormData();
+            formData.append('title', edit_subalbum);
+            formData.append('album', edit_album_id);
+            formData.append('imagen', edit_subalbum_imagen);
+            formData.append('id', id);
+            formData.append('_token', '{{csrf_token()}}');
+            $.ajax({
+                url: '/admin/subalbum/edit',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data){
+                    $('.modal').modal('close');
+
+                }
+            });
         })
     });
 </script>

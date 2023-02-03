@@ -51,7 +51,7 @@
                                 <li>
                                     <a href="/admin/news" class="{{$admin['subsection'] == 'list' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'list' ? 'active' : ''}}"><b>Ver Noticias</b></span><span class="child-selector {{$admin['subsection'] == 'list' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'list' ? 'active' : ''}}">Listado de noticias de la federación</p>
+                                        <p class="{{$admin['subsection'] == 'list' ? 'active' : ''}}">Listado de todas las noticias</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -63,7 +63,7 @@
                                 <li>
                                     <a href="/admin/categoriesNew" class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}"><b>Categorias</b></span><span class="child-selector {{$admin['subsection'] == 'cat' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}">Administrar Categorías de noticias</p>
+                                        <p class="{{$admin['subsection'] == 'cat' ? 'active' : ''}}">Administrar categorías de noticias</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -82,7 +82,7 @@
                                 <li>
                                     <a href="/admin/employees" class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}"><b>Listar Empleados</b></span><span class="child-selector {{$admin['subsection'] == 'employees' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">Lista de empleados de RFEF</p>
+                                        <p class="{{$admin['subsection'] == 'employees' ? 'active' : ''}}">Listado de empleados de la sección RFEG</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -94,7 +94,7 @@
                                 <li>
                                     <a href="/admin/rfeg" class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">Administrar contenido RFEF</p>
+                                        <p class="{{$admin['subsection'] == 'adminrfef' ? 'active' : ''}}">Administrar contenido de la sección RFEG</p>
                                     </a>
                                 </li>
                             </ul>
@@ -107,13 +107,13 @@
                                 <li>
                                     <a href="/admin/especialidades" class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">Administrar caracteristicas generales de especialidades RFEF</p>
+                                        <p class="{{$admin['subsection'] == 'listespecialidades' ? 'active' : ''}}">Administrar caracteristicas generales de especialidades</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/calendario" class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}"><b>Calendario</b></span><span class="child-selector {{$admin['subsection'] == 'calendario' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}">Administrar calendarios nacionales e internacionales de especialidades RFEF</p>
+                                        <p class="{{$admin['subsection'] == 'calendario' ? 'active' : ''}}">Administrar calendarios NAC. e INTL. de especialidades</p>
                                     </a>
                                 </li>
                             </ul>
@@ -125,20 +125,20 @@
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/colecciones" class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}"><b>Listar Colecciones</b></span><span class="child-selector {{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">Administrar conjunto de fotos y videos</p>
+                                        <span class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}"><b>Gestionar Colecciones</b></span><span class="child-selector {{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listmedia' ? 'active' : ''}}">Administrar colecciones de fotos y vídeos</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/media/create" class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}"><b>Añadir Fotos y Videos</b></span><span class="child-selector {{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">Añadir nuevo recurso gráfico</p>
+                                        <p class="{{$admin['subsection'] == 'savemedia' ? 'active' : ''}}">Añadir nuevo recurso</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/albums" class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}"><b>Listar Album</b></span><span class="child-selector {{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Administrar conjunto de revistas</p>
+                                        <span class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}"><b>Gestionar Álbumes de revistas</b></span><span class="child-selector {{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listalbum' ? 'active' : ''}}">Álbumes de revistas por años</p>
                                     </a>
                                 </li>
                                 <li>
@@ -156,14 +156,14 @@
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/sponsors" class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}"><b>Listar Patrocinadores</b></span><span class="child-selector {{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">Listado de Patrocinadores y posiciones</p>
+                                        <span class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}"><b>Gestionar Patrocinadores</b></span><span class="child-selector {{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listsponsor' ? 'active' : ''}}">Listado de Patrocinadores y colaboradores</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/banners" class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}"><b>Listar Banners</b></span><span class="child-selector {{$admin['subsection'] == 'banner' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}">Listado de Banners de la web</p>
+                                        <span class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}"><b>Gestionar Publicidad</b></span><span class="child-selector {{$admin['subsection'] == 'banner' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'banner' ? 'active' : ''}}">Listado de banners y publicidad de la web</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -213,13 +213,13 @@
                                 <li>
                                     <a href="/admin/normativa_school" class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}"><b>Normativa</b></span><span class="child-selector {{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">Normativa de escuelas y cursos RFEG</p>
+                                        <p class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">Normativa de escuelas y cursos</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/courses" class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}"><b>Listar Cursos</b></span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">Listado de cursos RFEG</p>
+                                        <span class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}"><b>Gestionar Cursos</b></span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">Listado de cursos RFEG y FFAA</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -237,8 +237,8 @@
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/users" class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}"><b>Listar Usuarios</b></span><span class="child-selector {{$admin['subsection'] == 'listusers' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">Listado de usuarios registrados</p>
+                                        <span class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}"><b>Gestionar Usuarios</b></span><span class="child-selector {{$admin['subsection'] == 'listusers' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listusers' ? 'active' : ''}}">Edición, altas y bajas de usuarios registrados</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -256,8 +256,8 @@
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/social" class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}"><b>Listar Redes Sociales</b></span><span class="child-selector {{$admin['subsection'] == 'listrs' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Listado de redes sociales de RFEG</p>
+                                        <span class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}"><b>Gestionar Redes Sociales</b></span><span class="child-selector {{$admin['subsection'] == 'listrs' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listrs' ? 'active' : ''}}">Listado de redes sociales, iconos y enlaces web</p>
                                     </a>
                                 </li>
                                 <!--li>
@@ -270,25 +270,25 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'estaticas' ? 'active' : ''}}"><img src="/icons/rfeg_ico_addpages.svg" class="img_admin" width="26">Páginas</div>
+                        <div class="collapsible-header {{$admin['section'] == 'estaticas' ? 'active' : ''}}"><img src="/icons/rfeg_ico_addpages.svg" class="img_admin" width="26">Páginas estáticas</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'estaticas' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/page_list" class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}"><b>Listar Páginas</b></span><span class="child-selector {{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">Listado de páginas simples y estáticas (solo texto)</p>
+                                        <span class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}"><b>Listar Páginas estáticas</b></span><span class="child-selector {{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'listestaticas' ? 'active' : ''}}">Listado de páginas simples y estáticas (solo texto) como Aviso Legal, Política de privacidad, etc.</p>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'general' ? 'active' : ''}}"><img src="/icons/rfeg_ico_config.svg" class="img_admin" width="26">Configuración</div>
+                        <div class="collapsible-header {{$admin['section'] == 'general' ? 'active' : ''}}"><img src="/icons/rfeg_ico_config.svg" class="img_admin" width="26">Configuración General</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'general' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/general_list" class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}"><b>Administrar</b></span><span class="child-selector {{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">></span>
+                                        <span class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}"><b>Administración global de la web</b></span><span class="child-selector {{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">></span>
                                         <p class="{{$admin['subsection'] == 'listgeneral' ? 'active' : ''}}">Listado de configuraciones, imagen principal de la web, pie de página, logo, email, etc.</p>
                                     </a>
                                 </li>
@@ -296,25 +296,25 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header {{$admin['section'] == 'mundial' ? 'active' : ''}}"><img src="/icons/rfeg_ico_config.svg" class="img_admin" width="26">Mundial</div>
+                        <div class="collapsible-header {{$admin['section'] == 'mundial' ? 'active' : ''}}"><img src="/icons/rfeg_ico_corazon.svg" class="img_admin" width="26">Campeonato del Mundo Valencia 2023</div>
                         <div class="collapsible-body" style="{{$admin['section'] == 'mundial' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
                                     <a href="/admin/mundial/general" class="{{$admin['subsection'] == 'general' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'general' ? 'active' : ''}}"><b>Ajustes Generales</b></span><span class="child-selector {{$admin['subsection'] == 'general' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'general' ? 'active' : ''}}">Listado de configuraciones Generales del Mundial</p>
+                                        <p class="{{$admin['subsection'] == 'general' ? 'active' : ''}}">Configuraciones Generales</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/mundial/mundial" class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}"><b>Sección Campeonato</b></span><span class="child-selector {{$admin['subsection'] == 'mundial' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">Sección Campeonato del Mundial</p>
+                                        <p class="{{$admin['subsection'] == 'mundial' ? 'active' : ''}}">Accesos y Pabellones 1 y 2</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="/admin/mundial/valencia" class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}">
                                         <span class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}"><b>Sección Valencia</b></span><span class="child-selector {{$admin['subsection'] == 'valencia' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}">Sección Valencia</p>
+                                        <p class="{{$admin['subsection'] == 'valencia' ? 'active' : ''}}">Valencia, Cómo llegar, Alojamientos, Restaurantes y Puntos de interés</p>
                                     </a>
                                 </li>
                             </ul>

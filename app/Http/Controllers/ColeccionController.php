@@ -124,7 +124,7 @@ class ColeccionController extends Controller
     public function editSubAlbum(Request $request){
         $ruta_imagen = '';
         if($request->hasFile('imagen')){
-            $image = $request->file('image');
+            $image = $request->file('imagen');
             $name = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images/subalbum');
             $image->move($destinationPath, $name);

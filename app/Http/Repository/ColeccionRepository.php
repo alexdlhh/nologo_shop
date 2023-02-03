@@ -172,7 +172,7 @@ class ColeccionRepository
                 ->where('id', $id)
                 ->update(
                     [
-                        'titulo' => $titulo,
+                        'title' => $titulo,
                         'imagen' => $imagen,
                     ]
                 );
@@ -181,7 +181,7 @@ class ColeccionRepository
                 ->where('id', $id)
                 ->update(
                     [
-                        'titulo' => $titulo,
+                        'title' => $titulo,
                     ]
                 );
         }

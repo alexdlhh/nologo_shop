@@ -114,6 +114,9 @@ label.active {
     width: 95%;
     margin:90px auto;    
 }
+.container_admin .card-content.dashboard-table{
+    padding-top: 40px;    
+}
 .btn-floating {
     background-color: rgba(0,0,0,0) !important;
     border-radius: 0px !important;
@@ -137,22 +140,31 @@ ul:not(.browser-default) {
     float: right;
 }
 li a{
-    color: #445668 !important;    
+    color: #445668 !important;
+    transition: color .3s;   
 }
 li a span{
-    color: #445668 !important; 
+    /* color: #445668 !important;  */
     font-weight: bold;
 }
 li a p{
-    color: #445668 !important;
+    /* color: #445668 !important; */
     margin:0px;
     font-size: 0.7em;
 }
+li a:hover{
+    color: #039be5 !important;
+    transition: color .3s; 
+}
+nav ul a:hover {
+    background: none!important;
+}
+
 .collapsible-body {
     padding: 0rem !important;
 }
 .list-child li{
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 #sidebar_admin > ul > li.active > div.collapsible-body{
@@ -179,6 +191,13 @@ li a p{
     height: 250px;
     padding: 10px;
 }
+.home_admin ul {
+    padding-left: 20px !important;
+}
+.home_admin ul li a p{
+    padding-right: 10px;
+}
+
 #filtros{
     padding-bottom: 0px;
     margin-bottom: 0px;
@@ -187,8 +206,10 @@ li a p{
     width: 100.4%;
 }
 .list-child {
-    padding-left: 1.7rem !important;
-}
+    margin-left: 18px;
+    padding-left: 0.7rem !important;
+    border-left: 1px solid #333;
+    }
 .collapsible-body {
     border-bottom: 0px solid #ddd !important;
 }
@@ -231,12 +252,16 @@ input#fecha_search {
 ul.pagination {
     text-align: center;
 }
-.list-child li a p:hover{
+/* .list-child li a p:hover{
     color: #039be5 !important;
 }
 .list-child li a span:hover{
     color: #039be5 !important;
+} */
+.list-child li a:hover{
+    color: #039be5 !important;
 }
+
 
 .input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
     margin-left: 1.6rem !important;

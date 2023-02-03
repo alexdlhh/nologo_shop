@@ -19,7 +19,7 @@
         </style>
     </head>
     <body> 
-        <!--BARA DE CARGA DE LA WEB, debe ser una línea blanca que se valla rellenando de azul conforme termina de cargar la web-->
+        <!--BARRA DE CARGA DE LA WEB, debe ser una línea blanca que se valla rellenando de azul conforme termina de cargar la web-->
         <div class="progress floatingbox">
             <div class="indeterminate"></div>
         </div>        
@@ -98,89 +98,57 @@
             <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><a href="/rfeg/rfeg">Conócenos</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><a href="/rfeg/gobierno">Organos de gobierno</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/normativa/reglamentos">Reglamentos y normativas</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/mujer/">Igualdad</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/rfeg/comunicados/">Comunicados y Circulares</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/transparencia">Ley de Transparencia</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="javascript:;">Compliance</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><a href="/rfeg/ffaa/">FFAA</a></li>
+                    <a href="/rfeg/rfeg"><li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><span>Conócenos</span></li></a>
+                    <a href="/rfeg/gobierno"><li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><span>Organos de gobierno<span></li></a>
+                    <a href="/rfeg/normativa/reglamentos"><li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><span>Reglamentos y normativas</span></li></a>
+                    <a href="/rfeg/mujer/"><li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><span>Igualdad</span></li></a>
+                    <a href="/rfeg/comunicados/"><li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><span>Comunicados y Circulares</span></li></a>
+                    <a href="/rfeg/transparencia"><li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><span>Ley de Transparencia</span></li></a>
+                    <a href="javascript:;"><li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><span>Compliance</span></li></a>
+                    <a href="/rfeg/ffaa/"><li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><span>FFAA</span></li></a>
                     @if(!empty(Auth::user()) && Auth::user()->role==1)
-                    <li><img width="20" src="/icons/rfeg_ico_elecciones.svg" alt=""><a href="/rfeg/elecciones">Elecciones</a></li>
+                    <a href="/rfeg/elecciones"><li><img width="20" src="/icons/rfeg_ico_elecciones.svg" alt=""><span>Elecciones</span></li></a>
                     @endif
                 </ul>
             </div>
             <div class="bocadillo bocadillo_especialities" data-id="especialidades">
                 <div class="flecha"></div>
-                <div class="row">
-                    <p>OLIMPICAS</p>
+                <div class="row olimpicas">
+                    <p>OLÍMPICAS</p>
                     <hr>
-                    <div class="col s3 esp_bocadi">
-                        <ul>
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><a href="/especialidades/artistica-masculina/">Artística masculina</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s3 esp_bocadi">
-                        <ul>
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><a href="/especialidades/artistica-femenina/">Artística femenina</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s3 esp_bocadi">
-                        <ul>
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><a href="/especialidades/ritmica/">Ritmica</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s3 esp_bocadi">
-                        <ul>
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><a href="/especialidades/trampolin/">Trampolin</a></li>
-                        </ul>
-                    </div>
+                    <a href="/especialidades/artistica-masculina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><span class="double_line">Artística masculina</span></a>
+                    <a href="/especialidades/artistica-femenina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><span class="double_line">Artística femenina</span></a>
+                    <a href="/especialidades/ritmica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><span>Ritmica</span></a>
+                    <a href="/especialidades/trampolin/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><span>Trampolin</span></a>
                 </div>
                 <div class="row noolimpicas">
-                    <p>NO OLIMPICAS</p>
+                    <p>NO OLÍMPICAS</p>
                     <hr>
-                    <div class="col s3 esp_bocadi">
-                        <ul>
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><a href="/especialidades/aerobica/">Aeróbica</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s3 esp_bocadi">
-                        <ul>
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><a href="/especialidades/acrobatica/">Acrobática</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s3 esp_bocadi">
-                        <ul>                                
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><a href="/especialidades/para-todos/">Para Todos</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s3 esp_bocadi">
-                        <ul> 
-                            <li><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><a href="/especialidades/parkour/">Parkour</a></li>
-                        </ul>
-                    </div>
-                </div>             
+                    <a href="/especialidades/aerobica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><span>Aeróbica</span></a>
+                    <a href="/especialidades/acrobatica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><span>Acrobática</span></a>
+                    <a href="/especialidades/para-todos/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><span>Para Todos</span></a>
+                    <a href="/especialidades/parkour/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><span>Parkour</span></a>
+        </div>             
             </div>
             <div class="bocadillo bocadillo_media" data-id="multimedia">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icons/rfeg_ico_fotos.svg" alt=""><a href="/media">Fotos y vídeos</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_revistas.svg" alt=""><a href="/revistas">Revistas</a></li>
+                    <a href="/media"><li><img width="20" src="/icons/rfeg_ico_fotos.svg" alt=""><span>Fotos y vídeos</span></li></a>
+                    <a href="/revistas"><li><img width="20" src="/icons/rfeg_ico_revistas.svg" alt=""><span>Revistas</span></li></a>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_calendario" data-id="calendario">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icons/rfeg_ico_calnacional.svg" alt=""><a href="/calendar/ritmica/nacional">Competiciones Nacionales</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_calinternacional.svg" alt=""><a href="/calendar/ritmica/internacional">Competiciones Internacionales</a></li>
+                    <a href="/calendar/ritmica/nacional"><li><img height="20" src="/icons/rfeg_ico_calnacional.svg" alt=""><span>Calendario NACIONAL</span></li></a>
+                    <a href="/calendar/ritmica/internacional"><li><img height="20" src="/icons/rfeg_ico_calinternacional.svg" alt=""><span>Calendario INTERNACIONAL</span></li></a>
                 </ul>
             </div>
             <div class="bocadillo bocadillo_schools" data-id="school">
                 <div class="flecha"></div>
                 <ul>
-                    <li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><a href="/schools">Cursos RFEG</a></li>
-                    <li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><a href="/schools/normativa/">Cursos FFAA</a></li>
+                    <a href="/schools"><li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><span>Cursos RFEG</span></li></a>
+                    <a href="/schools/normativa/"><li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><span>Cursos FFAA</span></li></a>
                 </ul>
             </div>            
         </div>

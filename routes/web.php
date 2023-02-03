@@ -134,7 +134,7 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::get('admin/coleccion/delete/{id}',[ColeccionController::class,'postDelete'])->name('admin.coleccion.delete');
 
     Route::post('admin/subalbum/create',[ColeccionController::class,'createSubAlbum'])->name('admin.subalbum.create');
-    Route::get('admin/subalbum/edit/{id}',[ColeccionController::class,'editSubAlbum'])->name('admin.subalbum.edit');
+    Route::post('admin/subalbum/edit',[ColeccionController::class,'editSubAlbum'])->name('admin.subalbum.edit');
     Route::get('admin/subalbum/delete/{id}',[ColeccionController::class,'deleteSubAlbum'])->name('admin.subalbum.delete');
     /**ADMIN PAGES */
     Route::get('admin/pages',[PageController::class,'getAll'])->name('admin.pages.list');

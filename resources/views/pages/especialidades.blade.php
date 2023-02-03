@@ -11,7 +11,7 @@ function date_format_esp($date){
 $header_esp=[
     'artistica-femenina' => '/images/2_GAF.jpg',
     'artistica-masculina' => '/images/1_GAM.jpg',
-    'ritmica' => '/images/3_GA.jpg',
+    'ritmica' => '/images/3_GR.jpg',
     'trampolin' => '/images/4_TRAM.jpg',
     'aerobica' => '/images/5_AERO.jpg',
     'acrobatica' => '/images/6_ACRO.jpg',

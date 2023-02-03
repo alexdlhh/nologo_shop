@@ -11,7 +11,7 @@
                     <div class="card-content">
                         <div class="row" id="formulario">   
                             <div class="col s12">
-                                <h6 class="header">Nuevo Album</h6>
+                                <h6 class="header">Nuevo Álbum</h6>
                             </div>
                             <div class="col s6 input-field">
                                 <input id="name" type="text" class="validate">

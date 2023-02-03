@@ -530,10 +530,10 @@ h7 a{
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    margin-top: -25px;
+    margin-top: -12px;
     background: white;
 }
-.bocadillo ul li{
+/* .bocadillo ul li{
     height: 40px;
     padding: 0 20px 10px 20px;
 }
@@ -572,7 +572,7 @@ h7 a{
 }
 .bocadillo_especialities .flecha {
     position: absolute;
-    left: 175px;
+    left: 160px;
 }
 .bocadillo_especialities p{
     text-align: center;
@@ -588,13 +588,7 @@ h7 a{
 .bocadillo.bocadillo_schools {
     left: 53%;
     top: 11%;
-}
-.noolimpicas {
-    background: #EAEEF1;
-    margin-bottom: 0px !important;
-    border-radius: 0px 0px 4px 4px;
-    padding-top: 15px;
-}
+} */
 .big_block{
     height: 100px;
     width: 100%;
@@ -1141,6 +1135,7 @@ h3.especial{
 .lista_esp ul li a:hover{
     border: 1px solid white;
     padding: 4px 14px 4px 14px;
+    transition: border ease-in-out .3s;
 }
 .lista_esp ul li a.active{
     border: 1px solid white;
@@ -1497,73 +1492,149 @@ h3.especial{
     height: 92.765% !important;
 }
 .bocadillo{
-    width: 210px;
+    width: 260px;
     position: absolute;
     background: white;
-    padding-top: 20px;
+    padding-top: 5px;
     padding-bottom:0px;
     z-index: 10;
     display: none;
     border-radius: 4px;
+    box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 0 0  0 2px rgb(255,255,255), 0 30px 60px -12px rgba(50,50,93,0.50),0 18px 36px -18px rgba(0,0,0,0.60);
+    /* --cardShadowXSmall: 0 2px 5px -1px rgba(50,50,93,0.25),0 1px 3px -1px rgba(0,0,0,0.3);
+    --cardShadowSmall: 0 6px 12px -2px rgba(50,50,93,0.25),0 3px 7px -3px rgba(0,0,0,0.3);
+    --cardShadowMedium: 0 13px 27px -5px rgba(50,50,93,0.25),0 8px 16px -8px rgba(0,0,0,0.3);
+    --cardShadowLarge: 0 30px 60px -12px rgba(50,50,93,0.25),0 18px 36px -18px rgba(0,0,0,0.3);
+    --cardShadowLargeInset: inset 0 30px 60px -12px rgba(50,50,93,0.25),inset 0 18px 36px -18px rgba(0,0,0,0.3);
+    --cardShadowXLarge: 0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3); */
 }
 .bocadillo ul li{
     height: 40px;
-    padding: 0 20px 10px 20px;
+    padding: 10px 20px 10px 20px;
 }
 .bocadillo ul li:hover{
     background: #EAEEF1;
+    transition: background ease-in-out .3s;
 }
-.bocadillo ul li a{
+.bocadillo ul li a {
     color: #0A2540;
     font-weight: bold;
     position: relative;
     top: -4px;
     padding-left: 10px;
 }
+
+.bocadillo ul a li img{
+    position: relative;
+    margin-right: 10px;
+}
+.bocadillo ul a li span{
+    color: #0A2540;
+    font-weight: bold;
+    position: relative;
+    bottom: 4px;
+}
+.bocadillo_media, .bocadillo_calendario, .bocadillo.bocadillo_schools, .bocadillo_rfeg, .bocadillo_especialities {
+    top: 9.5%;
+}
 .bocadillo_rfeg {
     left: 17.3%;
-    top: 18%;
 }
 .bocadillo_rfeg .flecha {
     position: absolute;
     left: 65px;
 }
+
+/************** BOCADILLO ESPECIALIDADES ***************/
 .bocadillo_especialities {
     left: 18.3%;
     width: 570px;
-    top: 18%;    
-}
-.icon_esp {
-    height: 50px;
-    max-width: 100%;
-}
-.esp_bocadi a {
-    padding-left: 0px !important;
-}
-.esp_bocadi{
     text-align: center;
-    height: 130px;
 }
 .bocadillo_especialities .flecha {
     position: absolute;
-    left: 175px;
+    left: 160px;
 }
-.bocadillo_especialities p{
+.bocadillo_especialities hr {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.bocadillo_especialities .row p{
+    font-weight:800;
+    font-size: 15px;
+}
+.bocadillo_especialities .row.olimpicas,
+.bocadillo_especialities .row.noolimpicas {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.bocadillo_especialities .row.olimpicas {
+    border-radius: 0px 0px 4px 4px;
+    padding-top: 0px;
+    margin-bottom: 10px !important;
+}
+
+.bocadillo_especialities .row.noolimpicas {
+    background: #EAEEF1;
+    border-radius: 0px 0px 4px 4px;
+    padding-top: 5px;
+    margin-bottom: 5px !important;
+}
+
+.esp_bocadi{
+    padding: 0px !important;
     text-align: center;
+    height: 120px;
+    width: 50px;
+    border-bottom: solid 3px #333; 
+    clip-path: polygon( 
+        calc(0% + 5px) calc(0% + 5px), /* top left */
+        calc(100% - 5px) calc(0% + 5px), /* top right */
+        calc(100% - 5px) calc(100% - 5px), /* bottom right */
+        calc(0% + 5px) calc(100% - 5px) /* bottom left */
+    );
+    transition: clip-path 0.4s linear;
 }
+
+.esp_bocadi:hover{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.esp_bocadi span{
+    color: #0A2540;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    line-height: 120%;
+    height: 40px;
+    display: block;
+    padding-top:5px;
+}
+.esp_bocadi span.double_line{padding-top:0px;}
+
+
+.icon_esp {
+    height: 70px;
+    width:100%;
+}
+
+
 .bocadillo_media {
     left: 42.8%;
-    top: 18%;
+}
+.bocadillo_media .flecha {
+    position: absolute;
+    left: 50px;
 }
 .bocadillo_calendario {
     width: 281px;
     left: 34.8%;
-    top: 18%;
 }
 .bocadillo.bocadillo_schools {
     left: 49.5%;
-    top: 18%;
 }
+
+
 /*RESPONSIVE*/
 /*Media query 1960px ancho****************************************************************/
 @media only screen and (max-width: 1960px){
@@ -1582,26 +1653,24 @@ h3.especial{
     div.empleado_contacto > ul > li > b {
         font-size: 0.9em;
     }
+    .bocadillo_media, .bocadillo_calendario, .bocadillo.bocadillo_schools, .bocadillo_rfeg, .bocadillo_especialities {
+        top: 9.5%;
+    }
     .bocadillo_media {
         left: 43.8%;
-        top: 11%;
     }
     .bocadillo_calendario {
         left: 34.8%;
-        top: 11%;
     }
     .bocadillo.bocadillo_schools {
         left: 50.5%;
-        top: 11%;
     }
     .bocadillo_rfeg {
         left: 17.3%;
-        top: 11%;
     }
     .bocadillo_especialities {
         left: 18.3%;
-        width: 570px;
-        top: 11%;    
+        width: 570px; 
     }
 }
 /*Media query 1680px ancho****************************************************************/
@@ -1621,26 +1690,24 @@ h3.especial{
     div.empleado_contacto > ul > li > b {
         font-size: 0.9em;
     }
+    .bocadillo_media, .bocadillo_calendario, .bocadillo.bocadillo_schools, .bocadillo_rfeg, .bocadillo_especialities {
+        top: 9.5%;
+    }
     .bocadillo_media {
         left: 47%;
-        top: 11%;
     }
     .bocadillo_calendario {
         left: 34.8%;
-        top: 11%;
     }
     .bocadillo.bocadillo_schools {
         left: 55%;
-        top: 11%;
     }
     .bocadillo_rfeg {
         left: 17.3%;
-        top: 11%;
     }
     .bocadillo_especialities {
         left: 18.3%;
-        width: 570px;
-        top: 11%;    
+        width: 470px;
     }
 }
 /*Media query 1600px ancho****************************************************************/
@@ -1681,7 +1748,7 @@ h3.especial{
         font-weight: 500;
     }
     nav ul a {
-        font-size: 0.75rem !important;
+        font-size: 0.95rem !important;
     }
     #header_title h1 {
         font-size: 4.2rem !important;
@@ -1768,7 +1835,7 @@ h3.especial{
         font-weight: 500;
     }
     nav ul a {
-        font-size: 0.64rem !important;
+        font-size: 0.85rem !important;
     }
     #header_title h1 {
         font-size: 3.5rem !important;
