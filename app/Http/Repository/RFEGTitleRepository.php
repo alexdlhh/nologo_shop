@@ -95,13 +95,13 @@ class RFEGTitleRepository
      * Get static ids, if section is cursos we get ids in 29,30,31,32,33, if is normativa 24,25,26,27,28
      */
     public function getStatic($section){
-        if($section == 'cursos') {
+        if($section == 'rfeg') {
             $rfegTitle = DB::table('rfeg_title')
-                ->whereIn('id', [29,30,31,32,33])
+                ->where('type', 'courserfeg')
                 ->get();
         } else {
             $rfegTitle = DB::table('rfeg_title')
-                ->whereIn('id', [24,25,26,27,28])
+                ->where('type', 'coursesffaa')
                 ->get();
         }
         $rfegTitleMapper = new RFEGTitleMapper();

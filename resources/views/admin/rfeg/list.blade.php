@@ -7,19 +7,22 @@
 $titles = [
     'rfeg' => 'RFEG',
     'gobierno' => 'Gobierno',
-    'normativa' => 'Normativa',
-    'mujer' => 'Mujer y Deporte',
-    'comunicados' => 'Comunicados',
+    'reglamentos' => 'Reglamentos',
+    'normativa' => 'Normativas y Protocolos',
+    'mujer' => 'Documentación',
+    'comunicados' => 'Comunicados y circulares',
     'transparencia' => 'Ley de Transparencia',
     'estatutos' => 'Estatutos',
     'ffaa' => 'FFAA',
-    'elecciones' => 'Elecciones',
+    'elecciones' => 'Elecciones'
 ];
 $normativa_heads = [
-    'todo' => 'Todo',
-    'reglamentos' => 'Reglamentos',
+    'todo' => 'Todo',    
     'normativas' => 'Normativas',
+    'normativas_tecnicas' => 'Normativas Técnicas',
     'protocolos' => 'Protocolos',
+    'reglamentos' => 'Reglamentos',
+    'estatutos' => 'Estatutos',
     'rfeg' => '',
 ];
 @endphp

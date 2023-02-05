@@ -70,16 +70,16 @@
                                                             @foreach($admin['eventos'] as $evento)
                                                                 @if($evento->getNacional())
                                                                 @if(strtotime($evento->getFecha()) <= strtotime($admin['year'].'-'.$admin['month'].'-'.$day) && strtotime($evento->getFechaFin()) >= strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_fecha"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} fecha {{$evento->getOlimpico() ?? olimpico}}</a></div>
+                                                                        <div class="event e_fecha"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} fecha {{$evento->getOlimpico() ?? olimpico}}</a></div>
                                                                     @endif
                                                                     @if(strtotime($evento->getInscripcion()) == strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_inscripcion"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} inscripcion</a></div>
+                                                                        <div class="event e_inscripcion"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} inscripcion</a></div>
                                                                     @endif
                                                                     @if(strtotime($evento->getLicencia()) == strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_licencia"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} licencia</a></div>
+                                                                        <div class="event e_licencia"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} licencia</a></div>
                                                                     @endif
                                                                     @if(strtotime($evento->getSorteo()) == strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_sorteo"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} sorteo</a></div>
+                                                                        <div class="event e_sorteo"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} sorteo</a></div>
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -89,16 +89,16 @@
                                                             @foreach($admin['eventos'] as $evento)
                                                                 @if(!$evento->getNacional())
                                                                     @if(strtotime($evento->getFecha()) <= strtotime($admin['year'].'-'.$admin['month'].'-'.$day) && strtotime($evento->getFechaFin()) >= strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_fecha"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} fecha {{$evento->getOlimpico() ?? olimpico}}</a></div>
+                                                                        <div class="event e_fecha"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} fecha {{$evento->getOlimpico() ?? olimpico}}</a></div>
                                                                     @endif
                                                                     @if(strtotime($evento->getInscripcion()) == strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_inscripcion"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} inscripcion</a></div>
+                                                                        <div class="event e_inscripcion"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} inscripcion</a></div>
                                                                     @endif
                                                                     @if(strtotime($evento->getLicencia()) == strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_licencia"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} licencia</a></div>
+                                                                        <div class="event e_licencia"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} licencia</a></div>
                                                                     @endif
                                                                     @if(strtotime($evento->getSorteo()) == strtotime($admin['year'].'-'.$admin['month'].'-'.$day))
-                                                                        <div class="event e_sorteo"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} sorteo</a></div>
+                                                                        <div class="event e_sorteo"><a href="#edit_evento" class="edit_evento modal-trigger" data-id="{{$evento->getId()}}" data-files="{{!empty($admin['files'][$evento->getId()]) ? json_encode($admin['files'][$evento->getId()]):'{}'}}" data-json="{{json_encode($evento->getArray())}}">{{ $evento->getEspecialidad() }} sorteo</a></div>
                                                                     @endif
                                                                 @endif
                                                             @endforeach
@@ -173,7 +173,7 @@
             <div class="file-field col s6 little-fix">
                 <div class="btn">
                     <span>Archivo</span>
-                    <input type="file" name="download_pdf_new" id="download_pdf_new">
+                    <input type="file" multiple name="download_pdf_new" id="download_pdf_new">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
@@ -374,11 +374,12 @@
             var licencia = $('#licencia_new').val();
             var inscripcion = $('#inscripcion_new').val();
             var sorteo = $('#sorteo_new').val();
-            var download_pdf = $('#download_pdf_new').prop('files')[0];
+            var download_pdf = $('#download_pdf_new').prop('files');
             var nacional = $('#nacional_new').prop('checked')?1:0;
             var olimpico = $('#olimpico_new').prop('checked')?1:0;
             var active = $('#active_new').prop('checked')?1:0;
             var image = $('#image_new').prop('files')[0];
+            var count = 0;
             var formData = new FormData();
             formData.append('competicion', competicion);
             formData.append('especialidad', especialidad);
@@ -387,6 +388,11 @@
             formData.append('licencia', licencia);
             formData.append('inscripcion', inscripcion);
             formData.append('sorteo', sorteo);
+            $.each(download_pdf, function(key, value){
+                formData.append('download_pdf_'+key, value);
+                count++;
+            });
+            formData.append('count', count);
             formData.append('download_pdf', download_pdf);
             formData.append('nacional', nacional);
             formData.append('olimpico', olimpico);
@@ -407,7 +413,7 @@
                         if(confirm('¿Desea añadir una noticia?')){
                             window.location.href = '/admin/news/create';
                         }else{
-                            location.reload();
+                            //location.reload();
                         }
                     }else{
                         M.toast({html: 'Error al crear el evento'});
@@ -421,6 +427,7 @@
         $('.edit_evento').click(function(){
             var id = $(this).attr('data-id');
             var json = JSON.parse($(this).attr('data-json'));
+            var files = JSON.parse($(this).attr('data-files'));
 
             $('#edit_evento').modal('open');
             $('.edit_evento_submit').attr('data-id', id);
@@ -438,6 +445,21 @@
             $('#pdf_edit').attr('src', json.download_pdf);
             $('#preview').attr('src', json.image);
             $('.delete_evento').attr('data-id', id);
+
+            $('#files_edit').html('');
+            var template = '';
+            $.each(files,function(i,v){
+                template += `<tr>
+                            <td>`+i+`</td>
+                            <td>
+                                <a href="javascript:;" data-id="`+v.id+`" class="delete_file"><i class="material-icons">delete</i></a>
+                                <a href="javascript:;" data-archivo="`+v.archivo+`" class="download_file"><i class="material-icons">file_download</i></a>
+                                <a href="javascript:;" data-archivo="`+v.archivo+`" class="copy_url"><i class="material-icons">content_copy</i></a>
+                            </td>
+                        </tr>`;
+            })
+            $('#files_edit').html(template);
+            
         });
         $('.edit_evento_submit').click(function(){
             var id = $(this).data('id');
@@ -448,12 +470,13 @@
             var licencia = $('#licencia_edit').val();
             var inscripcion = $('#inscripcion_edit').val();
             var sorteo = $('#sorteo_edit').val();
-            var download_pdf = $('#download_pdf_edit').prop('files')[0];
+            var download_pdf = $('#download_pdf_edit').prop('files');
             var nacional = $('#nacional_edit').prop('checked')?1:0;
             var olimpico = $('#olimpico_edit').prop('checked')?1:0;
             var active = $('#active_edit').prop('checked')?1:0;
             var image = $('#image_edit').prop('files')[0];
             var formData = new FormData();
+            var count = 0;
             formData.append('competicion', competicion);
             formData.append('especialidad', especialidad);
             formData.append('fecha', fecha);
@@ -461,6 +484,11 @@
             formData.append('licencia', licencia);
             formData.append('inscripcion', inscripcion);
             formData.append('sorteo', sorteo);
+            $.each(download_pdf, function(key, value){
+                formData.append('download_pdf_'+key, value);
+                count++;
+            });
+            formData.append('count', count);
             formData.append('download_pdf', download_pdf);
             formData.append('image', image);
             formData.append('nacional', nacional);
@@ -478,7 +506,7 @@
                     if(data!=0){
                         M.toast({html: 'Evento editado correctamente'});
                         $('#edit_evento').modal('close');
-                        location.reload();
+                        //location.reload();
                     }else{
                         M.toast({html: 'Error al editar el evento'});
                     }

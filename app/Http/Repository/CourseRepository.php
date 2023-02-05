@@ -23,7 +23,7 @@ class CourseRepository
                 ->get();
         }else{
             $courses = DB::table('course')
-                ->where('type',$type)
+                ->where('type2',$type)
                 ->get();
         }
         $courses = $courseMapper->mapCollection($courses);
@@ -57,6 +57,7 @@ class CourseRepository
             'lugar' => $course->getLugar(),
             'active' => $course->getActive()?1:0,
             'type' => $course->getType(),
+            'type2' => $course->getType2(),
         ]);
         if(!empty($convocatoria_pdf)){
             DB::table('course')->where('id', $id)->update(['convocatoria_pdf' => $convocatoria_pdf]);
@@ -67,7 +68,15 @@ class CourseRepository
         if(!empty($formularios_pdf)){
             DB::table('course')->where('id', $id)->update(['formularios_pdf' => $formularios_pdf]);
         }
-
+        if(!empty($course->getConvocatoriaLink())){
+            DB::table('course')->where('id', $id)->update(['convocatoria_link' => $course->getConvocatoriaLink()]);
+        }
+        if(!empty($course->getInscripcionLink())){
+            DB::table('course')->where('id', $id)->update(['inscripcion_link' => $course->getInscripcionLink()]);
+        }
+        if(!empty($course->getFormulariosLink())){
+            DB::table('course')->where('id', $id)->update(['formularios_link' => $course->getFormulariosLink()]);
+        }
         return $id;
     }
 
@@ -85,6 +94,7 @@ class CourseRepository
             'lugar' => $course->getLugar(),
             'active' => $course->getActive()?1:0,
             'type' => $course->getType(),
+            'type2' => $course->getType2(),
         ]);
         if(!empty($convocatoria_pdf)){
             DB::table('course')->where('id', $course->getId())->update(['convocatoria_pdf' => $convocatoria_pdf]);
@@ -95,7 +105,15 @@ class CourseRepository
         if(!empty($formularios_pdf)){
             DB::table('course')->where('id', $course->getId())->update(['formularios_pdf' => $formularios_pdf]);
         }
-
+        if(!empty($course->getConvocatoriaLink())){
+            DB::table('course')->where('id', $course->getId())->update(['convocatoria_link' => $course->getConvocatoriaLink()]);
+        }
+        if(!empty($course->getInscripcionLink())){
+            DB::table('course')->where('id', $course->getId())->update(['inscripcion_link' => $course->getInscripcionLink()]);
+        }
+        if(!empty($course->getFormulariosLink())){
+            DB::table('course')->where('id', $course->getId())->update(['formularios_link' => $course->getFormulariosLink()]);
+        }
         return $id;
     }
 

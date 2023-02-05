@@ -14,19 +14,22 @@ function date_format_esp($date){
 $titles = [
     'rfeg' => 'RFEG',
     'gobierno' => 'Gobierno',
-    'normativa' => 'Normativa',
-    'mujer' => 'Mujer y Deporte',
-    'comunicados' => 'Comunicados',
+    'reglamentos' => 'Reglamentos',
+    'normativa' => 'Normativas y Protocolos',
+    'mujer' => 'Documentación',
+    'comunicados' => 'Comunicados y circulares',
     'transparencia' => 'Ley de Transparencia',
     'estatutos' => 'Estatutos',
     'ffaa' => 'FFAA',
     'elecciones' => 'Elecciones'
 ];
 $normativa_heads = [
-    'todo' => 'Todo',
-    'reglamentos' => 'Reglamentos',
+    'todo' => 'Todo',    
     'normativas' => 'Normativas',
+    'normativas_tecnicas' => 'Normativas Técnicas',
     'protocolos' => 'Protocolos',
+    'reglamentos' => 'Reglamentos',
+    'estatutos' => 'Estatutos',
     'rfeg' => '',
 ];
 @endphp
@@ -47,21 +50,25 @@ $normativa_heads = [
             <ul>
                 <li><a href="/rfeg/rfeg/" class="{{$front['menu1']=='rfeg' ? 'active':''}}">RFEG</a></li>
                 <li><a href="/rfeg/gobierno/" class="{{$front['menu1']=='gobierno' ? 'active':''}}">GOBIERNO</a></li>
-                <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu1']=='normativa' ? 'active':''}}">NORMATIVA</a></li>
-                <li><a href="/rfeg/mujer/" class="{{$front['menu1']=='mujer' ? 'active':''}}">MUJER Y DEPORTE</a></li>
-                <li><a href="/rfeg/comunicados/" class="{{$front['menu1']=='comunicados' ? 'active':''}}">COMUNICADOS</a></li>
-                <li><a href="/rfeg/transparencia/" class="{{$front['menu1']=='transparencia' ? 'active':''}}">LEY DE TRANSPARENCIA</a></li>
-                <li><a href="/rfeg/estatutos/" class="{{$front['menu1']=='estatutos' ? 'active':''}}">ESTATUTOS</a></li>
+                <!--li><a href="/rfeg/estatutos/" class="{{$front['menu1']=='estatutos' ? 'active':''}}">ESTATUTOS</a></li-->
+                <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu2']=='reglamentos' ? 'active':''}}">REGLAMENTOS</a></li>
+                <li><a href="/rfeg/normativa/normativas" class="{{($front['menu1']=='normativa' || $front['menu1']=='estatutos') && $front['menu2']!='reglamentos' ? 'active':''}}">NORMATIVA Y PROTOCOLOS</a></li>
+                <li><a href="/rfeg/mujer/" class="{{$front['menu1']=='mujer' ? 'active':''}}">IGUALDAD</a></li>
+                <li><a href="/rfeg/comunicados/" class="{{$front['menu1']=='comunicados' ? 'active':''}}">COMUNICADOS Y CIRCULARES</a></li>
+                <li><a href="/rfeg/transparencia/" class="{{$front['menu1']=='transparencia' ? 'active':''}}">LEY DE TRANSPARENCIA</a></li>                
                 <li><a href="/rfeg/ffaa/" class="{{$front['menu1']=='ffaa' ? 'active':''}}">FFAA</a></li>
+                @if(!empty(Auth::user()) && Auth::user()->role==1)
                 <li><a href="/rfeg/elecciones/" class="{{$front['menu1']=='elecciones' ? 'active':''}}">ELECCIONES</a></li>
+                @endif
             </ul>
         </div>
-        @if($front['menu1']=='normativa')
+        @if(($front['menu1']=='normativa' || $front['menu1']=='estatutos') && $front['menu2']!='reglamentos')
         <div class="lista">
             <ul>
-                <li><a href="/rfeg/normativa/reglamentos" class="{{$front['menu2']=='reglamentos' ? 'active':''}}">REGLAMENTOS</a></li>
                 <li><a href="/rfeg/normativa/normativas" class="{{$front['menu2']=='normativas' ? 'active':''}}">NORMATIVAS</a></li>
+                <li><a href="/rfeg/normativa/normativas_tecnicas" class="{{$front['menu2']=='normativas_tecnicas' ? 'active':''}}">NORMATIVAS TÉCNICAS</a></li>
                 <li><a href="/rfeg/normativa/protocolos/" class="{{$front['menu2']=='protocolos' ? 'active':''}}">PROTOCOLOS</a></li>
+                <li><a href="/rfeg/estatutos/" class="{{$front['menu1']=='estatutos' ? 'active':''}}">ESTATUTOS</a></li>
             </ul>
         </div>
         @endif
@@ -142,11 +149,11 @@ $normativa_heads = [
     @if(!empty($front['rfeg_title']))
     @foreach($front['rfeg_title'] as $key=>$rfeg_title)
     <div id="tabla2">
-        <div class="container_table">
+        <div class="container_table row">
             <h4>{{$rfeg_title->name}}</h4>
             @if(!empty($front['content_tables'][$rfeg_title->id]))
             @foreach($front['content_tables'][$rfeg_title->id] as $rfeg_content)
-            <div class="row _ffaa">
+            <div class="col s6 _ffaa">
                 <div class="col s4">
                     <img src="{{$rfeg_content->image}}" alt="">
                 </div>

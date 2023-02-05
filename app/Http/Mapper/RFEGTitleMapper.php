@@ -11,6 +11,7 @@ class RFEGTitleMapper
         !empty($data['id'])?$title->setId($data['id']):'';
         !empty($data['name'])?$title->setName($data['name']):'';
         !empty($data['type'])?$title->setType($data['type']):'';
+        !empty($data['subtype'])?$title->setSubtype($data['subtype']):'';
         return $title;
     }
 

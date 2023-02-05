@@ -116,8 +116,8 @@
                 <div class="row olimpicas">
                     <p>OLÍMPICAS</p>
                     <hr>
-                    <a href="/especialidades/artistica-masculina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><span class="double_line">Artística masculina</span></a>
-                    <a href="/especialidades/artistica-femenina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><span class="double_line">Artística femenina</span></a>
+                    <a href="/especialidades/artistica-masculina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><span class="double_line">Artística<br>masculina</span></a>
+                    <a href="/especialidades/artistica-femenina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><span class="double_line">Artística<br>femenina</span></a>
                     <a href="/especialidades/ritmica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><span>Ritmica</span></a>
                     <a href="/especialidades/trampolin/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><span>Trampolin</span></a>
                 </div>
@@ -128,7 +128,7 @@
                     <a href="/especialidades/acrobatica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><span>Acrobática</span></a>
                     <a href="/especialidades/para-todos/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><span>Para Todos</span></a>
                     <a href="/especialidades/parkour/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><span>Parkour</span></a>
-        </div>             
+                </div>             
             </div>
             <div class="bocadillo bocadillo_media" data-id="multimedia">
                 <div class="flecha"></div>

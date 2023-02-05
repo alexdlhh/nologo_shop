@@ -211,15 +211,15 @@
                         <div class="collapsible-body" style="{{$admin['section'] == 'school' ? 'display: block;' : ''}}">
                             <ul class="list-child">
                                 <li>
-                                    <a href="/admin/normativa_school" class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}"><b>Normativa</b></span><span class="child-selector {{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">Normativa de escuelas y cursos</p>
+                                    <a href="/admin/courses/rfeg" class="{{$admin['subsection'] == 'rfeg' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'rfeg' ? 'active' : ''}}"><b>Cursos RFEG</b></span><span class="child-selector {{$admin['subsection'] == 'normativa_school' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'rfeg' ? 'active' : ''}}">Listado de Cursos RFEG</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/admin/courses" class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">
-                                        <span class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}"><b>Gestionar Cursos</b></span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
-                                        <p class="{{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">Listado de cursos RFEG y FFAA</p>
+                                    <a href="/admin/courses/ffaa" class="{{$admin['subsection'] == 'ffaa' ? 'active' : ''}}">
+                                        <span class="{{$admin['subsection'] == 'ffaa' ? 'active' : ''}}"><b>Cursos FFAA</b></span><span class="child-selector {{$admin['subsection'] == 'listcourses' ? 'active' : ''}}">></span>
+                                        <p class="{{$admin['subsection'] == 'ffaa' ? 'active' : ''}}">Listado de cursos FFAA</p>
                                     </a>
                                 </li>
                                 <!--li>

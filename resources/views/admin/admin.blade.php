@@ -117,15 +117,15 @@
                                 <h4>Escuela Nacional</h4>
                                 <ul>
                                     <li>
-                                        <a href="/admin/normativa_school" class="">
-                                            <span class=""><b>Normativa</b></span><span class="child-selector ">></span>
-                                            <p class="">Normativa de escuelas y cursos</p>
+                                        <a href="/admin/courses/rfeg" class="">
+                                            <span class=""><b>Cursos RFEG</b></span><span class="child-selector ">></span>
+                                            <p class="">Listado de cursos RFEG</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/admin/courses" class="">
-                                            <span class=""><b>Gestionar Cursos</b></span><span class="child-selector ">></span>
-                                            <p class="">Listado de cursos RFEG y FFAA</p>
+                                        <a href="/admin/courses/ffaa" class="">
+                                            <span class=""><b>Cursos FFAA</b></span><span class="child-selector ">></span>
+                                            <p class="">Listado de cursos FFAA</p>
                                         </a>
                                     </li>
                                 </ul>

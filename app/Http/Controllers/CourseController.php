@@ -18,8 +18,8 @@ class CourseController extends Controller
         $rfegTitleRepository = new RFEGTitleRepository();
         $courseRepository = new CourseRepository();
         $courses = $courseRepository->getAll($type);
-        $rfeg_title = $rfegTitleRepository->getStatic('cursos');
-        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'section' => 'school','subsection' => 'listcourses', 'rfeg_title'=>$rfeg_title]]);
+        $rfeg_title = $rfegTitleRepository->getStatic($type);
+        return view('admin.courses.list')->with(['admin'=>['courses'=>$courses, 'title'=>'Cursos', 'section' => 'school','subsection' => $type, 'rfeg_title'=>$rfeg_title]]);
     }
     
     /**
@@ -27,8 +27,8 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createCourse(){
-        return view('admin.courses.create')->with(['admin'=>['title'=>'Crear Curso','section' => 'school', 'subsection' => 'listcourses']]);
+    public function createCourse(string $type=''){
+        return view('admin.courses.create')->with(['admin'=>['title'=>'Crear Curso','section' => 'school', 'subsection' => $type]]);
     }
     
     /**
@@ -97,8 +97,9 @@ class CourseController extends Controller
     public function edit($id){
         $courseRepository = new CourseRepository();
         $course = $courseRepository->getOne($id);
+        
         return view('admin.courses.edit')->with(['admin'=>['title'=>'Editar Curso', 'course'=>$course, 'section' => 'school',
-        'subsection' => 'savecourse']]);
+        'subsection' => $course->getType2()]]);
     }
     
     /**

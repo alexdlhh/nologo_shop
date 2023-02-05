@@ -90,6 +90,7 @@ class CalendarController extends Controller
         $eventos = $eventoRepository->getEventosByMonth($month, $year);
         $calendar = $eventoRepository->getCalendarObject($month, $year);
         $especialidades = $especialidadesRepository->getAll();
+        $files = $eventoRepository->getFiles();
         return view('admin.calendar.app', [
             'admin'=>[
             'title'=>'Calendario',
@@ -100,6 +101,7 @@ class CalendarController extends Controller
             'eventos' => $eventos,
             'calendar' => $calendar,
             'especialidades' => $especialidades,
+            'files' => $files,
             ]]);
     }
 
@@ -110,7 +112,7 @@ class CalendarController extends Controller
         $eventoRepository = new EventoRepository();
         $archivos = [];
         $image = '';
-        if($request->hasFile('download_pdf')){
+        /*if($request->hasFile('download_pdf')){
             $files = $request->file('download_pdf');
             $archivos = [];
             
@@ -119,6 +121,16 @@ class CalendarController extends Controller
                 $name = date('YmdHis').'_'.$file->getClientOriginalName();
                 $file->move(public_path().'/files/calendar/pdf/', $name);
                 $request->merge(['download_pdf' => $name]);
+                $archivos[] = '/files/calendar/pdf/'.$name;
+            }
+        }*/
+        for($i=0;$i<=$request->input('count');$i++){
+            if($request->hasFile('download_pdf_'.$i)){
+                $file = $request->file('download_pdf_'.$i);
+                //hora exacta para que el archivo no se repita
+                $name = date('YmdHis').'_'.$file->getClientOriginalName();
+                $file->move(public_path().'/files/calendar/pdf/', $name);
+                $request->merge(['download_pdf_'.$i => $name]);
                 $archivos[] = '/files/calendar/pdf/'.$name;
             }
         }

@@ -461,12 +461,38 @@ input:not([type]), input[type="text"]:not(.browser-default), input[type="passwor
     background-color: #039be5;
     border-radius: 5px;
     transition: 0.5s;
+    color: white !important;
 }
-.tab:hover a{
-    color: white;
+.tab.active > a {
+    color: white !important;
 }
-.tab.active a{
-    color: white;
+.tab2:hover a{
+    color: white !important;
+}
+.tab2.active a{
+    color: white !important;
+}
+.tab2{
+    border-bottom: 1px solid #ddd;
+}
+.tab2 a{
+    color: #039be5;
+}
+.tab2:hover{
+    background-color: #039be5;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.tab2.active{
+    background-color: #039be5;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.tab2:hover a{
+    color: white !important;
+}
+.tab2.active a{
+    color: white !important;
 }
 .card.horizontal .card-image {
     height: 250px;

@@ -1617,7 +1617,10 @@ h3.especial{
     height: 70px;
     width:100%;
 }
-
+._ffaa {
+    border: 1px solid #333;
+    height: 250px;
+}
 
 .bocadillo_media {
     left: 42.8%;

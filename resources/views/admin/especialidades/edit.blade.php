@@ -53,7 +53,16 @@
             </div>
         </div>
     </div-->
-    <div class="row"> 
+    <div class="row">
+        <div class="col s12">
+        <ul class="tabs">
+            <li class="tab2 col s3" data-tab="team_tab"><a href="#team_tab">Equipo</a></li>
+            <li class="tab2 col s3" data-tab="comisiones_tab"><a href="#comisiones_tab">Comisiones Técnicas</a></li>
+            <li class="tab2 col s3" data-tab="resultados_tab"><a href="#resultados_tab">Resultados</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="row _tab" id="team_tab"> 
         <div class="col s12 m12"> 
             <div class="subsection">
                 <p><a class="waves-effect waves-light modal-trigger" href="#add_team"><i class="small material-icons">add_circle</i></a> Equipo</p>
@@ -100,7 +109,7 @@
             </div>
         </div>
     </div>     
-    <div class="row"> 
+    <div class="row _tab" id="comisiones_tab"> 
         <div class="col s12 m12"> 
             <div class="subsection">
                 <p><a class="waves-effect waves-light modal-trigger" href="#add_comisiones_tecnicas"><i class="small material-icons">add_circle</i></a> Comisiones Técnicas</p>
@@ -138,7 +147,7 @@
             </div>
         </div>
     </div> 
-    <div class="row"> 
+    <div class="row _tab" id="resultados_tab"> 
         <div class="col s12 m12"> 
             <div class="subsection">
                 <p><a class="waves-effect waves-light modal-trigger" href="#add_result"><i class="small material-icons">add_circle</i></a> Resultados</p>
@@ -175,8 +184,9 @@
                                     <div class="documentos">
                                         <h5>Documentos
                                         <a class="waves-effect waves-light modal-trigger add_resultFile" data-id="{{$resultados['data']->id}}" href="#add_resultFile"><i class="small material-icons">add_circle</i></a>
+                                        <a class="waves-effect waves-light despdocs" href="javascript:;" data-id="{{$resultados['data']->id}}"><i class="small material-icons">center_focus_strong</i></a>
                                         </h5>
-                                        <div class="row">
+                                        <div class="row doc_ doc_{{$resultados['data']->id}}">
                                             @foreach($resultados['documentos'] as $documentos)
                                                 <div class="col s2">
                                                     <div class="image_doc">
@@ -566,16 +576,35 @@
     $(document).ready(function(){
         $('.modal').modal();
         $('select').formSelect();
+
     });
 </script>
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> 
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js" defer></script>
 <script>
     $(document).ready(function(){
+        $('#comisiones_tab').hide();
+        $('#resultados_tab').hide();
+        $('.doc_').hide();
         $('.see_pdf').click(function(){
             var file = $(this).attr('data-file');
             var url = file;
             $('#pdf').attr('src',url);
+        })
+        $('.tab2').click(function(){
+            var tab = $(this).attr('data-tab');
+            $('._tab').hide();
+            $('.tab2').removeClass('active');
+            $('#'+tab).show();
+            $(this).addClass('active');
+        })
+        $('.despdocs').click(function(){
+            var desp = $(this).attr('data-id');
+            if($('.doc_'+desp).is(':hidden')){
+                $('.doc_'+desp).show();
+            }else{
+                $('.doc_'+desp).hide();
+            }
         })
         /**GENERAL CONTROLLERS */
             $('.save_general').click(function(){

@@ -341,11 +341,21 @@ class EventoRepository
 
     public function uploadFiles($archivos,$evento){
         foreach($archivos as $archivo){
-            $id = DB::table('evento')
+            $id = DB::table('evento_files')
                     ->insertGetId([
                         'evento' => $evento,
                         'archivo' => $archivo
                 ]);
         }
+    }
+
+    public function getFiles(){
+        $files = DB::table('evento_files')
+            ->get();
+        $_evento = [];
+        foreach($files as $file){
+            $_evento[$file->evento][] = $file->archivo;
+        }
+        return $_evento;
     }
 }

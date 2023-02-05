@@ -10,11 +10,13 @@
                 <div class="card-stacked">
                     <div class="card-content">
                         <div class="row">
+                            <h1>{{$admin['subsection']=='rfeg'?'Cursos RFEG':'Cursos FFAA'}}</h1>
                             @foreach($admin['rfeg_title'] as $rfeg_title)
                             <div class="col s12 card_admin">
                                 <div class="row" id="tabla">   
                                     <h4>{{$rfeg_title->name}}                     
-                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
+                                        <a href="#edit_rfeg_title" data-id="{{$rfeg_title->getId()}}" data-type="{{$rfeg_title->getType()}}" data-subtype="{{$rfeg_title->getSubtype()}}" data-name="{{$rfeg_title->name}}" class="btn-floating btn-small waves-effect waves-light modal-trigger edit_rfeg_title_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
+                                        <a href="javascript:;" data-id="{{$rfeg_title->id}}" class="btn-floating btn-small waves-effect waves-light del_rfeg_title"><img src="/icons/rfeg_ico_borrar.svg" width="24"></a>
                                     </h4>
                                     <table class="">
                                         <thead>
@@ -24,27 +26,45 @@
                                             <th>Convocatorias</th>
                                             <th>Inscripción</th>
                                             <th>Formularios inscripción</th>
-                                            <th><a href="#add_course" 
+                                            <th>
+                                                <a href="#add_course" 
                                                 data-id = "0"
-                                                data-rfeg-title="{{$rfeg_title->getType()}}"
-                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_course"><img src="/icons/rfeg_ico_crear.svg" width="24"></a></th>
+                                                data-rfeg-title="{{$rfeg_title->getSubtype()}}"
+                                                class="btn-floating btn-small waves-effect waves-light modal-trigger add_course"><img src="/icons/rfeg_ico_crear.svg" width="24"></a>                                               
+
+                                            </th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
                                         @foreach($admin['courses'] as $course)
-                                            @if($course->getType()==$rfeg_title->getType())
+                                            @if($course->getType()==$rfeg_title->getSubtype())
                                             <tr>
                                                 <td>{{ $course->getCurso() }}</td>
                                                 <td>{{ $course->getLugar() }}</td>
                                                 <td>
+                                                    @if(!empty($course->getConvocatoriaPdf()))
                                                     <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getConvocatoriaPdf()}}"><img src="/rfeg_ico_pdfview.png" width="24"></a>
+                                                    @endif
+                                                    @if(!empty($course->getConvocatoriaLink()))
+                                                    <a href="{{$course->getConvocatoriaLink()}}" target="_blank"><img src="/rfeg_ico_localizacion_blue.svg" width="24"></a>
+                                                    @endif
                                                 </td>
                                                 <td>
+                                                    @if(!empty($course->getInscripcionPdf()))
                                                     <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getInscripcionPdf()}}"><img src="/rfeg_ico_pdfview.png" width="24"></a>
+                                                    @endif
+                                                    @if(!empty($course->getInscripcionLink()))
+                                                    <a href="{{$course->getInscripcionLink()}}" target="_blank"><img src="/rfeg_ico_localizacion_blue.svg" width="24"></a>
+                                                    @endif
                                                 </td>
                                                 <td>
+                                                    @if(!empty($course->getFormulariosPdf()))
                                                     <a href="#see_pdf" class="modal-trigger see_pdf" data-file="{{$course->getFormulariosPdf()}}"><img src="/rfeg_ico_pdfview.png" width="24"></a>
+                                                    @endif
+                                                    @if(!empty($course->getFormulariosLink()))
+                                                    <a href="{{$course->getFormulariosLink()}}" target="_blank"><img src="/rfeg_ico_localizacion_blue.svg" width="24"></a>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <a href="#edit_course" 
@@ -56,6 +76,9 @@
                                                     data-convocatoria="{{$course->getConvocatoriaPdf()}}"
                                                     data-inscripcion="{{$course->getInscripcionPdf()}}"
                                                     data-formularios="{{$course->getFormulariosPdf()}}"
+                                                    data-convocatoria_link="{{$course->getConvocatoriaLink()}}"
+                                                    data-inscripcion_link="{{$course->getInscripcionLink()}}"
+                                                    data-formularios_link="{{$course->getFormulariosLink()}}"
                                                     data-activo="{{$course->getActive()}}"
                                                     data-rfeg-title="{{$course->getType()}}"
                                                     class="btn-floating btn-small waves-effect waves-light edit_curso_btn"><img src="/icons/rfeg_ico_editar.svg" width="24"></a>
@@ -77,7 +100,23 @@
     </div>
 </div>
 <div class="leftf">
+    <a href="#add_rfeg_title" class="btn-floating btn-small waves-effect waves-light modal-trigger add_course"><img src="/icons/rfeg_ico_crear.svg" width="24"></a>
     <a href="/schools" id="" class="btn-floating btn-large waves-effect waves-light"><img src="/icons/rfeg_ico_liveview.svg" width="24"></a>
+</div>
+<div id="add_rfeg_title" class="modal">
+    <div class="modal-content">
+        <h4>Añadir Tabla</h4>
+        <div class="row">
+            <div class="col s12 form-control">
+                <label for="add_rfeg_title_name">Nombre de la tabla</label>
+                <input type="text" id="add_rfeg_title_name">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat add_rfeg_title_submit" data-id="">Guardar</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
 </div>
 <div id="edit_rfeg_title" class="modal">
     <div class="modal-content">
@@ -114,7 +153,7 @@
                 <label for="add_fecha_fin">Fecha de Fin</label>
                 <input type="text" class="datepicker" id="add_fecha_fin">
             </div>
-            <div class="file-field col s12">
+            <div class="file-field col s12 type_file">
                 <div class="btn">
                     <span>Convocatorias</span>
                     <input type="file" name="add_convocatorias" id="add_convocatorias">
@@ -123,7 +162,7 @@
                     <input class="file-path validate" type="text">
                 </div>
             </div>
-            <div class="file-field col s12">
+            <div class="file-field col s12 type_file">
                 <div class="btn">
                     <span>Inscripción</span>
                     <input type="file" name="add_inscripcion" id="add_inscripcion">
@@ -132,7 +171,7 @@
                     <input class="file-path validate" type="text">
                 </div>
             </div>
-            <div class="file-field col s12">
+            <div class="file-field col s12 type_file">
                 <div class="btn">
                     <span>Formularios inscripción</span>
                     <input type="file" name="add_formularios" id="add_formularios">
@@ -140,6 +179,18 @@
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
                 </div>
+            </div>
+            <div class="col s12 form-control">
+                <label for="add_convocatorias_link">Convocatorias</label>
+                <input type="text" id="add_convocatorias_link">
+            </div>
+            <div class="col s12 form-control">
+                <label for="add_inscripcion_link">Inscripción Link</label>
+                <input type="text" id="add_inscripcion_link">
+            </div>
+            <div class="col s12 form-control">
+                <label for="add_formularios_link">Formularios inscripción</label>
+                <input type="text" id="add_formularios_link">
             </div>
             <div class="form-field col s12">
                 <p>
@@ -202,6 +253,18 @@
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
                 </div>
+            </div>
+            <div class="col s12 form-control">
+                <label for="edit_convocatorias_link">Convocatorias</label>
+                <input type="text" id="edit_convocatorias_link">
+            </div>
+            <div class="col s12 form-control">
+                <label for="edit_inscripcion_link">Inscripción Link</label>
+                <input type="text" id="edit_inscripcion_link">
+            </div>
+            <div class="col s12 form-control">
+                <label for="edit_formularios_link">Formularios inscripción</label>
+                <input type="text" id="edit_formularios_link">
             </div>
             <div class="form-field col s12">
                 <p>
@@ -270,19 +333,23 @@
         $('.edit_rfeg_title_btn').click(function(){
             var id = $(this).attr('data-id');
             var name = $(this).attr('data-name');
+            var subtype = $(this).attr('data-subtype');
+            var type = 'course{{$admin["subsection"]}}';
             $('#edit_rfeg_title_name').val(name);
             $('.edit_rfeg_title_submit').attr('data-id',id);
+            $('.edit_rfeg_title_submit').attr('data-subtype',subtype);
         })
-        //boton de editar rfeg_title
-        $('.edit_rfeg_title_submit').click(function(){
-            var name = $('#edit_rfeg_title_name').val();
-            var id = $(this).attr('data-id');
+        //boton añadir rfeg_title
+        $('.add_rfeg_title_submit').click(function(){
+            var name = $('#add_rfeg_title_name').val();
             var token = "{{@csrf_token()}}";
-            var type = $(this).attr('data-type');
+            var type = 'course{{$admin["subsection"]}}';
+            //subtype sera un slug de name
+            var subtype = name.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
             $.ajax({
-                url: '/admin/rfeg_title/edit',
+                url: '/admin/rfeg_title/create',
                 type: 'POST',
-                data: {name:name,type:type,id:id,_token:token},
+                data: {name:name,type:type,subtype:subtype,_token:token},
                 dataType: 'json',
                 success: function(result){
                     if(result.id != undefined){
@@ -292,6 +359,41 @@
                     }
                 }
             });
+        })
+        //boton de editar rfeg_title
+        $('.edit_rfeg_title_submit').click(function(){
+            var name = $('#edit_rfeg_title_name').val();
+            var id = $(this).attr('data-id');
+            var token = "{{@csrf_token()}}";
+            var type = 'course{{$admin["subsection"]}}';
+            //subtype sera un slug de name
+            var subtype = $(this).attr('data-subtype');
+            $.ajax({
+                url: '/admin/rfeg_title/edit',
+                type: 'POST',
+                data: {name:name,id:id,type:type,subtype:subtype,_token:token},
+                dataType: 'json',
+                success: function(result){
+                    if(result.id != undefined){
+                        window.location.reload();
+                    }else{
+                        alert('Error al crear la tabla');
+                    }
+                }
+            });
+        })
+        //boton de eliminar rfeg_title
+        $('.del_rfeg_title').click(function(){
+            var id = $(this).attr('data-id');
+            if(confirm('¿Estás seguro de eliminar esta tabla?')){
+                $.ajax({
+                    url: '/admin/rfeg_title/delete/'+id,
+                    type: 'GET',
+                    success: function(result){
+                        window.location.reload();
+                    }
+                });
+            }
         })
         //montamos modal de añadir
         $('.add_course').click(function(){
@@ -307,6 +409,9 @@
             var convocatorias = $('#add_convocatorias').prop('files')[0];
             var inscripcion = $('#add_inscripcion').prop('files')[0];
             var formularios = $('#add_formularios').prop('files')[0];
+            var convocatorias_link = $('#add_convocatorias_link').val();
+            var inscripcion_link = $('#add_inscripcion_link').val();
+            var formularios_link = $('#add_formularios_link').val();
             var rfeg_title = $(this).attr('data-rfeg-title');
             var active = $('#active').prop('checked')?1:0;
             var token = "{{@csrf_token()}}";
@@ -319,7 +424,11 @@
             formData.append('convocatoria_pdf',convocatorias);
             formData.append('inscripcion_pdf',inscripcion);
             formData.append('formularios_pdf',formularios);
+            formData.append('convocatoria_link',convocatorias_link);
+            formData.append('inscripcion_link',inscripcion_link);
+            formData.append('formularios_link',formularios_link);
             formData.append('type',rfeg_title);
+            formData.append('type2','{{$admin["subsection"]}}');
             formData.append('active',active);
             formData.append('_token',token);
             $.ajax({
@@ -350,6 +459,9 @@
             var convocatorias = $(this).attr('data-convocatorias');
             var inscripcion = $(this).attr('data-inscripcion');
             var formularios = $(this).attr('data-formularios');
+            var convocatorias_link = $(this).attr('data-convocatorias_link').val();
+            var inscripcion_link = $(this).attr('data-inscripcion_link').val();
+            var formularios_link = $(this).attr('data-formularios_link').val();
             var rfeg_title = $(this).attr('data-rfeg-title');
             var active = $(this).attr('data-active');
             $('#edit_curso').val(curso);
@@ -359,6 +471,9 @@
             $('#edit_convocatorias').attr('data-file',convocatorias);
             $('#edit_inscripcion').attr('data-file',inscripcion);
             $('#edit_formularios').attr('data-file',formularios);
+            $('#edit_convocatorias_link').val();
+            $('#edit_inscripcion_link').val();
+            $('#edit_formularios_link').val();
             $('#edit_active').prop('checked',active==1?true:false);
             $('.edit_curso_submit').attr('data-id',id);
             $('.edit_curso_submit').attr('data-rfeg-title',rfeg_title);
@@ -371,6 +486,9 @@
             var convocatorias = $('#edit_convocatorias').prop('files')[0];
             var inscripcion = $('#edit_inscripcion').prop('files')[0];
             var formularios = $('#edit_formularios').prop('files')[0];
+            var convocatorias_link = $('#edit_convocatorias_link').val();
+            var inscripcion_link = $('#edit_inscripcion_link').val();
+            var formularios_link = $('#edit_formularios_link').val();
             var rfeg_title = $(this).attr('data-rfeg-title');
             var id = $(this).attr('data-id');
             var active = $('#edit_active').prop('checked')?1:0;
@@ -383,7 +501,11 @@
             formData.append('convocatorias',convocatorias);
             formData.append('inscripcion',inscripcion);
             formData.append('formularios',formularios);
+            formData.append('convocatorias_link',convocatorias_link);
+            formData.append('inscripcion_link',inscripcion_link);
+            formData.append('formularios_link',formularios_link);
             formData.append('type',rfeg_title);
+            formData.append('type2','{{$admin["subsection"]}}');
             formData.append('active',active);
             formData.append('id',id);
             formData.append('_token',token);

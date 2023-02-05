@@ -15,11 +15,11 @@
                                 <ul class="collection">
                                     <li class="collection-item"><a href="{{ url('/admin/employees') }}">Empleados</a></li>
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/gobierno') }}">Gobierno</a></li>
-                                    <li class="collection-item opensubsection"><a href="javascript:;">Normativa</a></li>
-                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/mujer') }}">Mujer y Deporte</a></li>
-                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/comunicados') }}">Comunicados</a></li>
-                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/transparencia') }}">Ley de Transparencia</a></li>
-                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/estatutos') }}">Estatutos</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/normativa/reglamentos') }}">Reglamentos</a></li>
+                                    <li class="collection-item opensubsection"><a href="javascript:;">Normativas y protocolos</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/mujer') }}">Igualdad</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/comunicados') }}">Comunicados y circulares</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/transparencia') }}">Ley de Transparencia</a></li>                                    
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/ffaa') }}">FFAA</a></li>
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/elecciones') }}">Elecciones</a></li>
                                 </ul>
@@ -37,9 +37,11 @@
                             <div class="col s12">
                                 <h5>Normativas /</h5>
                                 <ul class="collection">
-                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/normativa/reglamentos') }}">Reglamentos</a></li>
+                                    
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/normativa/normativas') }}">Normativas</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/normativa/normativas_tecnicas') }}">Normativas técnicas</a></li>
                                     <li class="collection-item"><a href="{{ url('/admin/rfeg/normativa/protocolos') }}">Protocolos</a></li>
+                                    <li class="collection-item"><a href="{{ url('/admin/rfeg/estatutos') }}">Estatutos</a></li>
                                 </ul>
                             </div>
                         </div>

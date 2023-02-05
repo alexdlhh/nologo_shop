@@ -12,10 +12,14 @@ class CourseEntity
     public $convocatoria_pdf;
     public $inscripcion_pdf;
     public $formularios_pdf;
+    public $convocatoria_link;
+    public $inscripcion_link;
+    public $formularios_link;
     public $active;
     public $type;
+    public $type2;
     
-    public function __construct($id = 0, $curso = '', $fecha = '', $fecha_fin = '', $lugar = '', $convocatoria_pdf = '', $inscripcion_pdf = '', $formularios_pdf = '', $active = '', $type = '')
+    public function __construct($id = 0, $curso = '', $fecha = '', $fecha_fin = '', $lugar = '', $convocatoria_pdf = '', $inscripcion_pdf = '', $formularios_pdf = '', $active = '', $type = '' , $type2 = '', $convocatoria_link = '', $inscripcion_link = '', $formularios_link = '')
     {
         $this->id = $id;
         $this->curso = $curso;
@@ -25,8 +29,12 @@ class CourseEntity
         $this->convocatoria_pdf = $convocatoria_pdf;
         $this->inscripcion_pdf = $inscripcion_pdf;
         $this->formularios_pdf = $formularios_pdf;
+        $this->convocatoria_link = $convocatoria_link;
+        $this->inscripcion_link = $inscripcion_link;
+        $this->formularios_link = $formularios_link;
         $this->active = $active;
         $this->type = $type;
+        $this->type2 = $type2;
     }
 
     /**
@@ -92,6 +100,30 @@ class CourseEntity
     {
         return $this->formularios_pdf;
     }
+
+    /**
+     * @return string $convocatoria_link
+     */
+    public function getConvocatoriaLink()
+    {
+        return $this->convocatoria_link;
+    }
+
+    /**
+     * @return string $inscripcion_link
+     */
+    public function getInscripcionLink()
+    {
+        return $this->inscripcion_link;
+    }
+
+    /**
+     * @return string $formularios_link
+     */
+    public function getFormulariosLink()
+    {
+        return $this->formularios_link;
+    }
     
     /**
      * @return string $active
@@ -107,6 +139,14 @@ class CourseEntity
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return string $type2
+     */
+    public function getType2()
+    {
+        return $this->type2;
     }
 
     /**
@@ -174,6 +214,30 @@ class CourseEntity
     }
 
     /**
+     * @param string $convocatoria_link
+     */
+    public function setConvocatoriaLink($convocatoria_link)
+    {
+        $this->convocatoria_link = $convocatoria_link;
+    }
+
+    /**
+     * @param string $inscripcion_link
+     */
+    public function setInscripcionLink($inscripcion_link)
+    {
+        $this->inscripcion_link = $inscripcion_link;
+    }
+
+    /**
+     * @param string $formularios_link
+     */
+    public function setFormulariosLink($formularios_link)
+    {
+        $this->formularios_link = $formularios_link;
+    }
+
+    /**
      * @param string $active
      */
     public function setActive($active)
@@ -190,6 +254,14 @@ class CourseEntity
     }
 
     /**
+     * @param string $type2
+     */
+    public function setType2($type2)
+    {
+        $this->type2 = $type2;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -203,8 +275,12 @@ class CourseEntity
             'convocatoria_pdf' => $this->convocatoria_pdf,
             'inscripcion_pdf' => $this->inscripcion_pdf,
             'formularios_pdf' => $this->formularios_pdf,
+            'convocatoria_link' => $this->convocatoria_link,
+            'inscripcion_link' => $this->inscripcion_link,
+            'formularios_link' => $this->formularios_link,
             'active' => $this->active,
             'type' => $this->type,
+            'type2' => $this->type2,
         ];
     }
 

@@ -19,9 +19,13 @@ class CourseMapper
         !empty($data['lugar']) ? $course->setLugar($data['lugar']) : null;
         !empty($data['active']) ? $course->setActive($data['active']) : null;
         !empty($data['type']) ? $course->setType($data['type']) : null;
+        !empty($data['type2']) ? $course->setType2($data['type2']) : null;
         !empty($data['convocatoria_pdf']) ? $course->setConvocatoriaPdf($data['convocatoria_pdf']) : null;
         !empty($data['inscripcion_pdf']) ? $course->setInscripcionPdf($data['inscripcion_pdf']) : null;
         !empty($data['formularios_pdf']) ? $course->setFormulariosPdf($data['formularios_pdf']) : null;
+        !empty($data['convocatoria_link']) ? $course->setConvocatoriaLink($data['convocatoria_link']) : null;
+        !empty($data['inscripcion_link']) ? $course->setInscripcionLink($data['inscripcion_link']) : null;
+        !empty($data['formularios_link']) ? $course->setFormulariosLink($data['formularios_link']) : null;
         return $course;
     }
 

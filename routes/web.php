@@ -107,7 +107,7 @@ Route::middleware([EnsureRoleIsCorrect::class])->group(function () {
     Route::post('admin/course/save',[CourseController::class,'postCreate'])->name('admin.courses.store');
     Route::get('admin/course/delete/{id}',[CourseController::class,'postDelete'])->name('admin.courses.delete');
     Route::get('admin/course/edit/{id}',[CourseController::class,'edit'])->name('admin.courses.edit');
-    Route::get('admin/course/create',[CourseController::class,'createCourse'])->name('admin.courses.create');    
+    Route::get('admin/course/create/{type?}',[CourseController::class,'createCourse'])->name('admin.courses.create');    
     /**ADMIN JOURNAL */
     Route::get('admin/journals/{album?}/{page?}/{search?}',[JournalController::class,'journals'])->name('admin.journals.list');
     Route::get('admin/journal/create',[JournalController::class,'CreateJournal'])->name('admin.journals.create');

@@ -51,7 +51,6 @@
         </a>
         @endforeach
     </div-->
-    <hr>
 </div>
 <div class="row new_list">
     <div class="col s12 m12 l12">
