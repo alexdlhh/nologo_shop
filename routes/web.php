@@ -52,7 +52,8 @@ Route::get('especialidades/{menu1?}/{menu2?}',[EspecialidadesController::class, 
 Route::get('noticia/{menu1?}/{menu2?}/{alias?}',[NewsController::class, 'frontPage'])->name('front.new');
 Route::get('noticias/{menu1?}/{menu2?}',[NewsController::class, 'frontPageList'])->name('front.news.list');
 Route::get('calendar/{menu1?}/{menu2?}',[CalendarController::class, 'frontPage'])->name('front.calendar');
-Route::get('media/{menu1?}/{menu2?}',[MediaController::class, 'frontPageMultimedia'])->name('front.media');
+Route::get('media/',[MediaController::class, 'frontPageSubalbum'])->name('front.subalbum');
+Route::get('album/{id}/{menu1?}/{menu2?}',[MediaController::class, 'frontPageMultimedia'])->name('front.media');
 Route::get('revistas/{menu1?}/{menu2?}',[JournalController::class, 'frontPageRevista'])->name('front.revista');
 Route::get('schools/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])->name('front.cursos');
 Route::get('normativa/{menu1?}/{menu2?}',[SchoolController::class, 'frontPage'])->name('front.escuela');
@@ -60,7 +61,7 @@ Route::get('patrocinadores/{menu1?}',[SponsorController::class, 'frontPage'])->n
 Route::get('rfeg/{menu1?}/{menu2?}',[RFEGController::class, 'frontPage'])->name('front.rfeg');
 Route::get('getNewsScroll/{pag?}',[NewsController::class, 'getNewsScroll'])->name('getNewsScroll');
 Route::get('getMediaScroll/{pag}/{especialidad?}',[MediaController::class, 'getMediaScroll'])->name('getMediaScroll');
-Route::get('getMediaScrollGeneral/{pag}/{especialidad?}/{coleccion?}',[MediaController::class, 'scrollComplete'])->name('scrollComplete');
+Route::get('getMediaScrollGeneral/{pag}/{especialidad?}/{coleccion?}/{subalbum?}',[MediaController::class, 'scrollComplete'])->name('scrollComplete');
 Route::get('getNewsScrollEspecialidad/{pag}/{especialidad?}',[EspecialidadesController::class, 'getNewsScrollEspecialidad'])->name('getNewsScrollEspecialidad');
 Route::get('contacto',[AuthController::class, 'contacto'])->name('contacto');
 Route::get('mapa',[AuthController::class, 'mapa'])->name('mapa');

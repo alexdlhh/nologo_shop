@@ -77,25 +77,25 @@ class MediaRepository
      * @param $especialidad
      * @return array
      */
-    public function getByColectionAndSpecialityScroll($coleccion, $especialidad, $pag=0){
+    public function getByColectionAndSpecialityScroll($subalbum, $coleccion, $especialidad, $pag=0){
         $mediaMapper = new MediaMapper();
-        if($coleccion=='todo' && $especialidad=='todo'){
+        if($subalbum=='todo' && $especialidad=='todo'){
             $media = DB::table('media')->skip($pag)->take(9)->get();
-        } else if($coleccion=='todo' && $especialidad!='todo'){
+        } else if($subalbum=='todo' && $especialidad!='todo'){
             $media = DB::table('media')
                 ->where('especialidad', $especialidad)
                 ->skip($pag)
                 ->take(9)
                 ->get();
-        } else if($coleccion!='todo' && $especialidad=='todo'){
+        } else if($subalbum!='todo' && $especialidad=='todo'){
             $media = DB::table('media')
-                ->where('coleccion', $coleccion)
+                ->where('coleccion', $subalbum)
                 ->skip($pag)
                 ->take(9)
                 ->get();
         } else {
             $media = DB::table('media')
-                ->where('coleccion', $coleccion)
+                ->where('coleccion', $subalbum)
                 ->where('especialidad', $especialidad)
                 ->skip($pag)
                 ->take(9)

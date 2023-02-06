@@ -201,6 +201,7 @@ class EspecialidadesController extends Controller
         $team = $this->teamRepository->getByEspecialityAngYear($especialidad,2022);
         $comisiones_tecnicas = $comisionesTecnicasRepository->getByEspecialidad($especialidad);
         $general = $generalRepository->getConfigGeneral();
+        $files = $eventoRepository->getFiles();
         foreach($rfeg_title as $title){
             $content_tables[$title->getId()] = $table1Repository->getbyRfegTitleAndEspeciality($title->getId(),$especialidad);
         }      
@@ -222,7 +223,8 @@ class EspecialidadesController extends Controller
             'team' => $team,
             'resultados' => $resultados,
             'comisiones_tecnicas' => $comisiones_tecnicas,
-            'general' => $general
+            'general' => $general,
+            'files' => $files,
         ];
         return view('pages.especialidades')->with('front',$front);
     }    

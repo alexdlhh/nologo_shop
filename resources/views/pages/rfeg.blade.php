@@ -100,6 +100,9 @@ $normativa_heads = [
                 <div class="col s2">
                     <a href="#modal1" data-url="{{$rfeg_content->download_pdf}}" class="openpdf modal-trigger"><img src="/rfeg_ico_pdfview.png" alt=""></a>
                     <a href="{{$rfeg_content->download_pdf}}" download class=""><img width="30" src="/icons/rfeg_ico_pdfdownload.svg" alt=""></a>
+                    @if(!empty(Auth::user()) && Auth::user()->role==1)
+                        <a href="javascript:;" data-file="{{$_SERVER['HTTP_HOST']}}/{{$rfeg_content->download_pdf}}" class="copy_to_clipboard" data-clipboard-text="{{$_SERVER['HTTP_HOST']}}/{{$rfeg_content->download_pdf}}">Copiar enlace</a>
+                    @endif 
                 </div>
             </div>
             @endforeach
@@ -257,6 +260,19 @@ $normativa_heads = [
         $('.modal-trigger').click(function(){
             var url = $(this).attr('data-url');
             $('#modal1 .modal-content').html('<embed src="'+url+'" class="journal_pdf" type="application/pdf">');
+        });
+        $('.copy_to_clipboard').click(function(){
+            var id = $(this).attr('data-id');
+            var file = $(this).attr('data-file');
+            //copiamos el contenido del input al portapapeles
+            var copyText = $(this).attr('data-clipboard-text');
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(copyText).select();
+            document.execCommand("copy");
+            $temp.remove();
+            //mostramos el mensaje de copiado
+            M.toast({html: 'Copiado al portapapeles'})
         });
     });
 </script>

@@ -33,16 +33,14 @@
     </div>
 </div>
 
-@if(!empty($front['media']))
-    <h2 id="subalbum_title">{{$front['subalbum']->title}}</h2>
+@if(!empty($front['subalbums']))
     <div class="mediaGrid">
-    @foreach($front['media'] as $media)    
+    @foreach($front['subalbums'] as $subalbums)    
         <div class="media_item">
-            @if($media->type=='image')
-            <img src="{{$media->url}}" class="materialboxed" alt="{{$media->title}}">
-            @else
-            <iframe src="{{$media->url}}" frameborder="0"></iframe>
-            @endif
+            <a href="/album/{{$subalbums->id}}/{{!empty($front['menu1'])?$front['menu1']:'todo'}}/{{!empty($front['menu2'])?$front['menu2']:'todo'}}">
+                <img src="{{$subalbums->imagen}}" class="" alt="{{$subalbums->title}}">
+                <p class="subalbum">{{$subalbums->title}}</p>
+            </a>
         </div>
     @endforeach
     </div>
@@ -53,9 +51,12 @@
 @endsection
 @section('scripts')
 <style>
-    #subalbum_title{
+    p.subalbum {
+        background: black;
+        text-align: center;
+        font-size: 3em;
         color: white;
-        padding-left: 6.5%;
+        opacity: 0.9;
     }
 </style>
 <script>
@@ -64,7 +65,7 @@
     var page = 1;
     var loading = false;
     $(window).scroll(function() {
-        if($(window).scrollTop() > $('body').height()-1700) {
+        /*if($(window).scrollTop() > $('body').height()-1700) {
             if(!loading){
                 loading = true;
                 page++;
@@ -96,7 +97,7 @@
                     }
                 });
             }
-        }
+        }*/
     });
 </script>
 @endsection

@@ -73,6 +73,11 @@ nav.nav-extended .nav-content {
 .brand-logo img{
     height: 100px;
 }
+
+nav ul li.nav-item.header-link a{
+    cursor:default;
+}
+
 nav ul li.active{
     background-color: transparent !important;
 }
@@ -120,7 +125,7 @@ nav ul a:hover {
     padding-top: 20px;
 }
 #header_title{
-    z-index: 9;
+    z-index: 8;
     position: relative;
     width: 35%;
     top: 70px;
@@ -1491,7 +1496,11 @@ h3.especial{
     padding: 24px !important;
     height: 92.765% !important;
 }
-.bocadillo{
+.bocadillo_wrapper {
+    position: relative;
+    top: 15px;
+}
+.bocadillo {
     width: 260px;
     position: absolute;
     background: white;
@@ -1508,46 +1517,62 @@ h3.especial{
     --cardShadowLargeInset: inset 0 30px 60px -12px rgba(50,50,93,0.25),inset 0 18px 36px -18px rgba(0,0,0,0.3);
     --cardShadowXLarge: 0 50px 100px -20px rgba(50,50,93,0.25),0 30px 60px -30px rgba(0,0,0,0.3); */
 }
+.bocadillo ul{
+    padding: 10px 0 13px 0;
+
+}
 .bocadillo ul li{
     height: 40px;
-    padding: 10px 20px 10px 20px;
+    padding: 0px 20px 0px 20px;
+    line-height: 20px;
+    float: none;
 }
 .bocadillo ul li:hover{
     background: #EAEEF1;
     transition: background ease-in-out .3s;
 }
-.bocadillo ul li a {
-    color: #0A2540;
+.bocadillo ul a {
+    padding:0;
+    /* color: #0A2540;
     font-weight: bold;
     position: relative;
     top: -4px;
-    padding-left: 10px;
+    padding-left: 10px; */
 }
 
 .bocadillo ul a li img{
     position: relative;
     margin-right: 10px;
+    bottom: -8px;
 }
 .bocadillo ul a li span{
     color: #0A2540;
     font-weight: bold;
+    text-transform: none;
     position: relative;
-    bottom: 4px;
+    bottom: -4px;
 }
-.bocadillo_media, .bocadillo_calendario, .bocadillo.bocadillo_schools, .bocadillo_rfeg, .bocadillo_especialities {
+/* .bocadillo_media, .bocadillo_calendario, .bocadillo.bocadillo_schools, .bocadillo_rfeg, .bocadillo_especialities {
     top: 9.5%;
-}
-.bocadillo_rfeg {
+} */
+/* .bocadillo_rfeg {
     left: 17.3%;
+} */
+/************** BOCADILLO RFEG ***************/
+
+.bocadillo_rfeg  {
+    position: absolute;
+    left: -40px;
+    width: 290px;
 }
 .bocadillo_rfeg .flecha {
     position: absolute;
-    left: 65px;
+    left: 66px;
 }
 
 /************** BOCADILLO ESPECIALIDADES ***************/
 .bocadillo_especialities {
-    left: 18.3%;
+    left: -90px;
     width: 570px;
     text-align: center;
 }
@@ -1604,6 +1629,7 @@ h3.especial{
     color: #0A2540;
     font-weight: bold;
     text-align: center;
+    text-transform: none;
     position: relative;
     line-height: 120%;
     height: 40px;
@@ -1617,10 +1643,7 @@ h3.especial{
     height: 70px;
     width:100%;
 }
-._ffaa {
-    border: 1px solid #333;
-    height: 250px;
-}
+
 
 .bocadillo_media {
     left: 42.8%;

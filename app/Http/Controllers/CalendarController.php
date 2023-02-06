@@ -29,6 +29,7 @@ class CalendarController extends Controller
         $eventoRepository = new EventoRepository();
         $generalRepository = new GeneralRepository();
         $eventos = $eventoRepository->getEventsByEspecialidadAlias($menu1);
+        $files = $eventoRepository->getFiles();
         $aux=[];
         foreach($eventos as $evento){
             if($menu2 == 'nacional'){
@@ -61,6 +62,7 @@ class CalendarController extends Controller
             'general' => $general,
             'menu2' => $menu2,
             'eventos' => $eventos,
+            'files' => $files,
         ];
         return view('pages.calendarios')->with('front',$front);
     }

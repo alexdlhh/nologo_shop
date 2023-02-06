@@ -147,13 +147,14 @@ $header_subtitle_esp = [
                     <li><a href="javascript:;" data-tc="todo" class="team_category tctodo active">TODO</a></li>
                     <li><a href="javascript:;" data-tc="nacional" class="team_category tcnacional">NACIONAL</a></li>
                     <li><a href="javascript:;" data-tc="internacional" class="team_category tcinternacional">INTERNACIONAL</a></li>
+                    <li><a href="javascript:;" id="generatePDF" class="btn"><img src="/icons/rfeg_ico_pdfdownload.svg" alt=""> DESCARGAR PDF</a></li>
                 </ul>
             </div>
         </div>
-        @foreach($front['eventos'] as $evento)
-        <div id="tabla4" class="{{$evento->getNacional()?'nacional':'internacional'}}">
+        
+        <div id="tabla4">
             <div class="container_table">
-                <h4 class="color_violet">Calendario {{$evento->getNacional()?'nacional':'internacional'}} <a href="javascript:;" data-url="{{$evento->getDownloadPdf()}}" class="btn"><img src="/icons/rfeg_ico_pdfdownload.svg" alt=""> DESCARGAR PDF</a></h4>
+                <h4 class="">Calendario Nacional</h4>
                 <div class="row head_table">
                     <div class="col s4">COMPETICIÓN</div>
                     <div class="col s2">FECHA</div>
@@ -161,16 +162,74 @@ $header_subtitle_esp = [
                     <div class="col s2">INSCRIPCIÓN</div>
                     <div class="col s2">SORTEO</div>
                 </div>
-                <div class="row content_table">
-                    <div class="col s4">{{$evento->getCompeticion()}}</div>
-                    <div class="col s2">{{date_format_esp($evento->getFecha())}} - {{date_format_esp($evento->getFechaFin())}}</div>
-                    <div class="col s2">{{date_format_esp($evento->getLicencia())}}</div>
-                    <div class="col s2">{{date_format_esp($evento->getInscripcion())}}</div>
-                    <div class="col s2">{{date_format_esp($evento->getSorteo())}}</div>
-                </div>
+                @foreach($front['eventos'] as $evento)
+                    @if($evento->getNacional()==1)
+                        <div class="row content_table"  data-id="{{$evento->getId()}}">
+                            <div class="col s4">{{$evento->getCompeticion()}}</div>
+                            <div class="col s2">{{str_replace('-','/',$evento->getFecha())}} - {{str_replace('-','/',$evento->getFechaFin())}}</div>
+                            <div class="col s2">{{$evento->getLicencia()=='0001-01-01'?'-':str_replace('-','/',$evento->getLicencia())}}</div>
+                            <div class="col s2">{{$evento->getInscripcion()=='0001-01-01'?'-':str_replace('-','/',$evento->getInscripcion())}}</div>
+                            <div class="col s2">{{$evento->getSorteo()=='0001-01-01'?'-':str_replace('-','/',$evento->getSorteo())}}</div>
+                        </div>
+                        <div class="row collapse_files cf_{{$evento->getId()}}">
+                            @if(!empty($front['files'][$evento->getId()]))
+                            @foreach($front['files'][$evento->getId()] as $documentos)
+                                <div class="col s2">
+                                    <div class="image_doc">
+                                        <a href="{{$documentos}}" download><img src="/icon-pdf.png" alt=""></a>
+                                        <a href="#modal1" data-url="{{$documentos}}" class="modal-trigger openpdf pdf2">                                        
+                                            <p>{{substr($documentos,0,15)}}...</p>
+                                        </a>                                    
+                                    </div>
+                                </div>
+                            @endforeach
+                            @endif
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
-        @endforeach
+        <div id="tabla4">
+            <div class="container_table">
+                <h4 class="">Calendario Interacional</h4>
+                <div class="row head_table">
+                    <div class="col s4">COMPETICIÓN</div>
+                    <div class="col s2">FECHA</div>
+                    <div class="col s2">LICENCIA</div>
+                    <div class="col s2">INSCRIPCIÓN</div>
+                    <div class="col s2">SORTEO</div>
+                </div>
+                
+                @foreach($front['eventos'] as $evento)
+                    @if($evento->getNacional()==0)
+                        <div class="row content_table" data-id="{{$evento->getId()}}">
+                            <div class="col s4">{{$evento->getCompeticion()}}</div>
+                            <div class="col s2">{{str_replace('-','/',$evento->getFecha())}} - {{str_replace('-','/',$evento->getFechaFin())}}</div>
+                            <div class="col s2">{{$evento->getLicencia()=='0001-01-01'?'-':str_replace('-','/',$evento->getLicencia())}}</div>
+                            <div class="col s2">{{$evento->getInscripcion()=='0001-01-01'?'-':str_replace('-','/',$evento->getInscripcion())}}</div>
+                            <div class="col s2">{{$evento->getSorteo()=='0001-01-01'?'-':str_replace('-','/',$evento->getSorteo())}}</div>
+                        </div>
+                        <div class="row collapse_files cf_{{$evento->getId()}}">
+                            @if(!empty($front['files'][$evento->getId()]))
+                            @foreach($front['files'][$evento->getId()] as $documentos)
+                                <div class="col s2">
+                                    <div class="image_doc">
+                                        <a href="{{$documentos}}" download><img src="/icon-pdf.png" alt=""></a>
+                                        <a href="#modal1" data-url="{{$documentos}}" class="modal-trigger openpdf pdf2">                                        
+                                            <p>{{substr($documentos,0,15)}}...</p>
+                                        </a>                                    
+                                        @if(!empty(Auth::user()) && Auth::user()->role==1)
+                                        <a href="javascript:;" data-file="{{$_SERVER['HTTP_HOST']}}/{{$documentos}}" class="copy_to_clipboard" data-clipboard-text="{{$_SERVER['HTTP_HOST']}}/{{$documentos}}">Copiar enlace</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                            @endif
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
     @elseif($front['menu2']=='noticias')
         <div class="col s12 m12 l12">
             <div class="row list-esp-news">
@@ -261,6 +320,11 @@ $header_subtitle_esp = [
 </div>
 @endsection
 @section('scripts')
+<style>
+    .collapse_files{
+        display: none;
+    }
+</style>
 <script>
     $(document).ready(function(){
         $('.modal').modal();
@@ -376,7 +440,34 @@ $header_subtitle_esp = [
                 }
             });
         @endif
-        
+        $('#generatePDF').click(function(){
+            //vamos a imprimir la página actual
+            window.print();
+            return true;
+
+        });
+        $('.content_table').click(function(){
+            var id = $(this).attr('data-id');
+            console.log(id);
+            if($('.cf_'+id).css('display')=='none'){
+                $('.cf_'+id).css('display','block');
+            }else{
+                $('.cf_'+id).css('display','none');
+            }
+        });
+        $('.copy_to_clipboard').click(function(){
+            var id = $(this).attr('data-id');
+            var file = $(this).attr('data-file');
+            //copiamos el contenido del input al portapapeles
+            var copyText = $(this).attr('data-clipboard-text');
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(copyText).select();
+            document.execCommand("copy");
+            $temp.remove();
+            //mostramos el mensaje de copiado
+            M.toast({html: 'Copiado al portapapeles'})
+        });
     });
 </script>
 @endsection

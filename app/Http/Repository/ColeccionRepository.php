@@ -211,4 +211,23 @@ class ColeccionRepository
         
         return $subalbum;
     }
+
+    /**
+     * obtenemos subalbums todos
+     */
+    public function getAllSubalbums(){
+        $subalbum = DB::table('subalbum')
+            ->orderBy('id', 'desc')
+            ->get();
+        
+        return $subalbum;
+    }
+
+    public function getSubalbumById($id){
+        $subalbum = DB::table('subalbum')
+            ->where('id', $id)
+            ->first();
+        
+        return $subalbum;
+    }
 }

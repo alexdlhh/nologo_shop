@@ -143,7 +143,7 @@ class MediaController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPageMultimedia($menu1='todo', $menu2='todo'){
+    public function frontPageMultimedia($id=0,$menu1='todo', $menu2='todo'){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -155,23 +155,24 @@ class MediaController extends Controller
         $especialidadesRepository = new EspecialidadesRepository();
         $mediaRepository = new MediaRepository();
         $generalRepository = new GeneralRepository();
+        $subalbum = $coleccionRepository->getSubalbumById($id);
         if($menu1 == 'todo'){
             if($menu2 == 'todo'){
-                $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo');
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id,'todo','todo');
             } else {
                 $id_coleccion='todo';
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
-                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id,$id_coleccion,$id_especialidad);
             }
         } else {
             if($menu2 == 'todo'){
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
                 $id_especialidad='todo';
-                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id,$id_coleccion,$id_especialidad);
             } else {
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu1);
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu2);
-                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($id,$id_coleccion,$id_especialidad);
             }
         }
 
@@ -193,12 +194,13 @@ class MediaController extends Controller
             'menu1' => $menu1,
             'menu2' => $menu2,
             'media' => $media,
-            'general' => $general
+            'general' => $general,
+            'subalbum' => $subalbum
         ];
         return view('pages.media')->with('front',$front);
     }
 
-    public function scrollComplete($pag=2,$menu1='todo', $menu2='todo'){
+    public function scrollComplete($pag=2,$menu1='todo', $menu2='todo', $subalbums='todo'){
         $mediaRepository = new MediaRepository();
         $especialidadesRepository = new EspecialidadesRepository();
         $coleccionRepository = new ColeccionRepository();
@@ -208,21 +210,21 @@ class MediaController extends Controller
         $pag = ($pag-1)*9;
         if($menu2 == 'todo'){
             if($menu1 == 'todo'){
-                $media = $mediaRepository->getByColectionAndSpecialityScroll('todo','todo',$pag);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($subalbums,'todo','todo',$pag);
             } else {
                 $id_coleccion='todo';
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu1);
-                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($subalbums,$id_coleccion,$id_especialidad,$pag);
             }
         } else {
             if($menu2 == 'todo'){
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu2);
                 $id_especialidad='todo';
-                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($subalbums,$id_coleccion,$id_especialidad,$pag);
             } else {
                 $id_coleccion=$coleccionRepository->getIdBySlug($menu2);
                 $id_especialidad=$especialidadesRepository->getIdBySlug($menu1);
-                $media = $mediaRepository->getByColectionAndSpecialityScroll($id_coleccion,$id_especialidad,$pag);
+                $media = $mediaRepository->getByColectionAndSpecialityScroll($subalbums,$id_coleccion,$id_especialidad,$pag);
             }
         }
         return response()->json(['media' => $media]);
@@ -238,6 +240,41 @@ class MediaController extends Controller
             $aux[] = $order[$i];
         }
         return $aux;
+    }
+
+    public function frontPageSubalbum(){
+        $pageRepository = new PagesRepository();
+        $newRepository = new NewsRepository();
+        $RSRepository = new RSRepository();
+        $sponsorRepository = new SponsorRepository();
+        $news = $newRepository->getNews(5);
+        $headers = $this->header_order($pageRepository->getAll('section','=','1'));
+        $coleccionRepository = new ColeccionRepository();
+        $especialidadesRepository = new EspecialidadesRepository();
+        $mediaRepository = new MediaRepository();
+        $generalRepository = new GeneralRepository();
+        $especialidades = $especialidadesRepository->getAll();
+        $colecciones=$coleccionRepository->getAll();
+        $rs = $RSRepository->getAll();
+        $sponsors = $sponsorRepository->getAll();
+        $general = $generalRepository->getConfigGeneral();
+        $subalbums = $coleccionRepository->getAllSubalbums();
+        $front = [
+            'headers' => $headers,
+            'section' => '/media',
+            'news' => $news,
+            'rs' => $rs,
+            'sponsors' => $sponsors,
+            'subsection' => 'especialidades',
+            'title'=>'Multimedia',
+            'colecciones' => $colecciones,
+            'especialidades' => $especialidades,
+            'menu1' => 'todo',
+            'menu2' => 'todo',
+            'general' => $general,
+            'subalbums' => $subalbums
+        ];
+        return view('pages.subalbum')->with('front',$front);
     }
 
 }

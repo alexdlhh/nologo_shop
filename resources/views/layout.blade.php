@@ -34,6 +34,82 @@
                 @foreach($front['headers'] as $header)
                     <li class="nav-item header-link {{$front['section']==$header->getTitle()?'active':''}}" data-id="{{ str_replace('/','',$header->getUrl())!=''?str_replace('/','',$header->getUrl()):'RFEG' }}">
                         <a href="{{($header->id==5||$header->id==10)?$header->getUrl():'javascript:;'}}" class="{{!empty($front['section']) && $front['section']==$header->getUrl()?'active':''}}">{{ $header->getTitle() }}</a>
+                        @if($header->getUrl()=='/rfeg')
+                        <div class="bocadillos bocadillo_wrapper">
+                            <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
+                                <div class="flecha"></div>
+                                <ul>
+                                    <a href="/rfeg/rfeg"><li><img width="20" src="/icons/rfeg_ico_quienessomos.svg" alt=""><span>Conócenos</span></li></a>
+                                    <a href="/rfeg/gobierno"><li><img width="20" src="/icons/rfeg_ico_gobierno.svg" alt=""><span>Organos de gobierno<span></li></a>
+                                    <a href="/rfeg/normativa/reglamentos"><li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><span>Reglamentos y normativas</span></li></a>
+                                    <a href="/rfeg/mujer/"><li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><span>Igualdad</span></li></a>
+                                    <a href="/rfeg/comunicados/"><li><img width="20" src="/icons/rfeg_ico_normativa.svg" alt=""><span>Comunicados y Circulares</span></li></a>
+                                    <a href="/rfeg/transparencia"><li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><span>Ley de Transparencia</span></li></a>
+                                    <a href="javascript:;"><li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><span>Compliance</span></li></a>
+                                    <a href="/rfeg/ffaa/"><li><img width="20" src="/icons/rfeg_ico_transparencia.svg" alt=""><span>FFAA</span></li></a>
+                                    @if(!empty(Auth::user()) && Auth::user()->role==1)
+                                    <a href="/rfeg/elecciones"><li><img width="20" src="/icons/rfeg_ico_elecciones.svg" alt=""><span>Elecciones</span></li></a>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @if($header->getUrl()=='/especialities')
+                        <div class="bocadillos bocadillo_wrapper">
+                            <div class="bocadillo bocadillo_especialities" data-id="especialidades">
+                                <div class="flecha"></div>
+                                <div class="row olimpicas">
+                                    <p>OLÍMPICAS</p>
+                                    <hr>
+                                    <a href="/especialidades/artistica-masculina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gam.svg" alt=""><span class="double_line">Artística<br>masculina</span></a>
+                                    <a href="/especialidades/artistica-femenina/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gaf.svg" alt=""><span class="double_line">Artística<br>femenina</span></a>
+                                    <a href="/especialidades/ritmica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_gr.svg" alt=""><span>Ritmica</span></a>
+                                    <a href="/especialidades/trampolin/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_tram.svg" alt=""><span>Trampolin</span></a>
+                                </div>
+                                <div class="row noolimpicas">
+                                    <p>NO OLÍMPICAS</p>
+                                    <hr>
+                                    <a href="/especialidades/aerobica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_aero.svg" alt=""><span>Aeróbica</span></a>
+                                    <a href="/especialidades/acrobatica/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_acro.svg" alt=""><span>Acrobática</span></a>
+                                    <a href="/especialidades/para-todos/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_paratodos.svg" alt=""><span>Para Todos</span></a>
+                                    <a href="/especialidades/parkour/" class="col s3 esp_bocadi"><img class="icon_esp" src="/rfeg_ico_esp_parkour.svg" alt=""><span>Parkour</span></a>
+                                </div>             
+                            </div>
+                        </div>
+                        @endif
+                        @if($header->getUrl()=='/media')
+                        <div class="bocadillos bocadillo_wrapper">
+                            <div class="bocadillo bocadillo_media" data-id="multimedia">
+                                <div class="flecha"></div>
+                                <ul>
+                                    <a href="/media"><li><img width="20" src="/icons/rfeg_ico_fotos.svg" alt=""><span>Fotos y vídeos</span></li></a>
+                                    <a href="/revistas"><li><img width="20" src="/icons/rfeg_ico_revistas.svg" alt=""><span>Revistas</span></li></a>
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @if($header->getUrl()=='/calendario')
+                        <div class="bocadillos bocadillo_wrapper">
+                            <div class="bocadillo bocadillo_calendario" data-id="calendario">
+                                <div class="flecha"></div>
+                                <ul>
+                                    <a href="/calendar/ritmica/nacional"><li><img height="20" src="/icons/rfeg_ico_calnacional.svg" alt=""><span>Calendario NACIONAL</span></li></a>
+                                    <a href="/calendar/ritmica/internacional"><li><img height="20" src="/icons/rfeg_ico_calinternacional.svg" alt=""><span>Calendario INTERNACIONAL</span></li></a>
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
+                        @if($header->getUrl()=='/schools')
+                        <div class="bocadillos bocadillo_wrapper">
+                            <div class="bocadillo bocadillo_schools" data-id="school">
+                                <div class="flecha"></div>
+                                <ul>
+                                    <a href="/schools/rfeg"><li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><span>Cursos RFEG</span></li></a>
+                                    <a href="/schools/ffaa"><li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><span>Cursos FFAA</span></li></a>
+                                </ul>
+                            </div>
+                        </div>
+                        @endif
                     </li>
                 @endforeach
             </ul>
@@ -94,7 +170,7 @@
             @endguest
         </ul>
 
-        <div class="bocadillos">
+        <!--div class="bocadillos">
             <div class="bocadillo bocadillo_rfeg" data-id="rfeg">
                 <div class="flecha"></div>
                 <ul>
@@ -151,7 +227,7 @@
                     <a href="/schools/normativa/"><li><img width="20" src="/icons/rfeg_ico_cursos.svg" alt=""><span>Cursos FFAA</span></li></a>
                 </ul>
             </div>            
-        </div>
+        </div-->
           
 
         <!-- Modal Structure -->
@@ -225,16 +301,25 @@
                     $(".bocadillo").hide();
                     $('.bocadillo_'+seccion).css('display','block');
                     //Transición para suavizar la aparición
-                    $('.bocadillo_'+seccion).css('opacity','0');
-                    $('.bocadillo_'+seccion).animate({opacity: 1}, 300);                    
-                });
-                $(".header-link").on("mouseout", function () {
-                    var seccion = $(this).attr('data-id');
-                    setTimeout(() => {                        
-                        //Transición para suavizar la ocultación
-                        $('.bocadillo_'+seccion).css('opacity','1');
-                        $('.bocadillo_'+seccion).animate({opacity: 0}, 300);
-                    }, 10000);
+                    $('.bocadillo_'+seccion).animate({opacity: 1}, 300);       
+                    //detectamos cuando el ratón sale del elemento para ocultarlo
+                    $('.bocadillo_'+seccion).on("mouseleave", function () {
+                        //el elemento desaparece al pasar el raton por encima por lo que lo arreglamos evitando que se oculta siempre que el raton este encima de uno de sus hijos por lo que comprobamos si el elemento sobre el que esta el raton es uno de sus hijos y si lo es no ocultamos el elemento, como hay otros elementos externos que ocupan el lugar del elemento que queremos ocultar, ocultamos solo si el se deja de estar en el elemento durante 100 milisegundos
+                        var mouseOver = false;
+                        $('.bocadillo_'+seccion).children().each(function(){
+                            if($(this).is(":hover")){
+                                mouseOver = true;
+                            }
+                        });
+                        if(!mouseOver){
+                            setTimeout(function(){
+                                if(!mouseOver){
+                                    $('.bocadillo_'+seccion).hide();
+                                }
+                            }, 100);
+                        }
+                        
+                    });          
                 });
                 setTimeout(() => {
                     document.querySelector('.progress').style.display = 'none';

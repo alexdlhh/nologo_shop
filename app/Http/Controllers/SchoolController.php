@@ -40,7 +40,7 @@ class SchoolController extends Controller
     /**
      * Vista de la front Page
      */
-    public function frontPage($menu1='cursos', $menu2='todo'){
+    public function frontPage($menu1='rfeg', $menu2='todo'){
         //$common = new Common();
         $pageRepository = new PagesRepository();
         $newRepository = new NewsRepository();
@@ -56,11 +56,7 @@ class SchoolController extends Controller
         $sponsors = $sponsorRepository->getAll();
         $courses=$normativas=[];
         $rfeg_title = $rfegTitleRepository->getStatic($menu1);
-        if($menu1=='cursos'){
-            $courses = $courseRepository->getAll($menu2=='todo'?'':$menu2);
-        }else{
-            $normativas = $schoolRepository->getNormativas($menu2=='todo'?'':$menu2);
-        }
+        $courses = $courseRepository->getAll($menu2=='todo'?'':$menu2);
         if($menu2!='todo'){
             $_rfeg_title=[];
             foreach($rfeg_title as $_title){
@@ -86,7 +82,7 @@ class SchoolController extends Controller
             'rfeg_title' => $rfeg_title,
             'general' => $general
         ];
-        return view('pages.'.$menu1)->with('front',$front);
+        return view('pages.cursos')->with('front',$front);
     }
 
     public function header_order($headers){
