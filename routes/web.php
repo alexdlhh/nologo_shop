@@ -67,6 +67,8 @@ Route::get('contacto',[AuthController::class, 'contacto'])->name('contacto');
 Route::get('mapa',[AuthController::class, 'mapa'])->name('mapa');
 Route::get('pagina/{alias}',[PageController::class, 'frontPage'])->name('front.page');
 Route::get('mundial',[MundialController::class, 'mundial'])->name('mundial');
+Route::get('mundial/{section}',[MundialController::class, 'mundial_section'])->name('mundial_section');
+Route::get('valencia/{section?}',[MundialController::class, 'valencia_section'])->name('mundial_section');
 /**
  * HOME
  */

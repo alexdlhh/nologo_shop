@@ -42,6 +42,75 @@ class MundialController extends Controller
             'rs' => $rs,
         ]);
     }   
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function mundial_section($section = 'mundial',$subsection='')
+    {
+        $generalRepository = new GeneralRepository();
+        $general = $generalRepository->getConfigGeneral();
+        $mundialRepository = new MundialRepository();
+        $mundial = $mundialRepository->getConfigMundial();
+        $sponsorRepository = new SponsorRepository();
+        $sponsors = $sponsorRepository->getAll();
+        $RSRepository = new RSRepository();
+        $rs = $RSRepository->getAll();
+        $_sponsor = [];
+        foreach($sponsors as $sponsor){
+            $_sponsor[$sponsor->type][] = $sponsor;
+        }
+        $sponsors = $_sponsor;
+        return view('pages.mundial_section')->with('front',[
+            'title' => 'Mundial',
+            'sponsors' => $sponsors,
+            'section' => 'mundial',
+            'subsection' => 'mundial',
+            'mundial' => $mundial,
+            'general' => $general,
+            'rs' => $rs,
+            'section' => $section,
+            'subsection' => $subsection,
+        ]);
+    }  
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function valencia_section($section = 'valencia',$subsection='')
+    {
+        $generalRepository = new GeneralRepository();
+        $general = $generalRepository->getConfigGeneral();
+        $mundialRepository = new MundialRepository();
+        $mundial = $mundialRepository->getConfigMundial();
+        $sponsorRepository = new SponsorRepository();
+        $sponsors = $sponsorRepository->getAll();
+        $RSRepository = new RSRepository();
+        $rs = $RSRepository->getAll();
+        $_sponsor = [];
+        foreach($sponsors as $sponsor){
+            $_sponsor[$sponsor->type][] = $sponsor;
+        }
+        $sponsors = $_sponsor;
+        $ruta = 'pages.mundial_section';
+        if($section == 'valencia'){
+            $ruta = 'pages.mundial';
+        }
+        return view($ruta)->with('front',[
+            'title' => 'Mundial',
+            'sponsors' => $sponsors,
+            'section' => 'mundial',
+            'subsection' => 'mundial',
+            'mundial' => $mundial,
+            'general' => $general,
+            'rs' => $rs,
+            'section' => $section,
+            'subsection' => $subsection,
+        ]);
+    }  
 
     public function adminMundialGeneral(){
         $mundialRepository = new MundialRepository();

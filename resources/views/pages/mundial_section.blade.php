@@ -1,4 +1,4 @@
-@extends('layout_mundial')
+@extends('layout_section')
 @section('title')
     Mundial
 @endsection
@@ -9,24 +9,268 @@ $entradas=$front['mundial']['entradas'];
 $valencia=$front['mundial']['valencia'];
 @endphp
 @section('content')
-<div class="minheight" style="background-image: url({{$general['img_pral'][0]->content}});background-size: cover; /* para que la imagen ocupe toda el área del div */
-    background-position: center center; /* para centrar la imagen */
-    background-repeat: no-repeat; /* para que la imagen no se repita */
-    width: 100%; /* para que el div ocupe todo el ancho del contenedor */
-    height: 100%; ">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 mundial">
-                <img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt="">
+<div id="section_mundial">
+@if($front['section']=='accesos')
+    <div class="row">
+        <div class="col s6">
+            <div class="text-decolored9">Accesos</div>
+            <div class="text-middle9">
+                <div class="linea_c"></div><span class="texto uptext">recinto</span>
             </div>
-            <div class="col s12 title-section">
-                <h2 class="texto">CAMPEONATO MUNDIAL</h3>
-                <h1 class="texto">GIMNASIA RÍTMICA</h2>
-                <div class="linea_title"></div>
-                <h2 class="texto">Valencia 2023</h3>
-            </div>            
-        </div> 
+        </div>
+        <div class="col s6 logo_mundial_mini">
+            <img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt="">
+        </div>
+        <div class="col s12 texto_accesos">
+            <p>
+                {{$mundial['accesos']['texto_accesos'][0]->content}} 
+            </p>
+        </div>
     </div>
+    <div class="row body-color">
+        <div class="col s12 full-width-video">
+            <video controls src="{{$mundial['accesos']['full-width-video'][0]->content}}"></video>
+        </div>
+    </div>
+    <div class="row acceso_detail">
+        <div class="col s6">
+            <p class="title_acceso">{{$mundial['accesos']['title_acceso'][0]->content}}</p>
+            @foreach($mundial['accesos']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['accesos']['title_acceso'][0]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['accesos']['title_acceso'][1]->content}}</p>
+            @foreach($mundial['accesos']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['accesos']['title_acceso'][1]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['accesos']['title_acceso'][2]->content}}</p>
+            @foreach($mundial['accesos']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['accesos']['title_acceso'][2]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['accesos']['title_acceso'][3]->content}}</p>
+            @foreach($mundial['accesos']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['accesos']['title_acceso'][3]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+        </div>
+        <div class="col s6">
+            <p class="title_acceso">{{$mundial['accesos']['title_acceso'][4]->content}}</p>
+            @foreach($mundial['accesos']['data_accesso'] as $data)
+                @if($data->dad==$mundial['accesos']['title_acceso'][4]->id)
+                    <p class="data_accesso2">{!!$data->content!!}</p>
+                @endif
+            @endforeach
+        </div>
+    </div>
+    <div class="row plano">
+        <h3 class="title_acceso2">Plano de ubicación</h3>
+        <a href="{{$mundial['accesos']['link_acceso'][0]->content}}" tarjet="_blank"><img src="{{$mundial['accesos']['title_acceso'][0]->content}}" alt=""></a>
+    </div>
+    <div class="row plano">
+        <h3 class="title_acceso2">Plano general de accesos</h3>
+        <img src="{{$mundial['accesos']['plano_general_acceso'][0]->content}}" alt="">
+    </div>
+    <div class="row galery">
+        @foreach($mundial['accesos']['img_galery'] as $img_galery)
+            <div class="col s4 img_galery"><img src="{{$img_galery->content}}" alt=""></div>
+        @endforeach
+    </div>
+    <div class="row acesos_parking">
+        <div class="col s6">
+            <h3 class="title_acceso2">Plano acceso al parking</h3>
+            <img src="{{$mundial['accesos']['acesos_parking1_img'][0]->content}}" alt="">
+            <p class="title_acceso">{{$mundial['accesos']['acesos_parking1_title'][0]->content}}</p>
+            <p class="data_accesso2">{{$mundial['accesos']['acesos_parking1_text'][0]->content}}</p>
+            <div class="mapa"><img src="{{$mundial['accesos']['acesos_parking1_mapa'][0]->content}}" alt=""></div>
+        </div>
+        <div class="col s6">
+            <h3 class="title_acceso2">Plano acceso peatonal</h3>
+            <img src="{{$mundial['accesos']['acesos_parking2_img'][0]->content}}" alt="">
+            <p class="title_acceso">{{$mundial['accesos']['acesos_parking2_title'][0]->content}}</p>
+            <p class="data_accesso2">{{$mundial['accesos']['acesos_parking2_text'][0]->content}}</p>
+            <div class="mapa"><img src="{{$mundial['accesos']['acesos_parking2_mapa'][0]->content}}" alt=""></div>
+        </div>
+    </div>
+@endif
+@if($front['section']=='pabellon1')
+    <div class="row">
+        <div class="col s6">
+            <div class="text-decolored9">Pabellón 1</div>
+            <div class="text-middle9">
+                <div class="linea_c"></div><span class="texto uptext">Público</span>
+            </div>
+        </div>
+        <div class="col s6 logo_mundial_mini">
+            <img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt="">
+        </div>
+        <div class="col s12 texto_accesos">
+            <p>
+            {{$mundial['pabellon1']['texto_accesos'][0]->content}} 
+            </p>
+        </div>
+    </div>
+    <div class="row body-color">
+        <div class="col s12 full-width-video">
+            <video controls src="{{$mundial['pabellon1']['full-width-video'][0]->content}}"></video>
+        </div>
+    </div>
+    <div class="row acceso_detail">
+        <div class="col s6">
+            <p class="title_acceso">{{$mundial['pabellon1']['title_acceso'][0]->content}}</p>
+            @foreach($mundial['pabellon1']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon1']['title_acceso'][0]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['pabellon1']['title_acceso'][1]->content}}</p>
+            @foreach($mundial['pabellon1']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon1']['title_acceso'][1]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['pabellon1']['title_acceso'][2]->content}}</p>
+            @foreach($mundial['pabellon1']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon1']['title_acceso'][2]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['pabellon1']['title_acceso'][3]->content}}</p>
+            @foreach($mundial['pabellon1']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon1']['title_acceso'][3]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+        </div>
+        <div class="col s6">
+            <p class="title_acceso">{{$mundial['pabellon1']['title_acceso'][4]->content}}</p>
+            @foreach($mundial['pabellon1']['data_accesso'] as $data)
+                @if($data->dad==$mundial['pabellon1']['title_acceso'][4]->id)
+                    <p class="data_accesso2">{!!$data->content!!}</p>
+                @endif
+            @endforeach
+        </div>
+    </div>
+    <div class="row galery">
+        @foreach($mundial['pabellon1']['img_galery'] as $img_galery)
+            <div class="col s4 img_galery"><img src="{{$img_galery->content}}" alt=""></div>
+        @endforeach
+    </div>
+@endif
+@if($front['section']=='pabellon2')
+<div class="row">
+        <div class="col s6">
+            <div class="text-decolored9">Pabellón 2</div>
+            <div class="text-middle9">
+                <div class="linea_c"></div><span class="texto uptext">Público</span>
+            </div>
+        </div>
+        <div class="col s6 logo_mundial_mini">
+            <img src="/FINAL-Logo_FIG_RGB_Horizontal_old.png" alt="">
+        </div>
+        <div class="col s12 texto_accesos">
+            <p>
+            {{$mundial['pabellon2']['texto_accesos'][0]->content}} 
+            </p>
+        </div>
+    </div>
+    <div class="row body-color">
+        <div class="col s12 full-width-video">
+            <video controls src="{{$mundial['pabellon2']['full-width-video'][0]->content}}"></video>
+        </div>
+    </div>
+    <div class="row acceso_detail">
+        <div class="col s6">
+            <p class="title_acceso">{{$mundial['pabellon2']['title_acceso'][0]->content}}</p>
+            @foreach($mundial['pabellon2']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon2']['title_acceso'][0]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['pabellon2']['title_acceso'][1]->content}}</p>
+            @foreach($mundial['pabellon2']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon2']['title_acceso'][1]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['pabellon2']['title_acceso'][2]->content}}</p>
+            @foreach($mundial['pabellon2']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon2']['title_acceso'][2]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+            <p class="title_acceso">{{$mundial['pabellon2']['title_acceso'][3]->content}}</p>
+            @foreach($mundial['pabellon2']['data_accesso2'] as $data)
+                @if($data->dad==$mundial['pabellon2']['title_acceso'][3]->id)
+                    <p class="data_accesso2">{{$data->content}}</p>
+                @endif
+            @endforeach
+        </div>
+        <div class="col s6">
+            <p class="title_acceso">{{$mundial['pabellon2']['title_acceso'][4]->content}}</p>
+            @foreach($mundial['pabellon2']['data_accesso'] as $data)
+                @if($data->dad==$mundial['pabellon2']['title_acceso'][4]->id)
+                    <p class="data_accesso2">{!!$data->content!!}</p>
+                @endif
+            @endforeach
+        </div>
+    </div>
+    <div class="row galery">
+        @foreach($mundial['pabellon2']['img_galery'] as $img_galery)
+            <div class="col s4 img_galery"><img src="{{$img_galery->content}}" alt=""></div>
+        @endforeach
+    </div>
+@endif
+@if($front['section']=='como_llegar')
+    <a href="{{$valencia['comollegar']['valencia_llegar_item_link'][0]->content}}" tarjet="_blank"><img src="{{$valencia['comollegar']['valencia_llegar_plano_acceso'][0]->content}}" alt=""></a>
+@endif
+@if($front['section']=='alojamiento')
+    <div class="row">
+        @foreach($valencia['alojamiento']['title_acceso'] as $title)
+            <div class="col s6">
+                <p class="title_acceso">{{$title->content}}</p>
+                @foreach($valencia['alojamiento']['data_accesso'] as $data)
+                    @if($data->dad==$title->id)
+                        <p class="data_accesso">{!!$data->content!!}</p>
+                    @endif
+                @endforeach
+            </div>
+        @endforeach
+    </div>  
+@endif
+@if($front['section']=='restauracion')
+    <div class="row">
+        @foreach($valencia['restauracion']['title_acceso'] as $title)
+            <div class="col s6">
+                <p class="title_acceso">{{$title->content}}</p>
+                @foreach($valencia['restauracion']['data_accesso'] as $data)
+                    @if($data->dad==$title->id)
+                        <p class="data_accesso">{!!$data->content!!}</p>
+                    @endif
+                @endforeach
+            </div>
+        @endforeach
+    </div> 
+@endif
+@if($front['section']=='puntos_interes')
+    <div class="row">
+        @foreach($valencia['puntos']['title_acceso'] as $title)
+            <div class="col s6">
+                <p class="title_acceso">{{$title->content}}</p>
+                @foreach($valencia['puntos']['data_accesso'] as $data)
+                    @if($data->dad==$title->id)
+                        <p class="data_accesso">{!!$data->content!!}</p>
+                    @endif
+                @endforeach
+            </div>
+        @endforeach
+    </div>
+@endif
 </div>
 <div id="mundial_box">
     @if($front['section']=='mundial')
@@ -36,7 +280,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif    
         @if($general['accesos'][0])
-        <div class="accesos tab1" onclick="go_to('/mundial/accesos')">        
+        <div class="accesos tab1">        
             <div class="row">
                 <div class="col s6 fit-content">
                     <video controls autoplay muted src="{{$mundial['accesos']['video'][0]->content}}"></video>
@@ -50,7 +294,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
         @if($general['pabellon1'][0])
-        <div class="pabellon1 tab1" onclick="go_to('/mundial/pabellon1')">
+        <div class="pabellon1 tab1">
             <div class="row">
                 <div class="col s6 center-content">
                     <a href="#pabellon1" class="modal-trigger white_t">
@@ -67,7 +311,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
         @if($general['pabellon2'][0])
-        <div class="pabellon2 tab1" onclick="go_to('/mundial/pabellon2')">
+        <div class="pabellon2 tab1">
             <div class="row">
                 <div class="col s6 fit-content">
                     <video controls loop src="{{$mundial['pabellon2']['video'][0]->content}}"></video>
@@ -96,7 +340,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
         @if($general['calendario'][0])
-        <div class="calendario tab1" onclick="go_to('/calendar/ritmica/internacional')">
+        <div class="calendario tab1">
             <div class="row">
                 <div class="col s6 fit-content">
                     <img src="/mundial_calendario.png" alt="">
@@ -146,7 +390,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
         @if($general['como_llegar'][0])
-        <div class="como_llegar tab2" onclick="go_to('/valencia/como_llegar')">
+        <div class="como_llegar tab2">
             <div class="row">
                 <div class="col s6 fit-content">
                     <img src="{{$valencia['comollegar']['valencia_llegar_img'][0]->content}}" alt="">
@@ -165,7 +409,7 @@ $valencia=$front['mundial']['valencia'];
         @if($general['alojamiento'][0])
         <div class="alojamiento tab2">
             <div class="row">
-                <div class="col s6 center-content" onclick="go_to('/valencia/alojamiento')">
+                <div class="col s6 center-content">
                     <a href="#alojamiento" class="modal-trigger white_t">
                         <div class="text-decolored">Alojamiento</div>
                     </a>
@@ -177,7 +421,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
         @if($general['restauracion'][0])
-        <div class="restauracion tab2" onclick="go_to('/valencia/restauracion')">
+        <div class="restauracion tab2">
             <div class="row">
                 <div class="col s6 fit-content">
                     <img src="{{$valencia['restauracion']['valencia_alojamiento'][0]->content}}" alt="">
@@ -191,7 +435,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
         @if($general['puntos'][0])
-        <div class="puntos_interes tab2" onclick="go_to('/valencia/puntos_interes')">
+        <div class="puntos_interes tab2">
             <div class="row">
                 <div class="col s6 center-content">
                     <a href="#puntos" class="modal-trigger white_t">
@@ -280,7 +524,7 @@ $valencia=$front['mundial']['valencia'];
         </div>
         @endif
     @endif
-    @if($front['section']=='delegacion')
+    @if($front['section']=='delegaciones')
         @if($general['acceso_delegaciones'][0])
         <div class="acceso_delegaciones tab4">
             <div class="row">
@@ -429,7 +673,6 @@ $valencia=$front['mundial']['valencia'];
     @endif
 </div>
 
-
 <div id="streaming" class="modal">
     <div class="modal-content fit-content">
         <video controls src="{{$mundial['streaming']['video'][0]->content}}"></video>
@@ -465,18 +708,13 @@ $valencia=$front['mundial']['valencia'];
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
     </div>    
 </div>
-
 @endsection
 @section('scripts')
     <script>
-        function go_to(url){
-            window.location.href = url;
-        }
         $(document).ready(function(){
             
             $('.collapsible').collapsible();
-            $('.disabled').hide();
-            
+            $('.disabled').hide();            
             $('.delegacion_access').click(function(){
                 var username = $('#username').val();
                 var password = $('#password').val();

@@ -3,50 +3,38 @@
     <head>
         <title>@yield('title')</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="{{ asset('css/mundial.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/mundial_section.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         @yield('css')
-        <style>
-            #video_header{
-                width: 100%;
-                position: relative;
-                z-index: 1;
-                background-image: url({{$front['general']['img_pral']}});
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-size: cover;
-            }
-        </style>
     </head>
     <body> 
         <!--BARA DE CARGA DE LA WEB, debe ser una línea blanca que se valla rellenando de azul conforme termina de cargar la web-->
         <div class="progress floatingbox">
             <div class="indeterminate"></div>
-        </div>
-        <div class="linea_head"></div>        
+        </div>     
         @yield('header_especial') 
         <nav class="nav-extended">
             <div class="nav-wrapper">
             <a href="/" class="brand-logo">
-                <img src="{{$front['general']['logo_mundial']}}" alt="rfeg">
+                <img src="{{$front['general']['logo']}}" alt="rfeg">
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="center-box hide-on-med-and-down">
-                <li class="tmn"><a href="/mundial/entradas" class="texto colored_border" id="tab3">VENTA DE ENTRADAS</a></li>
-                <li class="tmn"><a href="/mundial" class="texto" id="tab1">CAMPEONATO DEL MUNDO</a></li>
-                <li class="tmn"><a href="/valencia" class="texto" id="tab2">VALENCIA</a></li>            
-                <li class="tmn"><a href="#streaming" class="modal-trigger texto">STREAMING</a></li>
-                <li class="tmn"><a href="/mundial/delegaciones" class="texto" id="tab4">DELEGACIONES</a></li>
-                <li class="tmn"><a href="/mundial/patrocinadores" class="texto" id="tab5">PATROCINADORES</a></li>
+                <li class="tmn"><a href="/mundial/entradas" class=" " id="tab3">VENTA DE ENTRADAS</a></li>
+                <li class="tmn"><a href="/mundial" class="" id="tab1">CAMPEONATO DEL MUNDO</a></li>
+                <li class="tmn"><a href="/valencia" class="" id="tab2">VALENCIA</a></li>            
+                <li class="tmn"><a href="#streaming" class="modal-trigger ">STREAMING</a></li>
+                <li class="tmn"><a href="/mundial/delegaciones" class="" id="tab4">DELEGACIONES</a></li>
+                <li class="tmn"><a href="/mundial/patrocinadores" class="" id="tab5">PATROCINADORES</a></li>
             </ul>      
         </nav>
         <ul class="sidenav" id="mobile-demo">
-            <li class="tmn"><a href="/mundial/entradas" class="texto colored_border" id="tab3">VENTA DE ENTRADAS</a></li>
-            <li class="tmn"><a href="/mundial" class="texto" id="tab1">CAMPEONATO DEL MUNDO</a></li>
-            <li class="tmn"><a href="/valencia" class="texto" id="tab2">VALENCIA</a></li>            
-            <li class="tmn"><a href="#streaming" class="modal-trigger texto">STREAMING</a></li>
-            <li class="tmn"><a href="/mundial/delegaciones" class="texto" id="tab4">DELEGACIONES</a></li>
-            <li class="tmn"><a href="/mundial/patrocinadores" class="texto" id="tab5">PATROCINADORES</a></li>
+            <li class="tmn"><a href="/mundial/entradas" class=" " id="tab3">VENTA DE ENTRADAS</a></li>
+            <li class="tmn"><a href="/mundial" class="" id="tab1">CAMPEONATO DEL MUNDO</a></li>
+            <li class="tmn"><a href="/valencia" class="" id="tab2">VALENCIA</a></li>            
+            <li class="tmn"><a href="#streaming" class="modal-trigger ">STREAMING</a></li>
+            <li class="tmn"><a href="/mundial/delegaciones" class="" id="tab4">DELEGACIONES</a></li>
+            <li class="tmn"><a href="/mundial/patrocinadores" class="" id="tab5">PATROCINADORES</a></li>
         </ul>
 
         @yield('content')
